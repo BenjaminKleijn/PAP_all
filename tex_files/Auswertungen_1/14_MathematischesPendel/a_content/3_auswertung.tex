@@ -1,0 +1,149 @@
+
+\subsection{Aufgabe 1: idealisierte Erdbeschleunigung}
+\paragraph*{Pendellänge, Radius Kugel, Fadenlänge}
+Das Pendel wurde im Equilibrium vermessen. Es werden zwei Punkte an der Spiegelskala abgelesen, der obere un der untere Punkt der Kugel. Darüber hinaus wurde die Kugel mit der Schieblehre vermessen. 
+
+Der Fehler für die Pendellänge \(l\) wird noch korrigiert, hier ist bei Tabelle 1 des Messprotokolls etwas vernachlässigt worden. Für jede Messung an der Spiegelskala, also 3 verschiedene \(y\)-Positionen, wurde ein Fehler von \(\Delta y=\qty{0.1}{\cm}\) geschätzt. Die \(\qty{0.05}{\cm}\) aus dem Messprotokoll erscheinen mir im Nachhinein ein bisschen zu optimistisch. Die Pendellänge \(l\) wurde berechnet mit:
+\begin{gather}
+    l=y_{\text{Spitze}}-\frac{y_{K, \text{ oben}}+y_{K,\text{ unten}}}{2}\\
+    \Delta l = \sqrt{(\Delta y_{\text{Spitze}})^2+\left(\frac{\Delta y_{K, \text{ oben}} }{2}\right)^2+\left(\frac{\Delta y_{K, \text{ unten}} }{2}\right)^2}=\sqrt{\frac{3}{2}\Delta y}=\qty{0.12}{\cm}
+    \label{eq:fehler_l}
+\end{gather} 
+\(\Delta l\) ist hier der systematische Fehler durchs Ablesen. Aus dem Messprotokoll entnimmt man noch den statistischen Fehler des Mittelwerts \(\Delta \bar{L}=\qty{0.04}{cm}\). Quadratisch addiert ergibt das also insgesamt:
+\[l=\qty{95.20(13)}{\cm}\]
+\hrule \vspace{0.3cm}
+Für die Fadenlänge wird benutzt:
+\begin{equation}
+    l'=y_{\text{Spitze}}-y_{K,\text{ oben}}\quad\text{und}\;\Delta l'=\sqrt{2(\Delta y)^2}=\sqrt{2}\Delta y=\qty{0.14}{\cm}
+\end{equation}
+Und damit durch Berechnen des Mittelwerts \(\bar{l'}\), sowie quadratischer Addition des statistischen Fehlers des Mittelwerts \(\Delta \bar{l'}=\qty{0.113}{\cm}\):
+\[l'=\qty{93.47(18)}{\cm}\]
+\hrule \vspace{0.3cm}
+Der Kugelradius wurde über den Durchmesser mit dem Messschieber bestimmt:
+\begin{equation}
+    r=\frac{d}{2}\quad\text{und}\quad\Delta r=\frac{\Delta D}{2}
+\end{equation}
+\[r=\qty{1.5000(25)}{\cm}\]
+
+\paragraph{idealisierte Erdbeschleunigung:}
+Tabelle 2 des Messprotokolls dient nur dazu, einen Ansatzwert für \(T_0\) zu bestimmen, der dann zur Bestimmung von \(n\) mit \cref{eq:bedingung_n} genutzt wird. Mithilfe der Werte Stoppgenauigkeit (Reaktionszeit) \(\Delta t=\qty{0.2}{\s}\), \(T_0=\qty{1.96}{\s}\), \(l=\qty{95.20(12)}{\cm}\) errechnet sich: \(n=\num{498}\).\\
+Im Versuch wurde leider kein exakter Längenfehler zur Berechnung von \(n\) benutzt, zur Vollständigkeit halber also:
+\begin{equation}
+    T_g=\frac{t}{n}\quad\text{und}\quad\Delta T_g=\frac{\Delta t}{n}
+\end{equation}
+und mit der gemessenen Zeit \(t(n=588)=\qty{1050.9(20)}{\s}\): \(T_g=\qty{9.573(4)}{\s}\). 
+
+Es wird also nun mit \cref{eq:g_ideal}, dem Fehler in \cref{eq:fehler_g}, dem Mittelwert der Pendellänge, und \(T_g\) \(g\) berechnet:
+\[\tcbhighmath{g_{\text{ideal}}=\qty{9.810(14)}{\m\per\s\squared}}\]
+
+Der Vergleich mit dem Literaturwert der Erdbeschleunigung für Heidelberg von \(g_{\text{lit}} = \qty{9.80984(2)}{\m\per\s\squared}\) zeigt:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(g_{\text{ideal}}\) und \(g_{\text{lit}}\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        g_{\text{ideal}}[\unit{\m\per\s\squared}]&g_{\text{lit}}[\unit{\m\per\s\squared}]&\text{abs. Abw.}[\unit{\m\per\s\squared}]&\text{proz. Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{9.810(0.014)}&\num{9.809840(0.000020)}&\num{0.000(0.015)}&\num{0.00(0.15)}&\num{0.012}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_g} 
+\end{table}
+
+\subsection{Aufgabe 2: Berechnung der Korrekturterme}
+Nach Gleichung (\ref*{eq:T_gesamt}) gilt:
+\begin{equation}
+    g = \frac{4\pi^2 l}{T_0^2} \left(1 + \frac{2r^2}{5l^2} + \frac{\rho_L}{\rho_K} - \frac{m_F}{6 m_K} + \frac{\delta^2}{\omega_0^2} + \frac{\varphi_0^2}{8}\right).
+    \label{eq:g_final}
+\end{equation}
+
+Die benötigten Werte werden nun berechnet:
+
+Als Materialeigenschaften wird benötigt: Die Dichte der Luft \(\rho_L=\qty{0.0012}{\gram\per\cm\cubed}\), die Dichte der Kugel und des Drahtes \(\rho_{\text{Eisen (Fe)}}=\qty{7.86}{\gram\per\cm\cubed}\), der Radius \(r_K=\qty{1.5000(25)}{\cm}\) und \(r_F=\qty{0.01}{\cm}\) und die daraus folgende Masse der Kugel \(m_K\), sowie des Fadens \(m_F\). 
+
+Für die Massen muss das Volumen der Körper bestimmt werden:
+\begin{align}
+    m_K &= \frac{4}{3}  \pi  {r_K}^3 \cdot \rho_{\ce{Fe}} \\
+    \Delta m_K &= 4 \pi {r_K}^2  \Delta r_K \rho_{\ce{Fe}}\\
+    m_F &= \pi  {r_f}^2  l' \rho_{\ce{Fe}}\\
+    \Delta m_f &= \pi {r_f}^2  \rho_{\ce{Fe}}  \Delta l'
+\end{align}
+Damit wird berechnet:
+\begin{prb}
+m_K=\qty{111.1(6)}{\gram} \quad\quad m_F=\qty{0.2309(5)}{\gram}
+\end{prb}
+\rule{\textwidth}{0.2pt}
+Die Kreisfrequenz wird über 
+\begin{equation}
+    \omega_0=\frac{2\pi}{T_0} \quad\text{und}\quad\Delta \omega_0=\frac{2\pi}{T_0^2}\Delta T_0
+\end{equation} bestimmt. 
+Mit \(T_0=\qty{1.9573(4)}{\s}\) ergibt sich:
+\[\tcbhighmath[colback=white]{w_0=\qty{3.2101(7)}{\hertz}}\]
+\rule{\textwidth}{0.2pt}
+Den Anfangswinkel \(\varphi_0\) berechnet man mittels:
+\begin{gather}
+    \tan(\varphi_0)=\frac{a_{\text{max}}}{l}\\
+    \Delta \varphi_0=\sqrt{\left(\frac{a_{\text{max}}}{a_{\text{max}}^2+l^2}\Delta a_{\text{max}}\right)^2+\left(\frac{l}{a_{\text{max}}^2+l^2}\Delta l \right)^2}
+\end{gather}
+Mit \(a_{\text{max}}=\qty{9.8(2)}{\cm}\) erhält man:
+\[\tcbhighmath[colback=white]{\varphi_0=\qty{0.1026(14)}{\rad}}\]
+\rule{\textwidth}{0.2pt}
+Der Reibungskoeffizient \(\delta\) bestimmt sich durch Bestimmen der Steigung \(m\) der Ausgleichsgerade in \cref{fig:diagramm1}, hier wurde die Amplitude über die Schwingungsanzahl auf logarithmischem Papier aufgetragen, sodass nach \cref{eq:Amplitudenabnahme} \(\delta\) bestimmt werden kann. Der Fehler ergibt sich durch die Differenz mit der Fehlergeraden \(m_F\):\\
+\begin{align*}
+m=\frac{\ln(9)-\ln(1)}{600-93}=\qty{0.004333}{\hertz}&&
+m_F=\frac{\ln(9.6)-\ln(1.2)}{600-30}=\qty{0.00364}{\hertz}\\
+\delta=|m-m_F|&&\implies \tcbhighmath[colback=white]{\delta=\qty{0.0043(7)}{\hertz}}
+\end{align*}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=0.95\textheight]{diagramm.pdf}
+  \caption{Amplitudenabnahme als Funktion der Schwingungsanzahl \(n\)}
+  \label{fig:diagramm1}
+\end{figure}
+\clearpage
+
+\subsection{Berechnung mit Korrekturtermen}
+Nun sind alle Terme für \cref{eq:g_final} bestimmt. Den Fehler für \(g_{\text{korr}}\) bestimmt man folgend:
+\begin{equation}
+    \Delta g_{\text{korr}} = \sqrt{\sum_{i=1}^{8} x_i^2}
+\end{equation}
+mit:
+\begin{align*}
+    x_1 &= \left(\frac{4{\pi}^2 \left(\frac{\delta^2}{\omega_0^2}-\frac{m_F}{6m_K}+\frac{\varphi_0^2}{8}+1+\frac{\rho_L}{\rho_{\ce{Fe}}}+\frac{2r_K^2}{5l^2}\right)}{T_g^2}-\frac{16{\pi}^2 r^2}{5T_g^2 l^2}\right) \cdot \Delta l  \\
+    x_2 &= \left(\frac{-8{\pi}^2 l \left(\frac{\delta^2}{\omega_0^2}-\frac{m_F}{6m_K}+\frac{\varphi_0^2}{8}+1+\frac{\rho_L}{\rho_{\ce{Fe}}}+\frac{2r_K^2}{5l^2}\right)}{T_g^3} \Delta T_g\right)\\
+    x_3 &= \left(\frac{16{\pi}^2 r}{5T_g^2 l} \Delta r_K\right) \\
+    x_4 &= \left(\frac{-2{\pi}^2 l}{3T_g^2 m_K} \Delta m_F\right) \\
+    x_5 &= \left(\frac{2{\pi}^2 l m_F}{3T_g^2 {m_K}^2} \Delta m_K\right)\\
+    x_6 &= \left(\frac{8{\pi}^2 \delta l}{T_g^2 \omega_0^2} \Delta \delta\right)\\  
+    x_7 &= \left(\frac{-8{\pi}^2 \delta^2 l}{T_g^2 \omega_0^3} \Delta \omega_0\right) \\
+    x_8 &= \left(\frac{{\pi}^2 l \varphi_0}{T^2} \Delta \varphi_0\right)
+\end{align*}
+
+Wir setzen alle unsere berechneten Werte in die Gleichungen ein und kommen auf ein korrigiertes Ergebnis:
+\begin{rb}
+    g_{\text{korr}}=\qty{9.822(14)}{\m\per\s\squared}
+\end{rb}  
+
+Verglichen mit dem Heidelberger Literaturwert \(g_{\text{lit}} = \qty{9.80984(2)}{\m\per\s\squared}\) erhält man eine Abweichung von:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(g_{\text{korr}}\) und \(g_{\text{lit}}\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        g_{\text{korr}}[\unit{\m\per\s\squared}]&g_{\text{lit}}[\unit{\m\per\s\squared}]&\text{abs. Abw.}[\unit{\m\per\s\squared}]&\text{proz. Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{9.822(0.014)}&\num{9.809840(0.000020)}&\num{0.012(0.015)}&\num{0.12(0.15)}&\num{0.9}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_g_korr} 
+\end{table}
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

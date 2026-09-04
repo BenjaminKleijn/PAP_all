@@ -1,0 +1,123 @@
+\subsection{Motivation}
+Resonanzphänomene spielen eine wichtige Rolle in der Physik: Überall trifft man auf harmonische Oszillatoren, bei denen Resonanz auftreten kann. Das Untersuchen von Resonanz ist ein Weg, die Charakteristika eines harmonischen Oszillators, Frequenz, Anregende Frequenz, Amplitudenentwicklung, Dämpfung,.. zu analysieren und dementsprechend wichtig, um das Verhalten bei unterschiedlichen Parametern und Situationen zu verstehen. 
+
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit einem Drehpendel wird:
+\begin{itemize}
+      \item die Schwingungsdauer des ungedämpften Pendels bestimmt
+      \item mit einer Wirbelstrombremse wird Dämpfung eingebracht, die aus der Amplitudenabnahme bestimmt werden kann
+      \item durch eine anregende Motorfrequenz wird die Resonanzkurve (Amplitude abhängig der Erregerfrequenz) untersucht und daraus erneut die Dämpfungskonstante \(\delta\) bestimmt
+      \item die zwei Methoden zur Bestimmung von \(\delta\) hinsichtlich ihrer Genauigkeit verglichen
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item reibungsarm gelagertes Drehpendel (Pohlsches Pendel) mit Amplitudenskala
+    \item Servomotor, der durch einen Exzentrer das Pendel anregen kann
+    \item Motorsteuerung: Frequenzgenerator gibt die Motofrequenz vor, die vom Steuergerät an den Motor gegeben wird
+    \item Wirbelstrombremse mit Netzteil zur Einstellung der dämpfenden Stromstärke
+\end{enumerate}
+
+\xfigure{htbp}{width=0.8\textwidth}{Versuchsaufbau.png}{Versuchsaufbau \autocite{Skript_1}}{Versuchsaufbau, Motorsteuerungsgerät und Frequenzgenerator nicht auf dem Bild \autocite{Skript_1}}
+
+Zuerst wird durch Auslenken des ungedämpften Pendels die Periodendauer erhoben. Dann wird die Amplitudenabnahme über die Zeit für zwei verschiedene Dämpfungen gemessen. Als letzten Teil des Versuches wird der Motor dazugeschaltet und schrittweise die anregende Frequenz, und jedes Mal die Amplitude gemessen. 
+
+\subsection[Theoretische Grundlagen der Physik]{Theoretische Grundlagen der Physik\autocite{Skript_1}}
+Es liegt eigentlich ein Drehpendel vor, welches nicht mit klassischen Auslenkungen und Kräften beschrieben wird, sondern eigentlich mit Winkeln und Drehmomenten. Die Fälle sind jedoch völlig analog, deswegen wird die klassische Notation für die Auslenkung \(x\) verwendet.
+
+\subsubsection{ungedämpfter harmonischer Oszillator}
+Ein ungedämpfter HO hat keine Reibungs- oder externe Anregungsfrequenzen. Er wird nur beeinflusst durch die Rückstellkraft (z.B. einer Feder). Zentral ist, dass die der Auslenkung entgegengesetzte Rückstellkraft linear mit der Auslenkung \(x\) steigt. Es ergibt sich dann aus dem Kräftegleichgewicht die Differenzialgleichung:
+\begin{equation}
+    \ddot{x} + \omega_0^2 x = 0,
+\end{equation}
+mit der allgemeinen harmonischen Lösung:
+\begin{equation}
+    x(t) = a_0 \sin(\omega_0 t + \varphi),
+\end{equation}
+hier sind \(a_0\) and \(\varphi\) Konstanten, die durch die Anfangsbedingungen des Systems festgelegt sind. \(\ddot{x}\) ist die Beschleunigung des Pendelkörpers, \(\omega_0\) ist die durch Kenngrößen des Systems wie Federkonstante oder Masse bestimmte Eigenkreisfrequenz. Daraus erhält man die Periodendauer \(T\) der periodischen Schwingung mit:
+\begin{equation}
+    T = \frac{2\pi}{\omega_0}.
+    \label{eq:period_time}
+\end{equation}
+Die Energie des Systems bleibt also konstant und wechselt zwischen kinetischer und potentieller Energie ohne Verluste.
+
+\subsubsection{gedämpfter harmonischer Oszillator}
+Beim vorhandenen Drehpendel ist Reibungskräften ausgesetzt, diese sind jedoch sehr klein, die Lagerung ist sehr reibungsarm. Es wird eine kontrollierte Reibungskraft in das System durch eine Wirbelstrombremse eingebracht. Dies ist einfach eine Spule, die ein magnetisches Feld erzeugt, durch welches sich das Drehpendel hindurchbewegt. Nach der Lenzschen Regel induziert diese Bewegung Wirbelströme im Pendel, die dem äußeren Feld entgegengerichtet sind und somit abbremsend wirken. 
+
+Die Differenzialgleichung ändert sich durch Einbringen von geschwindigkeitsabhängiger Dämpfung:
+\begin{equation}
+\ddot{x} + 2 \delta \dot{x} + \omega_0^2 x = 0.
+\end{equation}
+Hier ist \(\delta = \omega_0\,D\) die Dämpfungskonstante, die quantisiert, wie viel Energie pro Periode verloren geht, \(D\) ist der einheitenlose, skalare Dämpfungsgrad. 
+
+Es gibt drei verschiedene Szenarien, je nach Höhe der Dämpfung: 
+\begin{itemize}
+    \item \textbf{schwache Dämpfung} (\(\delta < \omega_0\)): Das System schwingt, jedoch mit exponentiell abnehmender Amplitude, das ist der hier im Versuch betrachtete Fall.
+    \item \textbf{Aperiodischer Grenzfall} (\(\delta = \omega_0\)): Es findet keine Schwingung statt, die Auslenkung fällt schneller als im Fall starker Dämpfung/in der kürzesten Zeit auf die Ruhelage zurück. 
+    \item \textbf{Starke Dämpfung, Kriechfall} (\(\delta > \omega_0\)): Es findet keine Schwingung statt, das System strebt dem Gleichgewichtszustand langsamer als im Grenzfall zu.
+\end{itemize}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth]{gedämpfterHO.png} 
+\caption{Einhüllende Amplitude \(a(t)\) über Schwingung \(x(t)\) \autocite{gedämpfterHO}}
+\label{fig:gedämpfterHO}
+\end{wrapfigure}
+Die Lösung für die Differenzialgleichung im schwach gedämpften Fall ist:
+\begin{equation}
+x(t) = a_0 e^{-\delta t} \sin(\omega_f t + \varphi),
+\end{equation}
+mit der Kreisfrequenz der gedämpften Schwingung, bestimmt durch:
+\begin{equation}
+\omega_f = \sqrt{\omega_0^2 - \delta^2}.
+\end{equation}
+Betrachtet man nur die Amplitude, also die Auslenkung der Umkehrpunkte, so ergibt sich die Einhüllende \(a(t)\), schön zu sehen in \cref{fig:gedämpfterHO}:
+
+\begin{equation}
+a(t) = a_0 e^{-\delta t}
+\label{eq:a(t)}
+\end{equation}
+
+Durch Einführen der Größe \emph{Halbwertszeit} \(t_{1/2}\), die durch \(a(t_{1/2})=\frac{a_0}{2}\) bestimmt ist, kann mit \cref{eq:a(t)} bei bekannter \(t_{1/2}\) \(\delta\) bestimmt werden:
+\begin{equation}
+    \frac{a_0}{2}=a_0 e^{-\delta t} \leftrightarrow \delta = \frac{\ln 2}{t_{1/2}}
+    \label{eq:damping_halftime}
+\end{equation}
+
+\subsubsection{Getriebener Oszillator}
+Wird eine externe Anregerfrequenz eingebracht, die ein externes Drehmoment auf das Drehpendel mit Trägheitsmoment \(J\) aufbringt, so ändert sich die DGL:
+\begin{equation}
+\ddot{x} + 2\delta \dot{x} + \omega_0^2 x = \frac{M_{\text{ext}}(t)}{J} = A \omega_0^2 \sin(\omega t),
+\end{equation}
+mit der Amplitude \(A\) des Erregers, sowie der Kreisfrequenz \(\omega\) des Erregers. Die externe Anregung ist periodisch, es gilt also \(M_{\text{ext}}(t)=A\,\sin(\omega t)\). Nach der Einschwingphase schwingt das System mit der Erregerfrequenz \(\omega\), und der Amplitude \(b(w)\):
+\begin{equation}
+b(\omega) = \frac{A \omega_0^2}{\sqrt{(\omega_0^2 - \omega^2)^2 + (2 \delta \omega)^2}}.
+\end{equation}
+Hieraus kann berechnet werden, bei welcher Kreisfrequenz \(w'\) \(b\) maximal wird:
+\begin{equation}
+\omega' = \sqrt{\omega_0^2 - 2 \delta^2}
+\label{eq:w'}
+\end{equation}
+
+\subsubsection{Resonanz Kurve}
+Trägt man \(b(\omega)\) auf, so wird veranschaulicht, wie die Amplitude von der Erregerfrequenz abhängt: Die Resonanzfrequenz \(\omega'\) wird kleiner mit größerer Dämpfung,
+die Resonanz-Amplitude: \(b(\omega')\) sinkt mit größerer Dämpfung. 
+
+Zusätzlich ist die Halbwertsbreite \(H\) von Bedeutung, die von den Kreisfrequenzen \(w_1\) und \(w_2\) abhängt, die definiert sind durch: 
+\begin{equation}
+    b(w_1)=b(w_2)=\frac{b(w')}{\sqrt{2}}
+    \label{eq:b(H)}
+\end{equation}
+\begin{equation}
+    H = \omega_2 - \omega_1 \approx 2\delta,
+    \label{eq:H}
+\end{equation}
+
+% \xfigure{h}{}{Resonanzkruve}{}{Darstellung der Resonanzkurve eines getriebenen HO}
+
+Als letzte Größe wird die Resonanzüberhöhung definiert, als:
+\begin{equation}
+    \frac{b(\omega')}{b(\omega \to 0)} = \frac{\omega_0}{2 \delta}=\frac{\omega_0}{H}=Q
+    \label{eq:reso_überhöhung}
+\end{equation}
+Hier wurde angenommen, dass \(w_0\approx w_f\). Dies ist auch der Gütefaktor \(Q\), der beschreibt, wie \glqq scharf\grqq{} eine Resonanzkurve ausgebildet ist. Ein hoher Gütefaktor bedeutet schwache Dämpfung, kleine Resonanzbreite und hohe Amplitude. Ein kleiner Gütefaktor das Gegenteil.

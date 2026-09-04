@@ -1,0 +1,129 @@
+\subsection{Umrechnung der Messdaten}
+Unser Aufbau ist ein wenig komisch gewesen. Wir haben im Gegensatz zu anderen Gruppen Winkel am Nonius abgelesen, die einen Wert von \qtyrange{300}{305}{\degree} betrugen. Der gemessene Winkel \(\delta\) sollte mit größerer Wellenlänge kleiner werden (falls der gemessene Winkel der Ablenkwinkel \(\delta\) in \cref{fig:prisma.png} ist), dieser Verlauf ist bei uns nicht sichtbar, was vermutlich daran liegt, dass wir den Winkel \glqq von der anderen Seite\grqq{} gemessen haben. Dementsprechend müssen wir alle Winkel noch einmal von \qty{360}{\degree} abziehen, hier \glqq nullen\grqq \(\ \)genannt. Die Werte die nach dieser Umrechnung für das Erstellen der Eichkurve genutzt wurden, finden sich im Anhang unter \cref{fig:V33_genullte.pdf}.
+
+\subsection{Aufgabe 1 - Eichkurve}
+Die Wellenlängen \(\lambda\) der 10 sichtbaren Spektrallinien einer Quecksilberlampe(Hg) waren gegeben, im Versuch wurden diese Linien durch ein Prisma abgelenkt und der Ablenkwinkel \(\delta_{\text{Hg}}\) mittels des Nonius abgelesen. Aus diesen Tupeln (\(\delta(\lambda_n\)) mit \(n=(1,\ 2\ ,\ldots,\ 10)\)) wurde eine Eichkurve erstellt, siehe \cref{fig:Graph.pdf}.
+
+\xfigpdf{p}{width=\textwidth}{Graph.pdf}{}{Eichkurve und grafisch ermittelte Werte für He- und H-Spektrallinien}
+\clearpage 
+
+Mittels dieser Eichkurve sollten aus den gemessenen Ablenkwinkeln einer He-Lampe die Wellenlängen der entsprechenden Linien ermittelt werden. Hier sind zwei fehlerbehaftete Größen zu beachten: Die Tupel sind mit einem Ablesefehler \(\Delta \delta_{\text{ablese}} = \ang{0,1}\) behaftet, zusätzlich wurde die Eichkurve per Hand gefittet und Messwerte evtl. leicht versetzt eingetragen. 
+Dieser \glqq Fit-Fehler \grqq wurde mit \(\Delta \delta_{\text{fit}}=\qty{0,1}{\degree}\) abgeschätzt.\\
+Durch quadratisches Addieren ergibt sich:
+\begin{equation}
+    \Delta \delta_{\text{ges}}=\sqrt{\Delta \delta_{\text{ablese}}^2+\Delta \delta_{\text{fit}}^2}=\qty{0,14}{\degree}
+\end{equation}
+Jedem Messwert \(\delta_{\text{He}}\) wurde nun anhand der erstellten Eichkurve die entsprechende Wellenlänge zugeordnet.\\
+Man ging wie folgt vor: Der Messwert \(\delta_1\pm \Delta \delta_{\text{ges}}=\qty{55,97 \pm 0,14}{\degree}\) wurde an der y-Achse eingetragen, und eine horizontale Gerade mit \(f_1=\delta_1\) bzw. \(f_{\Delta}=\delta_1 \pm \Delta \delta_{\text{ges}}\) eingezeichnet. 
+Der Schnittpunkt dieser Gerade \(f_1\)  bzw. \(f_{\Delta_\pm}\) mit der Eichkurve ergibt die gesuchte Wellenlänge \(\lambda_1\) bzw. \(\lambda_1 \pm \Delta \lambda_1\).
+Um jeden Wert für \(\delta\) wurde also ein umhüllender Schlauch (in \cref{fig:Graph.pdf} grün) mit Breite \(2\ \Delta \delta_{\text{ges}}\) gelegt.
+Dies ergibt dann einen umhüllenden Schlauch für \(\lambda_1\).
+Durch die Krümmung des Graphen liegt \(\lambda_1\) nicht mittig in diesen Fehlergrenzen, aus diesem Grund wurde immer die maximale Differenz \(\Delta \lambda_{\text{max}}\) als Fehler ausgewählt. Somit ergeben sich die folgenden Werte:
+Für einen Ablesefehler an der x-Achse wurde 1 Skalenteil \(\widehat{=}\ \qty{1,5}{\nm}\) quadratisch auf den abgelesenen Wert für \(\Delta \lambda_{\text{max}}\) addiert. Es ergibt sich die Tabelle:
+
+\begin{table}[htbp]
+\setlength{\tabcolsep}{10pt} % Standard ist meist 6pt
+\centering
+\caption{grafisch ermittelte Werte für \(\lambda\) der He-Spektrallinien aus \cref{fig:Graph.pdf} und Abweichungen zum Literaturwert}
+\begin{tabularx}{\textwidth}{cxxZZS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & \lambda_{\text{He}}^{\text{exp}}\;[\unit{\nano\m}] & \lambda_{\text{He}}^{\text{lit}}\;[\unit{\nano\m}] & \text{abs. Abw.}\;[\unit{\nano\m}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       1 & \num{442(10)} & 447.1 & \num{5(10)} & \num{1.2(2.2)} & 0.6 \\
+       2 & \num{471(13)} & 471.3 & \num{1(13)} & \num{0(3)} & 0.07 \\
+       3 & \num{504(14)} & 492.2 & \num{11(14)} & \num{2(3)} & 0.9 \\
+       4 & \num{514(13)} & 501.6 & \num{12(13)} & \num{2.4(2.5)} & 1.0 \\
+       5 & \num{597(14)} & 587.6 & \num{9(14)} & \num{1.5(2.4)} & 0.7 \\
+       6 & \num{649(16)} & 667.8 & \num{19(16)} & \num{2.9(2.4)} & 1.3 \\
+\bottomrule
+\end{tabularx}
+\label{table:lambdahe} 
+\end{table}
+
+\newpage
+\subsection{Aufgabe 2 - Auswertung der Wasserstofflinien}
+Es konnten nur die drei starken Linien erkannt werden. Deren Winkel, wie in \cref{fig:V33_genullte.pdf} zu sehen, sind um fast \(\qty{4}{\degree}\) nach oben versetzt zu den maximalen Winkeln, die bei Hg zum Erstellen der Eichkurve aufgenommen wurden. Vergleicht man beispielsweise den Literaturwert der blaugrünen Hg-Linie \(\lambda_{\text{blaugrün},\, \text{Hg}}\) mit dem Literaturwert der türkisen Wasserstofflinie (Tabelle \cref{table:Balmer}), so ist die Wellenlänge nur minimal unterschiedlich. Das heißt, der gemessene Ablenkwinkel \(\delta\) sollte sich nicht um \(>\qty{4}{\degree}\) unterscheiden, (siehe Tabelle \cref{table:lambdaH}).
+
+Hier liegt die Vermutung nahe, dass ein systematischer Fehler vor Messen der Wasserstofflinien in den Aufbau eingebracht wurde. Ich kann mich jedoch nicht erinnern, was anders gemacht wurde. Evtl.\ ist einfach unbewusst der Nonius verdreht worden.
+
+\begin{table}[htbp]
+\centering
+\caption{Gegenüberstellung der gemessenen Winkel und \(\lambda_{\text{Lit}}\) für Hg und H je nach Farbe} 
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} S[table-format=2.2]clccc}
+\toprule
+  \multicolumn{3}{c}{Quecksilber} & \multicolumn{3}{c}{Wasserstoff} & Differenz \\\cmidrule[0.5pt](l r){1-3}\cmidrule[0.5pt](l r){4-6}\cmidrule{7-7}
+Nr., Farbe     & {\(\delta_{\text{Hg}}\; [\unit{\degree}]\)}& \(\lambda_{\text{Hg}}^{\text{lit}}\) [\unit{\nm}]   & Nr., Farbe    & \(\delta_{\text{H}}\) [\unit{\degree}]& \(\lambda_{\text{H}}^{\text{lit}}\) [\unit{\nm}] & \(\delta_{\text{Hg}}-\delta_{\text{H}}\) [\unit{\degree}] \\\cmidrule[0.5pt](l r){1-3}\cmidrule[0.5pt](l r){4-6}\cmidrule{7-7}
+1. rot         & 58.65      &  690.7                        & 1. rot        & 62.25      &  656.3 &\\
+2. rot         & 57.83      &  623.4                        & -             &            &        &\\ 
+7. blaugrün    & 56.58      &  491.6                        & 2. türkis     & 60.87      & 486.1 & 4.29\\
+8. blau        & 55.78       &  435.8                        & 3. indigo     & 60         & 434.0 & 4.22\\ 
+9. violett    & 55.3         &  407.8                        & -              &            &      &\\ 
+\bottomrule
+\end{tabular*}
+\label{table:lambdaH}
+\end{table}
+
+Anhand der Differenz der zwei ähnlichen Linien wird deutlich, dass ein systematischer Fehler von ca. \(\Delta \delta_{\text{syst}}=\qty{4,25}{\degree}\) in den Aufbau eingebracht wurde. Aus diesem Grund wurde von allen drei gemessenen Winkeln \(\delta_{\text{H}}\) dieser systematische Fehler abgezogen, und mit diesem neuen Wert \(\delta_{\text{neu}}\) die korrespondierende Wellenlänge im Graphen ermittelt. Da das Bestimmen des systematischen Fehlers keine mathematische Exaktheit hatte, und auch nur anhand von zwei Werten erfolgen konnte, wurde noch ein geschätzter Fehler von \(\Delta \delta_{\text{syst}}=\qty{0,1}{\degree}\) auf den ursprünglichen Fehler \(\Delta \delta_{\text{ges}}\) addiert. Damit ergibt sich \(\Delta \delta_{\text{neu}}=\qty{0,17}{\degree}\). Es ergeben sich die folgenden Werte, zuzüglich dem vorhin besprochenen Ablesefehler für \(\lambda\) an der x-Achse:
+
+\begin{table}[htbp]
+\centering
+\caption{grafisch ermittelte Werte für \(\lambda_{\text{H}}\) der H-Spektrallinien aus \cref{fig:Graph.pdf} und Abweichungen zum Literaturwert}
+\begin{tabularx}{\textwidth}{lS[table-format=2.2]@{\hspace{1cm}}xxZZS[table-format=1.2]}
+    \toprule
+         Nr.Farbe & {\(\delta_{\text{neu}}\) [\unit{\degree}]} & \lambda_{\text{H}}^{\text{exp}}\;[\unit{\nano\m}] & \lambda_{\text{H}}^{\text{lit}}\;[\unit{\nano\m}] & \text{abs. Abw.}\;[\unit{\nano\m}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       1, rot    & 58 & \num{634(18)} & 656.3 & \num{22(18)} & \num{4(3)} & 1.3 \\
+       2, türkis & 56.62 & \num{493(17)} & 486.1 & \num{6(17)} & \num{1(4)} & 0.4 \\
+      3, indigo & 55.75 & \num{430(11)} & 434.0 & \num{5(11)} & \num{1.0(2.5)} & 0.5 \\
+\bottomrule
+\end{tabularx}
+\label{table:lambdah} 
+\end{table}
+
+Durch den hohen Fehler der experimentellen Werte wird die Sigma-Abweichung nach unten gedrückt, der absolute Fehler ist jedoch ziemlich hoch, die Messung war nicht genau, merkt man am notwendigen Anpassen (Pfusch).
+
+\subsection{Aufgabe 3 - Rydberg-Konstante}
+Nach Formel \cref{Rydberg} kann mit den ermittelten Wellenlängen für \(m=(3,4,5)\) die Rydberg-Konstante bestimmt werden. Der Fehler berechnet sich zu:
+\begin{equation}
+    \Delta R_{\infty}=\left(\frac{\Delta \lambda}{\lambda^2 \left(\frac{1}{4}-\frac{1}{m^2}\right)}\right)
+    \label{rydbergfehler}
+\end{equation} 
+Damit sind die Werte:
+\begin{table}[htbp]
+\centering
+\caption{Berechnung der Rydberg-Konstante}
+\begin{tabular}{lcccc}
+\toprule
+\rule{0pt}{2.5ex} Nr., Farbe & m & Rydberg-Konstante \(R_{\infty,\,m}\) [\qty{e-7}{\per\m}] & Mittelwert \(\bar{R}_\infty\) [\qty{e-7}{\per\m}] & \(\sigma_{\bar{R}_\infty}\) [\qty{e-7}{\per\m}]\\\midrule
+1, rot    & 3 & \qty{1,14 \pm 0,03}{} &  & \\ 
+2, türkis & 4 & \qty{1,08 \pm 0,04}{} & \(1.110\) & \(0.017\)\\ 
+3, indigo & 5 & \qty{1,109 \pm 0,027}{} & &\\ 
+\bottomrule
+\end{tabular}
+\label{table:rydbergh}
+\end{table}
+
+Rein aus just for fun Gründen wird neben dem normalen Mittelwert auch der gewichtete Mittelwert berechnet \autocite{Mittelwert}. Dafür werden für \(m=(3,4,5)\) die gemessenen Rydbergkonstanten \(R_{\infty,\,m}\) abhängig ihrer Fehlergröße \(\Delta R_{\infty,\,m}\) mit Gewichten \(g_m\) versehen, die sich wie folgt berechnen:
+\begin{equation}
+g_m=\frac{1}{(\Delta R_{\infty,\, m})^2}
+\end{equation}
+das gewichtete Mittel berechnet sich mit:
+\begin{align}
+\bar{R}_{\infty}=\frac{\sum_{m=3}^{5} g_mR_{\infty,\, m}}{\sum_{m=3}^5 g_m} && \Delta \bar{R}_{\infty}=\sqrt{\frac{1}{\sum_{m=3}^{5} g_m}}
+\end{align}
+Als Ergebnis erhalten wir:
+\makebox[\textwidth][c]{\(\bar{R}_{\infty,\,\text{gm}}=\qty{1,114 \pm 0,018 e7}{\per\m}\)}\\
+\vspace{1cm}
+Die Abweichung vom Literaturwert \(R_\infty=\qty{1,09737 e7}{\per\m}\)
+bestimmt sich zu:
+
+\begin{table}[htbp]
+\centering
+\caption{Abweichungen vom Literaturwert für \(R_\infty\)}
+\begin{tabularx}{\textwidth}{LxxZZS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & R_\infty^{\text{exp}}\;[\qty{e-7}{\m}] & R^{\text{lit}}_\infty\;[\qty{e-7}{\m}] & \text{abs. Abw.}\;[\qty{e-7}{\m}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       \bar{R}_\infty & \num{1.110(0.017)} & 1.09737 & \num{0.013(0.017)} & \num{1.1(1.6)} & 0.8 \\
+       \bar{R}_{\infty,\,\text{gm}} & \num{1.114(0.018)} & 1.09737 & \num{0.017(0.018)} & \num{1.5(1.7)} & 1.0 \\
+\bottomrule
+\end{tabularx}
+\label{table:rydbergsigma} 
+\end{table}

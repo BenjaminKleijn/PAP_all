@@ -1,0 +1,22 @@
+Wer wissen möchte, wie man viel coole dinge mit \verb|\includepdf| machen kann und weiterhin angezeigten header-footer-styles, checkt \href{https://latex.org/forum/viewtopic.php?t=33233}{diese Seite} aus. Da habe ich viel gelernt.
+
+\section{Memes}
+Memes wurden größtenteils mit der Website https://imgflip.com/ erstellt. 
+
+Dann hat mich das Einfügen der Bilder/Anhänge in den Wahnsinn getrieben, locker nochmal 2h mindestens weg, grrr zum ewigen Kompilieren, nachdem ich was an den Floats geändert hab, und hoffen dass die Dinger nicht auf einmal wieder im Nichts verschwinden.
+
+\emph{Anmerkung:} Das ist ein Meme, bevor ich mehr über \LaTeX gelernt habe, mittlerweile muss ich nicht mehr so cursed Dinge zum Einfügen von pdfs als floats machen.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=8cm]{hslatex.png}
+\caption[\emph{Meme:} Float Verzweiflung]{Ich war am Verzweifeln, noch einmal mehr strg+alt+b und ich wäre alt+f4 \cite{Forthebetterright?}}
+\label{fig:latexhs}
+\end{figure}
+\FloatBarrier
+
+\includepdf[pages=-,pagecommand={}, addtotoc={1, section, 1,Umgerechnete Daten, sec:umgerechnetedaten}]{Auswertunguvv.pdf}
+\includepdf[pages=-]{Auswertungbgg.pdf}
+
+\includepdf[pages=-,pagecommand={}, addtotoc={1, section, 1,Libre Office Gegenspannungs-Diagramme, sec:useless}]{uvviolett.pdf}
+\includepdf[pages=-,pagecommand={}]{blau_grün_gelb.pdf}

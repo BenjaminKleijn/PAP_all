@@ -1,0 +1,110 @@
+\subsection{Aufgabe 1 -- Wasserwertbestimmung}
+Wie in der Auswertung bereits angesprochen, habe ich den selbst gemessenen Wasserwert verworfen, da die Abweichung vom im Skript angegebenen Wert zu hoch erschien. Es ist möglich, dass dies die nachfolgenden Messdaten beeinflusst hat; unintuitiv ist, dass der experimentelle Wasserwert bei nachgelassener Isolation eigentlich steigen müsste, denn der Wasserwert beschreibt sozusagen die Wärmemenge, die durch das Gefäß aufgenommen und an die Umgebung abgegeben werden - beides Wärmeverlust. Möglicherweise ist auch die Fehlergrenze des geschätzten Werts \(W = \qty{70(10)}{\J\per\K}\) zu gering angesetzt. Deutlich wahrscheinlicher erscheinen mir jedoch falsche Messungen.
+
+In \cref{fig:Aufgabe1.pdf} wurde zwar eine Fehlergerade eingezeichnet, der sich daraus ergebende Wert für \(\Delta \overline{T}\) erschien jedoch angesichts der vielen Fehlerquellen bei dieser Messung (beispielsweise die Temperaturmessung ohne Berücksichtigung des systematischen Fehlers des Thermometers) als zu klein. Da das Ergebnis für den Wasserwert verworfen wurde, ist dies jedoch nicht weiter ausschlaggebend. Eventuell ist auch der Wert von \(T_1\) fehlerhaft; mit einer höheren Wassertemperatur ergibt sich ein höherer Wasserwert, der näher am Herstellerwert liegt.
+
+\subsection{Aufgabe 2 -- Molwärme über Wasser}
+Die Werte für \(c_{\text{C}}\) (Graphit) und \(c_{\text{Al}}\) aus \cref{table:c_x_wasser} wurden mehrfach überprüft; für beide ergibt sich derselbe Wert. Dies liegt daran, dass sich die Temperaturdifferenzen zusammen mit der Masse auf dasselbe Verhältnis berechnen, was zufällig aus den Messergebnissen resultiert.\par
+
+Es war unklar, bei welchen Aufgaben der systematische Fehler des Digitalthermometers vernachlässigt werden durfte. Aus diesem Grund sind die Fehlergrenzen für \(c_x(\ce{H2O})\) sehr hoch, da bei allen drei Temperaturen mit einem Temperaturfehler von \(\Delta T > \qty{1}{\K}\) gerechnet wurde. Würde man den systematischen Fehler vernachlässigen, wären die Fehler deutlich kleiner (\(\Delta T = \num{0,003} \cdot T_{\text{gemessen}}\)).
+
+Bei diesen kleineren Temperaturfehlern ergibt sich:
+\[\Delta c_{x,\text{neu}} \approx \Delta c_{x,\text{alt}} \cdot 10^{-1}\]
+Damit sinken auch die Fehler von \(c_{x,\text{mol}}\) um die Größenordnung \(\approx 10^{-1}\). Daraus ergeben sich jedoch deutlich größere \(\sigma\)-Abweichungen zu den Literaturwerten nach der Formel:
+\begin{equation}    
+    \sigma_{\text{Abw}} = \frac{\lvert c_{x,\text{Lit}} - c_{x,\text{gemessen}}\rvert}{\Delta c_{x,\text{gemessen}}}
+    \label{sigma}
+\end{equation}
+Ein großer Wert für \(\Delta c_x\) verkleinert somit die \(\sigma\)-Abweichung.\par
+
+In der folgenden Tabelle sind die Werte mit kleinerem Temperaturfehler dargestellt:
+
+\begin{table}[htbp]
+\centering
+\caption{Abweichungen der \(c_x\) der Wassermessung zu Literaturwerten bei kleinerem Temperaturfehler}
+\begin{tabularx}{\textwidth}{TZZS[table-format=1.1]Z}
+\toprule
+Material & {c_{x,\text{Lit.}} \;[\unit{\J\per\g\per\K}]} & {c_{x,\text{gem.}} \;[\unit{\J\per\g\per\K}]} & {\(S\;[\sigma]\)} & {c_{x,\text{mol}} \;[\unit{\J\per\mol\per\K}]} \\
+\midrule
+Graphit   & \num{0,709} & \num{0,814(21)} & 4,4 & \num{9,78(25)} \\
+Blei      & \num{0,129} & \num{0,121(6)}  & 1,3 & \num{25,1(11)} \\
+Aluminium & \num{0,90}  & \num{0,812(23)} & 3,8 & \num{21,9(6)} \\
+\bottomrule
+\end{tabularx}
+\label{table:c_x_kleiner_fehler}
+\end{table}
+\FloatBarrier
+
+Die \(\sigma\)-Abweichungen steigen um ca. den Faktor \(10^1\), da der Nenner (der Fehler) in \cref{sigma} mit \(10^{-1}\) multipliziert wurde. Die höheren \(\sigma\)-Abweichungen sprechen eher dafür, einen größeren Temperaturfehler anzunehmen.
+
+Aus demselben Grund sind auch die Fehlergrenzen für \(c_{x,\text{mol}}(\ce{H2O})\) aus \cref{table:c_x_wasser} sehr groß. Da die molare Masse von Blei (\(M_{\ce{Pb}} = \qty{207,2}{\g\per\mol}\)) sehr hoch ist, wird nach \cref{mol_fehler} bei einem großen Fehler \(\Delta c_x\) auch der Fehler für \(c_{\text{mol}}\) entsprechend hoch.
+
+Wie erwartet weichen die Molwärmen nach Dulong-Petit (\cref{Dulong_mol}) stark von den Messergebnissen für Graphit ab. Wie in \cref{fig:bild2} erkennbar, bleibt der Wert in diesem Temperaturbereich nicht auf dem von Dulong und Petit postulierten konstanten Niveau. Für Blei und Aluminium zeigt die Grafik, dass der Molwärmewert im Bereich der Wassermessung keine große Abweichung vom oberen Limit für hohe Temperaturen (\(T \rightarrow \infty: c_{\text{mol, Debye}} \rightarrow \frac{3R}{M}\)) aufweist.
+
+\subsection{Aufgabe 3 -- Stickstoff}
+Siedetemperaturen sind vom Druck abhängig (siehe \cref{luftdruck}). Die Siedetemperatur von Stickstoff ist ebenfalls druckabhängig, was in diesem Versuch vernachlässigt wurde. Vernachlässigbar ist primär die Druckabhängigkeit des Schmelzpunktes eines Stoffes, da hier die Volumenänderung \(\Delta V\) zwischen den Aggregatzuständen gering ist. Der verwendete Stickstoff siedet jedoch. Es ist davon auszugehen, dass der Wert wie bei Wasser nicht stark vom Normaldruckwert abweicht.
+
+\subsection{Vergleich mit Dulong-Petit}
+In der folgenden Tabelle sind die Molwärmen der zwei unterschiedlichen Messmethoden (bei großem Temperaturfehler) sowie die sich nach Dulong-Petit (\cref{Dulong_mol}) ergebenden Werte und die jeweiligen Abweichungen dargestellt:
+
+\begin{table}[htbp]
+\centering
+\caption{Abweichungen der Molwärmen von Dulong-Petit}
+\begin{tabularx}{\textwidth}{lZS[table-format=1.2]ZS[table-format=3.1]x}
+\toprule
+Material & {c_{x,\text{mol}}(\ce{H2O}) \;[\unit{\J\per\g\per\K}]} & {\(S\;[\sigma]\)} & {c_{x,\text{mol}}(\ce{N2}) \;[\unit{\J\per\g\per\K}]} & {\(S\;[\sigma]\)} & {c_{x,\text{mol, Dulong}} \;[\unit{\J\per\g\per\K}]} \\
+\cmidrule(l r){1-5}\cmidrule(l r){6-6}
+Graphit   & \num{10(4)}  & 4,7  & \num{5,61(5)}   & 386,7 & {--} \\
+Blei      & \num{25(13)} & 0,01 & \num{27,39(23)}  & 10,6  & \num{24,94} \\
+Aluminium & \num{22(7)}  & 0,5  & \num{19,40(16)}  & 34,6  & {--} \\
+\bottomrule
+\end{tabularx}
+\label{table:vergleich_alles}
+\end{table}
+\FloatBarrier
+
+Wie erwartet zeigt sich bei der Stickstoffmessung bei sehr tiefen Temperaturen, dass die Dulong-Petit-Näherung nicht mehr greift. Die Ungültigkeit der Dulong-Petit-Regel bei tiefen Temperaturen gilt für alle Festkörper, für manche Elemente (wie Graphit) auch schon bei höheren Temperaturbereichen. Dies liegt vermutlich an der besonderen Kristallstruktur von Graphit.
+
+Die geringen \(\sigma\)-Abweichungen für Aluminium und Blei bei der Wassermessung zeigen, dass das Dulong-Petit-Limit für hohe Temperaturen (\(T \rightarrow \infty\)) den Grenzwert für \(c_{\text{mol}}\) gut beschreibt. Bei tiefen Temperaturen kommen Quanteneffekte zum Tragen, weshalb die Kurven in \cref{fig:bild2} stark abfallen und sich die \(\sigma\)-Abweichung entsprechend erhöht.
+
+Die hohe \(\sigma\)-Abweichung bei Stickstoff für Graphit erklärt sich dadurch, dass seine Molwärme im Bereich von \qty{77}{\K} bis \qty{300}{\K} auf einem sehr niedrigen Niveau liegt.
+
+\subsection{Aufgabe 4 -- Debye-Temperatur}
+Die Fehlergrenzen der Debye-Temperatur sind sehr hoch. Dies liegt an den großen Fehlern der Verhältnisse \(V\), die aus den Unsicherheiten der Wassermessung resultieren.
+
+Mit dem kleineren Temperaturfehler lassen sich Verhältnisse mit geringerer Unsicherheit bestimmen. Um Konsistenz zu wahren, werden die über Stickstoff bestimmten Molwärmen ebenfalls mit kleinerem Fehler angegeben:
+\[c_{\ce{C},\text{mol}}(\ce{N2}) = \qty{5,60(4)}{\J\per\mol\per\K}\]
+\[c_{\ce{Pb},\text{mol}}(\ce{N2}) = \qty{27,39(19)}{\J\per\mol\per\K}\]
+\[c_{\ce{Al},\text{mol}}(\ce{N2}) = \qty{19,40(13)}{\J\per\mol\per\K}\]
+
+Der Hauptfehler des Verhältnisses stammt aus den über die Wassermessung erhobenen Größen, da hier drei fehlerbehaftete Temperaturen eingehen (bei Stickstoff nur eine).
+
+\begin{table}[htbp]
+\centering
+\caption{Vergleich der Molwärmen der beiden Messungen und Bestimmung von \(\Theta_D\) bei kleinem Temperaturfehler}
+\begin{tabularx}{0.8\textwidth}{TZZZ}
+\toprule
+Material & {\text{Verhältnis } V} & {\Theta_{D,\text{abgel.}} \;[\unit{\K}]} & {\Theta_{D,\text{Lit.}} \;[\unit{\K}]} \\
+\midrule
+Graphit   & \num{0,573(15)} & \num{800(70)} & 2230 \\
+Blei      & \num{1,10(5)}   & \num{0(50)}   & 95 \\
+Aluminium & \num{0,886(25)} & \num{300(30)} & 430 \\
+\bottomrule
+\end{tabularx}
+\label{table:theta_D_neu}
+\end{table}
+\FloatBarrier
+
+Die für Graphit abgelesene Debye-Temperatur von \(\Theta_{D,\text{C}} = \qty{800}{\K}\) unterscheidet sich deutlich vom Literaturwert für Diamant (\(\qty{2230}{\K}\)). Dies liegt daran, dass das berechnete Verhältnis auf einer Mittelwertbildung basiert. Die Molwärme von Graphit ist stark temperaturabhängig, weshalb die Mittelwertbildung ungenau ist.
+
+Für Blei ergibt sich aufgrund von Messunsicherheiten ein Verhältnis \(V > 1\), weshalb in \cref{fig:bild2} kein Schnittpunkt zur Bestimmung der Debye-Temperatur mehr existiert. 
+
+Der kleinere Fehler führt dazu, dass die Literaturwerte nicht mehr innerhalb der Fehlergrenzen liegen. Die \(\sigma\)-Abweichung hängt stark von den geschätzten Messfehlern ab.
+
+\subsection{Fehlerquellen}
+Mögliche Fehlerquellen, die nicht genau quantifiziert werden können:
+\begin{itemize}
+    \item Abweichung des tatsächlichen Wasserwerts vom Literatur- bzw. Herstellerwert.
+    \item Wärmeabgabe der Probekörper an die Raumluft beim Übertragen in das Kalorimeter (Fehler in \(T_1\)).
+    \item Ungenaue Druckbestimmung aufgrund von Luftzug am Messort.
+\end{itemize}

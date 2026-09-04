@@ -1,0 +1,133 @@
+\begin{figure}[!ht]
+\centering
+\textbf{\textsf{\Large How a PAPling sees the world}}\\\vspace{0.3cm}
+\includegraphics[height=0.8\textheight]{ESCALATING.png}
+\caption{Wohl eher ESCALATING. \\Meme aus aktuellem Anlass. PAP hat mich gebrochen, hab mir zuviel Mühe gegeben und war sehr langsam, deswegen hat es auch so ewig bis zur Abgabe gedauert. \protect\autocite{escalator}}
+\end{figure}
+
+\section*{Dafür kann ich nun sagen:}
+\begin{figure}[ht]
+\centering
+\textbf{\textsf{\Large Endlich PAP1 fertig}}\\\vspace{0.3cm}
+\includegraphics[width=14cm]{chainmeme.png}
+\caption{Alle Protokolle fertig geschrieben, jetzt erstmal das Freiheitsgefühl genießen, endlich wieder Zettel rechnen <3 uff und auf PAP 2.1 freuen \protect\autocite{chainmeme}}
+\end{figure}
+
+\newpage
+\subsection{wrapfigure}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+\caption{Funktionsweise des Hofmannschen Wasserzersetzungsapparates \cite{Skript}}
+\label{fig:Hofmann}
+\end{wrapfigure}
+\lipsum[1-2]
+\newpage
+
+\subsection{subfigure}
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}
+\begin{figure}[htb]
+\begin{subfigure}{0.45\textwidth}
+    \centering
+\includegraphics[height=5cm]{freierfall.png} 
+\caption{Kräfte im freien Fall}
+\label{fig:freierfall}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \centering
+\includegraphics[height=5cm]{kondensator.png}
+\caption{Kräfte im elektrischen Feld}
+\label{fig:kondensator}
+\end{subfigure}
+\caption{Kräfte im Millikan Versuch}
+\end{figure}
+
+\clearpage
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[][10pt][t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{example-image}
+    \caption{First subfigure.}
+    \label{fig:first}
+\end{subfigure}
+\hfill
+\begin{subfigure}[][10pt][c]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{example-image}
+    \caption{Second subfigure.}
+    \label{fig:second}
+\end{subfigure}
+\hfill
+\begin{subfigure}[][10pt][b]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{example-image}
+    \caption{Third subfigure.}
+    \label{fig:third}
+\end{subfigure}
+\caption{Vertical alignment of subfigures in \LaTeX.}
+\label{fig:figures}
+\end{figure}
+
+subfigures werden nicht im lof aufgezeigt, wenn nicht auf \verb|\setcounter{lofdepth}{2}| erhöht wurde.
+
+\clearpage
+
+\subsection{minipages}
+\begin{figure}[htb]
+\begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Debye.png}
+        \captionsetup{justification=raggedright,singlelinecheck=true, width=\linewidth}
+        \caption{$c_{\mathrm{mol}}(\Theta_D)$ für Temperaturbereiche der Mischmethoden}
+        \label{fig:bild1}
+\end{minipage}
+    \hfill
+\begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Debye_V.png}
+        \captionsetup{justification=raggedright,singlelinecheck=true, width=\linewidth}
+        \caption{Verhältnis $\frac{c_{\mathrm{mol}(\ce{N2})}}{c_{\mathrm{mol}(\ce{H2O})}}(\Theta_D)$ der zwei Temperaturbereiche zur Bestimmung von $\Theta_D$}
+        \label{fig:bild2}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{minipage}[t]{0.5\textwidth}
+Für Wasserstoff gibt es die sogenannte Balmer-Serie, dies sind die sichtbaren Emissionslinien (eigentlich 5, im Versuch sind nur 4 erkennbar, die dadurch entstehen, dass ein Elektron von einem höheren Energieniveau mit der Hauptquantenzahl $m=(3,\ 4,\,5,\ 6,\ 7)$ auf das Energieniveau $n=2$ (bzw. L-Schale in Abb.1.3) wandert) Mithilfe der Wasserstoff-Balmer-Formel (einer speziellen Version) der Rydberg-Formel können die Wellenlängen der Emissionslinien in Zusammenhang mit den Energieniveaus $m$ gesetzt werden. $R_\infty$ ist die Rydberg-Konstante, die sich aus den Atomeigenschaften von Wasserstoff ergibt.  
+\end{minipage}
+\begin{minipage}[t]{0.45\textwidth}
+\includegraphics[scale=0.6]{Balmerenergie.png}
+\caption{Energieniveaus der Balmerserie}
+\label{fig:Balmerenergie}
+\end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[htb]
+  \captionsetup{format=plain}
+  \includegraphics[width=5cm]{example-image}
+  \caption{Dies ist eine Caption und ich muss austesten, was mit dieser caption und ihrem Format passiert, wenn der Text zu lang wird.}
+\end{figure}    
+\clearpage
+
+\subsection{Newfloats}
+Das muss in die Preamble:
+\begin{lstlisting}[language={[LaTeX]TeX},basicstyle=\small\sffamily,keywordstyle=\color{blue},showstringspaces=false]
+\DeclareFloatingEnvironment[                        
+    fileext=lop,
+    listname={Verzeichnis der Plots},
+    name=Plot]{plot}
+\end{lstlisting}
+
+
+\listofplots
+
+Wie man in \cref{plt:kurve} deutlich sieht, steigt die Kurve an.
+
+\begin{plot}[htbp]
+     \centering
+    \fbox{\rule{0pt}{3cm} Hier würde dein Plot/Diagramm stehen}
+    \caption{Eine beispielhafte Darstellung der Daten.}
+    \label{plt:kurve}
+\end{plot}

@@ -1,0 +1,58 @@
+\subsection{Radien der Zylinder}
+Komischerweise ist in anderen Altprotokollen der Durchmesser der Zylinder \(d=\qty{5}{\cm}\), bei uns \(d=\qty{4.7}{\cm}\), die Masse ist jedoch gleich zu unserer. Evtl. liegt also ein Messfehler vor, das müsste nochmal überprüft werden. Es würde mich aber wundern, wenn wir den Messschieber um \qty{0.3}{\cm} falsch am Zylinder angelegt haben. 
+
+\subsection{Höhe für potentielle Energie}
+Ich weiß nicht mehr, ob \(h\) aus der Winkelbestimmung die Höhe der Platte unterhalb der Startposition der Zylinder ist, oder eine Höhe am Ende der Platte. Wenn letzteres der Fall war, dann ist die benutzte Höhe fehlerhaft. Ich bin mir jedoch ziemlich sicher, dass am Rand der Metallplatte eingraviert ist, wo die Zylinder starten und ich durch Anlegen des Lineals an dieser Position die Höhe bestimmt habe.
+ 
+\subsection{Reibung an der schiefen Ebene}
+Nicht beachtet worden ist in dieser Auswertung der Einfluss durch Luftwiderstand, der proportional zur Geschwindigkeit ist, sowie dass die Rollreibung Geschwindigkeitsabhängig ist. Für die Reibungskraft \(F_R\) wurde angenommen, dass sie proportional zu \(\dot{\omega}\) ist, also nicht von der Geschwindigkeit des Körpers abhängt.
+
+Ich bin mir nicht sicher, aber unsere Form für die Reibungskraft sollte eine Rollreibung darstellen, die nur von der Normalkraft und einem Materialpaarungparameter \(\mu\) abhängt: \(F_R=\mu F_N=\mu mg\cos(\varphi)\).
+
+Rein intuitiv macht die alleinige Beschreibung der Reibungskraft als Drehmoment für mich keinen Sinn, denn das würde bedeuten, dass für jeden möglichen Untergrund, selbst für Gummi, die in \cref{eq:beschleunigung} berechnete Beschleunigung unabhängig dieser Materialpaarung ist. Das macht keinen Sinn. Ich weiß auch nicht, ob die \(\dot{\omega}\) aus \(M=I\dot{\omega}\) nicht eigentlich ein \(\dot{\omega}_R\) sein sollte, während die Beschleunigung durch die Hangabtriebskraft ein \(\dot{\omega}_a\) erzeugt. Denn \(F_R\) ist ja nicht das einzige Drehmoment, welches wirkt. Die Summe der Drehmomente von \(F_H\) und \(F_R\) sollten dann ein \(M_{ges}=I\dot{\omega}\) ergeben, aber vielleicht habe ich auch einfach keine Ahnung und/oder bin nach diesen vielen Stunden verwirrt. 
+
+Die Sigma-Abweichung der gemessenen und berechneten Beschleunigungen an der schiefen Ebene sind statistisch nicht signifikant. Das würde wiederum ein Argument dafür sein, dass theoretische Herleitung über das Reibungsdrehmoment richtig ist.
+
+Eigentlich gibt es zusätzlich noch den Luftwiderstand \(F_W=\frac{\rho_L}{2} c_W A v^2\), wobei \(\rho_L\) die Dichte der Luft ist und \(A\) die Querschnittsfläche, sowie \(c_W\) ein empirisch bestimmter Wert, der durch die Geometrie, Krümmung,... des Körpers beeinflusst wird. Leider habe ich keinen \(c_W\) Wert für einen Zylinder gefunden.  
+
+\subsection{Reibung an der Auslauffläche}
+Sehr komisch ist, dass die maximale Geschwindigkeit, die die Zylinder auf der Auslauffläche erreichen, nicht die Geschwindigkeit der Zeitdifferenz zwischen den ersten zwei \(\text{diff }\,p=\qty{55}{\m}\)-Sensoren ist (also die beste Position (minimaler Abstand zur Rampe), um die Geschwindigkeit nach der Rampe unmittelbar zu bestimmen), sondern die der ersten zwei \(\text{diff }\,p=\qty{9}{\m}\)-Sensoren. 
+
+Erklären kann ich mir dies nur durch die hohen relativen Fehler, die wir durch den kurzen Abstand in Kauf genommen haben: Jeder Sensor ist um ca.\(\Delta \text{diff} p=\qty{0.5}{\cm}\) falsch gestellt, sie werden nicht exakt 5cm hintereinander stehen. Das bedeutet, der relative Fehler des Abstandes und der relative Fehler der Zeitmessung ist für kleine Abstände deutlich größer, zu sehen in der unten stehenden Tabelle:\par
+\setcellgapes{3pt}
+\begin{table}[h]
+    \centering\makegapedcells
+    \caption{Vergleich der relativen Fehler des Vollzylinders, für die Zeitdifferenz wurde das erste Lichtschrankenpaar 1-2 benutzt}
+\begin{tabular}{|c|cc|}\hline
+\rule{0pt}{2ex}  &  großer Abstand & kleiner Abstand \\\hline
+\(\frac{\Delta \text{diff }p}{\text{diff }p}\) & 8\% & 14\%                 \\
+\(\frac{\Delta \text{diff }t}{\text{diff }t}\) &  4.5\% & 14\%                      \\
+\(\frac{\Delta v}{v}\) & 9\% & 20\% \\
+\hline
+\end{tabular}
+\label{table:relative Fehler}
+\end{table}
+
+Wichtig ist aber auch zu erwähnen, dass die Werte für kleine und große Sensorenabstände in unterschiedlichen Experimenten erhoben worden sind. Der Aufbau wurde wahrscheinlich systematisch verändert, sodass die Zeiten wie im Diagramm \cref{fig:Diagrammv^2(p)-fehler} zu sehen, nicht in eine gemeinsame Linearität einzuordnen sind.\par
+Die Messpositionen (\(P_\text{groß}\) und \(P_\text{klein}\)) können nicht einfach miteinander verknüpft werden: Also sozusagen, beide Messreihen werden einfach in eine Messreihe geschmissen, die nun aus 8 Lichtschranken besteht, mit \(p=\)\qtylist[list-units=bracket]{2;7;9;12;17;18;27;36}{\cm}. Das funktioniert eben nicht, da es zwei unabhängige Messreihen/Aufbauten sind, in denen die Positionen, vielleicht auch nicht mit demselben Referenzpunkt, und untereinander falsch gemessen wurden.\par
+
+Des weiteren wird die anomalierartige Geschwindigkeitserhöhung, dass also für die kurzen Abstände keine lineare Geschwindigkeitsabnahme (im \cref{fig:Diagrammv^2(p)-fehler}) zu sehen ist, daran liegen, dass zur Berechnung der Geschwindigkeit falsche Abstände genutzt wurden. Durch eine kleine Abweichungen zum notierten Positionswert wird eine Zeit gemessen, die nicht dem gedachten/notierten Abstand entspricht. Dieser Effekt ist für kleine Abstände aufgrund des relativen Abstandfehlers von großer Auswirkung auf die berechnete Geschwindigkeit.
+
+Da bei beiden Zylindern für kurze Abstände keine lineare Geschwindigkeit zu sehen ist, ist es ziemlich sicher, dass von falschen Position auf falsche Abstände geschlossen wurde. \par
+
+\xfigure{htbp}{width=\textwidth}{Diagrammv^2(p)-fehler}{}{\(v(t)\) die Rautenförmigen Punkte sind die als messrelevant angesehenen Werte}
+
+\vspace{0.5cm}
+{\textbf{Verschiebung der Auslauffläche}}\\
+Die schiefe Ebenen und die gerade Rollfläche am Ende waren nicht miteinander verbunden. Dementsprechend kam es im Verlaufe der Messreihen zum Effekt, dass ein Teil des Impulses der Zylinder auf diese Endplatte übertragen wurde, die dadurch um ca. \qtyrange{0.5}{0.8}{\cm} in Richtung der Rollrichtung gerutscht ist. Das bedeutet, es kam an dem entstehenden Spalt zu einem Energieverlust, und zusätzlicher Reibung. 
+
+Aber dieses Rutschen könnte auch ein Grund dafür sein, dass die Position \(p\) der Sensoren, die in Referenz zum Ende der schiefen Ebene gemessen wurde, dann nicht mehr stimmte. Der Abstand der Lichtschranken blieb jedoch gleich, da diese fest an den Flächen verschraubt sind. Das heißt die Zeitdifferenzen werden nicht beeinflusst. Jedoch wurde aus den Zeitdifferenz mit \(v=\frac{\text{diff }p}{\text{diff }t}\) die mittlere Geschwindigkeit des Zylinders zwischen einem Lichtschrankenpaar berechnet und dann auf den mittleren Ort gemappt. Also: 
+\begin{equation}
+    v_j=\frac{\text{diff }p}{\text{diff }t}=\frac{p_{i+1}-p_i}{t_{i+1}-t_i}=v_j(p_j)
+\end{equation}
+die Messwerte sollten sich höchsten ein klein wenig in der Zeit translatieren.  
+
+\subsection{Fazit}
+Diese Auswertung hat viel zu lange gedauert. HILFE. Am Anfang wirkte es ziemlich cool, die Reibung bestimmen zu können, aber wie es bei Reibungen so ist, es ist unmöglich genau zu sein. Und es hat mich viel zu viel Zeit gekostet, sadge, die nicht gelösten Fragen wiegen nicht auf, ein paar schöne Diagramme und Kopfschmerzen in die Reibung gesteckt zu haben. Dementsprechend sollte diese Reibungsmessung nochmal wiederholt und von anderen Leuten ausgewertet werden, um die Plausibilität der Messwerte zu überprüfen. Erst dann ist es als Erweiterung des Experiments vorzuschlagen.
+
+\xfigure{h}{width=0.7\textwidth}{busmeme}{\emph{Meme:} Technically \autocite{Busmeme,reddit}}{\autocite{Busmeme} Zum Glück sind wir im Studiengang Physik und studieren theoretisch und bauen (noch) keine realen Anwendungen mit nicht zu vernachlässigbaren Reibungseffekten. \href{https://www.reddit.com/r/physicsmemes/comments/14df4vt/technically/}{Hierunter} ist ein sehr interessanter Reddit Post}

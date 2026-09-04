@@ -1,0 +1,137 @@
+\subsection{Motivation}
+Der Versuch an der schiefen Ebene ist ein wunderbare Einführungsversuch zur Behandlung der Themen: Kräftediagramme, Geschwindigkeit und Beschleunigung, Drehmomente, Trägheitsmoment eines Körpers,... Er ist so elementar, dass sogar im ersten Tutorium des Basiskurses eine in diesem Versuch experimentell untersuchte Fragestellung (welche Massenverteilung und Form eines Körpers sorgt für die kürzeste Rollzeit) zu den ersten Fragen gehörte, über die man nachdenken sollte. Natürlich ist es ein Experiment, das sich wunderbar für die Vorlesung und Übungsaufgaben der Experimentalphysik 1 eignet, angesichts der oben genannten Themen. 
+
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit verschiedenen Körpern wird:
+\begin{itemize}
+    \item das Rollverhalten abhängig von Form und Massenverteilung eines Körpers untersucht
+    \item durch einen ziemlich professionellen Aufbau die Beschleunigung durch Erheben von genaue Zeitdaten für zurückgelegte Strecken ermittelt 
+    \item die Umwandlung von potentieller Energie in Translations- und Rotationsenergieenergie berechnet
+    \item ein schönes und grundlegendes Experiment der Physik durchgeführt
+\end{itemize}
+
+\subsection{Technische Grundlagen und Geräte}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item Rollbahn mit Auslauffläche (und Stopptor)
+    \item Lichtschranken mit Steuergerät an Stoppuhren geschaltet
+    \item Meterlineal und Messschieber
+    \item Waage 
+    \item Rollkörper\begin{itemize}
+        \item Vollzylinder (Aluminium, \(\rho = \qty{2.70}{\gram\per\cm\cubed}\))
+        \item Hohlzylinder (Messing, \(\rho = \qty{8.44}{\gram\per\cm\cubed}\))
+        \item Verbundzylinder: Mantel aus Aluminium, Kern aus Messing
+    \end{itemize}
+    \item Laptop mit Libre Office Calc zur Protokollierung der Daten
+\end{enumerate}
+
+\xfigure{t}{width=\textwidth}{Versuchsaufbau.png}{Versuchsaufbau\autocite{Skript_1}}{Aufbau mit Zeitmessung, schiefer Ebene und Auslauffläche \autocite{Skript_1}}
+
+\subsection[Theoretische Grundlagen der Physik]{Theoretische Grundlagen der Physik \autocite{Skript_1}}
+\subsubsection{Beschleunigung an der schiefen Ebene}
+Auf einen Körper der Masse \(m\), der sich auf einer schiefen Ebene mit Neigungswinkel \(\varphi\) befindet, wirkt die Hangabtriebskraft. Diese sorgt für die Rollbewegung, ausgelöst durch die auf ihn wirkende Gravitationskraft:
+\begin{equation}
+    F_\text{H} = m g \sin(\varphi)
+    \label{eq:hangabtrieb}
+\end{equation}
+Zusätzlich wirkt die Reibungskraft \(F_\text{R}\), die für das Abrollen ohne Schlupf (Rutschen/Gleiten) notwendig ist.  
+Die Reibungskraft erzeugt am Hebel des Zylinders \(r\) (Radius) ein Drehmoment \(M\). Bei Rollbewegungen bewirkt ein Drehmoment der Winkelgeschwindigkeit \(w\):
+\begin{equation}
+    M = F_\text{R} \cdot r = I \, \dot{\omega},
+    \label{eq:drehmoment}
+\end{equation}
+wobei \(I\) das Trägheitsmoment und \(\omega\) die Winkelgeschwindigkeit ist.  
+Unter Verwendung der Rollbedingung (der Zylinder legt bei einer Umdrehung in der Zeit \(T\) die Strecke von einem Umfang zurück):
+\begin{equation}
+    v = \frac{s}{t}=\frac{2\pi r}{T}=\omega r
+    \label{eq:rollbedingung}
+\end{equation}
+mit der Schwerpunktgeschwindigkeit \(v\) ergibt sich für die Reibungskraft
+\begin{equation}
+    F_\text{R} = \frac{M}{r}=\frac{I\dot{\omega}}{r}=\frac{I\dot{v}}{r^2}=\frac{I}{r^2} \, a
+    \label{eq:reibkraft}
+\end{equation}
+wobei \(a\) die Beschleunigung des Schwerpunkts bezeichnet.  
+
+Die Kräftebilanz am Schwerpunkt liefert
+\begin{equation}
+    F_{\text{res}}=m a = m g \sin(\varphi) - F_\text{R}.
+    \label{eq:kraftbilanz}
+\end{equation}
+\newpage
+Einsetzen von \cref{eq:reibkraft} in 
+ \cref{eq:kraftbilanz} führt schließlich auf die allgemeine Form für die Beschleunigung:
+\begin{equation}
+    a = \frac{m g \sin(\varphi)}{m + \frac{I}{r^2}}.
+    \label{eq:beschleunigung}
+\end{equation}
+
+
+\subsubsection{Trägheitsmoment}
+Dies ist bei der Drehbewegung das Pendant zur Masse der geradlinigen Bewegung. Es ist ein Maß für die Trägheit eines starren Körpers gegenüber der Änderung seiner Winkelgeschwindigkeit bei der Drehung um eine gegebene Achse. Es hängt zum einen von der Masse \(m\) des Körpers, aber auch von der Massenverteilung relativ zur Rotationsachse ab.
+
+Mit dem Trägheitstensor \(\Theta\), mit den Matrixelementen \(\Theta_{ij}\), kann für einen Körper das Trägheitsmoment für jede mögliche Achse mithilfe von \(I=\hat{e}\,\Theta \,\hat{e}\), wobei \(\hat{e}\) der Einheitsvektor der beliebigen Achse ist, berechnen. Allgemein ist der Trägheitstensor eines Körpers mit kontinuierlicher Massenverteilung \(\rho(\vec{r})\) bezüglich einer Orthonormalbasis \(\hat{e}_{1,2,3}\) folgend definiert:
+\begin{equation}
+    \Theta_{ij}=\int_V \rho(\vec{r})[(\vec{r}\cdot \vec{r})\delta_{ij}]-r_ir_j\diff V\quad\text{mit}\quad i,j\in(1,2,3)
+\end{equation}
+Hierbei sind \(\vec{r}=(r_1,r_2,r_3)\) die Koordinaten des Ortsvektors. \\
+Da die meisten physikalisch einfachen Rotationsbewegungen durch Trägheitsmomente um Achsen die durch den Schwerpunkt des Körpers gehen, charakterisiert sind, die meist auch eine der Koordinatenachsen des Koordinatensystems darstellen, ist es angenehm, den Ursprung in den Schwerpunkt des Körpers zu legen. Dann sind die Hauptdiagonalelemente der Matrix die Trägheitsmomente bezüglich der Koordinatenachsen.\\ Für symmetrische Körper besteht das Koordinatensystem meist aus den Eigenvektoren des Trägheitstensors. Dann sind alle Offdiagonalelemente null und die Hauptdiagonale enthält die Haupträgheitsmomente \(\Theta_k\) bzgl. des entsprechenden Eigenvektors \(\omega_k\), den Haupträgheitsachsen, die den Symmetrieachsen des Körpers entsprechen. Die Haupträgheitsmomente sind dadurch charakterisiert, dass:
+\begin{equation}
+    \vec{L}=\Theta_k\, \vec{\omega_k}
+\end{equation}
+Hier ist \(\vec{L}\) der Drehimpuls. Die physikalische Bedeutung ist hier, dass 
+der Drehimpuls parallel zur Achse verläuft und sich beide nicht ändern, das heißt der Körper ohne eine äußere Krafteinwirkung die Rotation um die entsprechende Achse beibehalten kann. 
+
+Das heißt, für den Zylinder wählt man das Orthonormalsystem vom Schwerpunkt und die \(x_3\)-Achse wird auf die Symetrieachse gelegt. Nun ist \(\Theta_{33}\) das Haupträgheitsmoment bzgl. der Symetrieachse. Den Trägheitstensor rechnet man für einen Zylinder mit Höhe \(h\), Radius \(R\), konstanter Dichte \(\rho_0\) in Zylinderkoordinaten folgend aus:
+\begin{equation} \vec{r}=\begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}=
+   \begin{pmatrix}
+r \cos{\varphi}\\
+r\sin(\varphi)\\
+z
+\end{pmatrix}\quad r\in [0,R],\,\varphi\in[0,2\pi],\,z\in\left[-\frac{h}{2},\frac{h}{2}\right]
+\end{equation} 
+Das Volumentelement in Zylinderkoordinaten ist \(\diff V=r\diff r \diff \varphi \diff z\). 
+\begin{equation}
+    \Theta_{33}=\rho_0 \int_V x^2+y^2 \diff V= \rho_0\int_{-\frac{h}{2}}^{\frac{h}{2}}\int_{0}^{2\pi}\int_{0}^{R} r^3\diff r \diff \varphi \diff z=\rho_0\pi h \frac{R^4}{2}
+\end{equation}
+Mit der Masse:
+\begin{align}
+M=\int_V\diff m=\int_V\rho_0 \diff V&=\rho_0\int_{-\frac{h}{2}}^{\frac{h}{2}}\int_{0}^{2\pi}\int_{0}^{R} r \diff r \diff \varphi \diff z=\rho_0 \pi R^2 h \nonumber\\ 
+\rightarrow \quad \Theta_{33}&=M \frac{R^2}{2}
+    \label{eq:traegheit_voll}
+\end{align}
+Da hier das Koordinatensystem so gewählt ist, dass die Rotationsachse, die Rollachse die \(z-\)Achse ist, und somit \(\Theta_{33}\) das entsprechende Träheitsmoment, muss man eigentlich auch nichts über Haupträgheitsmomente und -achsen wissen. Beim Zylinder sind es genau die Koordinatenachsen, wenn die Symmetrieachse auf der \(z-\)Achse liegt. Dadurch ist das Haupträgheitsmoment der Symmetrie-/\(z-\)Achse eben \(\Theta_{33}\).
+
+Für den Hohlzylinder mit Außenradius \(R_a\) und Innenradius \(R_i\) erfolgt die Berechnung genau analog, nur dass diesmal \(r\in[R_i,R_a]\) und dementsprechend die Integralgrenzen für \(int_{R_i}^{R_a}\diff r\) anders sind. Man berechnet:
+\begin{align}
+    M&=\rho_02\pi h(\frac{R_a^2}{2}-\frac{R_i^2}{2})\nonumber\\
+    \Theta_{33}&=\rho_0 2\pi h \left(\frac{R_a^4}{4}-\frac{R_i^4}{4}\right)=\frac{M}{2}(R_a^2+R_i^2)
+        \label{eq:traegheit_hohl}
+\end{align}
+
+\subsubsection{Energien} 
+Die potentielle Energie des Körpers auf Höhe \(h\) über der Referenzhöhe (hier die Auslauffläche) beträgt:
+\begin{equation}
+    E_\text{pot} = m g h
+    \label{eq:epot}
+\end{equation}
+Diese wird beim Abrollen in Translationsenergie
+\begin{equation}
+    E_\text{trans} = \frac{1}{2} m v^2,
+    \label{eq:etrans}
+\end{equation}
+sowie Rotationsenergie
+\begin{equation}
+    E_\text{rot} = \frac{1}{2} I \omega^2
+    \label{eq:erot}
+\end{equation}
+umgewandelt.  
+Die Gesamtenergie des Systems bleibt dabei erhalten:
+\begin{equation}
+    E_\text{ges} = E_\text{pot} + E_\text{trans} + E_\text{rot}.
+    \label{eq:eges}
+\end{equation}

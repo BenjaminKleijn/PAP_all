@@ -1,0 +1,247 @@
+\begin{figure}[htbp]
+	\centering
+	\textbf{\textsf{\Large Oszi?}}\\\vspace{0.3cm}
+	\includegraphics[width=0.6\textwidth]{busmeme.png}
+	\caption[\emph{Meme:} An was denkst du, wenn der Name Oszi fällt? \autocite{Busmeme}]{An was denkst du, wenn der Name Oszi fällt? \autocite{Busmeme}}
+\end{figure}
+
+\subsection{Aufgabe 1: Analyse der Signale}
+\subsection*{Signale 1-4}
+Jedes Signal wurde unter unterschiedlichen Div-Einstellungen betrachtet. Dementsprechend ist der Cursor-Fehler jedes Mal anders. Anhand der Div-Zahlen \(t_\text{div}\) für die Zeitachse und \(U_\text{div}\) für die y-Spannungsachse, kann folgend der Cursor-Fehler berechnet werden:
+\begin{equation}
+\begin{array}{c@{\hspace{3.5cm}}c}
+      \Delta t_i=\dfrac{t_\text{div}}{25}& \Delta U_i=\dfrac{U_\text{div}}{25}
+\end{array}
+\end{equation}
+Es wird davon ausgegangen, dass der gewählte Cursorpunkt also gut und gerne auch eine Einstellung links oder rechts gewesen sein könnte.\\
+Die vom Messgerät berechneten Werte werden als exakt angesehen.
+
+Über die Cursor wurde die Periodendauer folgend bestimmt:
+\begin{equation}
+\begin{array}{c@{\hspace{3cm}}c}
+  T=t_2-t_1 & \Delta T=\sqrt{2}\Delta t_i=\dfrac{\sqrt{2}}{25}t_\text{div}
+\end{array}
+\end{equation}
+Analog ergibt sich für \(U_\text{SP-Sp}\):
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  U_\text{SP-SP}=U_\text{max}-U_\text{min} & \Delta U_\text{SP-SP}=\sqrt{2}\Delta U_i=\dfrac{\sqrt{2}}{25}U_\text{div}
+\end{array}
+\end{equation}
+Der über die Cursor bestimmte Wert für den Gleichspannungsanteil berechnet man mittels:
+\begin{gather}
+  U_\text{DC, Offset}=\frac{U_\text{max}+U_\text{min}}{2}\\
+  \Delta U_\text{DC, Offset}=\sqrt{\left(\frac{\Delta U_\text{max}}{2}\right)^2+\left(\frac{\Delta U_\text{min}}{2}\right)^2}=\frac{1}{25\sqrt{2}} U_\text{div}
+\end{gather}
+Die händisch berechnete Frequenz bestimmt sich mit:
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  f=\dfrac{1}{T}&
+  \Delta f=f\cdot\dfrac{\Delta T}{T}=\dfrac{\Delta T}{T^2}
+\end{array}
+\end{equation}
+
+\begin{figure}[h]
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal1.jpg} 
+\caption{Signal1}
+\label{fig:Signal1}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal2.jpg}
+\caption{Signal 2}
+\label{fig:Signal2}
+\end{subfigure}
+
+\vspace{0.4cm}
+
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal3.jpg} 
+\caption{Signal3}
+\label{fig:Signal3}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal4.jpg}
+\caption{Signal 4}
+\label{fig:Signal4}
+\end{subfigure}
+\caption{Bilder der Signal 1-4}
+\end{figure}
+
+\subsection*{Signal 5}
+\begin{wrapfigure}{r}{0.45\textwidth}
+\includegraphics[width=0.9\linewidth]{Signal5.jpg} 
+\caption{Signal 5}
+\label{fig:Signal5}
+\end{wrapfigure}
+Die Halbwertszeit \(t_H\) bestimmt man, indem zuerst die dazugehörige Halbwertsspannung ausgerechnet wird:
+\begin{equation}
+\begin{array}{c@{\hspace{1cm}}c}
+  U_H=\dfrac{U_\text{max}+U_\text{min}}{2} & \Delta U_H= \dfrac{1}{25\sqrt{2}} U_\text{div}
+\end{array}
+\end{equation}
+Somit ergibt sich \(U_H=\qty{1.030(6)}{\volt}\). Beim Ablesen von \(t_H\) muss nun berücksichtig werden, dass neben dem falschen Einstellen auf \(U_H\) auch noch \(U_H\) selber fehlerbehaftet ist, also werden nun \(2\Delta t_i\) als Fehler genommen, da \(\Delta U_H\hat{=}1 \text{ t-Step}\). 
+
+\setcellgapes{3pt}
+\begin{table}[htbp]
+    \centering\makegapedcells
+    \caption{Cursor Werte für Signale 1-5}
+\begin{tabular}{crrrrr}
+\hline
+\multicolumn{1}{|c}{Signal}         & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4}  & \multicolumn{1}{c|}{5}      \\
+\multicolumn{1}{|c}{Abb.}           & \multicolumn{1}{c}{\cref{fig:Signal1}}  & \multicolumn{1}{c}{\cref{fig:Signal2}}  & \multicolumn{1}{c}{\cref{fig:Signal3}}  & \multicolumn{1}{c}{\cref{fig:Signal4}}  &\multicolumn{1}{c|}{\cref{fig:Signal5}}       \\ \hline\hline
+\multicolumn{1}{|c|}{\(t_\text{div}\) [\unit{\s}]}          & 0.0025                & 0.001                 & 0.005                 & 0.00025 & \multicolumn{1}{r|}{0.00025}  \\ \hline
+\multicolumn{1}{|c|}{\(U_\text{div}\) [\unit{\volt}]}          & 0.5                   & 0.02                  & 1                     & 0.2 &\multicolumn{1}{r|}{0.2}      \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{\(T\) [\unit{\s}]}             & 0.00500               & 0.00152               & 0.00250               & 0.001000 & \multicolumn{1}{r|}{0.04200} \\ \hline
+\multicolumn{1}{|c|}{\(\Delta T\) [\unit{\s}]}       & 0.00014               & 0.00006               & 0.00028               & 0.000014 & \multicolumn{1}{r|}{0.00028} \\ \hline
+\multicolumn{1}{|c|}{\(f\) [\unit{\hertz}]}             & 200                   & 658                   & 400                   & 1000 & \multicolumn{1}{r|}{23.81}     \\ \hline
+\multicolumn{1}{|c|}{\(\Delta f\) [\unit{\hertz}]}       & 6                     & 26                    & 40                    & 14 & \multicolumn{1}{r|}{0.16}       \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{\(U_\text{min}\) [\unit{\volt}]}        & 0.720                 & -0.4560               & 2.04                  & 0.520 & \multicolumn{1}{r|}{0.568}    \\ \hline
+\multicolumn{1}{|c|}{\(U_\text{min}\) [\unit{\volt}]}        & 1.700                 & 0.0432                & 2.96                  & 1.440 & \multicolumn{1}{r|}{1.490}    \\ \hline
+\multicolumn{1}{|c|}{\(\Delta U_i\) [\unit{\volt}]}      & 0.020                 & 0.0008                & 0.04                  & 0.008 & \multicolumn{1}{r|}{0.008}    \\ \hline
+                                    &                       &                       &                       & &       \\ \hline
+\multicolumn{1}{|c|}{\(U_\text{SP-SP}\) [\unit{\volt}]}         & 0.980                 & 0.0888                & 0.92       & 0.920           & \multicolumn{1}{r|}{0.922}    \\ \hline
+\multicolumn{1}{|c|}{\(\Delta U_\text{SP-SP}\) [\unit{\volt}]}   & 0.028                 & 0.0011                & 0.06      &0.011           & \multicolumn{1}{r|}{0.011}    \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{\(U_\text{DC, Offset}\) [\unit{\volt}]}       & 1.210                 & -0.0012               & 2.500          & 9.80       & \multicolumn{1}{r|}{1.029}    \\ \hline
+\multicolumn{1}{|c|}{\(\Delta U_\text{DC, Offset}\) [\unit{\volt}]} & 0.014                 & 0.0006                & 0.028         &0.006        & \multicolumn{1}{r|}{0.006}    \\ \hline
+                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{\(U_H\) [\unit{\volt}]}       & -              &       -      &      -         & - & \multicolumn{1}{r|}{1.030(6)}    \\  \hline
+\multicolumn{1}{|c|}{\(t_H\) [\unit{\s}]}       & -              &       -      &      -         & - & \multicolumn{1}{r|}{0.0024(4)}    \\ \hline
+\end{tabular}
+\label{table:Signal1-4}
+\end{table}
+\FloatBarrier
+
+\subsection*{Signal 6}
+\begin{minipage}{0.45\textwidth}
+\vspace{-2.5cm}
+   Das hier gezeigte Signal 6 ist ein Wellenpaket, welches nur in großen Zeitabständen geschickt wird. Es ist eine von einer anderen periodischen Schwingung eingehüllte trigonometrische Schwingung.
+\end{minipage}
+\hfill
+\raggedright
+\begin{minipage}{0.45\textwidth}
+\raggedright
+\includegraphics[width=\linewidth]{Signal6.jpg}
+\label{fig:Balmerenergie}
+\captionof{figure}{Signal 6}
+\end{minipage}
+
+\subsection*{Signal 7 \& 8}
+\begin{figure}[htbp]
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal7.jpg} 
+\caption{Signal 7: eine übergelagerte Schwingung, irgendwie sieht es aus wie eine einhüllende Sägezahnspannung}
+\label{fig:Signal7}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+\includegraphics[width=\textwidth]{Signal8.jpg}
+\caption{Signal 8: Zwei unterschiedliche Dreieckspannungen, die gelbe ist deutlich verrauschter.}
+\label{fig:Signal8}
+\end{subfigure}
+\caption{Signale 7 und 8}
+\end{figure}
+
+\subsection*{Signal 9}
+Hier ist Schwebung zu sehen: Die resultierende Schwingungen \(U_\text{res}\) durch Addition zweier harmonischer Schwingungen gleicher Amplitude \(\hat{U}\) mit Fundamentalfrequenzen \(f_I\) bzw. \(f_{II}\) lässt sich durch umformen auch schreiben als:
+\begin{equation}
+    U_\text{res}(t)=2\hat{U}\cdot\sin\left(2\pi\left(\frac{f_I+f_{II}}{2}\right)t\right)\cdot \cos\left(2\pi\left(\frac{f_I-f_{II}}{2}\right)t\right)
+\end{equation}
+Hier ist der erste Term die überlagerte Schwingung(-sfrequenz), der zweite Term die einhüllende Schwebung(-sfrequenz) mit
+\begin{center}
+    \begin{tabular}{m{7cm}m{7cm}}
+        \begin{equation}f_1=\dfrac{f_I+f_{II}}{2}\label{eq:f_1}\end{equation}&\begin{equation}f_2=\dfrac{|f_I-f_{II}|}{2} \label{eq:f_2}\end{equation}
+    \end{tabular}
+\end{center}
+die mit den Cursorn bestimmt wurden. Mithilfe der Fast-Fourier-Transformation (FFT) des Oszilloskops kann man die Fundamentalfrequenzen automatisch vom Oszi berechnen lassen und dann in die Schwebungs- und Schwingungsfrequenz umrechnen. 
+
+Aus \cref{fig:Signal9.jpg} kann man entnehmen, dass die Periodendauer \(T_2=2\cdot(t_2-t_1)=\qty{10}{\milli\s}\) ist, damit ist \(\Delta T_2=\sqrt{(2\Delta t_2)^2+(2\Delta t_1)^2+}=\sqrt{8}\Delta t_i=\frac{\sqrt{8}}{25}t_\text{div}=\qty{0.00012}{\s}\). So kann man nun mit \(t_\text{div}=\qty{1}{\milli\s}\) auch \(f_2\) und \(\Delta f_2\) ausrechnen.\\
+Aus diesen Werten kann auch \(T_1\) berechnet werden, da \(T_1=\frac{(t_2-t_1)}{8}=\qty{625}{\milli\s}\) (8 Schwingungen in 5ms), damit ist \(\Delta T_1=\frac{\sqrt{2}}{25\cdot8}t_\text{div}=\qty{7}{\micro\s}\), anschließend wurde \(f_1\) und \(\Delta f_1\) berechnet.
+
+Die aus den FFT-Frequenzen berechnete Schwingungs- und Schwebungsfrequenz haben Fehler folgender Form:
+\begin{equation}
+    \Delta f_{1/2}=\sqrt{\left(\frac{\Delta f_I}{2}\right)^2+\left(\frac{\Delta f_{II}}{2}\right)^2}
+\end{equation}
+Leider wurde kein Bild von der FFT-Aufzeichnung gemacht.
+
+\begin{table}[htbp]
+\centering
+\caption{Signal 9: Vergleich der Frequenzen}
+\begin{tabularx}{\textwidth}{xx @{\extracolsep{\fill}} CCCC @{\extracolsep{\fill}} x@{}x}
+\toprule
+\multicolumn{2}{c}{Cursor} & \multicolumn{4}{c}{FFT und \(f_{1/2}\) über Gl. (\ref{eq:f_1}), (\ref{eq:f_2})}  & \multirow{2}{*}{\(S_{1}[\sigma]\)} & \multirow{2}{*}{\(S_{2}[\sigma]\)}\\\cmidrule[0.3pt](lr){1-2}\cmidrule[0.3pt](lr){3-6}
+f_1\;[\unit{\hertz}]& f_2\;[\unit{\hertz}] & f_I\;[\unit{\hertz}] & f_{II}\;[\unit{\hertz}] & f_1\;[\unit{\hertz}] & f_2\;[\unit{\hertz}] & &  \\\midrule
+\num{1600(18)} & \num{100.0(12)} & \num{1390(10)}& \num{1590(10)} & \num{1490(7)} & \num{100(7)} & 5.7 & 0 \\\bottomrule
+\end{tabularx}
+\label{table:SIgnal9}
+\end{table}
+
+\xfigure{htbp}{height=7cm}{Signal9.jpg}{Signal 9}{Signal 9, Schwebungs- und Schwingungskurve sind zu sehen}
+\FloatBarrier
+
+\subsection{Aufgabe 2: Pulsweitenmodulation}
+Die zwei Einstellungen für den Tastgrad werden analysiert. Es existiert leider weder ein Bild, noch sind die Div-Werte aufgeschrieben. Aber ich meine mich zu erinnern, dass wir bei dieser Aufgabe durch Drehen des Cursorreglers um einen Step die Stepweite bestimmt haben, und als Fehler notiert.\\
+Der Fehler der Effektiv- und Mittelwertspannung ergibt sich durch:
+\begin{gather}
+    \Delta U_M=U_M\sqrt{\left(\frac{\Delta U_0}{U_0}\right)^2+\left(\frac{\Delta t}{t}\right)^2+\left(\frac{\Delta T}{T}\right)^2}\\
+    \Delta U_\text{eff}=U_\text{eff}\sqrt{\left(\frac{\Delta U_0}{U_0}\right)^2+\left(\frac{\Delta t}{2t}\right)^2+\left(\frac{\Delta T}{2T}\right)^2}
+\end{gather}
+
+\begin{table}[htbp]
+\centering
+\caption{Pulsweitenmodulation der LED}
+\begin{tabularx}{\textwidth}{CCCCC CC}
+\toprule
+\multicolumn{5}{c}{Cursor \& berechnet} & \multicolumn{2}{c}{Oszi-Werte}\\
+T \;[\unit{\milli\s}] & t \;[\unit{\milli\s}] & U_0\;[\unit{\volt}]& U_M\;[\unit{\volt}] &  U_\text{eff}\;[\unit{\volt}]& U_M\;[\unit{\volt}] & U_\text{eff}\;[\unit{\volt}]\\\midrule
+\num{1.02(1)} & \num{0.44(1)} & \num{3.48(4)} & \num{1.50(4)}& \num{2.39(4)} & \num{0.07}  & \num{1.74} \\
+\num{1.02(1)} & \num{0.17(1)} & \num{3.49(4)} & \num{0.58(4)}& \num{1.42(5)} & \num{0.034} &  \num{1.3}\\\bottomrule
+\end{tabularx}
+\label{table:PMW}
+\end{table}
+
+Offensichtlicherweise ist bei den vom Oszilloskop abgelesenen Werten irgendetwas gewaltig schiefgelaufen, ein Vergleich macht keinen Sinn. 
+
+\subsection{Aufgabe 3: Koaxialkabel}
+\textbf{Länge}\\
+Aus der gemessene Laufzeit \(t\), die sowohl bei offener und geschlossenem Ende denselben Wert betrug, sowie der Angabe im Skript (\autocite{Skript_1}), dass sich die elektrische Welle mit 66\% der Lichtgeschwindigkeit \(c=\qty{299792458}{\m\per\s}\) im Kabel ausbreitet, lässt sich die Länge \(l\) errechnen:
+\begin{equation}f
+\begin{array}{c@{\hspace{3cm}}c}
+ l = 0.66c \cdot \frac{1}{2} t& \Delta l=0,66c \cdot \frac{1}{2} \Delta t
+\end{array}
+\end{equation}
+\[l=\qty{19.4(4)}{\m}\]
+Es ist wahrscheinlich, dass wir eine andere Kabelrolle hatten, als im Skript mit \(\qty{25}{\m}\) angegeben, denn um diese Länge zu erreichen, hätten wir anstatt von \(t=\qty{194}{\nano\s}\) eine Zeit von \(t=\qty{253}{\nano\s}\) messen müssen, was sehr weit vom erhobenen Wert liegt.
+Ein potentieller Fehler durch falsche Cursorpositionen ist also eher unwahrscheinlich. Es kann natürlich trotzdem immer sein, dass die Differenz aus den zwei Cursorwerten falsch berechnet wurde,.. Hier wäre ein Bild des Oszibildschirms zur Überprüfung hilfreich. 
+\newpage
+\textbf{Eine Abhandlung über den gemessenen Widerstand}\\
+Durch Einstellen des Abschlusswiderstands bis zu einem Minimum des reflektierten Pulses wurde versucht, den Wellenwiderstand des Kabels zu treffen. Nachdem das Minimum gefunden wurde, konnte mit einem Multimeter der Abschlusswiderstand \(R_1=\qty{61(5)}{\ohm}\) gemessen werden. Danach wurde noch der Wellenwiderstand \(Z=\qty{49.7}{\ohm}\) des gesamten Kabels gemessen, der sehr nahe am im Skript angegeben Wert von \(\qty{50}{\ohm}\) liegt. Den Fehler des Multimeters für den Kabelfehler kann ich nicht rekonstruieren, da mir das Modell unbekannt ist. Beim Abschlusswiderstand dominiert die Ungenauigkeit der Minimumsfindung.
+Als Abweichung erhält man:
+\begin{equation}
+    \frac{R_1-Z}{\Delta R_1}=2.2\sigma
+\end{equation}
+Diese Abweichung ist nur so niedrig, weil der Fehler durch das Minimum sehr hoch geschätzt wurde.
+
+Die Tatsache, dass für den direkten Kabelwiderstand der Multimetermesswert sehr nahe an der Herstellerangabe von \(Z=\qty{50}{\ohm}\) gemessen wurde, legt die Vermutung nahe, dass bei der Längenmessung doch die erhobenen Zeit fehlerhaft ist. Denn bei kürzerem Kabel sollte der Widerstand geringer sein (in der Annahme, dass das Material das gleiche wie der anderen Kabelrollen ist).
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

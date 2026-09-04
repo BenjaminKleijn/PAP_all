@@ -1,0 +1,185 @@
+
+\subsection{Creation of colorboxes}
+\newtcolorbox{rb}{%
+  width=0.7\linewidth,
+  center,
+  halign=flush center,
+  colback=resultsbackground,
+  colframe=resultscolor,
+  top=10mm,    % Innenabstand oben verringern (Standard ist ~2mm)
+  bottom=1mm  % Innenabstand unten verringern
+}
+\verb|top,bottom| sind Parameter für den Abstand von Text und Rand. \verb|afterskip,beforeskip| für den Abstand der Box vom Fließtext.
+\begin{rb}
+  \verb|top=10mm,bottom=1mm|
+\end{rb}
+
+\subsection{Mathemodus innerhalb tcb -- sinnlos}
+
+\newtcolorbox{testbox}{width=0.7\linewidth,center,halign=center,colback=white,colframe=black}
+\newtcolorbox{testboxlong}{width=\linewidth,center,halign=center,colback=white,colframe=black}
+Testboxen sind grauweiß und mit \verb|center,halign=center| ausgestattet. Ersteres centered die Box auf der Seite, zweites ist für Textausrichtung innerhalb der Box.
+
+Displaystyle mit \verb|\[\]|:
+\begin{testbox}
+  \[E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12\]
+\end{testbox}
+Ergo: Zwar gutes kerning, aber vertikale Zentrierung funktioniert nicht. 
+\begin{testbox}
+  DIes ist ein Test
+\end{testbox}
+
+nur inline \verb|$$|:
+\begin{testbox}
+  $E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12$
+\end{testbox}
+Zwar vertikal zentriert, aber schlechtes kerning.
+
+Inline mit \verb|$$| und \verb|\displaystyle|:
+\begin{testbox}
+  $\displaystyle
+  E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12$
+\end{testbox}
+Es hat sich nichts geändert, weiterhin schlechtes kerning, dafür sind Brüche groß.
+
+mit \verb|aligned| und \verb|$$|:
+\begin{testbox}
+  $\begin{aligned}
+  E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12
+    \end{aligned}$
+\end{testbox}
+gutes Kerning, und vertikal zentriert. 
+
+\verb|aligned| mit \verb|\[\]|:
+\begin{testbox}
+  \[\begin{aligned}
+  E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12
+    \end{aligned}\]
+\end{testbox}
+es scheißt wieder vertikal rein. 
+
+Nun mal mit \verb|ams algin*|:
+\begin{tcolorbox}[ams align*]
+    E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12
+\end{tcolorbox}
+
+default tcolorbox mit alignment und Displaystyle mit \verb|\[\]|:
+\begin{tcolorbox}[width=0.7\textwidth, center, valign=center]
+    \[E_{3p}=\qty{-3.0256(28)}{\electronvolt}\]
+\end{tcolorbox}
+
+normal math mode \verb|\(\)|
+\begin{center}
+$E_{3p}=\qty{-3.0256(28)}{\electronvolt}$
+\end{center}
+display math mode \verb|\[\]|
+\[E_{3p}=\qty{-3.0256(28)}{\electronvolt}\]
+
+\subsection{math Optionen für tcb}
+\begin{tcolorbox}[width=0.7\textwidth,ams align*,colback=yellow!10!white,colframe=red!50!black]
+\sum\limits_{n=1}^{\infty} \frac{1}{n} &= \infty. \quad \sum_{n=1}^{\infty}\frac1n=\infty\qquad a=b
+\end{tcolorbox}
+
+ams algin*
+\begin{tcolorbox}[width=0.7\textwidth,ams align*,colback=yellow!10!white,colframe=red!50!black]
+a=b
+\end{tcolorbox}
+
+\verb|math,halign=center|
+\begin{tcolorbox}[width=0.7\textwidth,math,halign=center,colback=yellow!10!white,colframe=red!50!black]
+a=b
+\end{tcolorbox}
+
+\verb|math|
+\begin{tcolorbox}[width=0.7\textwidth,math,colback=yellow!10!white,colframe=red!50!black]
+a=b
+\end{tcolorbox}
+YEAAAH, macht eigentlich genau das was ich will.
+\verb|math,halign=flush center|
+\begin{tcolorbox}[width=0.7\textwidth,math,halign=flush center,colback=yellow!10!white,colframe=red!50!black]
+a=b
+\end{tcolorbox}
+
+\verb|math,center,halign=flush center|
+\begin{tcolorbox}[width=0.7\textwidth,math,center,halign=flush center,colback=yellow!10!white,colframe=red!50!black]
+E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12
+\end{tcolorbox}
+ICH WEINE. WARUM HABE ICH NICHT GENAUER GELESEN. FLUSH CENTER WAR DAS RICHTIGE.
+
+\verb|ams align* with &&|
+\begin{tcolorbox}[ams align*]
+    A&&B&&C
+\end{tcolorbox}
+
+\subsection{tcbhighmath}
+normal
+\[\tcbhighmath{E_{3p}=\qty{-3.0256(28)}{\electronvolt}\frac12}\]
+
+in align
+\begin{align}
+\tcbhighmath{\sum\limits_{n=1}^{\infty} \frac{1}{n}} &= \infty.\\
+\int x^2 ~\text{d}x &= \frac13 x^3 + c.
+\end{align}
+
+falign design aus nem stackexchange post
+\begin{flalign}
+  \begin{gathered}
+    A  \vphantom{\sum \limits _{n=0} ^{N-1}}\\
+    B \vphantom{\sum \limits _{n=0} ^{N-1}}
+  \end{gathered}
+  &&
+  \tcbhighmath{\begin{aligned}\label{equationAB}
+    A &= \sum \limits _{n=0} ^{N-1} a[n]\\
+    B &= \sum \limits _{n=0} ^{N-1} b[n]
+  \end{aligned}}
+  &&
+\end{flalign}
+
+\verb|borderline={<linewidth>}{<Versatz zu bounding box>}{<color>}|
+\tcbset{highlight math style={enhanced,colback={resultsbackground},borderline={1pt}{-4mm}{resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=0pt,extrude bottom by=0pt,boxsep=\fboxsep}}
+
+Inline Ergebnisse: $\tcbhighmath{p^\text{Luft}=\qty{1020.0(0.6)}{\hecto\pascal}$, $p^\text{Argon}=\qty{1020.1(0.6)}{\hecto\pascal}.}$
+
+\subsubsection{Results Design}
+
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=1pt,extrude right by=1pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+
+Inline Ergebnisse: $\tcbhighmath{p^\text{Luft}=\qty{1020.0(0.6)}{\hecto\pascal}$, $p^\text{Argon}=\qty{1020.1(0.6)}{\hecto\pascal}.}$
+
+Oder in einer \verb|align &&|-Umgebung für Formel-Fehler-Ergebnis:
+\begin{align}
+  F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} && \tcbhighmath{F=\qty{1}{\newton}}
+\end{align}
+Optional \verb|[boxsep=2mm]| oder so bei Ergebnissen in \verb|align| einstellen, sodass die Box größer ist als innerhalb des Textes.
+\begin{align}
+  F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} && \tcbhighmath[boxsep=2mm]{F=\qty{1}{\newton}}
+\end{align}
+
+\paragraph{Preresults}
+Optional \verb|[colback=white]| einstellen.
+\begin{align}
+  F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} && \tcbhighmath[colback=white,boxsep=2mm]{F=\qty{1}{\newton}}
+\end{align}
+
+\subsubsection{results alignment}
+align mit \verb|&&&&| vor letzter Spalte
+\begin{align}
+  F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} &&&& \tcbhighmath[colback=white,boxsep=2mm]{F=\qty{1}{\newton}}
+\end{align}
+
+flalign ohne startendes \verb|&&|, damit Ergebnisse immer rechtsbündig sind. 
+\begin{flalign}
+  F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} && \tcbhighmath[colback=white,boxsep=2mm]{F=\qty{1}{\newton}}
+\end{flalign}
+
+\verb|&&|
+\begin{flalign}
+  &&F=ma&&\Delta F=F\sqrt{\left(\frac{\Delta m}{m}\right)^2+\left(\frac{\Delta a}{a}\right)^2} && \tcbhighmath[colback=white,boxsep=2mm]{F=\qty{1}{\newton}}
+\end{flalign}
+
+Ausrichtung der tcb mit \verb|&\tcbhighmath| und \verb|&&&&| in der zweiten Zeile 
+\begin{align}
+    B &= \frac{U_\text{ind, max}}{A_0 n_f 2\pi f_D} &
+    \Delta B &= B\sqrt{\left(\frac{\Delta U_\text{ind, max}}{U_\text{ind, max}}\right)^2+\left(\frac{\Delta f_D}{f_D}\right)^2} &&\tcbhighmath{B=\qty{52(3)}{\micro\tesla}} \\
+    &&&& &\tcbhighmath{B_\parallel=\qty{53.4(0.4)}{\micro\tesla}}
+\end{align}

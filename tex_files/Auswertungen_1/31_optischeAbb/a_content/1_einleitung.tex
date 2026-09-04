@@ -1,0 +1,109 @@
+\subsection{Motivation}
+Das alltägliche oder professionelle Fotografieren, die Herstellung von Halbleitern, Astronomie, Mikroskopie oder einfach unser Auge: 
+Dies alles sind Bereiche, bei denen die Kenntnis der Grundlagen von Optischen Elementen und ihren Funktionsweisen für das weitergehende Verständnis komplexerer optischer Systeme unerlässlich ist. 
+Kern des Versuches ist es, durch einfache experimentelle Aufbauten: 
+\begin{itemize}
+    \item ein Gefühl für die Grundlagen optischer Abbildungen zu bekommen, z.B. Vergrößerung, Auflösung
+    \item die Kenngrößen des in der Optik zentralen Objektes - der Linse - bestimmen
+    \item die Fehlerquellen eines optischen Systems untersuchen und die physikalischen Ursachen verstehen
+    \item durch Mikroskopie die Grenzen des Sichtbaren ausloten  
+\end{itemize}
+
+\subsection[Theoretische Grundlagen der Physik]{Theoretische Grundlagen der Physik \autocite{Skript_1}}
+\subsubsection{Linse und ihre Kenngrößen}
+\paragraph{Abbildungen und Linsengleichungen:}
+Ein Gegenstand, den man in viele Gegenstandspunkte aufteilen kann, wird nur klar/scharf gesehen, wenn für jeden Gegenstandspunkt ein von ihm ausgehendess Lichtbündel, wieder an einem Punkt, dem sogenannten Bildpunkt vereinigt wird. Die Menge aller Bildpunkte wird nun \emph{Bild} genannt. Dies kann mit einer Linse, einem Objekt aus lichtdurchlässigen Material mit Brechungsindex \(n\) und sphärischer/gekrümmter Fläche, erreicht werden, die je nach Form und Krümmung ihrer Oberfläche unterschiedliche Brechungseffekte der Lichtbündel hervorruft.\\
+In Abbildung \cref{fig:linse.png} werden die elementaren Größen einer mit einer Linse hervorgerufenen optischen Abbildung dargestellt:
+\begin{itemize}
+    \item gemessen von der optischen Achse (horizontale Linie durch den Mittelpunkt der Linse): Gegenstandsgröße \(G\), Bildgröße \(B\)
+    \item bzw. gemessen vom Mittelpunkt der Linse: Gegenstandsweite \(g\), Bildweite \(b\) sowie die Brennweite \(f\) (die Abszisse des Brennpunktes \(F\)), der als material- und geometrieabhängiger Parameter der Linse beschreibt, wie ein Lichtstrahl gebrochen wird.
+\end{itemize}
+\xfigure{htbp}{width=0.9\textwidth}{linse.png}{Bildkonstruktion einer Sammellinse \autocite{Tipler}}{Bildkonstruktion einer Sammellinse \autocite{Tipler}}
+
+In \cref{fig:linse.png} sind sehr gut die Strahlengänge eines Lichtstrahles durch eine dünne bikonvexe Linse/Sammellinse erkennbar: 
+\newpage
+\begin{enumerate}
+    \item der oberste Strahl, ein Parallelstrahl wird durch die Krümmung der Linse zu einem Mittelpunktstrahl durch den Brennpunktes
+    \item der mittlere Strahl, ein Mittelpunktstrahl trifft senkrecht auf die Linse, wird also nicht gebrochen
+    \item ein Brennpunktstrahl wird zu einem Parallelstrahl
+\end{enumerate}
+Wichtig ist hier der Vermerk, dass diese Regeln nur für dünne Linsen gelten, bei denen die zwei Hauptebenen, an denen die Lichtstrahlen gebrochen werden auf der Mittelebene zusammenfallen, deswegen findet auch in \cref{fig:linse.png} die eingezeichnete Brechung der Lichstrahlen in der mittleren Ebene und nicht an den beiden Linsenoberflächen (Hauptebenen) statt.\\
+Weitere Regeln für dünne Linsen sind die folgenden Verknüpfungen zwischen den oben definierten Abbildungsgrößen:
+\begin{equation}
+    \frac{1}{f}=\frac{1}{b}+\frac{1}{g}
+    \label{eq:f}
+\end{equation}
+\begin{equation}
+    \beta=\frac{B}{G}=\frac{b}{g}
+    \label{eq:beta}
+\end{equation}
+wobei \(\beta\) als Abbildungsmaßstab definiert ist.
+
+\paragraph{virtuelle und reelle Bilder:}
+Je nach Entfernung des abzubildenden Gegenstands erscheint das Bild unterschiedlich. In \cref{fig:linse.png} schneiden sich die von einem Gegenstandspunkt ausgehenden Strahlen wieder an einem Punkt, würde man nun im Abstand b einen Schirm hinhalten, wäre das Bild darauf scharf zu sehen. Diese Anordnung mit \(g>f\) erzeugt \emph{reelle} Bilder.\\
+Treten die Strahlen eines Lichtbündels parallel oder sogar auseinanderlaufend aus der Linse wieder aus, so kommt es zu keinem exakten Bildpunkt, das Bild kann nicht auf einem Schirm festgehalten werden. Dieses \emph{virtuelle} Bild scheint Lichtstrahlen auszusenden, welche jedoch nur die rückverlängerten Strahlen im Auge sind, siehe \cref{fig:VirtuellesBild.png}.\\
+Virtuelle Bilder entstehen, wenn \(g\leq f\); bei \(g=g\) sind die von der Linse gebrochenen Strahlen parallel, das virtuelle Bild scheint im Unendlichen zu liegen, siehe \cref{fig:Mikroskop.png} rechte Seite.
+\xfigure{htbp}{width=0.7\textwidth}{VirtuellesBild.png}{Strahlengang virtuelles Bild \autocite{Virtuell}}{Strahlengang virtuelles Bild \autocite{Virtuell}}
+
+\subsubsection{Besselverfahren}
+Die Brennweite einer Linse mit \cref{eq:f} zu bestimmen ist aufgrund der Abstandsmessung ungenau, da \(g\) und \(b\) eigentlich bei einer realen, dicken Linse nicht einfach von der Mittelebene gemessen werden können. Beim Besselverfahren wird sich zunutze gemacht, dass bei fixiertem Abstand \(l=g+b > 4f\) zwei Linsenpositionen möglich sind, die zu einer Scharfstellung des Bildes führen. Hier ist \(b\) dann auch als Abstand der Linse zum Schirm, auf dem das Bild abgebildet wird, gemeint. Misst man diese zwei Positionen \(x_1\) und \(x_2\) und bildet daraus die Differenz \(d=x_2-x_1\) so gilt:
+\begin{equation}
+    f=\frac{l^{2}-d^{2}}{4l}
+    \label{eq:Bessel}
+\end{equation}
+
+\subsubsection{Fehlerquellen einer Linse}
+Eine konventionelle sphärische Linse ist nicht perfekt, sondern sorgt für zwei optische Fehler: \textbf{Sphärische} und \textbf{chromatische Abberation}. In der Herstellung ist diese jedoch deutlich günstiger als Linsen, die durch aufwendige Prozesse so angepasst werden, dass diese Fehler nicht auftreten.\\
+Sphärische Abberation ensteht dadurch, dass von der optischen Achse entferntere Strahlen nicht mehr zum selben Brennpunkt gebrochen werden, dies erzeugt eine Unschärfe des Bildes. Eliminiert man also diese Strahlen durch eine Lochblende, sinkt dieser Fehler, das Bild wird schärfer. Dadurch wird jedoch in Kauf genommen, dass die Lichtintensität des Bildes klein ist, da weniger Lichtstrahlen abgebildet werden.\\
+Chromatische Abberation nach (altgriechisch \emph{chroma}, deutsch \glq Farbe\grq und lateinisch \emph{aberrare} \glq abschweifen\grq) bezeichnet einen durch Dispersion entstehenden Farbverzerrungsfehler. Dispersion beschreibt die Abhängigkeit der Lichtbrechung durch ein Medium von der Wellenlänge des Lichtes, mathematisch ausgedrückt ist der Brechungsindex \emph{n} eines Mediums, der zusammen mit den Krümmungsradien der Linse ihre Brennweite bestimmt, von \(\lambda\) abhängig, also \(n(\lambda)\). Eine Korrektur dieses Fehlers erfolgt meist durch das Verwenden von Linsen unterschiedlicher Materialien (dann auch als Achromat bezeichnet), sodass sich die jeweiligen Dispersionseffekte aufheben. Das optische System wird zunehmend komplizierter (und teurer).
+
+\subsubsection{Fotografie Exkurs \autocite{Schärfentiefe}}
+Das Abblenden durch eine Lochblende, also das Verringern der Öffnungsweite \(D\) (\emph{Apertur}) und dadurch Verringern der Lichtintensität wird durch die \emph{Lichtstärke} eines Objektives beschrieben, gemessen durch das Öffnungsverhältnis \(V\):
+\begin{equation}
+    V_{{\text{max}}} = \frac{D_{\text{max}}}{f}
+\end{equation}
+Diesem maximalen Öffnungsverhältnis entspricht in der Fotografie (Kameraobjektive haben eine verstellbare Blende) die kleinste \emph{Blendenzahl} \(k_{min}\), die oft auf Objektiven zu finden ist:
+\begin{equation}
+    k_{min}=\frac{1}{V_{\text{max}}}=\frac{f}{D_{\text{max}}}
+    \label{eq:k}
+\end{equation}
+\(k\) wird je nach gewünschter \emph{Schärfentiefe} eingestellt, siehe \cref{fig:bild1,fig:bild2}. Die geringere Intensität kann durch längere Belichtungszeit, den sogenannten \emph{shutter speed} kompensiert werden.
+
+\begin{figure}[htbp]
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Blendeoffen.png}
+    \captionsetup{justification=raggedright,singlelinecheck=false}
+    \caption{kleine Blendenzahl\\ \(\rightarrow\) geringe Schärfentiefe,\\ \(\rightarrow\) hohe Lichtintensität}
+    \label{fig:bild1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Blendezu.png}
+    \captionsetup{justification=raggedright,singlelinecheck=false}
+    \caption{große Blendenzahl\\ \(\rightarrow\) höhere Schärfentiefe,\\ \(\rightarrow\) geringere Intensität}
+    \label{fig:bild2}
+    \end{subfigure}
+    \caption[Fotografie: Effekt von Blendeneinstellungen \autocite{Schach}]{Der Effekt von Blendeneinstellungen \autocite{Schach}}
+\end{figure}
+
+\newpage
+\subsubsection{Akkomodation des menschlichen Auges und Mikroskopprinzip}
+Das menschliche Auge kann die Brennweite der Augenlinse je nach Entfernung des betrachteten Gegenstandes so einstellen (Akkomodation), dass die gebrochenen Strahlen an einem Bildpunkt wiederzusammentreffen, der auf der Netzhaut liegt.\\ Am angenehmsten für die Augenmuskulatur ist die Akkomodation aufs \emph{unendliche}, d.h. die auf die Augenlinse treffenden Strahlen sind parallel, das Objekt scheint im unendlichen zu liegen, siehe \cref{fig:Mikroskop.png} rechte Seite.\\
+\xfigure{htbp}{width=0.7\textwidth}{Mikroskop.png}{Strahlengang im Mikroskop \autocite{Skript_1}}{Strahlengang im Mikroskop \autocite{Skript_1}}
+
+Ohne optisches System ist diese Einstellung jedoch nur für weit entfernte Objekte möglich. Eine größere Entfernung des Objektes beeinflusst jedoch auch den Sehwinkel, unter dem ein Objekt erscheint, dieser ist maßgeblich für die Vergößerung. Soll ein Gegenstand nun genauer betrachtet werden, ist ein größerer Sehwinkel erforderlich, der ohne optisches System nur durch eine kleinere Entfernung zum Auge erreicht werden kann, welche den Schwellenwert \(s_0\), die minimale Entfernung, bei der das Auge scharf akkomodieren kann, nicht unterschreiten darf.
+\\Hier kommen nun die eingangs besprochenen virtuellen Bilder zum Einsatz: Das Mikroskop erreicht durch zwei zentrale Bauteile zwei Dinge: Es bildet ein reelles Zwischenbild ab, das unter einem hohen Sehwinkel gesehen wird und dafür \(<s_0\) nah am Auge liegt und erzeugt aber daraus ein virtuelles Bild, sodass das Auge gleichzeitig aufs unendliche akkomodiert wird. 
+Ersteres geschieht durch das Objektiv, und letzteres durch das Okular.\\
+Das Zwischenbild liegt genau in der Brennebene \(f<s_0\) des Okulars, dadurch die unendliche Akkomodation; und ist schon durch das Objektiv vergrößert, \(B>G\). Die Gesamtvergrößerung des Mikroskops ergibt sich dann aus den multiplizierten Vergrößerungen des Objektivs und des Okulars (genaue Berechnung siehe \autocite{Skript_1}).\\
+\emph{Anmerkung}: Der obige Absatz ist für das Experiment und die Datenauswertung irrelevant, jedoch für mein Verständnis des Konzeptes (wie in der Motivation gewünscht) notwendig gewesen.  
+
+\paragraph{Mikroskopauflösung \autocite{Numerische}:}
+Auf Mikroskopobjektiven findet man anstatt der kleinsten Blendenzahl \(k_{min}\) (siehe \cref{eq:k}) die \emph{numerische Apertur} \(NA=n \sin(\alpha)\), mit dem Brechungsindex \(n\) des Mediums zwischen Gegenstand und Objektivlinse sowie \(\alpha\) als Öffnungswinkel; ein größerer Wert für \(\alpha\) bedeutet, dass mehr Lichtbündel bzw. ein größerer Lichtkegel vom Objektiv aufgefangen werden.
+Dadurch steigt die Lichtmenge und das Auflösungsvermögen des Mikroskops. Durch Beugungseffekte des Lichts gibt es einen minimalen Abstand \(G_{\text{min}}\) zweier Gegenstandspunkte, sodass diese auch auf unterschiedlichen Bildpunkten abgebildet werden, Herleitung siehe \autocite{Skript_1}.
+Dieser Abstand, die Grenze der Auflösungsfähigkeit optischer Systeme, hängt von der Wellenlänge \(\lambda\) des verwendeten Lichts und von \(NA\) ab, da ein größerer Öffnungswinkel erlaubt, auch zur Seite gebeugtes Licht aufzufangen.
+\begin{equation}
+    G_{\text{min}}=\frac{0,61\,\lambda}{n \sin(\alpha)}=\frac{0,61\,\lambda}{NA}
+    \label{eq:NA}
+\end{equation}

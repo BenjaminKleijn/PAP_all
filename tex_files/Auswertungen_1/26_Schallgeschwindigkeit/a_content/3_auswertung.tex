@@ -1,0 +1,142 @@
+\subsection[\texorpdfstring{Aufgabe 1 - \(c\) - Bestimmung allgemein}{Aufgabe 1 - c - Bestimmung allgemein}]{Aufgabe 1 - \(\boldsymbol{c}\) - Bestimmung allgemein}
+
+\label{sec:Aufgabe1}
+Die Temperatur der Versuchsumgebung wurde auf \(T=\qty{24,2}{\degree C}=\qty{297,35}{K}, \Delta T=\qty{1}{K}\) gemessen. 
+Für Luft beträgt \(\kappa=1.40\), \(M=\qty{29 e-3}{\kg\per\mol}\) für \ce{CO_2} \(\kappa=1.30\), \(M=\qty{44 e-3}{\kg\per\mol}\) die allgemeine Gaskonstante ist \(R=\qty{8,314}{\J\per\mol\K}\).\\
+Der Fehler \(\Delta c\) ergibt sich zu: 
+\begin{align}
+        c=\sqrt{\frac{\kappa RT}{M}} && \Delta c=\left(\frac{\sqrt{\frac{R T \kappa}{M}}}{2T} \Delta T\right)\\
+        c_{\text{Luft, allg.}}=\qty{345,5 \pm 0,6}{\m\per\s}&&c_{\ce{CO_2}\text{, allg.}}=\qty{270,3 \pm 0,5}{\m\per\s}
+    \label{eq:fehlerm}
+\end{align}
+Mit \cref{eq:normal} ist:
+\begin{align}
+    c_0^i=c\sqrt{\frac{T_0}{T_i}} && \Delta c_0^i=\sqrt{\left(\frac{-c \sqrt{\frac{T_0}{T}}}{2T} \Delta T\right)^2+\left(\sqrt{\frac{T_0}{T}} \Delta c\right)^2}
+    \label{eq:c_0_fehler}
+\end{align}
+Damit sind:
+\begin{rba}
+    c_0^{\text{Luft, allg.}}=\qty{331,1 \pm 0,8}{\m\per\s} \\
+    c_0^{\ce{CO_2}\text{, allg.}}=\qty{259,0 \pm 0,6}{\m\per\s}
+\end{rba}
+
+\subsection[\texorpdfstring{Aufgabe 2 - \(c\) - Bestimmung über stehende Wellen}{Aufgabe 2 - c - Bestimmung über stehende Wellen}]{Aufgabe 2 - \(\boldsymbol{c}\) - Bestimmung über stehende Wellen}
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\textwidth}{cZxxZxx}
+\toprule
+ & \multicolumn{3}{c}{\(f=\qty{2013}{\hertz}\)} & \multicolumn{3}{c}{\(f=\qty{2099}{\hertz}\)} \\\cmidrule[0.3pt](lr){2-4}\cmidrule[0.3pt](lr){5-7}
+Nr. & \text{Messreihe 1 } d\;[\unit{\cm}] & \bar{d}_1\;[\unit{\cm}] & \sigma_{\bar{d}_1} \; [\unit{\cm}] &  \text{Messreihe 2 } d\;[\unit{\cm}] & \bar{d}_2\;[\unit{\cm}] & \sigma_{\bar{d}_2} \; [\unit{\cm}] \\\midrule
+1 & 8.4 & 8.60 & 0.07 &  8.2 & 8.27 & 0.07    \\
+2 & 8.5 &  &  &  8.3 &   &  \\
+3 & 8.7 &  &  &  8.3 &  &   \\
+4 & 8.8 &  &  &  8.1 &  &  \\
+5 & 8.8 &  &  &  8.6 &  &  \\
+6 & 8.3 &  &  &  7.9 &  &   \\
+7 & 8.7 &  &  &  8.4 &  &   \\
+8 & 8.6 &  &  &  8.1 &  &   \\
+9 &     &  &  &  8.5 &  &   \\
+\bottomrule
+\end{tabularx}
+\caption{Messreihen für Luft der Differenzen \(d\)}
+\label{table:dluft}
+\end{table}
+
+\newpage
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{0.6\textwidth}{cZxx}
+\toprule
+ & \multicolumn{3}{c}{\(f=\qty{2000}{\hertz}\)}\\\cmidrule[0.3pt](lr){2-4}
+Nr. & \text{Messreihe 1 } d\;[\unit{\cm}] & \bar{d}_1\;[\unit{\cm}] & \sigma_{\bar{d}_1} \; [\unit{\cm}]\\
+\midrule
+1 & 7,4 & 6,54 &  0,20  \\
+2 & 5,8 &      &        \\
+3 & 6,1 &      &        \\
+4 & 6,5 &      &        \\
+5 & 6,5 &      &        \\
+6 & 7,4 &      &        \\
+7 & 5,8 &      &        \\
+8 & 6,5 &      &        \\
+9 & 5,9 &      &        \\
+\bottomrule
+\end{tabularx}
+\caption{Messreihe für \ce{CO_2}}
+\label{table:dco2}
+\end{table}
+
+Aus \cref{eq:d} und (\ref{eq:c}) sowie mit \(\Delta d=\sigma_{\bar{d}}\) folgt:
+\begin{equation}
+    c_i^{\text{welle}}=f2d
+\end{equation}
+\begin{equation}
+    \Delta c=\sqrt{\left(2d \Delta f\right)^2+\left(2f \Delta d\right)^2}
+\end{equation}
+daraus ergibt sich mit \(\Delta f=\qty{1}{Hz}\) für die Messreihen:
+\begin{align}
+    c^{\text{Luft 1, welle}}=\qty{346 \pm 3}{\m\per\s}&&c^{\text{Luft 2, welle}}=\qty{347 \pm 3}{\m\per\s}
+\end{align}
+Da der Mittelwert dieser zwei Werte genau auf \(.5\) landet, würde dies durch die Regel der signifikanten Stellen einfach weggerundet werden. Deswegen können wir uns eigentlich aussuchen, mit welchem Wert wir fortfahren (ich nehme den ersteren). Für \ce{CO_2} folgt analog:
+
+\makebox[\textwidth][c]{\(c^{\ce{CO_2}\text{, welle}}=\qty{261 \pm 8}{\m\per\s}\)} 
+
+Nun werden diese Werte auch auf Normalbedingungen angeglichen: Für Messreihe 1, 2 bei Luft betrug \(T=\qty{297,35}{K}\), bei \ce{CO_2} \(T=\qty{297,95}{K}\). Damit ergibt sich nach \cref{eq:c_0_fehler}:
+\begin{rba}
+    c_0^{\text{Luft, welle}}=\qty{331 \pm 3}{\m\per\s}  \\  
+    c_0^{\ce{CO_2}\text{, welle}}=\qty{250 \pm 6}{\m\per\s}
+\end{rba}
+
+\subsection{Aufgabe 3 - Verhältnisse}
+Es sollte noch das Verhältnis \(V\) der gemessenen Geschwindigkeiten bestimmt werden, dieses wird nun immer mit dem normalisierten Wert berechnet:
+\begin{align}
+    V=\frac{c_0^{\text{Luft}}}{c_0^{\ce{CO_2}}}&&\Delta V=\sqrt{\left(\frac{1}{c_0^{\ce{CO_2}}} \Delta c_0^{\text{Luft}}\right)^2+\left(\frac{-c_0^{\text{Luft}}}{\left(c_0^{\ce{CO_2}}\right)^2} \Delta c_0^{\ce{CO_2}}\right)^2}
+    \label{eq:V_fehler}
+\end{align}
+Damit ist: \(\tcbhighmath{V^{\text{welle}}=\num{1,32\pm0,03}}\).
+Aus der allgemeinen Rechnung über die Gaskonstante, etc.\, \cref{eq:allg}, kann auch das Verhältnis bestimmt werden, \(T\) und \(R\) kürzen sich dann durch den Bruch raus. Übrig bleibt
+\begin{align}
+    V^{\text{allg.}}=\sqrt{\frac{\kappa_{\text{Luft}}\,M_{\ce{CO_2}}}{\kappa_{\ce{CO_2}}\,M_{\text{Luft}}}}
+\end{align}
+Hier errechnet sich: \(\tcbhighmath{V^{\text{allg}}=\num{1,278}}\). Das Kuriose ist, dass \(\kappa\) und \(M\) nicht fehlerbehaftet sind, man also keine Fehlerformel bestimmen kann. Berechnet man jedoch das Verhältnis gemäß den fehlerbehafteten Größen \(c_0^{\text{Luft\/Welle, allg.}}\), so könnte wie in \cref{eq:V_fehler} ein Fehler bestimmt werden: \(V^{\text{allg}}=\num{1.278(0.004)}\).
+
+\subsection{Aufgabe 4 - Laufzeitmessung}
+Abgelesen wurde am Oszilloskop eine Periodendauer \(T\) von \(\qty{100}{\micro\s}\), damit beträgt die vom Sinusgenerator erzeugte Frequenz \(f=\frac{1}{T}=\qty{10}{\kilo\hertz}\). Daraus berechnet sich \(\tau=\frac{1}{f}=\qty{10e-4}{\s}\), dies ist derselbe Werte wie \(T\).
+\begin{table}[htbp]
+\centering
+\begin{tabularx}{\textwidth}{cZZZx}
+\toprule
+Nr. & \text{Messreihe 1 } h\;[\unit{\cm}] & \text{Messreihe 2 } h\;[\unit{\cm}] & \text{Mittelwert } \bar{h}\;[\unit{\cm}] & \sigma_{\bar{h}}\;[\unit{\cm}]\\
+\midrule
+1 & 3,5 & 3,5 & 3,529 & 0,024 \\
+2 & 3,6 & 3,6  &      &  \\
+3 & 3,5 &  3,5    &   &    \\
+4 & 3,6 &    3,6  &     &   \\
+5 & 3,4 &   3,4  &      &  \\
+6 & 3,7 &    3,7  &     &   \\
+7 & 3,4 &   3,4   &     &   \\
+\bottomrule
+\end{tabularx}
+\caption{Messreihen für \(h\)}
+\label{table:laufzeit}
+\end{table}
+
+Mithilfe der \cref{eq:tau} wird nun \(c\) berechnet.
+\begin{align}
+    c=\frac{h}{\tau} && \Delta c=\left(\frac{1}{\tau} \Delta h\right)
+\end{align}
+Damit erhält man: \(c_{\text{Laufzeit}}=\qty{352,9 \pm 2,4}{\m\per\s}\)
+Unter Normalbedingungen ergibt sich mit \(T=\qty{297,95}{K}\):
+\begin{rb}
+    c_0^{\text{Laufzeit}}=\qty{337,8 \pm 2,4}{\m\per\s} 
+\end{rb}
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

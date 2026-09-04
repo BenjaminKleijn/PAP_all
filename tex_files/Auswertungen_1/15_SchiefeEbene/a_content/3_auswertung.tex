@@ -1,0 +1,330 @@
+\subsection{Masse, Radien und Neigung der Ebene}
+Zur Berechnung der Beschleunigung und Trägheitsmomente müssen erst ein paar Werte bestimmt werden:
+\begin{table}[htbp]
+  \centering
+  \caption{Schiefe Ebene Größen}
+  \begin{tabularx}{0.8\textwidth}{ZZZZ}
+    \toprule
+    \text{Länge Platte } l\; [\unit{\cm}] & \text{Höhe } h\; [\unit{\cm}] & \text{Neigungswinkel } \varphi\; [\unit{\degree}]\\\midrule
+    \num{87.0(3)} & \num{12.9(3)} & \num{8.52(20)}\\
+    \bottomrule
+  \end{tabularx}
+\label{table:Winkel}  
+\end{table}
+
+Der Winkel \(\varphi\) kann durch Trigonometrie bestimmt werden:
+\begin{gather}
+    \varphi=\arcsin(\frac{h}{l}) \\
+    \Delta \varphi=\sqrt{\left(\frac{\Delta h}{\sqrt{l^2-x^2}}\right)^2+\left(\frac{h\Delta l}{\sqrt{l^4-l^2h^2}}\right)^2}
+\end{gather}
+Nun noch die Massen und Radien:
+
+\begin{table}[htbp]
+  \centering
+  \caption{Körpergrößen}
+  \begin{tabularx}{0.8\textwidth}{TZZ}
+    \toprule
+      &\text{Radius } r\;[\unit{\cm}] & \text{Masse } m\;[\unit{\gram}]\\\midrule 
+  Voll &   \num{2.3500(25)}  & \num{443(1)}\\
+  Hohl Außen &   \num{2.3500(25)} &\num{442(1)} \\
+  Hohl innen & \num{1.9235(25)} & \num{442(1)} \\
+  \bottomrule
+  \end{tabularx}  
+  \label{table:Körper}
+\end{table}
+
+\subsection{Aufgabe 0: Qualitative Beobachtung der drei Zylinder}
+Die Messung zeigte, dass beim gleichzeitigen Start der drei Rollkörper der Verbundzylinder zuerst und der Hohlzylinder zuletzt das Ende der schiefen Ebene erreichte. Ursache hierfür ist das unterschiedliche Trägheitsmoment der Körper. Zwar besitzen alle nahezu die gleiche Masse, jedoch entscheidet die Massenverteilung über das Trägheitsmoment: Beim Hohlzylinder liegt die Masse weiter von der Rotationsachse entfernt, wodurch sein Trägheitsmoment gemäß \cref{eq:traegheit_hohl} größer als das des Vollzylinders mit gleichem Radius ist. Beim Verbundzylinder ist die Masse hingegen näher an der Achse konzentriert, was zu einem kleineren Trägheitsmoment als beim Vollzylinder führt.
+
+\subsection{Aufgabe 1 - Beschleunigung auf der schiefen Ebene}
+\paragraph{Grafische Bestimmung}
+\label{sec:aufgabe1}
+Nach der Grundgleichung der gleichförmigen Beschleunigung \(a\), mit der Geschwindigkeit \(v\), der Startgeschwindigkeit \(v_0\), der zurückgelegten Strecke \(s\) und der dafür benötigten Zeit \(t\) gilt:
+\begin{equation}
+  s=\frac{1}{2}at^2+v_0t 
+  \label{eq:s(t^2)}
+\end{equation}
+kann durch Auftragen der Position \(s(t^2)\), die der der Zylinder zur Zeit \(t\) passiert hat, die Beschleunigung durch die Geradensteigung \(m\) bestimmt werden, mit \(a=\frac{m}{2}\). 
+
+Aus den jeweils 5 Messreihen wird erstmal der Mittelwert \(\bar{t_i}\) berechnet, für jede Lichtschranke \(i\in(1,2,3,4)\) und für beide Zylinder. Die statistische Abweichung, der Fehler des Mittelwerts, wird quadratisch mit der Ungenauigkeit der Stoppuhr \(\Delta t = 0,001\)s addiert. Diese Ungenauigkeit ist gerade die Skaleneinheit der Stoppuhr. Somit erhält man:
+\begin{equation}
+  \Delta \bar{t}_i=\sqrt{(\Delta \bar{t}_i)^2+(\Delta t)^2}
+\end{equation}
+
+Da eine grafische Bestimmung über \cref{eq:s(t^2)} vorgenommen wird, werden die Mittelwerte quadriert. Die Ungenauigkeit liegt somit bei
+\begin{equation}
+    \Delta \bar{t}_i^2 = 2 \bar{t_i} \cdot \Delta \bar{t_i}.
+\end{equation}\par
+Die Ergebnisse werden in der Tabelle \cref{table:aufgabe1mittelwerte} dargestellt.
+\begin{table}[h]
+  \centering
+  \caption{Mittelwerte der Zeiten für Beschleunigung an der schiefen Ebene}
+  \includegraphics[page=1,width=\textwidth]{V15_11.pdf}
+  \label{table:aufgabe1mittelwerte}
+\end{table}
+
+Die Ungenauigkeit der Position \(s\) der Sensoren wird mit \(\Delta s=\qty{0.3}{\cm}\) abgeschätzt, da zum einen die Ausrichtung, also perfekt gegenüber zwar mit der Wasserwaage getestet wurde, aber dafür die Position am Meterlineal nicht genau erfolgte. Die Sensoren sind zwar als Kasten gebaut, dessen Kante man sehr gut am Lineal anlegen kann, aber der Sensor selber liegt in der Mitte, diese \glqq Düse\grqq{} wurde nur per Augenmaß ausgerichtet. Dieser Fehler ist jedoch unmöglich im Diagramm einzuzeichnen, genauso wie die sehr kleinen Zeitfehler.
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=0.9\textheight]{aufgabe1grafisch.pdf}
+  \caption{Strecke \(s\) als Funktion von \(t^2\)}
+  \label{fig:diagramm1}
+\end{figure}
+\clearpage\newpage
+
+\paragraph{Vollzylinder:}
+Als Steigung der Geraden \(s(t^2)\) erhält man:
+\(m_V=\qty{0.459(5)}{\m\per\s\squared}\)
+Der Fehler wurde auf \(1\%\) geschätzt, da es unmöglich ist eine Fehlergerade einzuzeichnen. 
+Damit ist:
+\begin{rb}
+  a^{\text{exp}}_V=2m_V=\qty{0.918(10)}{\m\per\s\squared}
+\end{rb}
+
+\paragraph{Hohlzylinder}:
+Als Steigung der Geraden \(s(t^2)\) erhält man:\(m_V=\qty{0.375(4)}{\m\per\s\squared}\)
+Der Fehler wurde auf \(1\%\) geschätzt, da es unmöglich ist eine Fehlergerade einzuzeichnen. 
+Damit ist:
+\begin{rb}
+  a^{\text{exp}}_H=2m_H=\qty{0.750(8)}{\m\per\s\squared}
+\end{rb}
+
+\subsection{Rechnerische Bestimmung}
+Zuerst wird \cref{eq:traegheit_voll} in \cref{eq:beschleunigung} eingesetzt. Folglich kommt man zum Ausdruck für den Vollzylinder:
+\begin{align}
+    a^{\text{calc}}_{V}= \frac{2}{3}  g  \sin \varphi && \Delta a^{\text{calc}}_V = \sqrt{\left(\frac{2}{3} g \cos(\varphi) \Delta \varphi^2\right)^2 + \left(\frac{2}{3}\sin(\varphi)  \Delta g\right)^2}
+\end{align}
+Für die Erdbeschleunigung wird der Heidelberger Standardwert von \(g= \qty{9.80984(2)}{\m\per\s\squared}\) benutzt. Die Beschleunigung des Vollzylinders ist somit
+\begin{rb}
+  a^{\text{calc}}_{V}=\qty{0.968(23)}{\m\per\s\squared}
+\end{rb}
+
+Analog wird auch die Beschleunigung des Hohlzylinders bestimmt. In diesem Fall wird jedoch \cref{eq:traegheit_hohl} in \cref{eq:beschleunigung} eingesetzt. Die Beschleunigung ist somit:
+\begin{equation}
+    a^{\text{calc}}_{H} = \frac{2g \sin \varphi}{3+\left(\frac{R_i}{R_a}\right)^2}.
+    \label{eq:a_h}
+\end{equation}
+
+Der Fehler berechnet sich mit:
+\begin{align}
+    \Delta {a^{\text{calc}}_{H}}^2= 
+    \left( \frac{a_{H,r}}{\tan\varphi}\,\Delta\varphi \right)^{2}
+    + \left( \frac{2\,a_{H,r}\,R_i}{R_a^{2}\,\bigl(3+(R_i/R_a)^{2}\bigr)}\,\Delta R_i \right)^{2}\nonumber\\
+    + \left( \frac{a_{H,r}}{g}\,\Delta g \right)^{2}
+    + \left( \frac{2\,a_{H,r}\,R_i^{2}}{R_a^{3}\,\bigl(3+(R_i/R_a)^{2}\bigr)}\,\Delta R_a \right)^{2}
+\end{align}
+Damit bestimmt sich:
+\begin{rb}
+  {a^{\text{calc}}_{H}=\qty{0.777(18)}{\m\per\s\squared}}
+\end{rb}
+
+\paragraph{Abweichung der Methoden:}
+Die Sigma-Abweichung der zwei Methoden berechnet sich zu:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von $a^{\text{exp}}$ und $a^{\text{calc}}$}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+         \text{Messreihe} & a^{\text{exp}}[\unit{\m\per\s\squared}] & a^{\text{calc}}[\unit{\m\per\s\squared}] & \text{abs. Abw.}[\unit{\m\per\s\squared}] & \text{proz. Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+       a_H & \num{0.918(0.010)} & \num{0.968(0.023)} & \num{0.05(0.03)} & \num{5(3)} & 2.0 \\
+       a_V & \num{0.750(0.008)} & \num{0.777(0.018)} & \num{0.027(0.020)} & \num{4(3)} & 1.4 \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_a} 
+\end{table}
+
+\subsection{Aufgabe 2: Energien der Zylinder}
+Nun wird die Beschleunigung beider Zylinder über den Energieansatz bestimmt. Dazu wird zunächst der Fehler der Potenziellen Energie \cref{eq:epot} bestimmt:
+\begin{equation}
+    \Delta E_{\text{pot}} = \sqrt{\left(mg \cdot \Delta h \right)^2 + \left(mh \cdot \Delta g \right)^2 + \left(hg \cdot \Delta m \right)^2}
+\end{equation}
+Als Massen sind die Werte aus \cref{table:Körper} zu entnehmen.
+
+Die Höhe ist etwas trickreicher: Als Referenznullhöhe wird die Höhe der Auslaufplatte genommen. Die Höhe, die zur Berechnung des Winkels genutzt wurde, betrug \(h=\qty{12.9(3)}{\cm}\). Dies ist aber vom Tisch aus bis zur Unterkante der schiefen Ebene gemessen, da die schiefe Ebene und Auslaufplatte diesselbe Dicke haben, kann dies als erster Höhenansatz verwendet werden. Zusätzlich liegt der Schwerpunkt aber noch um den Radius \(r\) höher. Das heißt wir erhalten \(h=\qty{15.25(3)}{\cm}\) 
+
+Die Translationsenergie \(E_{\text{trans}}\) eines Körpers berechnet sich über \cref{eq:etrans}. Der Fehler berechnet sich mit:
+\begin{equation}
+    \Delta E_{\text{trans}} = \sqrt{\left(\frac{v^2}{2} \Delta m\right)^2 + \left(m v \Delta v \right)^2}.
+\end{equation}
+
+\paragraph{Vollzylinder:}
+Die potentielle Energie des Vollzylinders liegt dann bei:
+\begin{rb}
+  E_{V,\text{pot}}=\qty{0.663(13)}{\joule}
+\end{rb}
+Als Geschwindigkeit verwende ich die maximal gemessene Geschwindigkeit \(v_H=\qty{1.3(0.12)}{\m\per\s}\), siehe \cref{sec:Geschwindigkeitsberechnung} und \cref{table:tabellealles}.
+\begin{rb}
+  E_{V,\text{trans}}=\qty{0.37(7)}{\joule}
+\end{rb}
+
+Die Rotationsenergie \cref{eq:erot} ergibt sich, indem erstmal die Rollbedingung \cref{eq:rollbedingung} nach \(\omega\) umgestellt wird:
+\begin{equation}
+    \omega = \frac{v}{R}
+\end{equation}
+Zusätzlich braucht man das Trägheitsmoment \(I_{V}\) nach \cref{eq:traegheit_voll}. Dann ist die Rotationsenergie:
+\begin{align}
+    E_{V,\text{rot}} =\frac{1}{4}  m  v^2 && \Delta E_{V,\text{rot}} = \sqrt{\left(\frac{v^2}{4}  \Delta m\right)^2 + \left(\frac{vm}{2}  \Delta v\right)^2}
+\end{align}
+Die Rotationsenergie des Vollzylinders ist damit:
+\begin{rb}
+  E_{V,\text{rot}}=\qty{0.19(4)}{\joule}
+\end{rb}
+
+\paragraph{Hohlzylinder:}
+Alle Energien werden analog zum Vollzylinder bestimmt.
+Die maximale Geschwindigkeit ist \(v=\qty{1.16(10)}{\m\per\s}\).
+\begin{rb}
+  E_{H,\text{pot}}=\qty{0.661(13)}{\joule}\quad\quad\quad E_{H,\text{T}}=\qty{0.30(5)}{\joule}
+\end{rb}
+Zur Bestimmung der Rotationsenergie wird das Trägheitsmoment \(I_\text{Hohl}\) \cref{eq:traegheit_hohl} in \cref{eq:erot} eingesetzt. Damit kommt man auf
+\begin{equation}
+    E_{H,\text{rot}} = \frac{1}{4} m  v^2  \left(\frac{R_i^2}{R_a^2} + 1\right)
+\end{equation}
+\begin{align}
+\Delta E_{H,\text{rot}}^2=
+   &\left( \tfrac{1}{4} v^{2}\left(\tfrac{R_i^{2}}{R_a^{2}}+1\right)\Delta m \right)^{2} \\
++  &\left( \tfrac{1}{2} m v \left(\tfrac{R_i^{2}}{R_a^{2}}+1\right)\Delta v \right)^{2} \\
++  &\left( \tfrac{1}{2} m v^{2} R_a^{2} r \,\Delta R_i \right)^{2} \\
++  &\left( \tfrac{1}{2} m v^{2} R_i^{2} R \,\Delta R_a \right)^{2}
+\end{align}
+Als Rotationsenergie berechnet man also:
+\begin{rb}
+  E_{H,\text{rot}}=\qty{0.148(26)}{\joule}
+\end{rb}
+
+Trotz der Tatsache, dass die maximale Geschwindigkeit bestimmt wurde, entspricht die Summe von Rotationsenergie und Translationsenergie, also die kinetische Energie, nicht der anfänglichen potentiellen Energie.
+\begin{equation}
+  E_{\text{pot}}=E_{\text{rot}}+E_{\text{trans}}
+\end{equation}
+Für den Vollzylinder erhält man: 
+\[ E_{V,\text{pot}}-E_{V,\text{rot}}-E_{V,\text{trans}}= \tcbhighmath{\qty{0.10(8)}{\joule}}\]
+Der Fehler bestimmte sich mittels quadratischer Addition der einzelnen Energiefehler.
+Für den Hohlzylinder erhält man:
+\[E_{H,\text{pot}}-E_{H,\text{rot}}-E_{H,\text{trans}}=\tcbhighmath{\qty{0.22(6)}{\joule}}\]
+Eigentlich solle hier 0 rauskommen. Evtl. ist der Verlust auf Reibung an der schiefen Ebene zu erklären, die ich jedoch nicht bestimmen kann und will. Eine andere Option ist eine falsche Geschwindigkeitsschätzung, sodass die Translations- und Rotationsenergie eigentlich größer als gedacht sind.
+Zusätzlich kommt der Übergang zur schiefen Ebene hinzu, an der der Zylinder einen Teil seines Impulses abgegeben hat.
+Die Reibung an der Auslauffläche wird im folgenden betrachtet.
+\newpage
+
+\subsection{Reibung}
+Es wurden durch 8 verschiedene Messpositionen \(P\) (\(\Delta P=\qty{0.5}{\cm}\), da die Düsen der Lichtschranken nur per Augenmaß auf das Messband ausgerichtet werden konnten) der Sensoren, gemessen ab Ende der schiefen Ebene, auf der Auslauffläche die Zeiten \(t\) gemessen, bei denen der Voll/-Hohlzylinder die Lichtschranke passiert hat.\\Da nur 4 Lichtschranken zur Verfügung standen, wurde die Messung zweimal gemacht: Einmal wurden die Sensoren so nah wie möglich hintereinander gestellt, ein Lichtschrankenpaar (so wird eine Lichtschranke und die folgende bezeichnet) hatte also einen kleinen Abstand \(\text{diff }p\) (für Differenz) von 
+\begin{gather}
+\text{diff }p_j=P_{i+1}-P_i=\qty{0.050(7)}{\m}\quad \text{mit\quad} i\in(1,2,3,4)\text{ und }j=i\text{ für }i\leq4\nonumber\\
+\Delta \text{diff } p=\sqrt{2}\Delta P=\qty{0.007}{\m}\\
+\end{gather} 
+Der große Abstand betrug \(\text{diff }p=\qty{0.090(7)}{\m}\), sodass die volle Länge der Fläche ausgenutzt werden konnte. In Tabelle \cref{table:aufgabe1mittelwerte} wurde dann für jede Zeit die Differenz mit der vorherigen Zeit bestimmt. Es ist sehr gut erkennbar, dass beim großen Abstand diese Differenzen \(\text{diff }t\) mit größerer zurückgelegter Strecke steigen, was eine Geschwindigkeitsverminderung bedeutet, die irgendeiner Reibung zu verschulden ist.\\ Für \(P_{\text{klein}}\) sollte die Zeitdifferenz auch minimal sinken (aber auf jeden Fall streng monoton fallend sein), leider sind die Daten hier aber wohl nicht genau genug und systematisch falsch, siehe Diskussion, weswegen für die Auswertung der Reibung nur die großen Abstände benutzt werden.\par
+\subsection{Berechnung der Geschwindigkeiten}
+\label{sec:Geschwindigkeitsberechnung}
+Es liegen also folgende Daten vor: Aus den 5 Messreihen pro Körper und Lichtschrankenposition wurde erstmal der Mittelwert \(\bar{t}(P_i)\coloneq t_i\) und der Fehler des Mittelwerts \(\Delta \bar{t}_i\) berechnet. Da bei den Stoppuhren neben einem statistischen Fehler auch mit einem Stoppfehler von \(\Delta t=\qty{0.001}{\s}\) ausgegangen werden sollte, wird folgend der gesamte Fehler für \(t_i\) bestimmt:
+\begin{equation}
+  \Delta t_i=\sqrt{(\Delta \bar{t}_i)^2+(\Delta t)^2}
+\end{equation}
+
+Zur Berechnung der Geschwindigkeit fehlt jetzt nur noch die Zeitdifferenz: mit \(j\in(1,2,3); j=i\) für \(i\leq3\) und \(i\in(1,2,3,4)\):
+\begin{equation}
+  \text{diff }t_j=t(P_{i+1})-t(P_i)\quad\text{und}\quad\Delta \text{diff }t_j=\sqrt{\Delta t_i^2+t_{i+1}^2}
+\end{equation}
+Es gibt also 3 Streckenintervalle, für die jeweils ein Abstand und eine Zeitdifferenz bekannt ist. Daraus kann nun pro Intervall \(j\) die mittlere Geschwindigkeit bestimmt werden, mittels:
+\begin{gather}
+  v_j=\frac{\text{diff }p_j}{\text{diff }t_j}\\
+  \Delta v_j=v_j\sqrt{\left(\frac{\Delta \text{diff }t_j}{\text{diff }t_j}\right)^2+\left(\frac{\Delta \text{diff }p_j}{\text{diff }p_j}\right)}
+\end{gather}
+Also existieren pro Zylinder insgesamt 6 Geschwindigkeiten, einmal 3 aus den großen Abstandsintervallen und einmal 3 aus den kleinen Abständen.
+Es gibt zwei Möglichkeiten diese nun zu plotten: \begin{itemize}
+  \item \(v_j(t_j)\) wenn \(t_j\) die mittlere Zeit zwischen zwei Zeitpunkten \(t_i\) \& \(t_{i+1}\) ist, die nach dem Losrollen des Zylinders gemessen wurden. Dann ist:\begin{gather}
+  t_j=t_i+\frac{\text{diff }t_j}{2}=\frac{t_i+t_{i+1}}{2}\\
+    \Delta t_j=\sqrt{\left(\frac{t_i}{2}\right)^2+\left(\frac{t_{i+1}}{2}\right)^2}
+  \end{gather}
+\item  \(v_j^2(p_j)\) wenn \(p_j\) die mittlere Position des Intervalls ist. 
+  Dann ist:\begin{gather}
+    p_j=P_i+\frac{\text{diff }p_j}{2}=\frac{P_i+P_{i+1}}{2}\\
+    \Delta p_j=\sqrt{\left(\frac{P_i}{2}\right)^2+\left(\frac{P_{i+1}}{2}\right)^2}=\sqrt{2}\frac{\Delta P}{2}
+  \end{gather} 
+\end{itemize}
+Wir gehen davon aus, dass es eine bremsende Beschleunigung durch die Reibung gibt, deshalb gilt nach den Grundgleichungen der gleichförmigen Beschleunigung für die Beschleunigung \(a\), die Geschwindigkeit \(v\), die Startgeschwindigkeit \(v_0\), die zurückgelegte Strecke \(s\) und die dafür benötigte Zeit \(t\) gilt:
+\begin{gather}
+\begin{array}{c@{\hspace{3cm}}c}
+ (1)\quad s=\frac{1}{2}at^2+v_0t &v=at+v_0\Leftrightarrow t=\dfrac{v-v_0}{a}\quad (2)\nonumber\\
+\end{array}\\
+(2)\text{ in }(1):\quad v^2=v_0^2+2as
+\label{eq:v^2}
+\end{gather}
+Dementsprechend kann durch Auftragen von \(v^2(s)\) die Steigung \(m=2a\) einer Geraden bestimmt werden, und daraus die Beschleunigung berechnet werden. 
+\newpage
+\subsection{Geschwindigkeits-Zeit Diagramm}
+Durch die Grundgleichung \(v=at+v_0\) kann durch Auftragen der Wertetupel \(v_j(t_j)\) die Geradensteigung \(a\) bestimmt werden.
+\(v_0\) ist die maximale Geschwindigkeit, also unmittelbar nach Ende der Beschleunigung durch die schiefe Ebene. Es ist hier nicht notwendig \(t=t_0+t_j\) als Zeit zu nehmen, also die Zeit ab Bewegung auf der Auslauffläche zu betrachten, da nur die Geradensteigung interessiert, eine andere Zeit wäre nur eine Verschiebung der Geraden.\par
+\xfigure{h}{width=\textwidth}{Diagrammv(t)}{}{\(v(t)\) mit Steigung \(a\) der Geraden \(v_\text{voll}\) und \(v_{\text{hohl}}\)}
+Zur Erklärung des Diagramms: Die blauen Punkte sind alle 6 verschiedenen Geschwindigkeiten, kleine als auch große Lichtschrankenabstände. vollvgroß sind nur die für die Berechnung der Reibung betrachteten Geschwindigkeiten. \par
+\setcellgapes{3pt}
+\begin{table}[h]
+\centering\makegapedcells
+\caption{Erklärung der Diagrammelemente aus \cref{fig:Diagrammv(t)}}
+\begin{tabular}{|c|c|}
+\hline
+Element & Erklärung  \\\hline
+vollv & \makecell[c]{alle 6 Geschwindigkeiten für den Vollzylinder,\\ jeweils mit Fehlerbalken für \(v_j\) und \(t_j\)}\\
+vollgroß & nur \(v\) für \(p_j=\qty{0.09}{\cm}\)\\
+linear (vollvgroß) & Trendlinie/Ausgleichsgerade \(v(t)\) mit Gleichung unten\\\hline
+hohlv & Hohlzylinder\\
+\vdots & \vdots \\
+\hline
+\end{tabular}
+\label{table:erklärung}
+\end{table}
+\newpage
+
+Die bremsende Beschleunigung durch die Reibungskraft beträgt also:
+\[a_V=\qty{-2.0(1.2)}{\m\per\s\squared}\] 
+Den Fehler habe ich durch eine Fehlergerade von \(v_1+\Delta v_1\) nach \(v_3-\Delta v_3\) und dann der Differenzbildung mit der Ausgleichsgeraden bestimmt. Die Geschwindigkeitsfehler sind durch den sehr hoch geschätzten Fehler von \(\Delta P=\qty{5}{\cm}\) vor allem für die kleinen Abstände sehr hoch, für die großen aber auch nicht zu vernachlässigen, deswegen ist der Fehler der Beschleunigung auch ziemlich hoch. Die Zeitfehler \(\Delta t_j\) sind sehr klein und im Diagramm gerade so zu erkennen.
+
+Für den Hohlzylinder ergibt sich:
+\[a_H=\qty{-1.6(11)}{\m\per\s\squared}\]
+
+\subsection{Geschwindigkeitsquadrat - Ort \(p\)}
+Wie oben besprochen \cref{eq:v^2}, wird nun \(v^2(p_j)\) aufgetragen.
+\xfigure{h}{width=\textwidth}{diagrammv^2(p)}{}{\(v^2(p)\) mit Steigung \(m=2a\) der Geraden \(v^2_\text{voll}\) und \(v^2_{\text{hohl}}\)}
+
+Der y-Achsenabschnitt könnte der maximalen Geschwindigkeit \(v^2_{\text{max}}\) bzw. \(v_0^2\) entsprechen. Man liest ab:
+\begin{align}
+    \text{voll }v_0&=\qty{1.49}{\m\per\s} &\rightarrow && &\tcbhighmath{\sum E_{V,i}=\qty{0.07}{\joule}}\\
+    \text{hohl }v_0&=\qty{1.33}{\m\per\s} &\rightarrow && &\tcbhighmath{\sum E_{H,i}=\qty{-0.08}{\joule}}
+\end{align}
+
+Da die Summe der Energien (auch nochmal ausrechnen uff) für den Vollzylinder negativ ist, bedeutet das, die Geschwindigkeit für diesen ist zu hoch geschätzt, denn sonst würde hier Energieerhaltung gebrochen werden. Für den Hohlzylinder erhält man aber nun deutlich bessere Werte. Es sei mal dahingestellt, wie plausibel diese Anfangsgeschwindigkeitsschätzung ist. Es ärgert schon ein bisschen, dass die Daten keine schönere Genauigkeit zulassen.
+
+Auf jeden Fall kann man nun anhand der Steigungen der Geraden wiederum die bremsende Beschleunigung ausrechnen:
+\[a_V=\frac{m_V}{2}=\qty{2.0(13)}{\m\per\s\squared}\]
+\[a_H=\frac{m_H}{2}=\qty{1.6(11)}{\m\per\s\squared}\]
+Wie erwartet ergeben sich die gleichen Werte wie bei der Auswertung des \(v(t)\) Diagramms.
+
+\subsection{Rollreibungskoeffizient}
+Wir wissen, dass für eine Rollreibung genähert gilt: \begin{gather}
+  F_R=\mu_R F_N\label{eq:rollreibung}\\
+  F_R r=\mu_R \,m g \,r= I\dot{\omega} \quad\text{mit}\quad\dot{\omega}=\frac{a}{r}\\
+\rightarrow a=\frac{\mu_R m g r2}{I}
+\end{gather}
+Dadurch hängt die bremsende Beschleunigung vom Trägheitsmoment ab, unter der Annahme, dass der Rollreibungskoeffizient für Metall auf Metall (Alu auf Alu bzw. Messing auf Alu) nur einen vernachlässigbaren Unterschied aufweist. So lässt sich zwar erklären, dass die Bremsung der Translationsgeschwindigkeit für einen Körper mit weniger Rotationsenergie stärker erfolgt, als für einen mit mehr Rotationsenergie. Die Größenordnung der die beiden berechneten Beschleunigungen stehen, stimmt jedoch nicht mit diesen theoretischen Erwartungen überein, für die gegebenen Radien sollte eigentlich \(a_V=3.3a_H\) sein. Das ist ganz sicher nicht der Fall. Unsere Beschleunigungen stehen nur in einem Verhältnis von \(a_V=1.3a_H\).
+
+Allgemein ist die Interpretation der berechneten Bremsung sehr schwierig. Die Rollreibungsformel \cref{eq:rollreibung} wirkt eigentlich so, als ob man einfach \(a=\mu_Rg\) berechnen könnte. So ist dieser Koeffizient auch definiert, als Verhältnis der Reibungskraft zur Normalkraft. 
+
+Obwohl es sich bei Rollen um Rotationsbewegungen handelt, bei denen auch Drehmomente betrachtet werden müssen, steht im Wikipedia Artikel nichts dazu. Ich hab auch ehrlich keinen Nerv mehr, noch länger darüber nachzudenken. Es wäre zwar schön, ein Ergebnis für \(\mu_R\) mit Literaturwerten zu vergleichen. 
+
+\newpage
+\begin{table}[htbp]
+  \centering
+  \includegraphics[angle=90,height=0.9\textheight]{Tabelle.pdf}
+  \caption{Erfasste und umgerechnete Werte}
+  \label{table:tabellealles}
+\end{table}
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

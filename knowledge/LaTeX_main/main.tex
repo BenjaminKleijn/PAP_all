@@ -1,0 +1,111 @@
+\documentclass[final]{berichtclass}         % draft für schnelleres Kompilieren
+\input{cmds.tex}
+% \renewcaptionname{ngerman}{\figurename}{Abb.}     % idk if this has any effect
+
+% \defbibheading{literature}[Literaturverzeichnis]{\section{#1}\markboth{#1}{#1}\hypersetup{urlcolor=.}}  % define two bibliographys: {name}[titletext]{lets it appear in the toc, uses first argument [#1]};; -- didn't work good with the toc and hyperref, so I discarded this.
+% \defbibheading{figures}[Abbildungsverzeichnis]{\section{#1}\markboth{#1}{#1}\hypersetup{urlcolor=.}}
+\defbibfilter{literature}{not keyword=figure}
+\defbibfilter{figures}{keyword=figure} 
+\DefineBibliographyStrings{german}{
+  urlseen = {abgerufen:}, % oder nur "abgerufen:"
+}
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{\footnotesize}
+\setkomafont{pagehead}{\scshape}
+\setkomafont{pagination}{}
+
+\ohead{\headmark}
+\cfoot{\pagemark}
+
+\DeclareFloatingEnvironment[                        % wsl sollte das eher in die preamble
+    fileext=lop,
+    listname={Verzeichnis der Plots},
+    name=Plot,
+]{plot}
+\crefname{plot}{Plot}{Plots}                        % ob in die preamble weiß ich nicht
+\Crefname{plot}{Plot}{Plots}
+
+% \NewBibliograhpyString{ZuletztOnline}
+% \DefineBibliographyStrings{german}{ZuletztOnline = {[Online, Stand 02/2026]}}
+
+%% -----------------------------------------------
+%% |    Einstellungen zu jedem Versuch           |
+%% -----------------------------------------------
+
+
+%-Document settings
+% -- Variable Settings
+\newcommand{\documentTitle}{Auswertung Versuch}	    % Titel
+\newcommand{\versuch}{ 234 - Gitterspektrometer}    %Versuch
+\newcommand{\tutor}{Pham Huy Thang Le}		        % Tutor:in
+\newcommand{\Termin}{17.02.2026}	
+\newcommand{\releaseDate}{22.02.2026}				% Blockdeadline
+
+% -- Fixed Settings
+\newcommand{\documentAuthor}{Benjamin Kleijn}       % Autor				
+% \newcommand{\Abschluss}{Bachelor of Science}	
+\newcommand{\department}{Physik}	                % Fachrichtung
+\newcommand{\locationUniversity}{Heidelberg}	    % Uni Standort
+\newcommand{\Gruppe}{19}	                        % Gruppe
+\newcommand{\Kurs}{nachmittags}
+
+
+%% ------------------------------
+%% |    Versuchsausarbeitung    |
+%% ------------------------------
+\begin{document}
+\pagestyle{scrheadings}
+
+\tableofcontents
+\clearpage
+
+\section{Daten/Webseitenarchiv}
+\input{Inhalte/Datenbank.tex}
+\newpage
+
+\section{Referencing with cleverref}\label{chapter}
+\input{Inhalte/Referencing.tex}
+\newpage
+
+\section{Latexkernel}
+\input{Inhalte/latexkernel.tex}
+\clearpage
+
+\section{Figures}
+\input{Inhalte/Figures.tex}
+\newpage
+
+\section{Tables}
+\input{Inhalte/Tables.tex}
+\clearpage
+
+\section{equations}
+\input{Inhalte/Equations.tex}
+\newpage
+
+\section{Listings}
+\input{Inhalte/Listings.tex}
+\clearpage
+
+\section{tcolorbox}
+\input{Inhalte/tcolorbox.tex}
+\clearpage
+
+\section{Tikz}
+\input{Inhalte/Tikz.tex}
+\clearpage
+
+\section{Coma-Script}
+\input{Inhalte/coma_script.tex}
+\clearpage
+
+\begingroup
+\hypersetup{urlcolor=.}                     % set linkcolour for bib to fontcolour
+\printbibliography[heading=bibintoc,title={Literaturquellen},filter={literature}]
+\printbibliography[heading=bibintoc,title={Abbildungsquellen},filter={figures}]
+\endgroup
+\clearpage
+\appendix
+
+\end{document}
+

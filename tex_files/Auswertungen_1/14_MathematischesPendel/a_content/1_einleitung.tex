@@ -1,0 +1,142 @@
+\subsection{Motivation}
+Das Pendel ist ein klassisches Modell von Schwingungen/ des harmonischen Oszillators, an dem es noch vergleichsweise einfach ist die Grundlagen zu untersuchen, sowie die Charakteristika einer Schwingung zu verstehen. Genauer Fokus wird bei diesem Versuch auf der Einbeziehung vieler realer Effekte, wie Luftreibung, Auftrieb, die endliche Ausdehnung und rücktreibende Trägheitsmomente der Kugelmasse und des Fadens, etc. .. gelegt, die bei einer idealisierten Betrachtung ausgelassen werden würden.
+Die genaue Analyse dieser Einflüsse erlaubt eine verbesserte Bestimmung der Erdbeschleunigung am Versuchsort.
+
+Relevant für das wirkliche Leben ist diese Untersuchung einer Schwingung, um potentielle Anwendung besser einschätzen und verstehen zu können. Zum Beispiel kann bei Gebäuden wie Wolkenkratzern eine vom Wind angeregte Schwingung des gesamten Gebäudes durch ein Pendel im Inneren zum Teil kompensiert werden. Dies nennt man \emph{tuned mass damper}. Hierzu gibt es ein tolles Video von Veritasium \autocite{veritasium_skyscraper}. 
+
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit einem Pendel wird:
+\begin{itemize}
+    \item genaue Messungen der Länge und Schwingungsdauer des Pendels
+    \item viele verschiedene unideale Effekte werden zur Korrektur einbezogen
+    \item daraus wird die Erdbeschleunigung/Ortsfaktor für Heidelberg bestimmt
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{Versuchsaufbau.png} 
+\caption{Versuchsaufbau \autocite{Skript_1}}
+\label{fig:aufbau}
+\end{wrapfigure}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item Mathematisches Pendel mit zwei Spiegelskalen
+    \item Stoppuhr
+    \item Messchieber 
+    \item Lichtschranke mit Zähler
+\end{enumerate}
+
+\subsubsection{Versuchsaufbau}
+Das mathematische Pendel besteht aus einer Kugel, die an einem dünnen Faden befestigt ist und an einer höhenverstellbaren Aufhängung frei schwingen kann. Zur präzisen Bestimmung der Pendellänge wurde eine vertikale Spiegelskala parallel zum Faden angebracht. Mithilfe von Nivellierschrauben konnte die Skala justiert werden, sodass der Faden in allen Aufhängungspositionen senkrecht verlief. Für die Messung der Auslenkung und zur späteren Bestimmung der Dämpfungskonstanten \(\delta\) kam zusätzlich eine horizontale Spiegelskala zum Einsatz. 
+
+\subsubsection{Messverfahren}
+Zunächst wurde die Pendellänge \(l\) bestimmt, die vom Aufhängepunkt bis zur Kugelmitte reicht, daraus ergibt sich die Fadenlänge \(l'\) durch Subtraktion des Kugelradiuses \(r\), der mithilfe des Messchiebers gemessen wurde. Hierfür wurden die Skalenwerte am Aufhängepunkt sowie an der oberen und unteren Kante der Kugel abgelesen. Die Messung wurde für drei verschiedene Höhen der Aufhängung durchgeführt. Aus den Werten konnte die Pendellänge und ihr relativer Fehler berechnet werden.\\
+Die Periodendauer wurde in einem ersten Schritt durch fünf Messungen von je 20 Schwingungen bestimmt.\\
+Der Fehler des Ortsfaktors nach \cref{eq:g_ideal} hängt vom Fehler der Länge und der Periodendauer ab. Der Bottleneck bzw. untere Schranke für den Fehler stellt die Längenmessung dar. Deswegen wäre es sinnlos, die Genauigkeit der Periodendauermessung durch die Messung einer größeren Schwingungsanzahl \(n\) über die Genauigkeit der Länge hochzutreiben. Mittels einer in den theoretischen Grundlagen betrachteten Formel wird die entsprechende Zahl \(n\) bestimmt. Es wird die Zeit von \(n\) Schwingungen gemessen, wobei diese Zahl von einer Lichtschranke, die unterhalb der Gleichgewichtslage positioniert wurde, erfasst wird, sodass nicht händisch mitgezählt werden muss.
+
+Zusätzlich wurde während dieser langen Schwingung alle 30 Sekunden die Amplitude mithilfe der horizontalen Spiegelskala abgelesen. Damit konnte im Nachhinein die Abnahme der Amplitude analysiert und die Dämpfungskonstante \(\delta\) bestimmt werden.
+
+\subsection{Theoretische Grundlagen der Physik}
+\subsubsection{Das prinzpielle mathematische Pendel}
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{pendel.png} 
+\caption{Kräfte am Fadenpendel \autocite{pendelkräfte}}
+\label{fig:Hofmann}
+\end{wrapfigure}
+Für kleine Auslenkungen \(\varphi\) eines Pendels mit Masse \(m\), Länge \(l\) und Schwerebeschleunigung \(g\) kann die Bewegung des ungedämpften mathematischen Pendels mit folgender Rückstellkraft beschrieben werden: 
+\begin{gather}
+    F_{\text{tan}}(t)=-mg\sin(\varphi(t))\\
+    F_{\text{tan}}(t)=ma_{\text{tan}}(t)
+\end{gather}
+Hierbei ist \(a_{\text{tan}}\) die Tangentialbeschleunigung, die der analog zur Bogenlänge \(x=l\varphi\) (mit \(x\) der als gerade genäherten Strecke die der Massenpunkt zurücklegt), anders ausgedrückt werden kann: \(a_{\text{tan}}=l\ddot{\varphi}\). Es ergibt sich dann unter Kleinwinkelnäherung \(\sin(\varphi)\approx \varphi\) die Differentialgleichung
+\begin{gather}
+    ml\ddot{\varphi}=-mg\sin(\varphi(t))\\
+    \ddot{\varphi} + \frac{g}{l} \varphi = 0
+    \label{eq:diff_naiv}
+\end{gather}
+Die Lösung dieser Gleichung entspricht der eines harmonischen Oszillators. Es ergibt sich für die Schwingungsdauer
+\begin{align}
+    T_0 &= 2\pi \sqrt{\frac{l}{g}}\quad\text{und daraus}
+    \label{eq:T0}\\
+   g &= \frac{4\pi^2 l}{T_0^2}.
+    \label{eq:g_ideal}
+\end{align}
+
+\subsubsection{Fehlerbetrachtung}
+Die Periodendauer \(T_0\) eines Fadenpendels ist unabhängig von Amplitude oder Reibung. Dementsprechend kann man durch eine Zeitmessung \(t\) von sehr vielen Schwingungen \(n\) über \(T_g=\frac{t}{n}\) einen Messwert \(T_g\) erheben.
+Für den relativen Fehler der Periodendauer gilt
+\begin{equation}
+    \frac{\Delta T_g}{T_g} = \frac{\Delta t}{n T_g},
+    \label{eq:fehler_T}
+\end{equation}
+wobei \(\Delta t\) die Stoppgenauigkeit und \(n\) die Anzahl der gemessenen Schwingungen ist. Der relative Fehler der Erdbeschleunigung ergibt sich zu
+\begin{equation}
+    \frac{\Delta g}{g} = \sqrt{\left(\frac{\Delta l}{l}\right)^2 + \left(\frac{2\Delta t}{nT_g}\right)^2}.
+    \label{eq:fehler_g}
+\end{equation}
+Durch Erhöhung von \(n\) kann der Zeitfehler klein gehalten werden, sodass die Genauigkeit von \(g\) durch die Längenmessung, also den relativen Fehler von \(l\) nach unten begrenzt wird. Man fordert also, dass der relative Fehler von \(T_g\) kleiner als z.B. 30\% des relativen Fehlers von \(l\) ist, d.h.:
+\begin{equation}
+    \frac{2 \Delta t}{n T_g} \approx 0{,}3 \frac{\Delta l}{l}.
+    \label{eq:bedingung_n}
+\end{equation}
+Da \(T_g\) noch nicht bekannt ist, wird zur Berechnung ein Ansatz \(T_0\) benutzt, der nur über \(n=20\) bestimmt wurde.
+
+\subsubsection{Exaktere Betrachtung des Drehpendels}
+Die erste Korrektur ist die Betrachtung des Pendels als Drehpendel mit dem Aufhängepunkt als Drehachse. Die allgemeine Schwingungsdauer ergibt sich zu
+\begin{equation}
+    T = 2\pi \sqrt{\frac{J}{D}},
+    \label{eq:T_drehpendel}
+\end{equation}
+wobei \(J\) das Trägheitsmoment bezüglich der Drehachse und \(D\) die Winkelrichtgröße ist. Das Gesamtträgheitsmoment setzt sich aus Kugel und Faden zusammen:
+\begin{equation}
+    J = \underbrace{m_K l^2 + \frac{2}{5} m_K r^2}_{J_K} 
+      + \underbrace{\frac{1}{3} m_F l'^2}_{J_F},
+    \label{eq:J}
+\end{equation}
+
+mit Kugelmasse \(m_K\), Fadenmasse \(m_F\), Kugelradius \(r\), Pendellänge \(l\) und Fadenlänge \(l'\).
+
+Wird die Auftriebskraft der Kugel berücksichtigt, so muss man das Drehmoment der Gravitationskraft dahingehend angleichen, dass die Masse der verdrängten Luft \(m_L=\rho_LV_K\) von der Kugelmasse abgezogen wird. Das rücktreibende Drehmoment lautet, mit Kraft \(F\) und Hebel \(r\):
+\begin{equation}
+    M = F\times r = -\left[\left(m_K - \rho_L V_K \right) g l \sin \varphi + \frac{1}{2} m_F g l' \sin \varphi \right],
+    \label{eq:drehmoment}
+\end{equation}
+wobei \(\rho_L\) die Luftdichte und \(V_K\) das Volumen der Kugel ist. Mit der Kleinwinkelnäherung \(\sin\varphi \approx \varphi\) folgt
+\begin{equation}
+    D = m_K g l \left(1 - \frac{\rho_L}{\rho_K} + \frac{m_F}{2 m_K}\right),
+    \label{eq:D}
+\end{equation}
+wobei \(\rho_K\) die Dichte der Kugel ist. Setzt man \cref{eq:J} und \cref{eq:D} in \cref{eq:T_drehpendel} ein und verwendet die Näherung \(1/(1-\epsilon) \approx 1+\epsilon\), so ergibt sich
+\begin{equation}
+    T^2 = \frac{4 \pi^2 l}{g} \left(1 + \frac{2r^2}{5l^2} + \frac{\rho_L}{\rho_K} - \frac{m_F}{6m_K}\right).
+    \label{eq:T_korr1}
+\end{equation}
+
+\subsubsection{Weitere Korrekturen}
+Die um den Winkel korrigierte Schwingungsdauer \(T_2\) hängt zusätzlich vom Anfangswinkel \(\varphi_0\) ab, also praktisch der maximalen Amplitude:
+\begin{equation}
+    T_2^2 = T_1^2 \left(1 + \frac{\varphi_0^2}{8}\right).
+    \label{eq:T_winkel}
+\end{equation}
+Weiterhin beeinflusst die Luftreibung die Bewegung. Mit der Dämpfungskonstanten \(\delta\) gilt für die erneute korrigierte \(T_3\):
+\begin{equation}
+    T_3^2 = T_2^2 \left(1 + \frac{\delta^2}{\omega_0^2}\right),
+    \label{eq:T_daempfung}
+\end{equation}
+wobei \(\omega_0\) die ungedämpfte Kreisfrequenz ist.
+
+Unter Berücksichtigung aller Korrekturen ergibt sich schließlich
+\begin{equation}
+    T_0^2 = \frac{4\pi^2 l}{g} \left(1 + \frac{2r^2}{5l^2} + \frac{\rho_L}{\rho_K} - \frac{m_F}{6 m_K} + \frac{\delta^2}{\omega_0^2} + \frac{\varphi_0^2}{8}\right).
+    \label{eq:T_gesamt}
+\end{equation}
+
+Hier ist \(T_0\) die gemessene Periodendauer, \(\delta\) ist der Dämpfungskoeffizient, der aus der Amplitudenabnahme \(a(t)\) der Schwingung bestimmt werden kann, mittels:
+\begin{equation}
+    a(t)=a_0e^{-\delta t}
+    \label{eq:Amplitudenabnahme}
+\end{equation} 
+Hier ist \(a_0\) die maximale Amplitude. \(a(t)\) wird grafisch auf logarithmischem Papier aufgetragen und daraus \(\delta\) extrahiert.
+Alle restlichen Größen werden berechnet: Die angegebenen Massen \(m_F\) und \(m_K\) lassen sich aus der Eisendichte und den Volumina des Fadens und der Kugel berechnen, die über den gegebenen Radius bestimmbar sind.
+
+Gleichung \cref{eq:T_gesamt} bildet die Grundlage für die experimentelle Auswertung unter Berücksichtigung vieler Korrekturen. \cref{eq:g_ideal} ist unter idealisierten Bedingungen angenommen.

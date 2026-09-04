@@ -1,0 +1,90 @@
+\subsection{Aufgabe 1 - \(F\) aus Kupferelektrolyse}
+Mithilfe von \(\Delta I=\qty{1.00(4)}{\ampere}\), \(t=\qty{1800(10)}{\s}\) berechnet man:
+\begin{align}
+    Q=It&&\Delta Q=\sqrt{(t\Delta I)^2+(I\Delta t)^2}&&\tcbhighmath[colback=white]{Q=\qty{1800(70)}{\ampere\s}}
+\end{align}
+Die Massenunterschiede \(m_{\text{diff}}=|m_E-m_A|\) mit Fehler ergeben sich zu:
+\begin{equation}
+    \Delta m_{\text{diff}}=\sqrt{\Delta m_E^2 + m_A^2}
+\end{equation}
+\[m_{\text{Kathode}}=\qty{0.59980(14)}{\gram}\]
+\[m_{\text{Anode}}=\qty{0.62540(14)}{\gram}\]
+
+Der Fehler für \(F\) nach \cref{eq:F} ist dann:
+\begin{equation}
+    \Delta F=\sqrt{\left(\frac{-Q M}{m^2 z} \Delta m\right)^2+\left(\frac{M}{m z} \Delta Q\right)^2}
+\end{equation} 
+Aus dem Periodensystem \autocite{Periodensystem} entnehmen wir \(M_{\text{mol}}=\qty{63.456}{\gram\per\mole}\), sowie aus der Tatsache, dass Kupfer \ce{Cu^2+}-Ionen bildet, dass \(z=2\). Es ergibt sich:
+\begin{rb}
+F_{\text{Kathode}}=\qty{9.5(4)}{\four\coulomb\per\mole} \quad\quad\quad F_{\text{Anode}}=\qty{9.1(4)}{\four\coulomb\per\mole}
+\end{rb}
+Der sehr hohe Fehler ergibt sich aus dem sehr hoch abgeschätzten \(\Delta t=10\)s. Grund dafür ist, dass wir nicht wissen, ob exakt \(\qty{1800}{\s}\) gestoppt wurden, und evtl. leicht zu spät erst die Stromstärke auf einem adäquaten Niveau lag (das Einstellen des Schiebewiderstandes war nicht von \(t=\qty{0}{\s}\) exakt).
+
+Da dieser Fehler so hoch ist, ergibt sich auch für die Sigma-Abweichung zum Literaturwert \(F_{\text{Lit}}=\qty{9.64853321233100184e4}{\coulomb\per\mole}\) \autocite{Faraday} ein viel zu kleiner Wert, sie ist halt antiproportional zum Fehler, der immens hoch ist, deswegen ist die Aussagekraft der Sigma-Abweichung eher beschränkt.
+\sisetup{per-mode=fraction}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von $F^{\text{exp}}$ und $F^{\text{lit}}$}
+\begin{tabularx}{\textwidth}{lZZZZS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & F^{\text{exp}}[\unit{\four\coulomb\per\mole}] & F^{\text{lit}}[\unit{\four\coulomb\per\mole}] & \text{abs. Abw.}[\unit{\four\coulomb\per\mole}] & \text{proz. Abw.}[\unit{\percent}] & {S\([\sigma]\)} \\\midrule
+       \text{Kathode} & \num{9.4(0.4)} & 9.648 & \num{0.2(0.4)} & \num{3(5)} & 0.7 \\
+       \text{Anode} & \num{9.1(0.4)} & 9.648 & \num{0.5(0.4)} & \num{6(5)} & 1.4 \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_F} 
+\end{table}
+
+Der absolute Fehler ist sehr klein, die Messung scheint also dennoch ein Erfolg zu sein. 
+Es stellt sich heraus, dass die Methode, mit der Kathodenplatte, die Kupfer hinzugewonnen hat, ein genaueres Ergebnis herauskommt. Dies kann daran liegen, dass beim Abspülen der Anodenplatte evtl.\ Kupfer in Lösung gegangen ist oder abgelöst wurde. Dadurch hat sich die Anodenmassendifferenz vergrößert, und dadurch nach \cref{eq:F} \(F\) verringert -> größere Abweichung vom Literaturwert.
+
+
+\subsection{Aufgabe 2 - \(F\) aus der Wasserelektrolyse}
+Mithilfe der Korrekturgleichungen für \(V_{\text{mol}}\) \cref{eq:V_molkorrigiert}, \(p\) \cref{eq:p} und \cref{eq:n1,eq:n2} folgt die Formel:
+\begin{equation}
+    F=\frac{It\;V_{\text{mol}}^0}{zV}\frac{p_0}{p_L-0.9p_D^{\ce{H2O}}}\frac{T}{T_0}
+\end{equation}
+Hier sind einige Größen fehlerbehaftet:\\
+Das Volumen \(V=V_E-V_A\) entsteht aus einer Differenzbildung, der Fehler einer Einzelmessung \(\Delta V_i=\qty{0.2e-3}{\liter}\) wird quadratisch addiert mit:
+\begin{equation}
+    \Delta V_=\sqrt{V_E^2-V_A^2}=\sqrt{2}\Delta V
+\end{equation} 
+Es folgt: \(V_{\ce{H2}}=\qty{42.40(28)e-3}{\liter}\) und \(V_{\ce{H2O}}=\qty{20.50(28)e-3}{\liter}\). 
+
+Die Temperatur \(T=\qty{24(1)}{\degreeCelsius}\), die Stromstärke mit \(I=\qty{0.810(36)}{\ampere}\), der gemessene Luftdruck \(p_L=\qty{1005(1)}{\milli\bar}\), die Zeit mit \(t=\qty{}{}\)
+
+OH WAIT-********
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+    \centering
+\includegraphics[height=5cm]{sadface.png} 
+\caption{Gemütszustand 1 ? \autocite{sadface}}
+\label{fig:sadface}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.5\textwidth}
+    \centering
+\includegraphics[height=5cm]{happyface.png}
+\caption{Gemütszustand 2 ? \autocite{sadface}}
+\label{fig:happyface}
+\end{subfigure}
+\caption[\emph{Meme:} Grober Fehler \autocite{sadface}]{Ich hätte nicht gedacht, dass das einmal passiert, \glqq grobe Fehler sollten nicht auftreten\grqq{}}
+\end{figure}
+
+Also, ich finde im Messprotokoll keine gemessene Zeit, wie lange die Elektrolyse lief. Auch aus Altprotokollen kann ich keinen Wert extrahieren, da diese natürlich je nach Aufbau und eingestellter Spannung, Anfangsvolumen, Endvolumen schwanken. Jetzt alle Werte aus Altprotokollen je nach ihren Aufbauwerten zu plotten, daraus bei unserem gegebenen Volumina und Stromstärken eine Zeit abzulesen, dass spare ich mir. 
+
+Den Fehler würde man zumindest folgend ausrechnen, für \(p=p_L-0.9p_D^{\ce{H2O}}\) ist der relative Fehler auch trivial, da der zweite Summand beim partiellen Ableiten \(\pdb{p}{p_L}\) einfach wegfällt.
+\begin{equation}
+    \Delta F=F\sqrt{\left(\frac{\Delta I}{I}\right)^2+\left(\frac{\Delta t}{t}\right)^2+\left(\frac{\Delta p_L}{p_L}\right)^2+\left(\frac{\Delta V}{V_i}\right)^2}
+\end{equation}
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

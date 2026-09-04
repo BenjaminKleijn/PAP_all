@@ -1,0 +1,58 @@
+\subsection{Messverfahren}
+\subsection*{\normalsize Aufgabe 1: Spannungsmessung mit verschiedenen Messgeräten}
+Skizzen zu den Aufbauten sind in \cref{fig:skizzen12,fig:skizzen3.pdf} vorhanden.
+Für die Spannungsmessung gilt also:
+\begin{itemize}
+    \item Drehspulinstrument/Voltmeter (Schaltskizze1): parallel zur Batterie
+    \item Spannungsmessung mit Kompensator (Skizze2): parallel zur Batterie
+    \item Spannungsteiler: zwei Widerstände mit der Batterie in Serie 
+    \item Messbereichserweiterung: Dekadenwiderstand in Serie
+\end{itemize} 
+\xfigpdf{h}{angle=90,width=\textwidth}{skizzen12.pdf}{}{Spannungsmessungen mit Drehspulinstrument und Kompensator}
+Zunächst wurde die Batteriespannung \(U_0\) mithilfe des als Voltmeter betriebenen Drehspulinstruments gemessen. Anschließend wurden die Spannungen \(U_{R1}\) und \(U_{R2}\) über den beiden gleich großen Widerständen des Spannungsteilers durch Umstecken des Voltmeters/Kompensators bestimmt. Durch den Vergleich der beiden Methoden konnte der Einfluss des Innenwiderstands des Drehspulinstruments auf die Messergebnisse untersucht werden.
+Der Kompensator diente hier als nahezu idealer Vergleich, da sein sehr großer Innenwiderstand den Stromfluss während der Messung praktisch vernachlässigbar machte.
+\newpage
+\subsection*{\normalsize Aufgabe 2: Bestimmung des Innenwiderstands der Batterie}
+Für die Widerstandsmessung (Schaltskizze3) gilt also:
+\begin{itemize}
+    \item Drehspulinstrument/Amperemeter: in Serie zur Batterie
+    \item Strommessung mit Kompensator: in Serie zur Batterie
+    \item Messbereichserweiterung: Dekadenwiderstand in parallel
+    \item Last: Schiebewiderstand in Serie
+\end{itemize} 
+\xfigpdf{h}{angle=90,width=\textwidth}{skizzen3.pdf}{}{letzter Aufbau zur Bestimmung des Widerstandens, Drehspulinstrument zur Stromstärkenmessung und Kompensator zur Spannungsmessung}
+
+Der Messbereich wurde mit dem Dekadenwiderstand von \(\qty{10}{\milli\ampere}\) auf \(\qty{200}{\milli\ampere}\) erweitert. Mit dem Schiebewiderstand als Last konnte nun die Stromstärke \(I\) reguliert werden (gemessen mit dem Amperemeter), und gleichzeitig am Kompensator, der parallel zur Batterie geschaltet war, die Klemmenspannung \(U\) gemessen werden.
+
+Die Messpunkte werden dann in ein \(U(I)\)-Diagramm eingetragen. Erwartungsgemäß sollte sich eine lineare Abhängigkeit gemäß
+\begin{equation}
+    U = U_q - R_i I
+\end{equation}
+vgl. \cref{eq:realquelle} ergeben, wobei die Steigung die Größe des Innenwiderstands \(R_i\) der Batterie liefert.
+
+\vfill
+\subsection{Messprotokoll}
+\clearpage
+
+\begin{figure}[htbp]
+      \centering
+    \includegraphics[page=1,width=\textwidth]{V23_11.pdf}
+\end{figure}
+
+\newpage
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=1,width=\textwidth]{V23_12.pdf}
+\end{figure}
+\clearpage\newpage
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=1,width=\textwidth]{V23_2.pdf}
+\end{figure}
+\clearpage\newpage
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=1,scale=0.8]{V23_3.pdf}
+\end{figure}

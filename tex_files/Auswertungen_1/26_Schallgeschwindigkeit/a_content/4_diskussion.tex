@@ -1,0 +1,75 @@
+\subsection{Schwingungsmoden}
+Durch die Bestimmung von \(\bar{d}_1=\qty{8,6}{\cm}\) in Tabelle \cref{table:dluft} lässt sich ein Ansatz für die Wellenlänge \(\lambda\)
+der Schallwelle bestimmen: Angenommen der Fehler für \(\Delta d=1\)cm, so ist durch \cref{eq:d} \(\lambda=\qty{17,2\pm1}{\cm}\). Nun kann man mithilfe von Umstellen der \cref{eq:l}
+herausfinden, um die wievielte n-te harmonische Schwingung es sich handelt.
+\begin{align}
+    n=\frac{\left(\frac{4l}{\lambda}-1\right)}{2}&&\Delta n=\sqrt{\left(\frac{2}{\lambda}\Delta l\right)^{2}+\left(\frac{-2l}{\lambda^{2}}\Delta \lambda\right)^{2}}
+\end{align}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular*}{0.6\textwidth}{c @{\extracolsep{\fill}} S[table-format=2.1] S[table-format=1.2] S[table-format=1.2] }
+\toprule
+Nr. & {Messreihe $l$ [\unit{\cm}]} & { $n$ } & { $\Delta n$ } \\
+\midrule
+1 & 13.8    &    1.10     & 0.22\\
+2 & 22.2    &     2.08   &  0.32\\
+3 & 30.7    &     3.1    & 0.4 \\
+4 & 39.4    &      4.1   & 0.5 \\
+5 & 48.2    &      5.1   & 0.7\\
+6 & 57.0      &      6.1  & 0.8\\
+7 & 65.3    &      7.1  & 0.9\\
+8 & 74.0      &     8   & 1 \\
+9 & 82.6    &      9   &1 \\
+\bottomrule
+\end{tabular*}
+\caption{Bestimmung der n-ten Harmonischen}
+\label{table:Mode}
+\end{table}
+
+Wie erwartet kommen ungefähr die natürlichen Zahlen heraus, im Experiment wurde keine Resonanzmode übersprungen und bei der ersten angefangen, das ist eine schönes Ergebnis. Das heißt hier jetzt z.\ B.\ , dass für ein Rohr der Länge \(l=\qty{82,6}{\cm}\) die Frequenz \(f=\qty{2013}{\hertz}\) die 9-te Resonanzfrequenz ist. Hier hätte man auch gut ohne Fehler arbeiten können, da nur eine qualitative Übereinstimmung ausgetestet wurde.
+\newpage
+\subsection{Vergleich der Bestimmungsmethoden}
+Es liegen zwei Methoden der \(c\)-Bestimmung vor: Per allgemeinem Weg mit Input der experimentellen Temperatur und per Untersuchen einer stehenden Welle, deren Abweichungen sind:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(c_{(0)}^{\text{allg.}}\) und \(c_{(0)}^{\text{welle}}\)}
+\begin{tabularx}{\textwidth}{LZZZZS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & c^{\text{allg.}}\;[\unit{\m\per\s}] & c^{\text{welle}}\;[\unit{\m\per\s}] & \text{abs. Abw.}\;[\unit{\m\per\s}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       c^{\text{Luft}} & \num{345.5(0.6)} & \num{346(3)} & \num{1(4)} & \num{0.1(0.9)} & 0.17 \\
+       c^{\ce{CO_2}} & \num{270.3(0.5)} & \num{261(8)} & \num{9(9)} & \num{3(3)} & 1.2 \\
+       c_0^{\text{Luft}} & \num{331.3(0.8)} & \num{331(3)} & \num{0(4)} & \num{0.1(1.0)} & 0.1 \\
+       c_0^{\ce{CO_2}} & \num{259.9(0.6)} & \num{250(6)} & \num{10(7)} & \num{3.8(2.4)} & 1.7 \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_c} 
+\end{table}
+\FloatBarrier
+
+Durch die Normalisierung mit der Temperatur steigt der Fehler leicht, da nun noch der Temperaturfehler hinzukommt. Ansonsten sind die Abweichungen akzeptabel.
+
+\subsection{Verhältnisse}
+Die Verhältnisse zeigen nur geringe Abweichung. Wenn man \(V^{\text{allg}}=\num{1.278}\), also nicht fehlerbehaftet setzt, steigt die Abweichung nur minimal auf \(1.5\sigma\).
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(V^{\text{allg}}\) und \(V^{\text{welle}}\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        V^{\text{allg}}&V^{\text{welle}}&\text{abs. Abw.}&\text{proz. Abw.}\;[\unit{\percent}]&S\;[\sigma]\\\midrule
+        \num{1.32(0.03)}&\num{1.278(0.004)}&\num{0.04(0.04)}&\num{3.2(2.3)}&\num{1.4}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_V} 
+\end{table}
+\FloatBarrier
+
+\subsection{Laufzeitmessung}
+Es ergibt sich eine Abweichung zum allgemein bestimmten Wert von \(2,37\sigma\). Dieser hohe Wert ergibt sich eventuell aus einer falschen Temperatur, die zum angleichen auf Normalbedingungen verwendet wurde, denn vor Start der Laufzeitmessung wurde nicht erneut die Raumtemperatur notiert.
+
+\subsection{Anmerkungen zu den Fehlern}  
+\Cref{eq:c_0_fehler} wird in \secref{sec:Aufgabe1} benutzt, um die Werte auf Normalbedingungen anzugleichen. Sie selber beinhaltet einen Fehler \(\Delta T\) und \(\Delta c\), \(\Delta c\) impliziert aber auch schon denselben Fehler \(\Delta T\), siehe \cref{eq:fehlerm}. Das bedeutet, \(\Delta T\) wird doppelt benutzt. Ob dies die mathematisch-physikalisch richtige Vorgehensweise ist, weiß ich nicht. 
+
+Vor allem die \(c\)-Bestimmung über die Resonanzhöhen ist an sich ein sehr interessanter Versuch, bei dem man durch das Studieren der physikalischen Grundlagen einiges über Schallwellen lernt. Jedoch ist die Einstellung der Wassersäule mit einer sehr großen Ungenauigkeit behaftet, da die schwer einstellbare Apparatur in Verbindung mit menschlichem Ermessen (wann entschieden wird, ob sich eine stehende Welle gebildet hat) für einen Einstellfehler von geschätzt \(\qty{2}{\cm}\) bei jeder Erhebung der Längen \(l_n\) sorgt. Dieser geht eigentlich über \(d=l_{n+1}-l_n\) als Fehler in die Wellenlängenbestimmung ein. In die in den Tabellen \cref{table:dluft,table:dco2} haben wir jedoch jedes Mal nur statistische Fehler betrachtet und den Messfehler unbeachtet gelassen. Grobe Messungenauigkeiten bzw. ein systematischer Fehler an der Apparatur gehen so in der Betrachtung verloren.
+
+Leider haben wir überlesen, auch für \ce{CO_2} eine zweite Messreihe zu machen, sowie pro Messreihe immer 11 Werte für \(l\) zu erheben, sodass man 10-Werte für \(d\) berechnen kann. Eine größere Anzahl der Probemessungen hätte hier evtl. den ziemlich hohen mittleren Fehler \(\sigma_{\overline{d}}\) verringert.

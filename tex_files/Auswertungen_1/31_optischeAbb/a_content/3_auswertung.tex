@@ -1,0 +1,116 @@
+\subsection{Aufgabe 1 - Brennweite des Achromats}
+Aus \cref{eq:f} folgt
+\begin{equation}
+    f=\frac{bg}{b+g}
+\end{equation}
+Die Fehlerformel bestimmt sich zu:
+\begin{equation}
+    \Delta f^{2}=\left(\left(\frac{-bg}{(b+g)^{2}}+\frac{g}{b+g}\right)\Delta b\right)^{2}+\left(\left(\frac{-bg}{(b+g)^{2}}+\frac{b}{b+g}\right)\Delta g\right)^{2}
+\end{equation}
+
+Berechnet wurde aus 7 messbaren Wertepaaren für b und g, jeweils 3 für I \& III und einem Wertepaar für II, sowie einem Ablesefehler \(\Delta b , \Delta g = \qty{0,1}{\cm}\):\\
+\makebox[\textwidth][c]{\underline{\(f=\qty{9,93 \pm 0,05}{\cm}\)}}
+Die richtige Brennweite von \(f=\qty{10}{\cm}\) liegt nicht innerhalb der wahrscheinlich zu niedrig eingeschätzten Fehlergrenzen. Für erhöhte Fehler \(\Delta g, \Delta b = \qty{0,2}{\cm}\) ergibt sich:\\
+\makebox[\textwidth][c]{\underline{\(f=\qty{9,93 \pm 0,08}{\cm}\)}}
+
+Grafisch ermittelt wurden in \cref{fig:Brennweite.pdf}:\\
+\makebox[\textwidth][c]{\underline{\(f=\qty{10 \pm 0,6}{\cm}\)}}
+In \cref{fig:Strahlengang.pdf} wurden mit gegebener Brennweite \(f=\qty{10}{\cm}\) und den gemessenen Gegenstandsweiten \(g\) grafisch \(b\)\&\(B\) ermittelt. Aufgrund zeichnerischen und ableserischen Ungenauigkeiten wurde ein Fehler von \(\Delta b,\Delta B=\qty{0,3}{\cm}\) geschätzt. 
+Die ermittelten Ergebnisse lagen im angegebenen Fehlerbereich der im Versuch gemessenen Werte (siehe Tabelle in \cref{fig:Strahlengang.pdf}).\\\\
+Als dritten Teil der Aufgabe 1 folgt die Auswertungstabelle:
+\begin{table}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{0.8\textwidth}{c TTcTc}
+\toprule
+\textbf{Nr.} & \textbf{g} & \textbf{b} & \textbf{Art} & \textbf{Richtung} & \boldmath\(\beta\) \\
+\midrule
+I & \(\infty > g > 2f\) & \(f < b < 2f\) & reell & umgekehrt & \(<1\) \\
+II & \(g = 2f\) & \(b  =2f\) & reell & umgekehrt & 1 \\
+III & \(2f > g > f\) & \(b > 2f\) & reell & umgekehrt & \(>1\) \\
+IV & \(g = f\) & \(b \rightarrow \infty\) & virtuell & N/A & N/A \\
+V & \(f > g\) & N/A & virtuell & aufrecht & N/A \\
+\bottomrule
+\end{tabularx}
+\caption{Messdaten Aufgabe 1}
+\end{table}
+\clearpage
+
+\xfigpdf{p}{width=\textwidth}{Strahlengang.pdf}{}{Grafische Ermittlung der Brennweite \(f\)}
+\clearpage
+\xfigpdf{p}{width=\textwidth}{Brennweite.pdf}{}{Grafische Ermittlung von \(b\)}
+\FloatBarrier
+
+\subsection{Aufgabe 2 - Besselverfahren}
+Mithilfe der \cref{eq:Bessel} wird die Brennweite einer neuen, bikonvexen Linse bei weißem Licht bestimmt. Dazu wurde bei einem Abstand \(l=\qty{65}{\cm} > 5f\) jeweils 3-mal ein Messwert für Schärfeposition \(x_1\) und \(x_2\) erhoben.
+Wie erwartet ist der mittlere Fehler des Mittelwerts \(\sigma_{\bar{f}}\) aufgrund der sehr kleinen Anzahl an erhobenen Messungen sehr klein und deswegen im Vergleich zu den Ablesefehlern von \(\Delta x_{1},\Delta x_{2}=\qty{0,1}{\cm}\) zu vernachlässigen.
+
+\begin{table}[h]
+\centering
+\begin{tabularx}{\textwidth}{cZZZZZZZZ}
+\toprule
+Nr. & l\;[\unit{\cm}] & x_1\;[\unit{\cm}] & x_2\;[\unit{\cm}] & d\;[\unit{\cm}] & \bar{d}\;[\unit{\cm}] & f\;[\unit{\cm}] & \bar{f}\;[\unit{\cm}] & \sigma_{\bar{f}}\;[\unit{\cm}]\\
+\midrule 
+ 1 & 65     & 16.3    & 49.2 & 32.9 & 33.00   & 12.09 & 12.07 & 0.01 \\ 
+ 2 &        & 16.2   & 49.2 & 33     &         & 12.06  &      & \\ 
+ 3 &        & 16.4   & 49.4 & 33     &         & 12.06  &      & \\ 
+\bottomrule
+\end{tabularx}
+% \label{}
+\caption{Messdaten Besselverfahren}
+\end{table}
+
+Aus \(\Delta d=\sqrt{(-\Delta x_1)^{2}+(\Delta x_2)^{2}}=\sqrt{(-\qty{0,1}{\cm})^{2}+(\qty{0,1}{\cm})^{2}}=\qty{0,14}{\cm}\)
+sowie \(\Delta l=\qty{0,2}{\cm}\) ergibt sich mit 
+\begin{equation}
+    \Delta f=\sqrt{\left(\left(\frac{1}{2}-\frac{-d^2+l^2}{4l^2}\right) \Delta l\right)^2+\left(\frac{-d}{2l} \Delta d\right)^2}
+\end{equation}
+\makebox[\textwidth][c]{\underline{\(f_{\text{weiß}}=\qty{12,07 \pm 0,07}{\cm}\)}}
+
+\subsection{Aufgabe 3 - Besselverfahren mit rot und blau}
+Wie in Aufgabe 2 werden dieselben Rechnungen gemacht. Es ergibt sich bei rot ein niedrigerer Wert für \(d=\qty{32,7}{\cm}\), bei blau ein höherer Wert von \(d=\qty{33,5}{\cm}\).\\
+Damit ist:\\
+\makebox[\textwidth][c]{\underline{\(f_{\text{rot}}=\qty{12,15 \pm 0,07}{\cm}\)}}\\
+\makebox[\textwidth][c]{\underline{\(f_{\text{blau}}=\qty{11,95 \pm 0,07}{\cm}\)}}\\
+Die Fehler unterscheiden sich nur marginal an nicht signifikanten Stellen.
+
+\subsection{Aufgabe 4 - Sphärische Abberation}
+\paragraph{Lochblende:}
+Bei der Lochblende war das Bild wie zu erwarten schärfer, das Licht konnte nur im Zentrum
+auf die Linse treffen kann, dadurch verringern sich die Effekte der sphärischen Abberation. Der Abstand auf \(d=\qty{32}{\cm}\) hat sich verringert, damit steigt die Brennweite nach der Besselformel \cref{eq:Bessel}. 
+\paragraph{Ringblende:}
+Das Bild war nicht mehr so scharf zu erkennen wie bei der Lochblende. Der Abstand hat sich auf \(d=\qty{33,4}{\cm}\) vergrößert, damit steigt \(f\) nach \cref{eq:Bessel}.
+
+\subsection{Aufgabe 5 - Gitterkonstante}
+Auf der optischen Bank wurde ein Gitter so positioniert, dass der Abstand \(b=\qty{25}{\cm}\), \(\Delta b=\qty{0,2}{\cm}\) des Zwischenbildes zur Objektivlinse mit \(f_1=\qty{4}{\cm}\) (nicht fehlerbehaftet) betrug. Das Zwischenbild wurde danach näher durch die Okularlinse untersucht.
+Über folgende Gleichung kann der Abbildungsmaßstab \(\beta\), \(\Delta \beta\) im Zwischenbild bestimmt werden:
+\begin{align}
+    \beta = \frac{b}{f} - 1 && \Delta \beta = \frac{\Delta b}{f} && \beta=\num{5.50(5)}
+\end{align}
+Somit beträgt nach Umstellen der \cref{eq:beta} und dem Ablesen von \(B=\qty{0,05 \pm 0,005}{\cm}\) am Dia mit mm-Einteilung der Gitterabstand \(G\) als Gegenstandsgröße, sowie dem Fehler: 
+\begin{equation}
+    \Delta G = \sqrt{\left( \frac{1}{\beta} \Delta B \right)^2+ \left( -\frac{B}{\beta^2} \Delta \beta \right)^2}=\qty{9,12 e-6}{\m}
+\end{equation}
+\makebox[\textwidth][c]{\underline{\(G=\frac{B}{\beta}=\qty{90 \pm 9}{\micro\m}\)}}
+
+\subsection{Aufgabe 6 - Auflösung des Mikroskops}
+Ein verstellbarer Spalt mit Spaltbreite \(d=\qty{0,2}{\mm}\), \(\Delta d=\qty{0,1}{\mm}\) wurde im Abstand \(x=\qty{37}{\mm}\), \(\Delta x=\qty{2}{\mm}\) vom Gitter entfernt positioniert. \(d\) wurde solange verringert, bis durch Beugungseffekte die Gitterstrukturen durch die Okularlinse nicht mehr sichtbar waren.\\
+Damit ist der Öffnungswinkel des Objektives (die Objektivlinse stand direkt hinter dem Spalt) unter Ausnutzung der Kleinwinkelnäherung folgend zu berechnen:
+\begin{align}
+    \alpha=\text{arctan}\left(\frac{\nicefrac{d}{2}}{x}\right)\approx\frac{\nicefrac{d}{2}}{x}
+    \label{eq:alpha}
+    && \Delta \alpha=\sqrt{\left(\frac{1}{2x}\Delta d\right)^{2}+\left(-\frac{\nicefrac{d}{2}}{x^{2}}\Delta x\right)^{2}}
+\end{align}
+\makebox[\textwidth][c]{\underline{\(\alpha=\qty{0,0027 \pm 0,0014}{\degree}\)}}
+
+Nach \cref{eq:NA} kann mit den obigen Größen und der Wellenlänge \(\lambda=\qty{550}{\nm}\) sowie Brechungsindex \(n=1\) für Luft der minimale Abstand \(G_{\text{min}}\) zweier Gegenstandspunkte dieses Mikroskopaufbaus berechnet werden.
+Bei einem solchen kleinen Winkel ist auch für \(G_{\text{min}}\) die Kleinwinkelnäherung nutzbar. 
+\begin{align}
+    G_{\text{min}}=\frac{0,61\lambda}{n\cdot\alpha}&&
+    \label{GMIN}
+    \Delta G_{\text{min}}=\sqrt{\left(\frac{-0,61\lambda}{n\cdot\alpha^{2}}\Delta \alpha\right)^{2}}
+\end{align}
+Damit beträgt der durch das Beobachten des Zwischenbildes ermittelte Gitterabstand:\\
+\makebox[\textwidth][c]{\underline{\(G_{\text{min}}=\qty{124 \pm 64}{\micro\m}\)}}
+
+Bei blauem Licht hat sich ein Spaltabstand von \(d=\qty{0,3 \pm 0,1}{\mm}\) ergeben und bei rotem Licht von \(d=\qty{0,2 \pm 0,1}{\mm}\). Also tendenziell bedeutet eine höhere Wellenlänge eine größere Spaltbreite, dies wiederum führt durch \(G_{\text{min}}\sim\frac{1}{d}\) (siehe \cref{eq:alpha,GMIN}) zu einem kleineren minimal möglichen Gegenstandsabstand. Dies macht auch Sinn, da Beugung erst bei Strukturen in der Größenordnungen der bestrahlenden Wellenlänge auftritt.

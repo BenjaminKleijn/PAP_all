@@ -1,0 +1,50 @@
+\subsection{Aufgabe 1 - Absorptionslinien}
+In \cref{fig:Spektrum.pdf} sieht man das Absorptionsspektrum, an dem die lokalen Maxima abgelesen wurden und im Messprotokoll aufgeschrieben sind (\cref{fig:Messprotokoll_1}).
+
+\xfigpdf{htbp}{page=1,width=\textwidth}{Spektrum.pdf}{}{aufgezeichnetes Absorptionsspektrum zur Bestimmung der Spektrallinien von \ce{KMnO4}}
+
+\subsection{Korrektur der Intensität der längsten Küvette}
+Da die Küvetten wie eine Sammellinse wirken, muss zumindest bei der längsten Küvette mit \(l=\qty{24}{\cm}\) die durch diesen Effekt erhöhte Intensität, die beim Schirm an dem das Glasfaserkabel anliegt, korrigiert werden. Dafür wird einmal der abgebildete Lichtring (Durchmesser der projizierten Lochblende) mit (\(D_m\)) und ohne (\(D_o\)) Küvette vermessen. Für die korrigierte Intensität und ihren Fehler ergibt sich:
+\begin{equation}
+  I_{\text{korr.}}=I\frac{D_m^{2}}{D_o^{2}}
+\end{equation}
+\begin{equation}
+  \Delta I_{\text{korr.}}^{2}=\left(\frac{{D_m}^2}{{D_o}^2} \Delta I\right)^2+\left(\frac{2D_m I}{{D_o}^2} \Delta D_m\right)^2+\left(\frac{-2{D_m}^2 I}{{D_o}^3} \Delta D_o\right)^2
+\end{equation}
+\[\rightarrow I_{\text{korr.}}=\qty{192,6 \pm 20,8}{\text{Counts}}\]
+
+\subsection[\texorpdfstring{Lambert-Gerade mit \(k^\prime\)}{Lambert Gerade mit k'}]{Lambert-Gerade mit \(\boldsymbol{k^\prime}\)}
+In \cref{fig:Graph.pdf} wurde eine blaue Ausgleichsgerade für \(\log{I}(l)\) \cref{k'} gezeichnet. Nur ein einziger Wert liegt deutlich abseits der Geraden, deswegen wurde dieser als Ansatzpunkt für die graue Fehlergerade genommen. Als Steigung der Lambert-Geraden mit Fehler durch Differenzbildung mit der Steigung der Fehlergeraden erhalten wir:
+\[k'=\qty{0,112 \pm 0,001}{\per\cm}\]
+
+Daraus ergibt sich nach \cref{Beersches} durch Teilen durch die bekannte Konzentration \(c=\qty{5e-5}{\mole\per\liter}\) und der Fehlerformel:
+\begin{align}
+  \epsilon=\frac{k^\prime}{c} && \Delta \epsilon = \frac{\Delta k'}{c}
+\end{align}
+\[\epsilon^{k^\prime} = \qty{2240 \pm 20}{\liter\per\mole\cm} \tcbhighmath{= \qty{2240 \pm 20 e3}{\cm\squared\per\mole}}\]
+
+\subsection[\texorpdfstring{Beer-Gerade mit \(\epsilon l\)}{Beer-Gerade mit el}]{Beer-Gerade mit \(\boldsymbol{\epsilon l}\)}
+Im logarithmischen Papier wurden die entsprechenden Werte aus \cref{table:Werte} eingetragen. Für die Konzentrationen ergibt sich aus der Fehlerfortpflanzung der Formeln für \(c_1,\dots, c_4\)\autocite{Skript_1}: \(\Delta c_1,\dots, c_4=\qtylist{4e-6;5e-6;5e-6;3e-6}{\mole\per\litre}\)
+
+Die statistischen Intensitätsfehler sind im Vergleich zu den Konzentrationsfehlern zu vernachlässigen. Für die Steigungen der grünen Geraden \(\log{I}(c)\) in \cref{fig:Graph.pdf} ergibt sich nach Differenzbildung mit der grauen Fehlergeraden:
+\[\epsilon l=\qty{4020 \pm 170}{\liter\per\mole}\]
+Daraus errechnet sich durch die bekannte Länge \(l=\qty{1,5}{\cm}\) mit: 
+\begin{align}
+  \epsilon=\frac{\epsilon l}{l}&&\Delta \epsilon=\frac{\Delta (\epsilon l)}{l}
+\end{align}
+\[\epsilon^{l} = \qty{2680 \pm 110}{\liter\per\mole\cm} \tcbhighmath{= \qty{2680 \pm 110 e3}{\cm\squared\per\mole}}\]
+
+\xfigpdf{p}{width=\textwidth}{Graph.pdf}{}{Auswertung der zwei Methoden}
+\FloatBarrier
+
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

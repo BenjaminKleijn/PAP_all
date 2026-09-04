@@ -1,0 +1,49 @@
+\subsection{Motivation}
+Effekte, bei denen Licht nach dem Durchqueren oder Auftreffen auf ein Mediums anderes Verhalten zeigt, bzw. eine Veränderung aufgetreten ist, lässt sich überall zu beobachten: Licht wird an einer Wasserfläche oder einem Prisma gebrochen \(\rightarrow\) Lichtbrechung; Transmission (Durchquerung) von Licht durch eine Gaswolke (z.B. die Erdatmosphäre) \(\rightarrow\) Lichtstreuung, z.B. Rayleigh-Streuung; Licht bestrahlt verschiedene Körper/Materialien \(\rightarrow\) Reflexion aber auch Absorption (z.B. bei schwarzen Stoffen, diese absorbieren mehr sichtbares Licht und erscheinen dadurch dunkler, aber auch mehr Infrarotstrahlung, dadurch wärmen sie sich auf).
+
+Dieser Effekt der Lichtabsorption soll in diesem Versuch genauer untersucht werden, um erstens durch das Bestimmen der Absorptionslinien das Pendant zu den in V33 untersuchten Emissionslinien darzustellen, und zweitens durch Beobachtung der Intensitätminderung nach Durchqueren eines Stoffes die Kenngrößen für die Absorptionsfähigkeit eines Stoffes zu bestimmen.
+
+Als Teilgebiet der \emph{Spektroskopie}, also der Analyse von elektromagnetischer Strahlung hinsichtlich ihres Verhaltens, wird hier nicht die Entstehung (Emission), sondern die Absorption untersucht. Diese Teilgebiete, Emissionsspektroskopie, also die Eigenschaften der Strahlenquelle herauszufinden und die Absorptionsspektroskopie, die Untersuchung des Transportmediums, führen schnell zur Notwendigkeit von Atom- und Quantenphysik, denn die Erklärung basiert auf quantenmechanischen Überlegungen.\\
+Kern des Versuches ist es:
+\begin{itemize}
+    \item durch Fotometrie eine Lösung und ihr Absorptionsverhalten zu untersuchen
+    \item den Umgang mit einer Auswertungssoftware von Spektrometerdaten zu erlernen
+    \item Einführung in die Absorption von Photonen und Energieniveautheorie, um u.a. Spektrallinien zu verstehen
+    \item sich perspektivisch der mächtigen Eigenschaften von quantenmechanischer und atomphysikalischen Erklärungen bewusst werden.
+\end{itemize}
+
+\subsection[Theoretische Grundlagen der Physik]{Grundlagen der Physik \autocite{Skript_1}}
+\subsubsection{Spektrallinien und Energieniveaus}
+Stark vereinfacht können Elektronen in einem Atom auf unterschiedlichen Energieniveaus vorliegen. Bei einem Übergang zwischen diesen Energieniveaus wird entweder Energie absorbiert (von einem niedrigeren in einen höhreren Energiezustand) oder Energie emittiert (Übergang von einem höheren zu einem tieferen Energieniveau). Es ist eine anregende Energie notwendig, damit ein Elektron bzw. ein System in einen angeregten Zustand versetzt werden kann, diese Energie kann in Form von elektromagnetischer Strahlung geliefert werden, so ist das bei unserem Versuch der Fall. 
+Es sind immer genau die Differenzen der zwei Energieniveaus als Anregungsenergie notwendig, d.h. eine Lichtwelle, die eine bestimmte Frequenz bzw. Wellenlänge \(\lambda\) hat, wird absorbiert, damit das Elektron auf ein höheres Energieniveau gehoben werden kann.
+
+Für bestimmte Übergänge zwischen Energieniveaus, die je nach Atom anders sind, gibt es also charakteristische Frequenzen bzw. Wellenlängen. Trägt man dieses Spektrum auf, so sieht man die Spektrallinien eines Stoffes. Absorptionslinien entstehen, wenn man ein Atom mit einem kontinuierliche Spektrum von Licht bestrahlt und danach wiederum das Spektrum aufzeichnet. Im Atom werden durch bestimmte Frequenzen des kontinuierlichen Spektrums Übergänge ausgelöst, deren Rückfall zeitverzögert und gestreut ist. Dadurch fehlen im aufgezeichneten Spektrum manche Linien, die Absorptionslinien(bzw. -banden).
+
+\subsubsection{Lambertschen Absorptionsgesetz}
+Das Absorptionsverhalten einer Lösung mit Schichtdicke \(l\) (Länge der Transmissionsstrecke), der Absorptionskonstante der Lösung \(k\), der Intensität des austretenden Lichtes \(I\) wird mit folgender differentieller Gesetzmäßigkeit beschrieben:
+\begin{equation}
+    \frac{\diff I}{I}=-k\diff l
+    \label{Lambert_diff}
+\end{equation}
+Die Intensitätsabnahme ist proportional zur Wegstrecke \(\diff l\). Durch Integration ergibt sich das Lambertschen Absorptionsgesetz, und dessen logarithmische Darstellung:
+\begin{align}
+    I=&I_0\,e^{-kl}\\
+    \ln{I}=&-kl+\ln{I_0}=-kl+\text{const} 
+    \label{Lambert}
+\end{align}
+Im nächsten Schritt wird anstatt dem natürlichen Logartithmus der dekadische verwendet (\(\ln{x}=\tfrac{\log{x}}{\log{e}}\)), dies ist zum Erstellen von Diagrammen sinnvoller:
+\begin{equation}
+    \log{I}=-\log{(\mathrm{e})}\,kl+\log{(\mathrm{e})}\,\text{const}=-k'l+\text{const'}
+    \label{k'}
+\end{equation}
+\(k'\) wird als \glqq dekadischer Absorptionskoeffizient\grqq{} bezeichnet und hängt nach dem Beerschen Gesetz proportional mit der Konzentration \(c\) zusammen: 
+\begin{equation}
+    k'=\epsilon c 
+    \label{Beersches}
+\end{equation}
+\(\epsilon\) ist eine Stoffkonstante, die Molarextinktion. Dieser ist Wellenlängenabhängig, hier fließen die eingangs besprochenen atomspezifischen Energieviveauübergänge mit ihrer jeweiligen Aktivierungsenergie in Form einer Lichtwelle ein.
+Insgesamt ergibt sich also:
+\begin{equation}
+    I=I_010^{k'l}=I_010^{-\epsilon(\lambda)cl}
+    \label{dekadisch}
+\end{equation}

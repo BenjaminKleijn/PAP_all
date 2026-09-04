@@ -1,0 +1,81 @@
+\subsection{Umrechnen der Daten}
+Entsprechend \cref{table:FehlerVM} wurden die im Messprotokoll erhobenen Daten umgerechnet, mit signifikanten Stellen zu den Tupeln \(U\pm\Delta U\) verarbeitet. 
+Mit der Fehlerformel 
+\begin{equation}
+    \Delta \sqrt{U-U_0}=\sqrt{\left(\frac{1}{2\sqrt{U-U_0}} \Delta U\right)^2+\left(\frac{-1}{2\sqrt{U-U_0}} \Delta U_0\right)^2}
+\end{equation}
+ergeben sich die Werte, die im Anhang angehängt sind.
+Dort finden sich auch die entsprechenden Diagramme, die mit dem Programm LibreOfficeCalc erstellt worden sind. Die händisch erstellten Diagramme sind immer in entsprechenden Subsections eingefügt.
+
+\subsection{Sperrspannung}
+Die aufgenommenen Werte aus Tabelle \secref{sec:umgerechnetedaten} wurden zur Erstellung von linearen Fits genutzt, um anhand der Trendlinie, die über die linearen, mittleren Bereiche gelegt wurde, den Wert für die Sperrspannung \(U_S\) zu ermitteln. \\Man sieht im Diagramm \cref{sec:allefarben}, dass die Fehlerbalken minimal sind, dementsprechend konnte keine Fehlergerade erstellt werden. Aus diesem Grund wurde der Fehler jeder Sperrspannung aufgrund der Nichtlinearität der Werte auf \(\Delta U_S=\pm \qty{0.1}{\volt}\) nach oben abgeschätzt. Es ergibt sich folgende Tabelle:
+\emph{Anmerkung:} Mittlerweile habe ich es auch händisch erstellt, als x-Fehler (für die Gegenspannung \(U)\) habe ich mit \(\Delta U=\qty{0.01}{\volt}\) gearbeitet. Für die nur schwer einzeichbaren, nach Augenmaß (also vermutlich beschränkte  Authentizität ) erstellten Fehlergeraden wurde auch der Schnitt mit der x-Achse bestimmt, \(\Delta U_S\) ergab sich dann aus der Differenz der zwei Schnittpunktwerte. Die Fehler für \(\sqrt{U_I-U_{I_0}}\) sind marginal (maximal \(\qty{0.004}{\volt}\equiv \qty{0.4}{\milli\meter}\leftarrow\) das ist die Größe auf den Zeichnungen des y-Fehlerbalkens), weswegen sie nicht eingezeichnet wurden. Die Werte finden sich jetzt auch in der folgenden Tabelle.
+
+\begin{table}[htbp]
+    \centering 
+    \caption{Aus \cref{sec:allefarben} extrahierte Sperrspannungen, sowie Zeichnungen per Hand \cref{sec:haendisch}}
+\begin{tabularx}{\textwidth}{cxZZZ}
+\toprule
+Farbe & \nu [\unit{\hertz}] & U_{S\;LBC} [\unit{\volt}] & U_{S\;H} [\unit{\volt}] &S\;[\sigma] \\ \midrule
+UV       & 821.3  & \qty{-2.02(10)}{} & \qty{-2.06(5)}{} & 0.8 \\
+Violett & 740.2  &  \qty{-1.59(10)}{} & \qty{-1.60(2)}{} & 0.5\\
+blau     & 687.9  &  \qty{-1.53 (10)}{} & \qty{-1.47(8)}{} & 0.8\\
+grün     & 549.0  &  \qty{0.98(10)}{} & \qty{-0.98(6)}{}& 0 \\
+gelb     & 518.7  &  \qty{-0.76(10)}{} & \qty{-0.750(20)}{} & 0.5\\ \bottomrule
+\end{tabularx}
+\label{table:us}
+\end{table}
+
+Die Abweichung hält sich in Grenzen, die Sigma-Abweichung wurde ohne Einbeziehen vom abgeschätzten Fehler bestimmt, denn dieser würde das ganze nochmal ordentlich runterdrücken.
+\begin{equation}
+    \sigma_{Abw}=\frac{\mid U_{S,\;LBC}-U_{S\;H} \mid}{\sqrt{\Delta U_{S\;H}^2}}
+\end{equation}
+
+\clearpage
+
+\markright{LBC: Bestimmung der Sperrspannung}
+\includepdf[pages=-,landscape=true,pagecommand={}, addtotoc={1, subsubsection, 3, LBC: Bestimmung der Sperrspannung, sec:allefarben}]{allefarben.pdf}
+
+\markright{Händisch: Bestimmung der Sperrspannung}
+\includepdf[pages=1-5,pagecommand={}, addtotoc={1, subsubsection, 3, Händisch: Bestimmung der Sperrspannung, sec:haendisch}]{Diagramme.pdf}
+
+\markright{\thesection. Auswertung}
+\subsection{Plancksches Wirkungsquantum}
+Aus \cref{table:us} wurde \cref{fig:sperrspannung.png} erstellt:
+\xfigure{htbp}{scale=0.9}{sperrspannung.png}{Diagramm Sperrspannnug}{\(U_S(\nu)\) Ausgleichsgerade und Fehlergerade (schwarz)}
+
+Nun kann nach \cref{eq:hs} aus der Steigung der \(U_S(\nu)\) Trendlinie \(m=\frac{h}{e}\) das Planksche Wirkungsquantum \(h\) berechnet werden.
+Aus Steigung der Ausgleichs- und Fehlergeraden ergibt sich: 
+\[m=\qty{0.0039(9)}{\volt\per\tera\hertz}\]
+Der Fehler für \(h\) wird folgend berechnet:
+\begin{equation}
+    \Delta h=e\Delta m
+\end{equation}
+Final steht das Ergebnis:
+\begin{rb}
+h=\qty{6.2(15)e-34}{\joule\s}
+\end{rb}
+
+Als Ergebnis für das zeichnerische Ermitteln der Sperrspannung aus \cref{sec:Sperrspannung} ergibt sich:
+\[m=\qty{0.0041(5)}{\volt\per\tera\hertz}\]
+Damit berechnet sich:
+\begin{rb}
+h=\qty{6.6(8)e-34}{\joule\s}
+\end{rb}
+
+\clearpage
+\markright{Zeichnerische Auftragung von Sperrspannung gegen Frequenz}
+\includepdf[pages=6,pagecommand={}, addtotoc={6, subsubsection, 3, Zeichnerische Auftragung von Sperrspannung gegen Frequenz, sec:Sperrspannung}]{Diagramme.pdf}
+
+
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

@@ -1,0 +1,40 @@
+\subsection{Pendellänge}
+Während des Versuches haben wir nicht berücksichtigt, dass Fehlerfortpflanzung notwendig ist, um den Fehler \(\Delta l\) wie in \cref{eq:fehler_l} und anschließender quadratischer Addition mit dem statistischen Fehler zu bestimmen. 
+Die \(\sqrt{\frac{3}{2}}\) wurde also nicht beachtet.
+
+\subsection{Bestimmung von \(n\) und ideales \(g\)}
+\(\Bigl[\)Dementsprechend haben wir ein anderes \(n=588\) genommen, dass auch nicht im Messprotokoll steht, sondern in einer Libre Office Tabelle, die ich parallel gemacht habe. Dadurch ergeben sich dann natürlich leicht andere Werte: Also mit \(n=588\); \(l=\qty{95.20(11)}{\cm}\), das ist eigentlich ein zu kleiner Fehler; \(T_0=\qty{1.95}{\s}\) berechnen wir:
+\[g=\qty{9.884(12)}{\m\per\s\squared}\]
+Offensichtlich ist der Fehler kleiner, weil der relative Fehler von \(l\), also der Bottleneck, kleiner ist.
+
+Leider kann es sein, dass durch diese sehr hohe Zahl von \(n\) Reibungseffekte kumuliert sichtbar geworden sind, die die Periodendauer um \(\qty{0.01}{\s}\) gegenüber der \(n=20\) Messung erniedrigt haben.\\
+Rechnet man mit \(T_0=\qty{1.96}{\s}\) und \(n=498\), so erhält man:
+\[g=\qty{9.783(14)}{\m\per\s\squared}\]
+Das ergibt eine Abweichung vom Literaturwert von \(1.9\sigma\). Also werden wahrscheinlich Reibungseffekte die Ursache für die hohe Abweichung zum Literaturwert sein. \(\Bigr]\)\\
+FALSCH WAS HIER DRÜBER STEHT.
+
+Wir haben im Messprotokoll aus irgendeinem Grund \(T_0=\qty{1.95}{\s}\) stehen, was völlig falsch ist. Es wurden 3 weitere Nachkommastellen unterschlagen, die durch den durch hohes \(n\) verkleinerten Fehler \(\Delta T_0=\qty{0.0004}{\s}\) ohne Probleme mitgenomen werden können. Also eigentlich ist \(T_0=\qty{1.9573(4)}{\s}\). Den Absatz hab ich sogar zu adäquaten Tageszeiten geschrieben, ich hab nur jetzt erst in meiner eigenen Libre Office Tabelle gesehen, dass dort der richtige Werte steht.
+
+Außerdem ist bei einem Fadenpendel die Charakteristik eben so, dass sich die Periodendauer NICHT im Verlauf der Schwingung aufgrund von Reibung ändert, keine Ahnung warum ich das also geschrieben habe. Die Periodendauer ist nach \(\omega_D=\sqrt{\omega_0^2-\delta^2}\rightarrow T_0\sim\frac{2\pi}{\omega_D}\) bei kleinerer Kreisfrequenz \(\omega_D\) eines gedämpften Pendel ein wenig länger.
+
+In der Auswertung habe ich die falschen Sachen gelöscht, und mit der richtigen Periodendauer gerechnet, wodurch die Abweichung der als idealisiert angenommen Methode unglaublich gering wurde: \(0.012\sigma\), vgl.\ \cref{table:Vergleich_g}. 
+
+\xfigure{h}{width=12cm}{matthew.png}{\emph{Meme:} Looking back and screaming at myself\autocite{Matthew}}{Wie ich auf mein Ich von vor ein paar Stunden zurückschaue. Warum sehe ich so spät erst in meinen eigenen Unterlagen nach?! \autocite{Matthew}}
+
+\subsection{Amplitudenbestimmung}
+Man sieht in \cref{fig:diagramm1} sehr schön, dass die Werte unfassbar gestreut und systematisch verschoben sind. Das liegt an mehreren Punkten:
+\begin{itemize}
+    \item Die Spiegelskala ermöglichte nur eine sehr schwere Bestimmung der Auslenkung. Die Detektion des maximalen Ausschlags erfolgte mit Hand- und Augenmaß, was natürlich ziemlich ungenau ist. Evtl. hätte ein Zeitlupenvideo hier ein wenig Abhilfe geschaffen. Jedoch müsste man dann aufpassen, keine Parallaxeneffekte im Video zu erzeugen.
+    \item man sieht im Diagramm wunderbar, wie ein Datenset/Punktemenge von der einen Person mit Ablesetechnik \(a\) bestimmt wurde und dann getauscht wurde. Dann wurde eine zweite Ablesetechnik \(b\) verwendet. Anscheinend wurden jedes mal auf zwei unterschiedliche Weisen die Spiegelskala interpretiert bzw. benutzt. Das ist ein sehr großer systematischer Fehler, der mitten in der 15-minütigen Messung aufgetreten ist. 
+\end{itemize}
+\xfigure{h}{width=6cm}{spiegelskala_meme}{\emph{Meme:} Für was all die Korrekturen \autocite{bikefallmeme}}{Man gibt sich soviel Mühe, jede mögliche Korrektur vorzunehmen und dann das \autocite{bikefallmeme}}
+Die definitiv beste Methode wäre, vielleicht irgendeine Induktion gesteuerte Messelektronik zu verwenden. Also bei größere Auslenkung durchläuft eine Magnetkugel mehr Spulenwindungen und erzeugt dadurch einen größeren Induktionsstrom. Jedoch macht das für die Genauigkeit von \(g\) keinen großen Unterschied, da dies nur den Term von \(\delta\) verbessern würde. Die untere Schranke des Fehlers bleibt aber weiterhin \(\frac{\Delta l}{l}\).
+
+\(\delta\) ist wahrscheinlich stark fehlerbehaftet, da es nur auf sehr ungenaue Weise bestimmt werden konnte. Der Term \(\frac{\delta^2}{\omega_0^2}=\num{1.79e-6}\) aus \cref{eq:g_final} ist jedoch unglaublich klein, also fast vernachlässigbar.
+
+\subsection{Vergleich der Werte}
+Überraschenderweise ist die Sigma-Abweichung der Korrekturmethode mit \(0.9\sigma\) größer im Vergleich zu \(0.04\sigma\) bei der idealisierten Betrachtung. 
+
+Ich bin mir nicht sicher, ob die Berechnung von \(\varphi_0\) richtig ist. Im Skript wird dieser Winkel nicht genau definiert, ich wüsste aber nicht, was es anderes sein sollte, außer dem Start-Auslenkswinkel, sprich dem Winkel bei maximaler Auslenkung \(a_0\). Durch diesen Korrekturterm wird diese Klammer, in der alle Korrekturterme miteinader addiert werden, deutlich größer als wenn man alle anderen ohne \(\varphi_0\) addieren würde. In manchen Altprotokollen wird aus irgendeinem Grund die mittlere Amplitude als \(\varphi_0\) genommen. Die einzige Ursache, die ich mir vorstellen kann, ist, dass für jede Schwingung von \(n=\numrange{1}{588}\) die Auslenkung unmittelbar davor relevant sein könnte, es also kein ausgezeichnetes \(\varphi_0\) gibt, sondern nur \(\varphi_0(n)\). Das ist aber nur ein guess, keine Ahnung. \\Selbst wenn die mittlere Amplitude verwendet wird, erhalten wir immer noch eine Abweichung von \(0.2\sigma\). 
+
+Wo also der Grund liegt, dass die Korrekturterme basierend auf Interpretation der Sigma-Abweichung, zu einem ungenaueren Ergebnis führen, keine Ahnung, wsl.\ einfach Zufall, dass der Wert durch Streuung des Messergebnisses näher am Literaturwert liegt.

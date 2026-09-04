@@ -1,0 +1,28 @@
+\subsection{Drehspulinstrument}
+Es wurde in keiner Aufgabe der Widerstand der leitenden Kabel betrachtet. 
+
+\subsection{Kompensator}
+Durch Überprüfen der Maschenregel am Spannungsteiler ist klar geworden, dass der Kompensator ein ziemlich cooles Gerät ist, während der Innenwiderstand des Drehspulinstruments einen systematischen Einfluss auf die Messergebnisse ausübt.
+
+Es wurde mit dem Kompensator für \(R_L=2R=\qty{2200(160)}{\ohm}\) eine Klemmenspannung von \(U=\qty{4.420(12)}{\volt}\) gemessen. Das heißt, nach \cref{eq:klemmenspannung} und \cref{eq:stromlast} oder \cref{eq:spannunglast}, ist:
+\begin{gather}
+    U_q=\frac{U}{1-\frac{R_i}{R_i+R_L}}=\qty{4.423}{\volt}\quad\text{oder}\\
+    U_q=U\cdot \frac{R_i+R_L}{R_L}=\qty{4.423}{\volt}
+\end{gather}
+Die so berechnete Quellenspannung liegt also etwas unter dem Herstellerwert von \(U=\qty{4.5}{\volt}\), was mit dem Alter der Batterie und der damit verbundenen Entladung zu erklären ist.
+
+Die berechnete Quellenspannung ist durch die wahrscheinlich auch nicht exakten Widerstände \(R_L=2R\), \(U\) und das grafisch bestimmte \(R_i\) fehlerbehaftet.
+\begin{equation}
+\Delta U_q^2=\left(\frac{R_L+R_i}{R_L} \Delta U\right)^2+\left(\left(\frac{U}{R_L}-\frac{U \left(R_L+R_i\right)}{{R_L}^2}\right) \Delta R_L\right)^2+\left(\frac{U}{R_L} \Delta R_i\right)^2
+\end{equation}
+\[U_q=\qty{4.423(12)}{\volt}\]
+Zum grafisch ermittelten Wert ergibt sich eine Abweichung von \(3.7\sigma\). Das schiebe ich mal dem Zeichnen in die Schuhe, denn durch die geringe Unterscheidung zwischen Ausgleichs- und Fehlergeraden ist der Fehler für das grafische \(U_q\) sehr gering, was die Sigma-Abweichung nach oben drückt. \\
+Allgemein kann ein Fehlerfaktor des Experiments auch die potentiell ungenaue Eichung des Kompensators sein. Wenn dieser am Anfang nicht genau geeicht wurde oder die Referenzspannung nicht exakt ist, so ziehen sich diese Fehler systematisch durch alle Messungen. 
+
+\subsection{Innenwiderstand}
+Ein Fehler, der nicht einbezogen wurde, ist das zeichnerische Ermitteln der Geradensteigung \(R_i\). Die Ausgleichsgerade liegt ziemlich nahe an der Fehlergerade, wodurch der Fehler \(\Delta R\) sehr klein geworden ist. Hier wäre natürlich eine Auswertung mit geeigneter Software besser gewesen.
+
+\subsection{Fazit}
+Insgesamt stimmen die Resultate mit den theoretischen Modellen überein und zeigen, dass die verwendeten Methoden trotz unvermeidbarer Messfehler durch die Messgeräte geeignete und nachvollziehbare Ergebnisse liefern.
+
+Schöner Versuch insgesamt, es war teilweise herausfordernd, nicht den Überblick über die Kabelverbindungen zu verlieren und keinen Kurzschluss zu verursachen. Im Nachhinein durch die Auswertung sind mir die Schaltungen deutlich klarer geworden und die theoretischen Prinzipien, die in die Praxis umgesetzt wurden, noch mal vor Augen geführt worden. War ganz lustig eigentlich, so EX 2 Aufgaben jetzt mal real durchzuführen.

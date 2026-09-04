@@ -1,0 +1,67 @@
+\subsection{Vergleich der Richtmomentswerte}
+Es wurde durch zwei Methoden das Richtmoment der Feder bestimmt, einmal durch das Messen eines Drehmoments und dem entsprechenden Ablenkwinkel, und einmal durch Messen der Periodendauer der Schwingung für einen anderen Körper. Durch dessen anderes Trägheitsmoment ändert sich die Periodendauer, das Richtmoment ist jedoch eine konstante Größe. Zwar ist wie beim harmonischen Oszillator (Federpenddel) die Gültigkeit des Hookeschen Gesetz notwendig. Ist die Auslenkung (Winkel \(\varphi\)) zu hoch, gilt \cref{M_linear} nicht mehr. Die im Versuch vorgenommenen Auslenkungen sind unter einer vollen Drehung (360\unit{\degree}) geblieben.
+
+Mit den zwei Methoden wurden jeweils gemessen/berechnet:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(D_1\) und \(D_2\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        D_1[\unit{\Nm\per\radian}]&D_2[\unit{\Nm\per\radian}]&\text{abs.Abw.}[\unit{\Nm\per\radian}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{0.0218(0.0023)}&\num{0.0225(0.0004)}&\num{0.0007(0.0024)}&\num{3(11)}&\num{0.3}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_D_1} 
+\end{table}
+
+Dies ist eine völlig akzeptable Sigma-Abweichung. 
+
+\subsection{Steigungsbestimmung}
+Das Einzeichnen der Ausgleichs- und Fehlergerade unterliegt natürlich einer großen Ungenauigkeit - es erfolgt nach Augenmaß. Zusätzlich kommt das \enquote{Abschätzen} der Fehlergerade hinzu. Diese ist sehr schwierig einzuzeichnen, besonders bei marginalen relativen Fehlern. Das wird wahrscheinlich auch der Grund sein, warum \(\Delta D_1\gg\Delta D_2\). Er ist einfach ungenau bestimmt worden, obwohl die Messmethode (statische Auslenkung, keine Schwingung, kein händisches Zeitstoppen).
+Was Morpheus dazu sagt, sieht man in der folgenden Abbildung.
+
+\xfigure{htbp}{scale=0.5}{Morpheus.png}{\emph{Meme:} Plotten per Augenmaß \autocite{Morpheus}}{Ach das schöne Plotten per Hand- und Augenmaß \autocite{Morpheus}}
+Wobei man auch einwenden muss, dass das Ablesen der Winkel in Aufgabe 1 nicht perfekt erfolgen konnte. Die Nullposition der Winkelskala in Ruhelage wurde mit einem Zeiger \enquote{festgehalten} der evtl. mal verschoben wurde.  
+
+\subsection{Trägheitsmoment der runden Platte}
+Wahrscheinlich ergibt sich die hohe Abweichung von \(4.2\sigma\) durch eine fehlerhaften Input von \(D\). Wobei das auch komisch ist, denn er hängt außer von \(m\),\(r\) nur von\dots \\
+\emph{Anmerkung des Autor: An dieser Stelle wurde ich stutzig} 
+Turns out, es gibt keine hohe Abweichung, nur \(0.22\sigma\).
+
+\subsection{Trägheitsmoment der unförmigen Platte}
+Die Werte durch den Steinerschen Satz sind alle kleiner, jedoch nicht systematisch kleiner, als die durch die Periodendauer bestimmten Werte. Der einzige Unterschied zwischen den Messdaten, die beide Methoden nutzen, ist die Abstandsbestimmung/-einstellung von \(a\). Evtl. wurde das Einspannen der Platte, die mit der neuen Drehachse genau über der Drehachse des Drehpendels gelagert werden sollte, systematisch verfehlt. Es ist gut möglich, dass der Zeigerarm, der am Befestigungstisch festgemacht ist, mit dem dieses Überlagern gemacht wurde, nicht genau auf die Drehachse des Drehtisches zeigt. 
+Dann ensteht folgendes:
+\begin{align}
+    a_{i,\,\text{neu}}&=a_{i,\,\text{alt}}+\Delta a_{\text{syst}}\\
+    J(a_{\text{neu}})=J_{P_S}+m&\,(a_{\text{alt}}+\Delta a_{\text{syst}})^2\\
+    =J_{P_S}+m&\,(a_{\text{alt}}^2+a_{\text{alt}}\Delta a_{\text{syst}}+\Delta a_{\text{syst}}^2)\label{a_syst}
+\end{align}
+
+
+Dennoch, schaut man sich die Werte in Tabelle \cref{table:J_P_I} an, die maximale Sigma-Abweichung beträgt:
+\(S=1.5\sigma\). Das ist akzeptabel.
+
+Zusätzlich könnte die Genauigkeit der Messung für die unförmige Platte durch die Erhebung mehrerer Periodendauern verbessert werden, es wurde pro Drehachse mit \(a_i\) nur eine Periodendauer gemessen. 
+
+In fast allen Berechnungen, die durchgeführt wurden, ist der Reaktionszeitfehler nicht betrachtet worden. Das liegt an der Näherung, dass es ein systematischer Fehler sei, d.h. er sich bei Differenzen wie in \cref{D_T},\cref{J_P} heraussubtrahiert. Das mag genähert zutreffen. Das zuspäte Starten/Stoppen nach Augenmaß, wann das Pendel durch die Ruhelage geht, ist zu vernachlässigen, bzw. ist durch das Abwarten von 20 Schwingungen (\(\rightarrow\) nur zweimal nach Augenmaß die Uhr bedienen) sehr gering.
+
+\subsection[\texorpdfstring{\(J(a^2)\) aus \cref{fig:Aufgabe4.pdf}}{Trägheitsmoment aus Aufgabe 4}]{\(\boldsymbol{J(a^2)}\) aus \cref{fig:Aufgabe4.pdf}}
+\emph{Anmerkung des Autors: [6:20 Uhr]: Dies gilt nur für die falschen Werte. Ich sitze hier schon so lange, dass ich nicht mehr klar denken kann. Deswegen kein neues Diagramm. [6:43 Uhr]: Doch neues Diagramm}
+Eine Ausgleichsgerade für die Werte \(J_{\text{gemessen}}\) einzuzeichnen war mir unmöglich. Sie hätte jedoch auf jedenfall nicht diesselbe Steigung wie die rote Gerade, die natürlich perfekt durch alle Punkte \(J_{P_i}(a_i^2)\) geht, weil die Punkte gemäß der Geradengleichung
+\[J=J_S+m\,a^2\] berechnet wurden. Die Steigung der Gerade ist \(m\), grafisch ermittelt worden auf \(m=\qty{683.3}{\gram}\). Die Diskrepanz vom eigentlichen gewogenen Wert \(m=\qty{695}{\gram}\) liegt wahrscheinlich am Runden der eingetragenen Wertepaare auf signifikante Stellen.
+Noch interessantererweise ist in beiden Diagrammen diesselbe Masse herausgekommen. Das macht keinen Sinn, denn die neuen richtigen Steiner-Werte sind mit dem richtigen \(J_{P_S}\) berechnet worden. Ahhhhhh, zufälligerweise ist in beiden Tabellen \(J_{P_{6.25}}-J_{P_{0.25}}\)=\qty{0.41e-3}{\kg\meter\squared}. Dadurch ist jedes Mal:
+\begin{equation}
+  m_1=\frac{J_{P_{6.25}}-J_{P_{0.25}}}{a_{6.25}-a_{0.25}}=\frac{\qty{0.41e-3}{\kg\meter\squared}}{\qty{6}{\cm\squared}}=\qty{683.33}{\kg}
+\end{equation}
+
+Komischerweise spricht diese astreine rote Gerade, die durch jeden Punkt führt, gegen die Annahme eines systematischen Fehlers für \(a\). Denn wie in \cref{a_syst} erkennbar, ist \(m\) nicht durch einen konstanten Wert verzerrt. Durch den mittleren Term der binomischen Formel \(m\cdot(a_{\text{alt}}\Delta a_{\text{syst}})\) sollten die Werte für \(J\) eigentlich nicht perfekt auf einer Geraden liegen. Das wäre nur der Fall, wenn
+\[J=J_{P_S}+m\,\Delta a_{\text{syst}}\;\cdot a_{\text{alt}}^2\] 
+Also wenn \(m\) um einen konstanten Wert verzerrt wäre. Nach den Regeln der binomischen Formel ist das aber eben nicht der Fall.
+ 
+Wahrscheinlich liegt der Grund für die Abweichungen der Werte in Tabelle \cref{table:J_P_I} dann an den Periodendauern \(T_3\). Denn das interessante ist auch, Werte \(J_{\text{gemessen}}\) lässen sich nicht mit einer Ausgleichsgeraden verbinden, per Hand ist das wirklich unmöglich. Das spricht eben eher gegen einen systematischen Fehler. 
+
+\subsection{Fazit}
+Ich bin so traurig. Ich habe so ewig gebraucht, die ganzen Werte zu berechnen, habe mir viel Mühe beim Zeichen von \cref{fig:Aufgabe4.pdf} gegeben, und jetzt gemerkt: In Aufgabe 2 hatte ich ein falsches \(D\) ausgerechnet. Darauf bin ich erst gestoßen, nachdem ich das Trägeheitsmoment der runden Messingscheibe mit dem damals noch fehlerhaften \(D\) bestimmt habe und mit der allgemeinen Definition verglichen habe. Da kam ne Abweichung von \(4.2\sigma\) raus. Dann habe ich nochmal alles überprüft und siehe da: Ich hatte einen Tippfehler. \(r=\qty{0.05525}{\m}\) ist richtig, nicht \(\qty{0.0525}{\m}\).
+\xfigure{htbp}{scale=0.8}{matthew1.png}{\emph{Meme:} Wie ich auf mein Ich von vor 10h zurückschaue \autocite{Matthew}}{Wie ich auf mein Ich von vor 10h zurückschaue \autocite{Matthew}}
+
+Das Ziel des Versuches wurde erreicht, die gewollten Werte konnten bestimmt werden. Auch wenn die Auswertung hinsichtlich des vertieften Verständnisses von Kreiselanwendungen nichts gebracht hat (es wurde nur ein Pendel gedreht), kann ich dennoch nun aufgrund privater Recherche mit ein bisschem mehr Confidence sagen: We \textbf{feel} them rollin (because we still can't see them).

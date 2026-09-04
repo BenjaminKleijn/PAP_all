@@ -1,0 +1,84 @@
+\subsection{Motivation}
+Effekte wie Lichtbrechung kann man häufig beobachten: An einem Regenbogen, bei Sonneneinstrahlung unter einem speziellen Winkel an einer Wasserfontäne im Park, bei Mond- oder Sonnenhalos. 
+(Der Vollständigkeit halber: Beugung kann auch zum Beobachten des charakteristischen Farbenspektrums von weißem Licht führen, z.B. an CDs, dies ist aber ein hier nicht untersuchter Effekt.)\\
+Des weiteren wird in diesem Versuch durch das Beobachten und Nutzen von Emissionslinien verschiedener Stoffe der Effekt \emph{Lumineszenz} und \emph{spontane Emission} eingeführt. 
+Allgemein wird also elektromagnetische Strahlung untersucht, die Analyse der folgenden Punkte heißt \emph{Spektroskopie}: hinsichtlich ihres Verhaltens (Brechung, ...), ihrer Entstehung (Emission) und Absorption. 
+Vor allem Emissionsspektroskopie, also die Eigenschaften der Strahlenquelle herauszufinden und die Absorptionsspektroskopie, die Untersuchung des Transportmediums, führt schnell zur Notwendigkeit von Atom- und Quantenphysik, bzw. basiert die Erklärung vieler Dinge auf quantenmechanischen Überlegungen.\\
+Kern des Versuches ist es:
+\begin{itemize}
+    \item den Umgang mit einem empfindlichen, feinmotorischen optischen Gerät zu erlernen
+    \item die Anwendungen und den Hintergrund von Lichtbrechung zu lernen und zu verstehen
+    \item Einführung in die spontane Emission von Photonen und Energieniveautheorie, um u.a. Spektrallinien zu verstehen
+    \item sich perspektivisch der mächtigen Eigenschaften von \glqq Emissionstheorie\grqq{} bewusst werden (bzw. die Bedeutung und Notwendigkeit quantenmechanischer und atomphysikalischen Erklärungen erkennen) 
+\end{itemize}
+
+\subsection[Theoretische Grundlagen aus der Physik]{Grundlagen aus der Physik \autocite{Skript_1}}
+\subsubsection{Dispersion}
+Bei einer Änderung des Brechungsindexes eines Mediums, welches eine elektromagnetische Welle wie Licht durchläuft, kommt es zu einer Änderung der Ausbreitungsrichtung, der Ausbreitungsgeschwindigkeit \(c\) und der Wellenlänge \(\lambda\), die Frequenz \(f\) bleibt jedoch gleich. Eine hinreichende Erklärung dieser Hintergründe ist Fachliteratur zu entnehmen (es ist eine sehr interessante Frage, warum die Frequenz bei einem Mediumswechsel gleich bleibt).
+
+Charakterisierender Wert eines Mediums für die Beeinflussung von \(c\) und \(\lambda\) ist der Brechungsindex \(n\), dieser ist abhängig von \(\lambda\) (diese Abhängigkeit wird Dispersion genannt), \(n(\lambda)\). Die Folgerung daraus ist, dass Licht unterschiedlicher Wellenlängen beim Durchqueren z.B. eines Prismas in anderen Brechungswinkeln gebrochen wird. Weißes Licht, das eine Zusammensetzung von Lichtwellen unterschiedlicher Frequenzen ist, wird dadurch in seine Einzelteile aufgeteilt, und ist nach Durchlaufen des Prismas als auseinanderlaufendes Lichtbündel unterschiedlicher Farben zu sehen. Ein Prismenspektrometer wie im vorliegenden Versuch genutzt, dient dazu, ein \emph{Lichtspektrum} zu erzeugen:
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{regenbogen.png}
+        \captionsetup{justification=raggedright,singlelinecheck=false}
+        \caption{Lichtbrechung an den Wassertropfen einer Fontäne, sowie verlängert der Regenbogen eines Regenschauers \autocite{Regenbogen}}
+        \label{fig:bild1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{fontäne.png}
+        \caption{kontinuierliches Lichtspektrum an einer Wasserfontäne \autocite{Regenbogen}}
+        \label{fig:bild2}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Spektrallinien und Energieniveaus}
+Stark vereinfacht können Elektronen in einem Atom auf unterschiedlichen Energieniveaus vorliegen. Bei einem Übergang zwischen diesen Energieniveaus wird entweder Energie absorbiert (von einem niedrigeren in einen höheren Energiezustand) oder Energie emittiert (Übergang von einem höheren zu einem tieferen Energieniveau). Es ist eine anregende Energie notwendig, damit ein Elektron bzw. ein System in einen angeregten Zustand versetzt werden kann, diese Energie kann in Form von elektromagnetischer Strahlung geliefert werden. Bei Gasentladungsröhren, wie der Quecksilber- und Wasserstofflampe, sorgt elektrische Energie für die Auslösung des angeregten Zustandes.
+
+Befindet sich ein Elektron auf einem höheren Energieniveau, wie z.B. in einem Wasserstoffatom in der Gasentladungsröhre oder in einem von Licht bestrahlten Material wie Aluminium in einem Spiegel, so kommt es auch irgendwann wieder zu einem Quantensprung auf ein niedrigeres Energieniveau. Dabei wird die Differenz der zwei Energieniveaus durch Abstrahlung von Photonen frei, die genau die Energie der Differenz der zwei quantenmechanischen Zustände besitzen, d.h. es wird eine Lichtwelle emittiert, die eine bestimmte Frequenz bzw. Wellenlänge hat.
+Diese Emission passiert meist spontan, man kann jedoch auch bei manchen Stoffen durch eine weitere Aktivierungsenergie in Form eines Photons eine stimulierte Emission auslösen, nach diesem Prinzip funktionieren Laser.\\
+Für bestimmte Übergänge zwischen Energieniveaus, die je nach Atom anders sind, gibt es also charakteristische Frequenzen bzw. Wellenlängen. Trägt man dieses Spektrum auf, so sieht man die Spektrallinien eines Stoffes. Absorptionslinien entstehen, wenn man ein Atom mit einem kontinuierliche Spektrum von Licht bestrahlt und danach wiederum das Spektrum aufzeichnet. Im Atom werden durch bestimmte Frequenzen des kontinuierlichen Spektrums Übergänge ausgelöst, deren Rückfall zeitverzögert und gestreut ist. Dadurch fehlen im aufgezeichneten Spektrum manche Linien, die Absorptionslinien.
+Das Gegenstück, Emissionslinien sehen wir bei den verwendeten Gasentladungslampen.
+
+\subsubsection{Rydberg-Formel}
+
+\begin{minipage}{0.5\textwidth}
+    Für Wasserstoff gibt es die sogenannte Balmer-Serie, dies sind die sichtbaren Emissionslinien (eigentlich 5, im Versuch sind nur 4 erkennbar, die deutlichen Linien in \cref{fig:Balmerserie.png}), die dadurch entstehen, dass ein Elektron von einem höheren Energieniveau mit der Hauptquantenzahl \(m=(3,\ 4,\,5,\ 6,\ 7)\) auf das Energieniveau \(n=2\) (bzw. L-Schale in Abb.1.3) wandert. Mithilfe der Wasserstoff-Balmer-Formel (einer speziellen Version) der Rydberg-Formel können die Wellenlängen der Emissionslinien in Zusammenhang mit den Energieniveaus \(m\) gesetzt werden. \(R_\infty\) ist die Rydberg-Konstante, die sich aus den Atomeigenschaften von Wasserstoff ergibt.  
+\end{minipage}
+\hfill
+\raggedright
+\begin{minipage}{0.45\textwidth}
+% \raggedright
+\includegraphics[scale=0.6]{Balmerenergie.png}
+\label{fig:Balmerenergie}
+\captionof{figure}{Energieniveaus der Balmerserie \autocite{Skript_1}}
+\end{minipage}
+
+\vspace{1cm}
+\begin{equation}
+    \frac{1}{\lambda}=R_{\infty}\left(\frac{1}{2^{2}}-\frac{1}{m^{2}}\right)
+    \label{Rydberg}
+\end{equation}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\rule{0pt}{2.5ex} Nr., Farbe & \(\lambda\) [nm] & Name & Hauptquantenzahl \(m\) & Schale \\ [0.5ex]
+\hline
+1, rot         &  656,3     &  \(\mathrm{H}_\alpha\)  &  3 & M\\
+2, türkis      &  486,1     &  \(\mathrm{H}_\beta\)    &  4 & N\\
+3, indigo      &  434,0     &  \(\mathrm{H}_\gamma\)    &  5 & O\\
+4, violett     &  410,1     &  \(\mathrm{H}_\delta\)     &  6 & P\\
+5, violett     &  397,0     &  \(\mathrm{H}_\epsilon\)    &  7 & N/A\\
+\hline
+\end{tabular}
+\caption{Werte der Balmerserie aus \cref{fig:Balmerserie.png}}
+\label{table:Balmer}
+\end{table}
+
+\xfigure{htbp}{width=\textwidth}{Balmerserie.png}{sichtbaren Emissionslinien von Wasserstoff \autocite{Balmer}}{sichtbaren Emissionslinien von Wasserstoff \autocite{Balmer}}

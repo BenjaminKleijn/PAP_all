@@ -1,0 +1,54 @@
+\subsection{overlays,watermark}
+\begin{tikzpicture}[remember picture,overlay]
+    \node[opacity=1,inner sep=0] at (current page.center)
+      {\includegraphics[width=\paperwidth,height=\paperheight]{Experience_Orb.png}};
+\end{tikzpicture}
+\begin{tikzpicture}[remember picture,overlay]
+    % \filldraw[color=red!60, fill=red!5, very thick](current page.center) circle (1.5){Overly};            kann keinen Namen bekommen, weil nur ein Pfad
+    \node (Overlaykreis) [draw=green!60, fill=green!5, very thick, shape=circle, minimum size=5cm] 
+      at (current page.center) {Text};
+\end{tikzpicture}
+\newpage
+
+\subsection{Arrows durch den Text mit intext-Nodes}
+% \tikzset{every picture/.style={remember picture}} unnötig, da es nicht für alle Picture gelten soll. Option wird an lokales tikzpicture gegeben
+\tikzset{wortnode/.style={baseline=(#1.base)},remember picture}
+Use this for initializing Nodes:\\
+\verb|\tikz[wortnode=node-name]\node[inner sep=0pt](node-name){Text};|\par
+
+\lipsum[1]
+Hier ist ein \tikz[wortnode=wort1]\node[inner sep=0pt](wort1){wichtiges}; Wort, das wir hervorheben
+möchten. Es steht irgendwo im \tikz[wortnode=wort2]\node[inner sep=0pt](wort2){Absatz};.\par
+\lipsum[2]
+Später im Text finden wir ein weiteres {\tikz[wortnode=wort3]\node[inner sep=0pt](wort3){Schlüsselwort};}, mit dem wir das erste Wort verbinden wollen. Und hier ist noch ein
+\tikz[wortnode=wort4]\node[inner sep=0pt](wort4){letzter}; Punkt, 
+Später im Text finden wir ein weiteres Schlüsselwort, mit dem wir das erste Wort verbinden wollen. Und hier ist noch ein
+
+\begin{tikzpicture}[overlay,remember picture]    % Hier werden die Pfeile gezeichnet
+    % Pfeil von wort1 zu wort2
+    \draw[->, blue, thick, bend left] (wort1) to (wort2);
+
+    % Pfeil von wort1 zu wort3
+    \draw[<-, red, ultra thick, dashed] (wort3) .. controls +(-1, -1) and +(1, 1) .. (wort1); % Gerade Linie
+
+    % Pfeil von wort4 zu wort2
+    \draw[<-, green, very thick, dotted] (wort4.north) to (wort2.south);
+\end{tikzpicture}
+\begin{tikzpicture}[overlay,remember picture]
+    \draw[<->, blue, thick] (wort1.south) to [bend left=30] node[below, font=\tiny] {Kathete 1} (wort3.south);
+\end{tikzpicture}
+
+\subsection{Marginbilder}
+% --- RECHTES BILD ---
+\tikz[remember picture, overlay] {
+  \node[anchor=north east, opacity=1] at ([xshift=-0.2cm, yshift=-8cm]current page.north east) {
+    \includegraphics[width=2cm]{sideeye.png}
+  };
+}
+erfüllt.
+% --- LINKES BILD ---
+\tikz[remember picture, overlay] {
+  \node[anchor=north west, opacity=1] at ([xshift=0.2cm, yshift=-14cm]current page.north west) {
+    \includegraphics[width=2cm]{sideeye.png}
+  };
+}

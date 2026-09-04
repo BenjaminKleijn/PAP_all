@@ -1,0 +1,106 @@
+\subsection{Motivation}
+Die Elementarladung \(e\) ist die kleinste mögliche Ladung, mit der ein Teilchen geladen sein kann. Andere Ladungen treten nur als ganzzahlige Vielfache (\(n\cdot e\) mit \(n=(1,2,3,\dots\))) auf. Warum ausgerechnet dieser Ladungswerts, keine Ahnung.\\ Wie man sie jedoch untersuchen kann, experimentell bestimmen, ist sehr interessant: Der von Robert A. Millikan entwickelte Versuch zur Messung der elektrischen Elementarladung, den er 1910 mit Harvey Fletcher durchführte, ermöglichte eine bis dato nie erreichte Genauigkeit der Messung. Im Versuch wird eine dem Original nachempfundene Apparatur verwendet, die im wesentlichen darauf beruht, dass auf ein im homogenen Feld eines Plattenkondensators bewegliches, elektrisch geladenes Öltröpfchen verschiedene Kräfte wirken, die sich zu einem Kräftegleichgewicht ausbilden. Dadurch kann mit Messen der Fallgeschwindigkeit \(v_f\) im feldfreien Raum und der Steiggeschwindigkeit \(v_s\) bei einer an den Kondensator angelegten Spannung, die Ladung des Tröpfchens bestimmt werden kann.
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit einem Aufbau, sehr ähnlich zu Millikans, werden:
+\begin{itemize}
+    \item verschiedene Öltröpfchen untersucht, dementsprechend auch verschiedene Ladungen gemessen
+    \item daraus die Elementarladung berechnet und die Ladungsverteilung betrachtet
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item ein Millikan-Gerät: in einen Zylinder eingebauter Kondensator, hierin halten sich die Öltröpfchen auf, mit Beleuchtung und Ölzerstäuber
+    \item Mikroskop mit Monitor, zur Ausgabe der Mikroskopbilder
+    \item Steuergerät zum Ein-und Ausschalten des Kondensators und synchronen Starten/Stoppen der elektronischen Stoppuhren (eine für die Fall-, die andere für die Steigzeit)
+    \item Datenauswertungsblatt in Libre Office Calculator (LBC)
+\end{enumerate}\newpage
+\xfigure{t}{width=\textwidth}{Milikan.png}{Schema: Versuchsaufbau}{Versuchsaufbau}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth]{Öl.png} 
+\caption{Ölzerstäuber}
+\label{fig:Öl}
+\end{wrapfigure}
+
+Leider sieht man oben nicht, wie der Ölzerstäuber funktioniert. Das war sehr aufwendig, den zu machen, deswegen hier nochmal in groß: Durch Kapillarkräfte wird Öl in einer Glasröhre nach oben gezogen. An der Austrittsöffnung dieser Kapillare liegt eine zweite luftgefüllte Röhre: Mithilfe eines Blasebalgs kann nun ein schneller Luftstrom aus der Luftdüse am Ölspiegel vorbeigeführt werden. Nach dem Gesetz von Bernoulli sinkt der Druck des Luftstromes an der Düse (Querschnittsverkleinerung der Luftröhre), dadurch entsteht ein Unterdruck, der das schon durch Kapillarkräfte in die Nähe gebrachte Öl dann in den Luftstrom hineinzieht. Der Impuls des Luftstromes wird auf die Ölteilchen übertragen, die somit mitgerissen werden. Natürlich ist alles in den \cref{fig:Milikan.png} und \cref{fig:Öl} nur rein schematisch zu betrachten, echte Größenordnungen und -verhältnisse wurden vernachlässigt, auch die exakte Verbindung/Position der einzelnen Geräte stimmt nicht exakt mit dem echten Aufbau überein. \\Ich bin mir gerade nicht sicher, ob das oben genannte fluiddynamisch-technisch stimmt, gleicht der normale Luftdruck in dem Glasbehälter den Unterdruck des Luftstromes direkt aus? 
+
+Im folgenden Bild noch einmal der echte Aufbau, der im Versuch so benutzt wurde.
+\xfigure{h}{width=0.8\textwidth}{Versuchsaufbau.png}{Versuchsaufbau \autocite{Skript_1}}{Versuchsaufbau \autocite{Skript_1}}
+
+Das Messverfahren läuft also folgendermaßen: Auf dem Monitor mit bekannter Skalenteilung der Striche in \cref{fig:Milikan.png}, werden Öltröpfchen verfolgt, und durch Betätigen der Schalter am Steuergerät können entweder Fallzeit- oder Steigzeitmessungen ausgeführt werden, die  wird automatisch bei Einschalten des Kondensator gestartet. Die Zeiten werden in eine Tabelle in Libre Office eingetragen, die über die folgenden Formeln die gewünschten Größen berechnet.
+
+\subsection[Grundlagen der Physik]{Grundlagen der Physik \autocite{Skript_1}}
+Das Experiment basiert auf einem Kräftegleichgewicht, das auf die geladenen Öltröpfchen wirkt,
+insbesondere in einem Gravitationsfeld und unter dem Einfluss eines elektrischen Feldes im
+Kondensator.
+\subsubsection{Kräfte}
+Für ein Tröpfchen des Radiuses \(r\); der Dichte \(\rho_{\text{Öl}}\); der Ladung \(Q\); in einem luftgefüllten Raum mit \(\rho_{\text{Luft}}\) und der Viskosität \(\eta\); im Gravitationsfeld der Erde mit Erdbeschleunigung \(g\); und im elektrischen Feld der Kondensatorspannung \(U\); stehen die folgenden Kräfte im Gleichgewicht:
+\begin{itemize}
+    \item Gravitationskraft \begin{equation}
+        F_g=\frac{4}{3}\pi r^3\rho_{\text{Öl}}\,g
+    \end{equation}
+    \item Auftriebskraft \begin{equation}
+    F_A = \frac{4}{3} \pi r^3 \rho_{\text{Luft}} \, g
+    \end{equation}
+    \item Stoke'sche Reibungskraft
+        \begin{equation}
+    F_R = 6 \pi r \eta v
+    \end{equation}
+    \item elektrische Kraft, hier ist \(d\) der Abstand der Kondensatorplatten \begin{equation}
+        F_{\text{el}}=Q\frac{U}{d}
+    \end{equation}
+\end{itemize}
+Im freien Fall wirken die Kräfte folgendermaßen, zu sehen in \cref{fig:freierfall}:
+\[0=F_g-F_A-F_R\]
+formt man dies um und notiert \(\rho\defeq \rho_{\text{Öl}}-\rho_{\text{Luft}}\), kommt man auf:
+\begin{equation}
+    r = \sqrt{\frac{9\eta}{2\rho g}v_f} =\sqrt{C_2v_f}
+    \label{eq:r}
+\end{equation}
+\(C_2\) ist die in der Tabelle notierte Konstante, die sich aus den konstanten Größen ergibt. 
+Aus dem zweiten Bild \cref{fig:kondensator} ergibt sich:
+\[0=F_g+F_R-F_A-F_{\text{el}}\]
+\begin{equation}
+\rightarrow Q = (v_f + v_s) \sqrt{\frac{9 v_f \eta^3}{2 \rho g}} \, \frac{6\pi d}{U}=C_1(v_f + v_s)\frac{\sqrt{v_f}}{U}
+\label{eq:q}
+\end{equation}
+Wir notieren hier \(\rho\defeq \rho_{\text{Öl}}-\rho_{\text{Luft}}\), sowie \(C_1\) als konstante Größe, die alle fixen Größen umfasst.
+
+\begin{figure}[h]
+\begin{subfigure}{0.45\textwidth}
+    \centering
+\includegraphics[height=5cm]{freierfall.png} 
+\caption{Kräfte im freien Fall}
+\label{fig:freierfall}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+    \centering
+\includegraphics[height=5cm]{kondensator.png}
+\caption{Kräfte im elektrischen Feld}
+\label{fig:kondensator}
+\end{subfigure}
+\end{figure}
+
+\subsubsection{Geschwindigkeit}
+Gemessen wird die Zeit über eine Strecke von \(n\) Skalenteilen (\(\qty{1}{\Skt}=\qty{5e-5}{\meter}\)), das heißt, die Geschwindigkeiten werden folgend berechnet:
+\begin{equation}
+    v_{f,s}=\frac{s}{t}=\frac{n\,\unit{\Skt}}{t}
+    \label{eq:v}
+\end{equation}
+
+\subsubsection{Cunningham-Korrektur}
+Die bis hierher eingeführten Gleichungen unterschlagen, dass die Viskosität für Luft abhängig der Größe des durchquerenden Teilchens ist. Die Ölteilchen sind mit einem Radius von \(\qty{e-6}{\meter}\) kleiner als die mittlere frei Weglänge \(\lambda\) von Luft, dies ist die Strecke die ein Teilchen im Durchschnitt in einem Medium zurücklegt, bis es zu einem Stoß mit einem anderen Teilchen kommt. Dies sorgt dafür, dass \(\eta\) nicht mehr konstant ist, sondern \(\eta\sim r\) gilt. Man nutzt also einen Korrekturfaktor \(f(r)\), somit ist:
+\begin{equation}
+    \eta(r) = \eta_0 f(r) = \frac{\eta_0}{1 + \frac{b}{r p}}
+    \label{eq:f(r)}
+\end{equation} 
+Hierbei ist \(p\) der Luftdruck und \(b\) eine empirische Konstante. 
+
+Damit ist dann der in LBC angegebene Wert für \(Q\) in der Einheit \(q_0=\qty{e-19}{\ampere\s}\):
+\begin{equation}
+    Q=\frac{1}{q_0}(v_f+v_s)\frac{C_1}{U}\sqrt{v_ff(r)^3}
+    \label{eq:qkorr}
+\end{equation}
+Alle notwendigen Werte sind in der LBC-Tabelle oben angegeben.

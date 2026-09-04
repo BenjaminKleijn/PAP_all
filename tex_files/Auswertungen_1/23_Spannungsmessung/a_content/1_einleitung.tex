@@ -1,0 +1,109 @@
+\subsection{Motivation}
+Das in der Vorlesung Experimentalphysik 2 erlernte Wissen über die Grundlagen der Elektrodynamik wird in diesem Versuch durch ein wirklich praktisches, eigenständiges Umgehen mit einfachen elektrischen Schaltungen und Geräten erweitert. Sehr schnell können Schaltungen sehr kompliziert werden, meist werden in der Vorlesung deshalb auch nur die einfachen pädagogischen Beispiele behandelt, in der echten Anwendung muss man weitaus mehr Dinge beachten bzw. braucht man weitaus mehr Tiefe/Komplexität (um hohen funktionstechnischen Anforderungen gerecht zu werden). Der Versuch dient dazu, durch relativ einfach gehaltene Schaltungen ein wenig Intuition mit elektrischen Grundlagen zu sammeln bzw. das Ohmsche Gesetz oder die Kirchhoffschen Gesetze anzuwenden und verschiedene Messungen mit anderen Methoden an ein paar Schaltkreisen vorzunehmen. Ein großer Fokus wird durch das Einbeziehen bzw. Bestimmen der Innenwiderstände der Messgeräte gelegt, da diese das Messergebnis maßgeblich beeinflussen.
+
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit den elektrischen Geräten, Schaltkreiselementen wird:
+\begin{itemize}
+    \item eine Messbereichserweiterung eines Volt- und Amperemeters vorgenommen
+    \item die Vorteile und Funktionsweise einer Kompensationsschaltung ausgenutzt, also Messgeräte hinsichtlich ihrer Ergebnisverfälschung betrachtet
+    \item die Klemmspannung einer Batterie untersucht
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item \(\qty{6}{\volt}\) Netzteil mit Präzisionsspannungsquelle \(\qty{2.5}{\volt}\), Adapterswitch
+    \item Kompensator
+    \item Drehspulinstrument 
+    \item Schiebewiderstand \(\qty{100}{\ohm}\)
+    \item Drei-Dekadenwiderstand
+    \item Batterie
+    \item Taster
+    \item Steckbrett mit zwei Widerständen
+\end{enumerate}
+\newpage
+\xfigure{t}{width=12cm}{Versuchsaufbau.png}{Versuchsaufbau\autocite{Skript_1}}{Versuchsaufbau, Netzteil und Taster nicht auf dem Bild vorhanden \autocite{Skript_1}}
+
+Die Einstellung des Kompensators erfolgt durch Anlegen einer 6V Hilfsspannung an die vorgesehenen Buchsen, die durch die Veränderung der Widerstände vom Eich- und Kompensationsregler auf die zur Eichung angelegte präzise Referenzspannung von \(\qty{2.5}{\volt}\) (Genauigkeit \(\qty{0.02}{\percent}\)) an der Eingangsbuchsen, abgeglichen wird. Dafür wird der Kompensationsregler auf 500 Skalenteile eingestellt und mithilfe des Eichreglers sowie des Tasters auf Null an der Zeigeranzeige des Kompensators abgeglichen. Nach erfolgreicher Eichung ist der Eichregler nicht mehr zu verändern, um die Kalibrierung nicht zu verfälschen. Damit entspricht nun der volle Bereich von 0-1000 Skalenteilen des Kompensationsreglers einer Spannung von \(\qtyrange{0}{5}{\volt}\). Der Linearitätsfehler des Reglers beträgt \(\qty{0.25}{\percent}\).
+
+Anschließend werden durch Aufbauen zweier Messschaltungen die Batteriespannung über eine Spannungsmessung mit Kompensator bzw. Voltmeter bestimmt. 
+
+Als zweites erfolgte dann eine Messung des Innenwiderstandes der Batterie durch eine parallele Strommessung mithilfe des Ameremeters und einer Messung der Klemmspannung mit dem Kompensator.
+\newpage
+\subsection[Theoretische Grundlagen]{Theoretische Grundlagen \autocite{Skript_1}}
+Das Ohm'sche Gesetz beschreibt die grundlegenden Zusammenhänge zwischen Stromstärke \(I\), Spannung \(U\) und Widerstand \(R\):
+\begin{equation}
+    R = \frac{U}{I}
+    \label{eq:ohm}
+\end{equation}
+Darüber hinaus gelten die Kirchhoffschen Regeln. Die Knotenregel besagt, dass in einem Knotenpunkt die Summe aller zufließenden und abfließenden Ströme null ist:
+\begin{equation}
+    \sum_{i} I_i = 0
+    \label{eq:knoten}
+\end{equation}
+Zudem ist in einer geschlossenen Masche die Summe aller Spannungen null:
+\begin{equation}
+    \sum_{i} U_i = 0
+    \label{eq:masche}
+\end{equation}
+Aus diesen Gesetzen lassen sich über das Ohmsche Gesetz die Regeln für die Verteilung von Widerständen ableiten. Für eine Reihenschaltung gilt:
+\begin{equation}
+    R = \sum_{i} R_i
+    \label{eq:reihe}
+\end{equation}
+Für eine Parallelschaltung folgt:
+\begin{equation}
+    \frac{1}{R} = \sum_{i} \frac{1}{R_i}
+    \label{eq:parallel}
+\end{equation}
+
+\subsubsection{Reale Spannungsquelle}
+Reale Spannungsquellen unterscheiden sich von idealen Spannungsquellen durch das Vorhandensein eines Innenwiderstands \(R_{iS}\). Dieser bewirkt, dass die Klemmenspannung \(U\), also die für einen Verbraucher zugängliche Spannung, von der entnommenen Stromstärke abhängt:
+\begin{equation}
+    U_k = U_q - R_{iS} I
+    \label{eq:realquelle}
+\end{equation}
+
+mit der Quellenspannung \(U_q\). Wird die Spannungsquelle mit einem Lastwiderstand \(R_L\) belastet, so ergeben sich für Strom und Spannung, da der Gesamtwiderstand der Summe aller Widerstände entspricht:
+\begin{equation}
+    I = \frac{U_q}{R_{iS} + R_L}
+    \label{eq:stromlast}
+\end{equation}
+\begin{equation}
+    U = \frac{U_q R_L}{R_{iS} + R_L}
+    \label{eq:spannunglast}
+\end{equation}
+
+Damit gilt: Nur wenn \(R_{iS} \ll R_L\), entspricht die Klemmenspannung annähernd der Quellenspannung, siehe \cref{eq:realquelle}.
+
+\subsubsection{Drehspulinstrument}
+Zur Strom- und Spannungsmessung wird im Versuch ein Drehspulinstrument verwendet. Dieses besteht aus einer im Feld eines Permanentmagneten drehbar gelagerten Spule, die über eine Rückstellfeder fixiert ist. Fließt Strom durch die Spule, wirkt die Lorentzkraft auf jede einzelne Windung der Spule (stromdurchflossener Leiter im Magnetfeld), sodass ein Drehmoment entsteht. Die Auslenkung ist proportional zur Stromstärke, sodass sie so weit erfolgt, bis das winkelabhängige rückstellende Drehmoment der Feder gleich dem Lorentz-Drehmoment ist. Die Messung wird über die Auslenkung des Zeigers sichtbar.
+
+Wird das Instrument als Amperemeter genutzt, erfolgt der Anschluss in Reihe (nach \cref{eq:reihe}). Dabei führt der Innenwiderstand \(R_{i\,A}\) des Instruments zu einer Verringerung der Stromstärke, die durch den Stromkreis fließt (vgl. \cref{eq:stromlast}). Um den Messfehler gering zu halten, sollte \(R_{i\,A}\) möglichst klein sein.
+
+Wird das Instrument als Voltmeter eingesetzt, das funktioniert nach Ohm, wenn der Innenwiderstand \(R_{i\,A}\) bekannt ist, erfolgt die Parallelschaltung zum Verbraucher, die Spannung in Parallelschaltungen bleibt gleich. Hier ist ein hoher Innenwiderstand \(R_{iV}\) erwünscht, damit der Stromfluss durch das Messgerät minimal bleibt, nach dem Ohmschen Gesetz ist \(I_V=\frac{U_V}{R_V}\). Wenn der Widerstand des Voltmeters \(R_V\) sehr groß ist, so ist der durch das Voltmeter fließende Strom sehr klein, und dadurch der Spannungsabfall am VM gering, was geringe Messverfälschung bedeutet.
+
+\subsubsection{Kompensator}
+Ein alternatives Verfahren stellt die Spannungsmessung mit dem Kompensator dar. Dabei wird der zu messenden Spannung eine bekannte Gegenspannung entgegengesetzt, bis kein Strom mehr fließt. In diesem Fall sind beide Spannungen gleich groß. Aufgrund des hohen Innenwiderstands des Kompensators verursacht dieses Verfahren nur minimale Messfehler und erlaubt eine besonders genaue Spannungsmessung.
+
+\xfigure{h}{width=10cm}{kompensator}{Schaltplan des Kompensators \autocite{Skript_1}}{Schaltplan des Kompensators \autocite{Skript_1}}
+
+\subsubsection{Messbereichserweiterung}
+Da die Messbereiche von Drehspulinstrumenten begrenzt sind, kann eine Erweiterung durch zusätzliche Widerstände erfolgen. Zur Erweiterung des Strommessbereichs eines Amperemeters wird ein Parallelwiderstand \(R_p\) verwendet:
+
+\begin{equation}
+    R_p = \frac{R_i}{f-1}
+    \label{eq:stromerw}
+\end{equation}
+wobei \(f\) den Erweiterungsfaktor bezeichnet. Zur Erweiterung des Spannungsmessbereichs eines Voltmeters wird ein Serienwiederstand \(R_s\) hinzugefügt:
+\begin{equation}
+    R_s = R_i (f-1)
+    \label{eq:spannungserw}
+\end{equation}
+Diese Schaltungen erlauben es, auch Ströme und Spannungen zu messen, die den ursprünglichen Messbereich des Geräts überschreiten.
+
+\subsubsection{Leistung}
+Die Leistung an einer Last, an der die Spannung \(U\) abfällt und der Strom \(I\) fließt, ist gegeben durch:
+\begin{equation}
+    P=UI=\frac{U_qR_L}{R_i+R_L}\frac{U_q}{R_i+R_L}=\frac{U_q^2R_L}{(R_i+R_L)^2}
+\end{equation}

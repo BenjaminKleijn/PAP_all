@@ -1,0 +1,92 @@
+\subsection{Aufgabe 1 - Eichkurve}
+Aus \cref{eq:Druck} folgt, dass \(T\) linear mit dem gemessenen Druck steigt. Als Eichpunkte werden \(p(T=\qty{0}{\degreeCelsius})\) und \(p(T=\qty{100}{\degreeCelsius})\) genutzt. Dafür wird nach \cref{eq:Druck_Normal} der gemessene Druck bei Siedetemperatur normalisiert, der Fehler berechnet sich mit:
+\begin{equation}
+   \Delta p_{NB}=\sqrt{\left(\frac{1013.25}{p_L} \Delta p_{gem}\right)^2+\left(\frac{-1013.25p_{gem}}{p_L^2} \Delta p_L\right)^2}
+\end{equation}
+Mit \(p_L=\qty{1007.4(0.5)}{\hecto\pascal}\), \(p_{gem}=\qty{1242(2)}{\hecto\pascal}\) (der Fehler des Gangbarometers wurde nicht aufgeschrieben, das hat eine Skalenteilung von \(\qty{0.2}{\hecto\pascal}\). Da es jedoch auf dem Gang ist, wurde der Fehler nach oben abgeschätzt), ergibt sich:
+\[{p_{NB}=\qty{1249.2(2.1)}{\hecto\pascal}}\]
+Mit der Eichgerade 1 aus \cref{fig:Eichkurve.pdf} durch diese Punkte erhalten wir \[\underline{T_0(p=\qty{0}{\hecto\pascal})=\qty{-286(2)}{\degreeCelsius}}\]
+Sowie für die Temperatur von flüssigem Stickstoff:
+\[\underline{T_{\ce{N2}}(p=\qty{258}{\hecto\pascal})=\qty{-206(1)}{\degreeCelsius}}\]
+Verglichen mit dem Literaturwert \(T_{\ce{N2}}=\qty{-195.8}{\degreeCelsius}\) ergibt sich eine Abweichung von \(10.2\sigma\). Wäre der Fehler für die abgelesene \(T_{\ce{N2}}\) größer gewählt worden (da die Skalenteilung der x-Achse \(\qty{1}{\milli\meter}\equiv\qty{2}{\degreeCelsius}\) beträgt, wurde \(\qty{0.5}{\milli\meter}\equiv\qty{2}{\degreeCelsius}\) als Ablesefehler gewählt), dann könnte man die Sigma-Abweichung auch noch ordentlich nach unten drücken.  
+
+Mit der neuen Eichgerade 2, bei der nun der neue Eichpunkt \(T_{\ce{N2}}(p=258)=\qty{-195.8}{\degreeCelsius}\) ist, ergibt sich aus \cref{fig:Eichkurve.pdf}:
+\[\underline{T_{0,\,\text{neu}}(p=\qty{0}{\hecto\pascal})=\qty{-270(2)}{\degreeCelsius}}\]
+Für die \(T_0\)-Temperaturen habe ich \(\qty{2}{\degreeCelsius}\) als Fehler gewählt, da hier die Gerade auf einem kleinen Intervall die x-Achse schneidet, der Ablese/Zeichenfehler ist etwas größer.
+
+Für die Temperatur von festem \ce{CO2} liest man am der zweiten Eichgerade im Diagramm ab:
+\[T_{\ce{CO2}}=T(p=\qty{695(2)}{\hecto\pascal})=\qty{-62(1)}{\degreeCelsius}\]
+
+\xfigpdf{p}{angle=180,width=\textwidth}{Eichkurve.pdf}{}{Eichgerade 1 (obere): mit Schmelz- und Siedepunkt von Wasser.\\Eichkurve 2 (untere): Schmelzpunkt von Stickstoff (\ce{N2}) und Siedepunkt von Wasser}
+\FloatBarrier
+\clearpage
+
+Für die restlichen erhobenen Druckwerte ergibt sich nach Eichkurve Nr.2:
+\setcellgapes{3pt}
+\begin{table}[htbp]
+\centering\makegapedcells
+\caption{\(T(p)\) Druck-Temperaturwerte des Gasthermometers, entsprechend zugeordnete Messwerte \(U\) und \(T_{\text{Pyro}}\)}
+\begin{tabular}{CCCCCCCCCCCC}\hline
+\toprule
+\multicolumn{1}{C} {T_p\;[\unit{\degreeCelsius}]} & 5   & 14  & 26  & 35   & 44   & 55   & 65   & 73   & 82   & 90   & \multicolumn{1}{C}{100} \\\toprule\hline
+\multicolumn{1}{|C|} {p\;[\unit{\hecto\pascal}]} & 926 & 948 & 993 & 1027 & 1059 & 1094 & 1128 & 1156 & 1186 & 1218 & \multicolumn{1}{l|}{1242}\\ \hline
+   &     &       &       &       &      &       &      &      &      &      &                           \\ \hline
+\multicolumn{1}{|C|} {\makecell {U[\unit{\milli\volt}] \\ \equiv R[\unit{\ohm}]}} & 102.0 & 103.9 & 108.3 & 112.3 & 117.0  & 120.01 & 124.0  & 128.0  & 131.0  & 135.0  &\multicolumn{1}{C|}{138.0} \\ \hline
+\multicolumn{1}{|C|} {\makecell {\Delta U[\unit{\milli\volt}] \\ \equiv \Delta R[\unit{\ohm}]}}  & 2.5                      & 2.5   & 2.6   & 2.6   & 2.6  & 2.6   & 2.6  & 2.7  & 2.7  & 2.7  &  \multicolumn{1}{C|}{2.7} \\\hline
+   &     &       &       &       &      &       &      &      &      &      &                           \\ \hline
+\multicolumn{1}{|C|} {T_{\text{Pyro}}\;[\unit{\degreeCelsius}]} & 0.1                      & 8.9   & 19.5  & 29.2  & 37.1 & 47.7  & 59.9 & 67.1 & 74.8 & 88.5 & \multicolumn{1}{C|}{94.4} \\\hline
+\end{tabular}
+\label{table:T(p)}
+\end{table}
+
+\subsection{Aufgabe 2 - Pt100 Kurve}
+In der obigen Tabelle sieht man die Widerstandswerte zugeordnet zu den aus der \(T(p)\) Eichgerade 2 abgelesenen Temperaturwerten. Eigentlich wurde eine Spannung gemessen, nach dem Ohmschen Gesetz \(R=\frac{U}{I}\) mit \(I=\qty{1e-3}{\ampere}\) kann man diese Spannungswerte aber einfach in Ohm-Werte umwandeln (\unit{\milli\volt} kürzen sich mit den \unit{\milli\ampere}). Die Spannung ist fehlerbehaftet (wurde aus Altprotokollen entnommen) mit \[\Delta U=0.005\cdot U_{\text{Messwert}}+\qty{0.002}{\volt}\]
+somit ist auch der Widerstand trivial fehlerbehaftet, \(\Delta R=\frac{\Delta U}{I}\), also kann man auch einfach die Einheit tauschen.  
+Dieser Fehler wurde auch als Fehlerbalken in \cref{fig:Widerstand.pdf} eingezeichnet.
+
+Als Steigung der \(R(T)\) Geraden wurde grafisch ermittelt:
+\[\underline{m=\qty{0.39(6)}{\ohm\per\degreeCelsius}}\]
+Nach \cref{eq:R(T)} berechnet sich für das lineare Glied \(R_0A\): 
+\[R_0A=\qty{0.39083}{\ohm\per\degreeCelsius}\]
+Die Abweichung zum grafisch ermittelten Wert beträgt \(0.14\sigma\). 
+Man merkt, dass das lineare Glied dominanter ist, was mathematisch auch zu erwarten ist, da unsere Temperaturen sehr niedrig sind, und deswegen kein hohes \(T^2\) das \(B^2\) ausgleichen kann, siehe \cref{eq:R(T)}.
+
+\xfigpdf{p}{width=\textwidth}{Widerstand.pdf}{}{\(R(T)\), gemessener Widerstand über Temperaturen \(T_p\), siehe Tabelle \cref{table:T(p)} }
+\FloatBarrier
+
+\subsection{Aufgabe 3 - Pyrometer}
+Die in \cref{table:T(p)} zu findenden Wertepaare \(T_{\text{Pyro}}(T_p)\) sind in \cref{fig:Pyro.pdf} aufgetragen.  
+Die Steigung der Ausgleichsgeraden beträgt unerwarteterweise genau \(m=1\). Erwartet wäre aufgrund der hohen Abweichung und Fehlerquellen des Pyrometers ein von 1 abweichender Wert. Warum der vorletzte Punkt jenseits des restlichen linearen Verhaltens liegt, hat wahrscheinlich seine Gründe in einer Wasserdampfmessung (Pyrometer auf Wasserdampf gehalten).
+
+\setcellgapes{3pt}
+\subsection{Butangasflamme}
+\begin{table}[htbp]
+   \centering\makegapedcells
+   \caption{Temperaturen der Flammenverteilung, mit Eichtabelle des Pt-Rh bestimmt}
+\begin{tabular}{|c|C|C|C|C|}\hline
+Messposition & \text{viel \ce{O2}}\;U\,[\unit{\milli\volt}]  &  T\,[\unit{\degreeCelsius}]   &   \text{wenig \ce{O2}}\; U\,[\unit{\milli\volt}]  & T\,[\unit{\degreeCelsius}]   \\ \hline
+1&2   & 270 & 4.2 & 490 \\
+2&4.7 & 447 & 6   & 675 \\
+3&1.3 & 185 & 7.8 & 843 \\
+4&5.2 & 590 & 7.2 & 787 \\
+5&4.6 & 538 & 8.6 & 914 \\ \hline
+\end{tabular}
+\end{table}
+
+Viel Gehaltvolles lässt sich hier nicht extrahieren, außer, dass die Temperaturen der Flamme mit mehr Sauerstoffzufuhr konsistent alle höher sind. Das macht auch Sinn, denn mehr \ce{O2} bedeutet, es kann eine viel größere Verbrennungsreaktion stattfinden, die stark exotherm ist. Für Positionen nahe der Austrittsdüse ist die Temperatur der luftreichen Flamme (Symbolbild \cref{fig:reiche.png}) nicht so hoch wie am oberen Ende, das liegt daran, dass die Luftdurchmischung noch nicht optimal ist, und somit das Gas nicht vollständig verbrennen kann. Warum dies bei der luftarmen Flamme an der unteren Position (3) anders ist, liegt wsl. an einem Messfehler. 
+
+Ansonsten lassen wir die Daten hier mal so stehen, denn die Messung war ziemlich ungenau (Positionen per Augenmaß, Flammenstruktur/-größe änderte sich permanent,...), wortwörtlich handwavy. 
+
+\xfigpdf{p}{width=\textwidth}{Pyro.pdf}{}{\(T_{\text{pyro}}(T)\), gemessene Temperaturen \(T_{\text{pyro}}\) mit dem Pyrometer über \(T\), siehe Tabelle \cref{table:T(p)}}
+
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption[]
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

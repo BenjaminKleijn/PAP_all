@@ -1,0 +1,173 @@
+
+\newcounter{linkcounter}
+% Das 'v' sorgt dafür, dass das Argument so gelesen wird, wie es da steht
+\NewDocumentCommand{\clink}{v}{%
+  \stepcounter{linkcounter}%
+  \href{#1}{\thelinkcounter}}
+
+\begin{macro}{FAQ}
+  (alte) Website mit allen möglichen Inhalten \clink{https://web.archive.org/web/20170813154811/http://projekte.dante.de/DanteFAQ}
+\end{macro}
+
+\begin{macro}{Thesis}
+  All sorts of Tips on Writing a Thesis in LaTeX \clink{https://www.khirevich.com/latex/}.
+\end{macro}
+
+\begin{macro}{Neovim}
+  How to use LateX in Neovim \clink{https://mathjiajia.github.io/neovim-latex/}, \clink{https://castel.dev/post/lecture-notes-1/}
+\end{macro}
+
+\subsection{Generating \LaTeX content}
+Use Table Generator \clink{https://tablesgenerator.com/}, to paste in excel content.\\ 
+Use the python script \verb|gff(<function>,<errorvariables>)|to generate typeset error-formulas. One can generate a full table aswell. Look it up on Finn Zeumers Github \clink{https://github.com/FinnZeumer}.\\
+To generate simple svgs of mathmode content, use \clink{https://latex2image.joeraut.com/}
+
+\subsection{\LaTeX Kernel commands}
+\begin{macro}{\protect}
+  What is the difference between fragile and robust commands? When and why do we need \verb|\protect|? \clink{https://tex.stackexchange.com/questions/4736/what-is-the-difference-between-fragile-and-robust-commands-when-and-why-do-we-n}
+\end{macro}
+
+\begin{macro}{.\ \@ .\ }
+  Spacing after a dot for abbreviations e.\ g.\ vs e.g. \clink{https://tex.stackexchange.com/questions/116528/vs-after-abbreviation-read-backslash-at-vs-backslash-space/116530#116530} \clink{https://tex.stackexchange.com/questions/552648/normal-sized-breaking-space-after-a-period}
+\end{macro}
+
+\subsection{Documentclasses}
+\begin{macro}{\documentclasses}
+    What are the available "documentclass" types and their uses? \clink{https://tex.stackexchange.com/questions/782/what-are-the-available-documentclass-types-and-their-uses}
+\end{macro}
+
+\subsection{Packages}
+\begin{macro}{PACKAGES}
+  What packages do people load by default in \LaTeX ? \clink{https://tex.stackexchange.com/questions/553/what-packages-do-people-load-by-default-in-latex}
+\end{macro}
+\begin{macro}{SVG}
+  Insert SVG-Files with svg-package \clink{https://tex.stackexchange.com/questions/2099/how-to-include-svg-diagrams-in-latex/523685#523685}\\
+  For that: enabling shell escape in VS-Code \clink{https://tex.stackexchange.com/questions/516604/how-to-enable-shell-escape-or-write18-visual-studio-code-latex-workshop} or \clink{https://stackoverflow.com/questions/56743092/modifying-settings-json-in-vscode-to-add-shell-escape-flag-to-pdflatex-in-latex}
+\end{macro}
+
+\begin{macro}{inputenc}
+  \verb|fontenc| , \verb|lmodern|\\
+  How all these character encoding packages work together \clink{https://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc} ECHTE Frank Mittelbach Antwort.\\
+  Ich bin dumm, da steht input encoding, sodass man im Editor Umlaute schreiben kann, und da steht font encoding, dass Umlaute im output richtig verarbeitet werden.\clink{https://tex.stackexchange.com/questions/44694/fontenc-vs-inputenc}\\
+\end{macro}
+
+\begin{macro}{accents}
+  commands für Akzente und Sonderzeichen (auch Mathe Modus): \clink{https://de.wikibooks.org/wiki/LaTeX/_Akzente_und_Sonderzeichen}, math \clink{https://tex.stackexchange.com/questions/177000/math-mode-accents}
+\end{macro}
+
+\begin{macro}{microtype}
+  What the options of microtype do \clink{https://www.khirevich.com/latex/microtype/}\\
+    H\`{a}n Th\'{\^{e}} Th\`{a}nh's dissertation on typesetting and pdflatex \clink{https://www.pragma-ade.com/pdftex/thesis.pdf}
+\end{macro}
+
+\begin{macro}{rescue signs}
+  Green Isosigns \clink{https://ctan.org/pkg/isosigns}
+\end{macro}
+
+\begin{macro}{koma-script}
+  Check out documentation aswell (berichtsclass.cls) and examples here \clink{https://tobiw.de/en/teotm/layout-2}
+\end{macro}
+
+\begin{macro}{biblatex}
+  Troubleshooting of biblatex \clink{https://tex.stackexchange.com/questions/63852/question-mark-or-bold-citation-key-instead-of-citation-number}
+\end{macro}
+
+\begin{macro}{glossaries}
+  To make definition entryies (glossary) or acronym lists: look up on Overleaf \clink{https://www.overleaf.com/learn/latex/Glossaries#Terms_and_Acronyms} and the documentation \clink{https://ftp.mpi-inf.mpg.de/pub/tex/mirror/ftp.dante.de/pub/tex/macros/latex/contrib/glossaries/glossariesbegin.pdf}. Important: For compiling and displaying, one needs to: Build + use \verb|makeglossaries main| in terminal + Build, if your file is called \verb|main.tex|. 
+\end{macro}
+
+\begin{macro}{pdfpages}
+  Geiler scheiß mit pdfpages: continued page numberning, adding to toc, displaying header. \clink{https://latex.org/forum/viewtopic.php?t=33233}
+\end{macro}
+
+\subsection{Math}
+For understanding math alignment environments, read section 3, \enquote{Displayed equations}, of the user guide of the amsmath package. \clink{https://tex.stackexchange.com/questions/239252/what-is-the-difference-between-split-multline-align-breqn-for-breaking-an-equ} 
+
+\begin{macro}{\bm}
+  comparison of typesetting bold symbols with the \verb|bm| package or \verb|\boldsymbol{}| \clink{https://tex.stackexchange.com/questions/3238/bm-package-versus-boldsymbol}
+\end{macro}
+
+\begin{macro}{\align-env}
+  Align \verb|\coloneqq| and $=$, how alignment works \clink{https://tex.stackexchange.com/questions/329176/align-coloneqq-and}
+\end{macro}
+
+\begin{macro}{\mathop}
+  What really is the function of \verb|\mathop| how does spacing work,.. \clink{https://tex.stackexchange.com/questions/523270/what-is-really-function-of-mathop-command}
+\end{macro}
+
+\begin{macro}{\split-env}
+  How to achieve only one equation number on a set of equations by using the split environment \clink{https://tex.stackexchange.com/questions/13396/how-to-get-only-one-vertically-centered-equation-number-in-align-environment-wit}
+\end{macro}
+
+\begin{macro}{\toup}
+  Math spacing in subscript of limits is kinda odd. So typesetting 
+  \begin{gather}
+    \lim_{R\mathrel{\uparrow} 1}\\  
+    \lim_{R\mathrel{\to} 1}\\       
+    R\mathrel{\uparrow} 1\\
+    R\mathrel{\to} 1
+\end{gather}
+leads to odd spacing. Create custom command \verb|\toup| to fix this. Here is a nice analysis on the geometry of those kerning: \clink{https://tex.stackexchange.com/questions/327486/typesetting-a-limit-from-below-correctly}
+\end{macro}
+
+\subsection{Tables}
+\begin{macro}{tabularx}
+  Difference between \verb|tabular*| and \verb|tabularx| \clink{https://tex.stackexchange.com/questions/341205/what-is-the-difference-between-tabular-tabular-and-tabularx-environments}. You need a command \verb|@{\extracolsep{\fill}}| in tabular* to activate distance filling. Most important takeaway: \verb|@{}l| gets rid of the distance between left table border and first column content. 
+\end{macro}
+
+\begin{macro}{S column}
+  How to use the \verb|siunitx| column S and how to use \verb|*{x}{t}| to generate the same column type t x-times \clink{https://tex.stackexchange.com/questions/198440/vertical-lines-in-a-table}
+\end{macro}
+
+\begin{macro}{booktabs}
+  \begin{macro}{\cmidrule}
+      Using the different rules, difference to \verb|\hline| and \\
+      how to use \verb|\cmidrule[line width](trim){a-b}| \clink{https://tex.stackexchange.com/questions/156122/booktabs-what-is-the-difference-between-toprule-and-hline}
+  \end{macro}
+\end{macro}
+
+\begin{macro}{cellspace}
+  \begin{macro}{makecell}
+    Make gaped cells, e.g. fractions, so table lines have more space. Note: Booktabs' rules add spacing aswell.   \clink{https://tex.stackexchange.com/questions/67047/not-enough-space-in-table-for-fractions} 
+  \end{macro}
+\end{macro}
+
+\begin{macro}{\newcolumtype}
+  How the syntax for \verb|\newcolumntype{name}[args]{definition}| works. \clink{https://tex.stackexchange.com/questions/257128/how-does-the-newcolumntype-command-work}
+\end{macro}
+
+
+\subsection{Figures}
+\begin{macro}{positioning}
+  Positioning images and tables, broad introduction on figure-env., subfigures, wrapfigure, .. by Overleaf \clink{https://www.overleaf.com/learn/latex/Positioning_images_and_tables}
+\end{macro}
+
+\begin{macro}{figures}
+  LaTeX/Floats, Figures and Captions: All sorts of tips, introduction \clink{https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions}
+\end{macro}
+
+\begin{macro}{example-image}
+  How to access example images, and how to work with them. \clink{https://tex.stackexchange.com/questions/231738/example-images-in-latex}
+\end{macro}
+\includegraphics{example-image-duck}
+
+\begin{macro}{\graphicspath}
+  How to define a path for access of image-folder. \clink{https://tex.stackexchange.com/questions/139401/how-to-use-graphicspath}
+\end{macro}
+
+\begin{macro}{trim}
+  Trim an image with \verb|\includegraphics[width=\textwidth,trim={<left> <lower> <right> <upper>},clip]|. \clink{https://tex.stackexchange.com/questions/287140/how-to-include-pdf-image-in-latex}
+\end{macro}
+
+\subsection{Working with packages}
+\begin{macro}{\Newbibstring}
+  How to use \verb|\NewBibliographyString{}| \clink{tex.stackexchange.com/questions/61354/creating-new-commands-inside-the-bibfile}
+\end{macro}
+
+\begin{macro}{derfernumbers}
+  Effect of \verb|defernumbers=true| on \verb|biblatex| bibliographys \clink{https://tex.stackexchange.com/questions/332431/biblatex-advises-defernumbers-true-but-details-of-references-may-be-very-hard-to}.
+\end{macro}
+
+\begin{macro}{\lstinline}
+  Different methods to typeset code with the \verb|listings| package \clink{https://tex.stackexchange.com/questions/205362/should-i-use-lstinline-for-the-language-keywords-embedded-in-text}
+\end{macro}

@@ -1,0 +1,178 @@
+\subsection{Motivation}
+Wasserstoff soll der perspektivische, nachhaltige Energieträger der Zukunft sein. Auf welchen technischen/chemischen Grundlagen Elektrolyse zur Herstellung von Wasserstoff und die anschließende Nutzung von Wasserstoff zur Energieerzeugung in einer Brennstoffzelle basieren, wird in diesem Versuch gelernt, bzw. das Prinzip durch Experimentieren an Modellapparaten selber durchgeführt.   
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit drei verschiedenen Aufbauten wird:
+\begin{itemize}
+    \item Elektrolyse mit Kupfer untersucht, zur Messung eines Masse- und folglich Ladungsübertrags zwischen Anode und Kathode
+    \item Wasserelektrolyse zur Erzeugung von Wasserstoff und Sauerstoff betrieben, beide Methoden dienen dem Verständnis der Vorgänge bei Elektrolyse und der Bestimmung der Faraday-Konstante
+    \item der umgekehrte Effekt, die Synthese von Wasser in einer Brennstoffzelle - die Nutzung von Wasserstoff als Energieträger - beobachtet   
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item Netzteil mit Strom- und Spannungsanzeige
+\end{enumerate}
+Versuchsaufbau 1, Kupferelektrolyse:
+\begin{enumerate}[resume]
+    \item Schiebewiderstand
+    \item Elektrolytgefäß mit Kupfersulfatlösung    
+    \item zwei Kupferplatten
+    \item Waage
+    \item Tischstoppuhr
+    \item Föhn
+\end{enumerate}
+Versuchsaufbau 2, Wasserelektrolyse:
+\begin{enumerate}[resume]
+    \item Hofmann'scher Wasserzersetzungsapparat
+\end{enumerate}
+Versuchsaufbau 3: 
+\begin{enumerate}[resume]
+    \item Brennstoffzellendemonstrator: PEM-Brennstoffzelle mit Wasserstoffbatterie 
+\end{enumerate}
+
+Im ersten Versuchsteil werden zwei in eine Kupfersulfatlösung getauchte Kupferplatten an das Netzteil angeschlossen, und dazwischen der Schiebewiderstand geschaltet. Durch Wiegen vor und nach der 30-minütigen Elektrolyse (beginnt mit Anschalten des Netzteils und Einstellen der gewünschten Stromstärke von \qtyrange{0.5}{1}{\ampere}), wird die Masse der übertragenen Kupferionen gemessen. Durch Kenntnis der molaren Masse von Kupfer und der übertragenen Ladung kann dann die Faraday-Konstante bestimmt werden. 
+
+Bei der Wasserelektrolyse im Hofmann'schen-Apparat werden die bei Anschließen des Netzteils an Platinelektroden entstehenden Volumina von Wasserstoff und Sauerstoff gemessen. 
+
+Durch Anschließen einer Wasserstoffbatterie an eine Brennstoffzelle, der Luftsauerstoff zugeführt wird, kann die gewonnene elektrische Energie an einem Verbraucher (Ventilator) umgesetzt werden.  
+\xfigure{t}{height=8cm}{Versuchsaufbau.png}{Versuchsaufbau \autocite{Skript_1}}{Versuchsaufbau \autocite{Skript_1}}
+
+\subsection{Theoretische Grundlagen der Physik}
+Das Ziel des Versuches ist es, die Faraday-Konstante \(F\) (\autocite{Faraday}) zu bestimmen:
+\begin{equation}
+    F=N_A e
+\end{equation}
+Das ist die elektrische Ladung eines Mols einfach geladener Ionen, also einer Anzahl von \(N_A\) mit der Elementarladung \(e\) geladenen Teilchen. Ein Mol (\qty{1}{\mole}) ist eine Einheit zur Angabe von Stoffmengen \(n\): Es enthält genau \(N_A=\num{6.02214076e23}\) Teilchen, mit der Avogadro-Zahl \(N_A\). Zusammen mit der Molaren Masse \(M_{\text{mol}}\) eines Stoffes, also wie viel Masse \(m\) ein Stoff pro \(\qty{1}{\mole}=N_A\) Teilchen besitzt, hängt \(n\) folgend zusammen:
+\begin{equation}
+    n=\frac{m}{M}
+\end{equation}
+Zusätzlich ist nützlich zu wissen, wie die Teilchenanzahl \(N\) mit \(n\) zusammenhängt:
+\begin{equation}
+    N=n\,N_A
+\end{equation}
+
+\subsubsection{Kupferelektrolyse}
+Zur Begriffserklärung: Kationen sind positiv geladene Ionen, die also Elektronen aufgenommen haben, dieses Aufnehmen von Elektronen nennt man \emph{Reduktion}. Kationen wandern zur \emph{Kathode}, das ist ein Bezeichnung für eine Elektrode. Anionen sind negativ geladene Ionen, die also Elektronen abgegeben haben, die oxidiert (\emph{Oxidation}) wurden. Sie wandern zur \emph{Anode}.\\
+Im Prinzip wird bei Elektrolyse durch elektrische Energie chemische Energie aufgebracht. Das geschieht folgendermaßen: Zwei Kupferplatten sind in eine Kupfersulfatlösung eingetaucht. Legt man nun eine Spannung an diese zwei Platten, die nun Elektroden heißen, wird die Lösung zum Leiter dazwischen, Elektrolyt genannt. In ihr sind Ionen dissoziiert, d.h. das Kupfersulfat teilt sich selbstständig in Ionen auf, dieser Prozess findet ohne notwendige Zersetzungsspannung statt, dies ist die mindeste Spannung, die gebraucht wird, um das Elektrolyt zu zersetzen.\\
+Ionen sind Teilchen, die durch Abgabe oder Aufnahme von Elektronen an bzw. von anderen Atomen/Molekülen oder durch Dissoziation entstehen und nicht mehr neutral geladen sind. Diese können sich nun durch Anlegen des elektrischen Felder gerichtet zwischen den Elektroden bewegen, dadurch dient das Elektrolyt als Stromleiter.
+
+Kupfersulfat dissoziiert in Wasser zu:
+\begin{equation}
+    \ce{CuSO4 <=> Cu^2+ + SO4^2-}
+\end{equation}
+Legt man nun eine Spannung an die Elektroden, so werden direkt die \ce{Cu^2+} Kationen der Lösung an der Kathode, dem negativen Pol, unter der Aufnahme von zwei Elektronen zu Kupfer reduziert. Gleichzeitig entstehen an der Anode neue \ce{Cu^2+}-Ionen, deren Elektronen dann an den Stromkreis \glqq abgegeben\grqq{} werden. D.h. die an der Kathode aus der Lösung verschwindenden Kationen werden durch neue, an der Anode abgeschiedene Ionen ersetzt, das Elektrolyt ist stets ausgeglichen, es gibt keine Überschüsse von \ce{Cu^2+}-Kationen oder \ce{SO4^2-}-Anionen. \\Wäre das Elektrolyt kein dissoziiertes Kupfersulfat, dann entstehen zwar an der Anode \ce{Cu^2+}-Ionen, die aber nicht direkt zur Kathode wandern. Es könnten an dieser also keine Kupfer-Kationen reduziert werden. Dort ist jedoch ein Elektronenüberschuss, also wird da dann Wasser zu Wasserstoff reduziert, was nicht wünschenswert ist.
+
+Effektiv fließt der elektrische Strom also dadurch, dass an der Anode durch elektrische Energie Kupferatomen Elektronen entrissen werden. Bei Kupferelektroden ist dafür theoretisch nur eine angelegte \(Zersetzungsspannung\) von \(0\) V notwendig, da an beiden Elektroden dieselbe Reaktion, nur umgekehrt stattfindet \& sich das Elektrolyt selbständig in Wasser dissoziiert. Man braucht aber eine kleine reale Zersetzungsspannung von \qtyrange{0.2}{0.5}{\volt}, um Widerstände und Überspannungen zu überwinden \autocite{elektrolyse}. (irgendwie würde bei \(0\) V auch gar kein Strom fließen).\\
+Die Elektronen wandern dann über den Stromkreis zur Kathode, während die oxidierten Kupferionen in die Lösung übergehen und reduzierte Kupferionen aus der Lösung ersetzen, denn die Ladungsmenge, die im Elektrolyt fließt, muss der Ladungsmenge, die durch den äußeren Stromkreis fließt, entsprechen. Das geht daraus hervor, dass an der Kathode und Anode gleicher Stromfluss herrschen muss. Wie lange es dauert, dass Kupferkationen von der einen zur anderen Elektrode wandern, weiß ich nicht, eigentlich ist genau dies das Ziel, verunreinigtes Kupfer an der Anode abscheiden, das dann als gereinigtes Kupfer an der Kathode abgesetzt wird. 
+
+\setcellgapes{3pt}
+\begin{table}[h]
+\centering\makegapedcells
+\caption{Kupferelektrolyse}
+\begin{tabular}{cccccc}
+\hline
+Elektrode & Reaktionsgl. & Elektronen & erzeugte Ionenart & Elektrode \\\toprule
+Anode & \ce{Cu -> Cu^2+ + 2e-}  & Oxidation & Kationen & Pluspol\\\hline
+Kathode & \ce{Cu^2+ + 2e- -> Cu}  & Reduktion & & Minuspol\\\hline
+\end{tabular}
+\label{table:Kupferweg}
+\end{table}
+
+Es findet also ein steter Transport von Kupferionen von der Anode zur Kathode statt. Dadurch lagert sich eine Masse an gereinigten Kupferteilchen an der Kathode ab, die durch Wiegen gemessen wird. 
+
+\subsubsection{Faraday-Konstante aus Elektrolyse bestimmen}
+Sind nun also die geflossenen Ladungsmenge \(Q=It\) (konstante Stromstärke \(I\) für eine gewissen Zeit \(t\)); das übertragende Ion, welches durch die Wertigkeit \(z\) charakterisiert wird (also wie viele Valenzelektronen das Ion verloren bzw.aufgenommen hat sind, ein zweifach geladenes Ion hat z.B. eine Wertigkeit \(z=2\)); und die Massendifferenz \(m_{\text{diff}}\) des übertragenden Stoffes mit Molarer Masse \(M\) bekannt, so können die folgenden Zusammenhänge zur Bestimmung von \(F\) genutzt werden:
+\begin{align}
+        \text{Anzahl übertragene Teilchen}\hspace{0.4cm}=&\hspace{0.4cm}\text{Anzahl übertragene Ionen} \nonumber\\
+        \mathrm{Avogadrozahl \cdot Stoffmenge} \hspace{0.8cm} =& \hspace{1.2cm}\frac{\text{\small Ladung}}{\text{\small Ladung pro Ion}}\nonumber\\
+        \vspace{2cm}
+        N=n\,N_A=N_A\frac{m_{\text{diff}}}{M}\hspace{1cm}=&\hspace{2cm}\frac{Q}{z\cdot e}
+\end{align}
+Formt man dies um, so erhalten wir:
+\begin{equation}
+    F=N_A\,e=\frac{Q\,M}{m_{\text{diff}}\;z}
+    \label{eq:F}
+\end{equation}
+\(F\) dient der Beschreibung von Prozessen, bei denen Ladungen durch Stoffe übertragen werden, z.B. Metall(Kupfer, Lithium)-Ionen oder Wasserstoffionen (Wasserelektrolyse), ist also von großer Bedeutung für Elektrolyse, Brennstoffzellen und Speichersysteme von elektrischer Energie, also Batterien. All diese Dinge werden immer bedeutender, angesichts der Elektrifizierung des Energiesektors.
+
+\subsubsection{Wasserelektrolyse}
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+\caption{Funktionsweise des Hofmann'schen Wasserzersetzungsapparates \autocite{Skript_1}}
+\label{fig:Hofmann}
+\end{wrapfigure}
+In \cref{fig:Hofmann} sieht man den Aufbau einer einfachen Wasserelektrolyse: In den Schenkeln befindet sich Wasser mit Schwefelsäure (verdünnte Schwefelsäurelösung ist ein besseres Elektrolyt), unten ist jeweils die eine Platinelektrode angeschlossen. Die Schwefelsäure dissoziiert in Wasser zu: 
+\begin{equation}
+    \ce{H2SO4 + H2O -> HSO4- + H3O+}
+\end{equation} 
+Es entstehen also Oxoniumionen, die nun durch eine Reduktion an der Kathode zu Wasserstoff werden. Gleichzeitig wird an der Anode Wasser zu Sauerstoff und Oxoniumionen oxidiert. Die Gesamtreaktion ist also: 
+\begin{equation}
+\ce{2H2O -> 2H2 + O2}.
+\end{equation} 
+Wasserstoff sammelt sich oben im Kathodenrohr, Sauerstoff im Anodenrohr. 
+Der höhenverschiebbare Behälter dient dazu, den hydrostatischen Druck auszugleichen, indem man ihn immer auf die Höhe des (druckabhängigen) Wasserspiegels setzt. 
+\setcellgapes{3pt}
+\begin{table}[h]
+\centering\makegapedcells
+\caption{Wasserelektrolyse}
+\begin{tabular}{cccccc}
+\hline
+Elektrode & Reaktionsgl. & Elektronen & erz. Ionenart & Pol \\\toprule
+Anode & \ce{ 6H2O -> O2 + 4H3O+ + 4e^-}  & Oxidation & Kationen & Pluspol\\\hline
+Kathode & \ce{ 4H3O+ + 4e^- -> 2H2 + 4H2O}  & Reduktion & & Minuspol \\\hline
+\end{tabular}
+\label{table:Wasserweg}
+\end{table}
+
+Um mit der umgeformten Gleichung (aus \cref{eq:F}):
+\begin{equation}
+    n=\frac{Q}{z\,F}
+    \label{eq:n1}
+\end{equation}
+\(F\) zu bestimmen, muss die Stoffmenge des entstandenen Gases bekannt sein. Gemessen wird das Volumen \(V\), aus dem mit dem Molaren Volumen \(V_{\text{mol}}\) (was für ein Volumen ein Mol eines Gases einnimmt) die Stoffmenge bestimmt werden kann:
+\begin{equation}
+    n=\frac{V}{V_{\text{mol}}}
+    \label{eq:n2}
+\end{equation}
+Aus dem idealen Gasgesetz folgt, dass:
+\begin{equation}
+    V_{\text{mol}}=\frac{V}{n}=\frac{N_A\,k_B\,T}{p}
+    \label{eq:V_mol}
+\end{equation}
+mit der Boltzmann-Konstante \(k_B\). Für Normaldruck (\(p_0=\qty{1013.25}{\milli\bar})\) und Normaltemperatur (\(T_0=\qty{273.15}{\kelvin}\)) ergibt sich \(V_{\text{mol}}^0=\qty{22.414}{\liter\per\mole}\). Zur Korrektur des gemessenen Wertes \(V\) müssen also Luftdruck und Temperatur des Labores gemessen werden, aus \cref{eq:V_mol} wird klar wie sich dann das korrigierte molare Volumen berechnet:
+\begin{equation}
+    V_{\text{mol}}=\frac{p_0}{p}\frac{T}{T_0} V_{\text{mol}}^0
+    \label{eq:V_molkorrigiert}
+\end{equation}
+Es ist noch eine weitere Korrektur notwendig, denn durch hydrostatischen Druck der Wassersäule (der durch Bewegen des Vorratsgefäßes aufgehoben werden kann) und den Dampfdruck \(p_D^{\ce{H2SO4}}\) der Schwefelsäure ist das gemessene Volumen für \cref{eq:V_molkorrigiert} kleiner, als für den Druck \(p=p_L\), mit gemessenem Luftdruck \(p_L\), vorgesehen. Deswegen vom Luftdruck erst noch der Dampfdruck abgezogen werden:
+\begin{equation}
+    p=p_L-p_D^{\ce{H2SO4}}=p_L-0.9\,p_D^{\ce{H2O}}
+    \label{eq:p}
+\end{equation}
+Der Dampfdruck der Schwefelsäure wird als 90\%-er Dampfdruck von reinem Wasser genähert, dieser ist bekannt.
+
+\subsubsection{Brennstoffzelle}
+Beim umgekehrten Prinzip der Elektrolyse entsteht Wasser: Hier wird ausgenutzt, dass die Reaktion von Sauerstoff mit dem Brennstoff Wasserstoff unter Benutzung von Katalysatoren selbstständig abläuft und dabei aus chemischer Energie elektrische Energie durch austauschende Elektronen gewonnen werden kann. Dafür wird die Gesamtreaktion:
+\begin{equation}
+    \ce{2H2 + O2 -> 2H2O}
+\end{equation} kontrolliert vorgenommen, denn \ce{H2} und \ce{O2} sind sehr reaktionsfreudig und würden einfach in einer Knallgasreaktion verbrennen. Die mit besonderer Beschichtung ausgestattete Anode wird mit Wasserstoff umspült, sodass es dort zur Dissoziation von \ce{H2} kommt, während an der Kathode Sauerstoff anliegt.
+
+\begin{table}[h]
+\centering
+\caption{Brennstoffzelle}
+\begin{tabularx}{0.8\textwidth}{cTcc}
+\toprule
+Elektrode & Reaktionsgl. & Elektronen & Pol \\\midrule
+Anode & \ce{ 2H2 -> 4H+ + 4e-}  & Oxidation & Minuspol\\\midrule
+Kathode & \ce{O2 + 4e- + 4H+ -> 2H2O}  & Reduktion & Pluspol \\\bottomrule
+\end{tabularx}
+\label{table:Wasserstoffweg}
+\end{table}
+
+Die Elektronen von Wasserstoff laden die Anode negativ auf, die oxidierten \ce{H2+}-Ionen können jedoch durch eine protonenleitfähige Membran zur Kathodenseite diffundieren. Dort wird Sauerstoff mit den durch einen Stromkreis gelaufenen Elektronen (die hier elektrische Arbeit verrichten können) reduziert und reagiert mit \ce{H2+} zu Wasser.\\
+Man beachte, dass hier die Elektroden umgekehrte Polung haben. Das liegt daran, dass der Begriff Kathode beschreibt, wo die Reduktion stattfindet und Anode analog Oxidation. Diese zwei Prozesse sind im Gegensatz zur Elektrolyse an den jeweils anderen Polen.
+
+Eine Brennstoffzelle, die auf einer \emph{Proton Exchange Membrane} (PEM) basiert, wird im Versuch verwendet.
+\newpage
+\xfigure{htbp}{width=0.9\textwidth}{PEM}{Funktionsweise einer PEM-Zelle \autocite{Skript_1}}{Funktionsweise einer PEM-Zelle \autocite{Skript_1}}

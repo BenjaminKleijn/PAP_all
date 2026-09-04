@@ -1,0 +1,150 @@
+\subsection[\texorpdfstring{Periodendauer \(T_0\)}{Periodendauer T0}]{Periodendauer \(\boldsymbol{T_0}\)}
+\label{subsection:w_0}
+Die Periodendauer des ungedämpften Pendels wird bestimmt, indem eine Zeit \(t=20T_0\) gemessen wurde. Durch quadratisches Addieren des Reaktionszeitfehlers und des statistischen Fehlers wurde der Gesamtfehler \(\Delta T_0\) bestimmt, aufgerundet ergibt das:
+\(\tcbhighmath[colback=white]{T_0=\qty{1.800(14)}{\s}}\).
+
+Die Eigenkreisfrequenz des ungedämpften Pendels berechnet man mit:
+\begin{align}
+    \omega_0=\frac{2\pi}{T_0}&&\text{und}\;\Delta \omega=\frac{-2\pi}{T_0^2}\Delta T_0&&\tcbhighmath{\omega_0=\qty{3.491(27)}{\hertz}}
+\end{align}
+
+\subsection[\texorpdfstring{Aufgabe 2 - Amplitude über Periodenzahl \(n\)}{Aufgabe 2 - Amplitude über Periodenzahl n}]{Aufgabe 2 - Amplitude über Periodenzahl \(\boldsymbol{n}\)}
+Aus Tabelle 3 im Messprotokoll wurden von den Daten der zwei Messreihen jeweils der Mittelwert der Amplitude berechnet und als Funktion der Schwingungszahl \(n\) (\(n=Nr. -1\) im Messprotokoll) eingezeichnet. Es wurden leider nicht 15 bzw. 10 Schwingungen notiert, sondern nur 14 bzw. 9.
+\paragraph{Reibung von \(I=\qty{340(10)}{\milli\ampere}\):}
+\label{sec:340mA}
+Man liest in \cref{fig:amplitude340} für \(n(\frac{a_0}{2})=\num{3.8(4)}\) Schwingungen ab. 
+Aus der Periodendauer \(T=\qty{2.670(0.013)}{\s}\) ergibt sich mit \(t_{1/2}=nT=\) und dem Fehler 
+\begin{align}
+    \Delta t_{1/2}=\sqrt{\left(T \Delta n\right)^2+\left(n \Delta T\right)^2}&&t_{1/2}=\qty{10.1(1.1)}{\s}
+\end{align}
+Mithilfe von \cref{eq:damping_halftime} und dem Fehler:
+\begin{align}
+    \delta = \frac{\ln 2}{t_{1/2}}&&\Delta \delta = -\frac{\ln(2)}{t_{1/2}^2}\Delta t_{1/2}&&\tcbhighmath{\delta_1=\qty{0.069(8)}{\per\s}}
+\end{align}
+
+\paragraph{Reibung von \(I=\qty{440(10)}{\milli\ampere}\):}
+Man liest in \cref{fig:amplitude440} für \(n(\frac{a_0}{2})=(2.8\pm0.5)\) Schwingungen ab. 
+Aus der Periodendauer \(T=\qty{2.670(0.013)}{\s}\) und analog zum vorherigen Abschnitt \cref{sec:340mA} ergibt sich:
+\(t_{1/2}=\qty{7.5(1.4)}{\s}\) und damit:
+\[\tcbhighmath{\delta_2=\qty{0.092(17)}{\per\s}}\]
+
+\subsection{Aufgabe 3 - Resonanzkurve}
+\paragraph{Vergleich Resonsanzfrequenz \(\boldsymbol{\omega'}\) mit \(\boldsymbol{\omega_0}\):}
+Aus \cref{fig:resonanz340} wird für für \(I=\qty{340(10)}{\milli\ampere}\) abgelesen:
+\[a_{\text{max}}=\num{5.30(20)}\;\text{Skt}\quad \text{für}\quad\nu_{max}=\qty{2270(10)}{\hertz}\]
+Da dies die Frequenz des Steuergerätes ist, muss die zugehörige externe Kreisfrequenz erst noch berechnet werden mit:
+\begin{equation}
+    \omega'=2\pi\frac{\nu_{\text{max}}}{4000}\quad\text{und}\;\Delta \omega'=2\pi\frac{\Delta \nu_{\text{max}}}{4000}
+\end{equation}
+Damit ist: \(\omega_1'=\qty{3.566(16)}{\hertz}\)\par
+\rule{\textwidth}{0.2pt}
+Für \(I=\qty{440(10)}{\milli\ampere}\) wird aus \cref{fig:resonanz440} abgelesen:
+\[a_{\text{max}}=\num{3.10(20)}\text{ Skt}\quad \text{für}\quad\nu_{\text{max}}=\qty{2280(10)}{\hertz}\]
+Damit ist analog berechnet wie oben: \(\omega_2'=\qty{3.581(16)}{\hertz}\)\par
+\rule{\textwidth}{0.4pt}
+Der Vergleich der Kreisfrequenzen ergibt:
+\begin{table}[htbp]
+  \centering
+  \caption{Vergleich der Resonanzfrequenz mit Eigenkreisfrequenz}
+  \begin{tabularx}{0.8\textwidth}{ZZZ}
+    \toprule
+    \omega_0\,[\unit{\hertz}]& \omega_1' \,[\unit{\hertz}]  &  \omega_2'\,[\unit{\hertz}]\\\midrule
+    \num{3.491(27)} & \num{3.566(16)} & \num{3.581(16)}\\
+    \bottomrule
+  \end{tabularx}
+  \label{table:Vergleich_w_0}
+\end{table}
+
+Diese Messergebnisse widersprechen der theoretischen Erwartung: \(\omega^\prime\) sollte nach \cref{eq:w'} bei größeren Reibungen \(\delta\) kleiner werden, zudem sollte \(\omega^\prime<\omega_0\) sein, dies ist auch nicht der Fall.
+
+\paragraph{Halbwertsbreite:}
+Geringe Dämpfung:\\
+Mithilfe von \cref{eq:b(H)} werden berechnet:
+\(a(\nu_1)=a(\nu_2)=\qty{3.75(14)}{Skt}\). Daraus liest man nun an \cref{fig:resonanz340} ab, unter Beeinflussung eines nach oben abgeschätzten Fehlers, aufgrund der Fit-Ungenauigkeit der Kurve: 
+\begin{gather*}
+H=\frac{2\pi}{4000}\qty{140(20)}{\hertz}=\qty{0.22(3)}{\hertz}\\
+\text{damit ist: }\tcbhighmath{\delta_1=\frac{H}{2}=\qty{0.110(15)}{\hertz}}
+\end{gather*}
+
+Starke Dämpfung:\\
+Analog wie oben: \(a(\nu_1)=a(\nu_2)=\qty{2.19(14)}{Skt}\). Daraus liest man nun an \cref{fig:resonanz440} ab: 
+\begin{gather*}
+H=\frac{2\pi}{4000}\qty{200(20)}{\hertz}=\qty{0.31(3)}{\hertz}\\
+\text{damit ist: }\tcbhighmath{\delta_2=\qty{0.155(15)}{\hertz}}
+\end{gather*}
+
+\paragraph{Resonanzüberhöhung}
+Geringe Dämpfung:\\
+Aus \cref{fig:amplitude340} wird abgelesen: \(a(\omega\to0)=\qty{0.25(5)}{Skt}\). Dadurch kann nun mit \(\omega_0=\qty{3.491(27)}{\hertz}\) aus \cref{subsection:w_0} auf eine dritte Weise nach \cref{eq:reso_überhöhung} \(\delta\) berechnet werden:
+\[\delta=\frac{\omega_0\,a(\omega\to0)}{2\,a(\omega')}\quad\text{und }\,\Delta \delta=\delta\sqrt{\left(\frac{\Delta \omega_0}{\omega_0}\right)^2+\left(\frac{\Delta a(\omega\to0)}{a(\omega\to0)}\right)^2+\left(\frac{\Delta a(\omega')}{a(\omega')}\right)^2}\]
+Damit ist:
+\(\tcbhighmath{\delta_1=\qty{0.08(3)}{\hertz}}\)
+
+\rule{\textwidth}{0.2pt}
+
+Und für starke Dämpfung wird in \cref{fig:amplitude440} abgelesen: \(a(\omega\to0)=\qty{0.30(10)}{\hertz}\). Analog wie oben erhält man:
+\(\tcbhighmath{\delta_2=\qty{0.16(5)}{\hertz}}\)
+
+\subsection{Vergleich der unterschiedlichen Dämpfungen}
+  \setcellgapes{3pt}
+  \begin{table}[h]
+  \centering\makegapedcells
+  \caption{Vergleich der Werte für \(\delta\) einer gedämpften Schwingung nach Methoden}
+  \begin{tabular}{|c|CC|}
+  \hline
+  & \delta_1\,[\unit{\hertz}]&\delta_2\,[\unit{\hertz}]\\\hline
+  1. Amplitudenabnahme & \num{0.069(8)}&\num{0.092(17)}\\
+  2. Halbwertsbreite & \num{0.110(15)}&\num{0.155(15)}\\
+  3. Resonanzüberhöhung & \num{0.08(3)}&\num{0.16(5)}\\\hline
+  Sigma-Abweichung 1-3 & 0.4\sigma & 1.3\sigma\\
+  Sigma-Abweichung 1-2 & 2.4\sigma & 2.8\sigma\\
+  Sigma-Abweichung 2-3 & 0.9\sigma & 0.1\sigma\\\hline
+  \end{tabular}
+  \label{table:Vergleich_delta}
+\end{table}
+
+Für \(\delta_1\) stimmen immer nur jeweils zwei Methoden in ihren Fehlergrenzen überein. \\Für \(\delta_2\) ist die erste Methode stark abweichend, die letzten beiden stimmen jedoch in ihren Grenzen überein. 
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[page=1,height=0.95\textheight]{shit.pdf}
+  \caption{Amplitudenabnahme als Funktion der Schwingungsanzahl \(n\) für geringe Dämpfung}
+  \label{fig:amplitude340}
+\end{figure}
+\clearpage\newpage
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=2,height=0.9\textheight]{shit.pdf}
+  \caption{Amplitudenabnahme als Funktion der Schwingungsanzahl \(n\) für starke Dämpfung}
+  \label{fig:amplitude440}
+\end{figure}
+\clearpage\newpage
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=3,height=0.9\textheight]{shit.pdf}
+  \caption{Resonanzkurve für geringe Dämpfung}
+  \label{fig:resonanz340}
+\end{figure}
+\clearpage\newpage
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[page=4,height=0.9\textheight]{shit.pdf}
+  \caption{Resonanzkurve für starke Dämpfung}
+  \label{fig:resonanz440}
+\end{figure}
+\clearpage\newpage
+
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

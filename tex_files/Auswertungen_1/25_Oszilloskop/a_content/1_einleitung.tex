@@ -1,0 +1,84 @@
+\subsection{Motivation}
+Das Oszilloskop ist ein mächtiges Gerät zur Untersuchung elektrischer Spannungen in Echtzeit und damit der Untersuchung von allen möglichen technischen Geräten, indem man die von ihnen erzeugten oder empfangenen Signalen analysieren kann. Das bedeutet, es können Fehler in Schaltungen, also neben falscher Verlötung/Verbindung können kaputte/nicht wie gewollt funktionierende Geräte gefunden werden, indem man das Output oder Input-Signal analysiert. Es ist eines der wichtigsten Messgeräte in der Elektronik und Elektrotechnik und hat eine weite Range an Anwendungsfeldern (leider kenne ich davon noch zu wenig).\\
+Es ist von großem Nutzen, auch weil eigentlich alle Sensoren für physikalisch interessante Größen einen Spannungsoutput generieren, der dann ausgelesen werden muss, sich einen routinierten und erfahrenen Umgang mit diesem Gerät anzueignen, dies ist das Hauptziel des Versuches.
+\subsection{Ziele des Versuches}
+Durch das Experimentieren und Spielen mit dem Oszilloskop werden:
+\begin{itemize}
+    \item der grundlegende Umgang mit dem Messgerät Oszilloskop erlernt, Einstellungsmöglichkeiten getestet und ausprobiert
+    \item verschiedene Signale (-formen) untersucht
+    \item Pulsweitenmodulation und dadurch Dimmung einer LED erreicht
+    \item Reflexion eines elektrischen Spannungspulses in einem Kabel gemessen
+\end{itemize}
+
+\subsection{Geräte}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \item Oszilloskop, Modell: TBS1072B, Hersteller: Tektronix
+    \item Funktionsgenerator
+    \item Signalgenerator: Microcontroller mit interessanter Schaltung
+    \item Koaxialkabel, 50\unit{\ohm}, 25m Länge und einstellbarem Abschlusswiderstand
+\end{enumerate}
+
+\xfigure{t}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \autocite{Skript_1}}{Versuchsaufbau/Geräte \autocite{Skript_1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \autocite{Skript_1}}
+\subsubsection{Signale}
+Als elektrisches Signal wird im folgenden eine elektrische Spannung bezeichnet, deren Verhalten/Charakterisierung über die Zeit Informationen beinhaltet bzw. deren Größen zu Darstellung von Informationen dienen kann.\\
+Zu den charakterisierenden Größen eines el. Signals gehören z.B. die Frequenz \(f\) und die Periodendauer \(T\), sie gibt die Zeit an, in der eine vollständige Periode (Schwingung/wiederholender Vorgang) durchlaufen wird, diese Größen stehen in folgender Beziehung:
+\begin{equation}
+f = \frac{1}{T}
+\label{eq:freq}
+\end{equation}
+
+Für Wechselspannungen werden verschiedenen interessante Größen unterschieden: Die Spitze-Spitze-Spannung \(U_\text{SS}\) gibt die Differenz zwischen dem maximalen und minimalen Spannungswert an, der Scheitelwert/Amplitude/Spitzenspannung \(\hat{U}\) ist die maximale bzw. minimale Spannung. ist die Der Effektivwert \(U_\text{eff}\) ist die konstante Gleichspannung, die an einem Widerstand die gleiche Energie liefert wie die Wechselspannung. Für eine sinusförmige Spannung gilt:
+\begin{equation}
+U_\text{eff} = \frac{\hat{U}}{\sqrt{2}}.
+\end{equation}
+Wechselstrom (AC, alternating current) ändert periodisch Richtung und Betrag, während Gleichstrom (DC, direct current) zeitlich konstant bleibt.  
+
+\subsubsection{Aufbau und Funktionsweise eines Oszilloskops}
+Im Gegensatz zu digitalen Oszilloskopen nutzen analoge (frühere) Oszis einen Elektronenstrahl, der durch ein von der zu untersuchenden Spannung erzeugtes elektrisches Feld auf einem Leuchtschirm vertikal abgelenkt wird. Eine Sägezahnspannung steuert die horizontale Ablenkung, sodass der Elektronenstrahl kontinuierlich die gesamte Breite des Bildschirms bestrahlt, und dadurch die zeitliche Veränderung des Signals sichtbar wird. Das heißt aber, zur Triggerung des Signals muss die Sägezahnspannung dieselbe Frequenz wie das Spannungssignal haben. Die Ablenkung der Elektronen basiert auf den Bewegungsgesetzen geladener Teilchen im elektrischen Feld. Eigentlich dachte ich: Der Vorteil von analogen Oszis ist: kontinuierliche Darstellung, wobei Elektronen auch nicht in infinitesimalen Abständen erzeugt/ausgestrahlt werden können, oder?, sowie hohe Amplitudenauflösung.
+
+Digitale Oszilloskope nehmen ein (kontinuierliches) Eingangssignal über einen krassen Analog-Digital-Wandler (ADC) auf. Dieser tastet mit einer endlichen und einstellbaren Sampling Rate das Signal ab, und speichert die Werte als digitale, zeitdiskrete Informationen, d.h. im Gegensatz zu einem kontinuierlichen Signal sind die Werte nur in bestimmten zeitlichen Abständen bzw. an diskreten Punkten bekannt und werden durch Interpolation dargestellt. Die Übertragung der Werte an andere Empfänger oder Bauteile wie den Bildschirm, erfolgt wieder in Form einer Spannung, und dadurch einem analogen Signal, indem die Informationen z.B. als Amplituden oder Frequenzen codiert sind. Spannung kann jedoch nur zeitkontinuierlich, also nicht punktweise erzeugt werden, weshalb ein digitales Spannungssignal sich nur zu bestimmten Zeitpunkten ändert und zwischen den Zeitpunkten im Wert konstant ist. Da  Alle Signale, die wir in diesem Versuch untersuchen sind glaube ich digitalen Ursprungs.\\Es gibt ein wichtiges Kriterium, ob die Sampling Rate des digitalen Oszilloskop ausreicht, um das zu untersuchende Signal eindeutig abzutasten: Das Nyquist-Shannon Abtasttheorem: Demnach ist die minimale Abtastrate \(f_{\text{abtast}}\) in Abhängigkeit der maximalen Frequenz \(f_{\text{max}}\), die im Signal auftritt folgend gegeben:
+\begin{equation}
+    f_{\text{abtast}}>2f_\text{max}
+\end{equation}
+
+Ist dies nicht der Fall, kann es zu Informationsverlusten bei der Analyse kommen und das Eingangssignal nicht genau rekonstruiert werden.Die Vorteile eines digitalen Oszilloskop bestehen in der digitalen Speicherung, und darauf aufbauend möglicher mathematischer Verarbeitung und Analyse, z.B. die direkte Berechnung von Frequenz, Effektivwerten,... 
+\newpage
+\textbf{yt-Betrieb}\\
+Im yt-Betrieb wird Spannung gegen Zeit dargestellt. Das Signal wird am Eingang gedämpft, verstärkt, gefiltert und dann abgetastet.
+
+\textbf{Triggerung}\\
+Triggerung stabilisiert periodische Signale, verhindert Flackern und sorgt dafür, dass immer der gleiche Signalabschnitt dargestellt wird. Meistens wird eine Flankentriggerung verwendet, bei der ein Triggerlevel, also eine bestimmte Amplitude festgelegt wird, sodass immer der Zeitpunkt einer Wechselspannung, dessen Amplitude dem Triggerlevel entspricht, auf denselben Punkt des \(U(t)\) Diagramms abgebildet wird. 
+
+\subsubsection{Bedienung}
+Wichtige Funktionen sind die Eingangskopplung (AC, DC, Erde) sowie die vertikale und horizontale Skalenanpassung, durch die Zeitachsenskalierung kann die Sampling Rate angepasst werden. Die maximale Rate liegt bei diesem Oszilloskop bei 1 GS/s, also einer Milliarde Messungen pro Sekunde, von denen 2500 im Speicher abgelegt werden können. Der Bildschirm zeigt 8 mal 10 Kästchen(divs) an d.h. um die maximale Sampling Rate ausnutzen zu können, darf die Aufzeichnungszeit bzw. Zeit pro div
+\begin{equation}
+    t=2500\cdot\qty{1}{\nano\s}=\qty{2.5}{\micro\s}=10\cdot\text{div}\rightarrow 1\text{div}\overset{!}{\leq}\qty{250}{\nano\s} 
+\end{equation}
+nicht überschritten werden. Solange also die zu untersuchenden Signale bei einer div-Zeit von \(\leq\qty{250}{\nano\s}\) eine Frequenz \(f<\frac{1}{2}\unit{\giga\hertz}\) nicht überschreiten, können sie vollständig rekonstruiert werden. Wird die Zeitachse angepasst, sodass die div Zeit höher wird und dann die Sampling-Rate leidet, sinkt natürlich auch \(f_\text{max}\).
+
+\textbf{Kopplung}
+AC-Kopplung filtert Gleichstromanteile einer Wechselspannung heraus, die DC-Kopplung zeigt diese an, dazu muss dann ein Referenzpunkt, z.B. die Erde-Position als Null ausgewählt werden.
+
+\textbf{Cursor}
+Zusätzlich gibt es eine Cursorfunktion, mit der händisch sowohl für \(y(U)\)- als auch \(t\)-Achse zwei Stellen markiert werden können. Die Werte selbst sowie die Differenz wird automatisch angezeigt.
+\subsubsection{Reflexion auf Leitungen}
+Läuft eine elektrische Welle durch einen Leiter, so kann es abhängig vom Abschluss des Leiters zu Reflexion oder Absorption kommen. Generell gilt: Ändert sich der Wellenwiderstand einer Leitung, wird ein Teil der Welle reflektiert. Der Wellenwiderstand \(Z\) hängt von Induktivität \(L'\) und Kapazität \(C'\) pro Längeneinheit ab:
+\begin{equation}
+Z = \sqrt{\frac{L'}{C'}}
+\end{equation}
+Betrachtet man ein Koaxialkabel, dessen Innen- und Außenleiter nicht verbunden sind, also praktisch mit offenem Ende, so wird die Welle ohne Phasensprung reflektiert. Ein geschlossenes Ende, bei der die Welle gegenphasig reflektiert wird, entspricht hier einem kurzgeschlossenen Kabel, die Innen- und Außenleiter sind also verbunden, man beobachtet dann einen sogenannten verzögerten Kurzschluss: Einlaufende und reflektierte Welle sind gegenphasig und überlagern sich zu zu null, aber erst nachdem die Welle reflektiert wurde.
+
+Der dritte Fall ist vom Abschlusswiderstand \(R\) abhängig: Ist dieser gleich dem Wellenwiderstand \(Z\) des Leiters, so treten keine Reflexionen auf, alle elektrische Energie geht in den Abschlusswiderstand/ein entsprechendes Gerät über.
+
+\subsubsection{Pulsweitenmodulation (PWM)}
+PWM regelt die Effektivspannung ohne Änderung der Betriebsspannung/Spitzenspannung. Bei einer Rechteckspannung zwischen \(\hat{U}\) und \qty{0}{\volt}, (also an und ausschalten von \(\hat{U}\)) ergibt sich der Mittelwert \(U_M\) und Effektivwert \(U_\text{eff}\) über den Tastgrad, das Verhältnis von Pulsdauer \(t\) zu Periodendauer \(T\):
+\begin{equation}
+U_M = U_0 \frac{t}{T}, \quad
+U_\text{eff} = U_0 \sqrt{\frac{t}{T}}.
+\label{eq:spannungen}
+\end{equation}
+So kann man bspw. LEDs dimmen, da das Auge ab einer gewissen Schaltfrequenz (ca.\qty{75}{\hertz}) nicht zwischen den einzelnen Peaks unterscheiden kann.

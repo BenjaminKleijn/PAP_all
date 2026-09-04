@@ -1,0 +1,51 @@
+ 
+\subsection{Messverfahren}
+Es gibt also zwei mögliche Methoden, um die stoffeigene Größe \(\epsilon\) zu bestimmen:
+\begin{enumerate}
+    \item Messung der Lichtintensität als Funktion von \(l\) bei \(c=\text{const.}\) \\
+        \(\rightarrow\) daraus ergibt sich durch Auftragen von \(\log{I}(l)\) auf dekadischem Papier nach \cref{k'} die Geradensteigung \(k'\) und mit bekannter Konzentration \(\epsilon\)
+    \item bei \(l=\text{const.}\) Variation von \(c\)\\
+        \(\rightarrow\) Auftragen von \(\log{I}(c)\) ergibt die die Geradensteigung \(\epsilon l\) und mit bekannter Länge \(\epsilon\)
+\end{enumerate} 
+
+\subsection{Messprotokoll}
+Der Versuchsaufbaue ist unten auf der ersten Protokollseite dargestellt. Es wird mit einem Gitterspektrometer gearbeitet, an dessen CCD-Sensor das transmittierte Licht über ein Glasfaserkabel eingeleitet wird.
+
+\begin{minipage}{0.5\textwidth}
+    Um etwaiges Hintergrundrauschen durch die Belichtung des Raumes,... oder elektronisches Rauschen zu vermeiden, wurde eine Dunkelmessung durchgeführt, das Programm OceanView korrigiert die danach erhobenen Messwerte automatisch. Im ersten Versuchsteil werden die Absorptionslinien von Kaliumpermanganat (\ce{KMnO4}) bestimmt, indem das vom Gitterspektrometer erstellte Absorptionsspektrum, siehe \cref{fig:Spektrum.pdf}, nach lokalem Maxima untersucht wurde. Dies ist die erste Tabelle im Messprotokoll. Anschließend wurden für die vorhin erwähnten Methoden die Intensitätsmessungen gestartet. Da das Spektrometer kontinuierlich mit einer gewissen Samplingrate arbeitet, werden für jede Küvettenlänge \(l\) mehrere Messungen erhoben, die jeweils dem Durchschnitt von 50 Samples entsprechen.
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[page=1, scale=0.8]{V34.pdf}
+    \label{fig:Messprotokoll_1}
+    \captionof{figure}{Messprotokoll Seite 1}
+\end{minipage}
+\newpage
+\begin{figure}[t]
+    \includegraphics[page=2,width=\textwidth]{V34.pdf}
+    \caption{Messprotokoll Seite 2}
+\end{figure}
+
+\renewcommand{\arraystretch}{1.3}  
+\begin{table}[htbp]
+    \centering
+\begin{tabular}{|c|ccccc|}
+\hline
+                                          \multicolumn{6}{|c|}{\textbf{Methode 1}}                    \\ \hline
+Küvettenlänge \(l\) [\unit{\meter}]                                        & 1,5    & 3        & 6        & 12      & 24     \\ \hline
+Mittelwert \(\overline{I}\) [Counts] & 63917,61 & 58273,11 & 19722,36 & 4290,99 & 192,8  \\
+\(\sigma_{\overline{I}}\) [Counts]     & 1,02     & 151,43   & 69,58    & 8,15    & 1,09   \\ \hline
+sign.Stellen \(\overline{I}\) [Counts] & 63918 & 58270 & 19720 & 4291 & 192,8  \\
+sign. St. \(\sigma_{\overline{I}}\) [Counts]     & 1     & 150   & 70    & 8    & 1,1   \\ 
+\hline\hline
+                                          \multicolumn{6}{|c|}{\textbf{Methode 2}}                    \\ \hline
+Konzentration \(c\) [\qty{e-5}{\mole\per\liter}] & 0     & 6,25    & 12,5    & 25    & 50  \\ \hline
+\(\overline{I}\) [Counts]             & 63562,43 & 37895,4  & 21215,4  & 6081,18 & 693,26 \\
+\(\sigma_{\overline{I}}\) [Counts]    & 133,43   & 32,02    & 46       & 13,24   & 3,01   \\ \hline
+sign. St. \(\overline{I}\) [Counts]             & 63560 & 37895  & 21220  & 6081 & 693,3 \\
+sign. St. \(\sigma_{\overline{I}}\) [Counts]    & 130   & 32    & 50       & 13   & 3,0   \\ \hline
+\end{tabular}
+\caption{umgerechnete Werte aus dem Messprotokoll}
+\label{table:Werte}
+\end{table}

@@ -1,0 +1,186 @@
+
+% //////////////// Aufgabe 1 ////////////////
+\subsection{Aufgabe 1: Spannungsmessung mit verschiedenen Messgeräten}
+{\textbf{Drehspulinstrument als Voltmeter}}\\
+Der Widerstand \(R_{iV}\) des Messgerätes nach der Messerweiterung durch den Dekadenwiderstand \(R_s\) in Serie, wird durch Summieren der Einzelwiderstände berechnet. Der Fehler ist durch das quadratische Addieren der Einzelfehler berechnet worden (siehe Messprotokoll):
+\begin{equation}   
+    R_{iV} = R_D + R_{iA}=\qty{42}{\ohm}+\qty{458}{\ohm}=\qty{500(5)}{\ohm}
+    \label{eq:innenwiderstand_voltmeter}
+\end{equation}
+Wobei \(R_{iA}\) der Innenwiderstand des Drehspulinstruments ist.
+
+Der Fehler der gemessenen Stromstärke \(I_V\), die gleich in eine Spannung umgewandelt wird, setzt sich aus dem Ablesefehler des Drehspulinstruments von \(\Delta I = \qty{0.2}{\milli\ampere}\) und dem Fehler des Messgerätes selbst \(\Delta I =\qty{0.25}{\ampere}\) zusammen. Quadratisch addiert erhält man \(\Delta I_V = \qty{0.3}{\milli\ampere}\).
+
+Aus \cref{eq:ohm} folgt für die Spannung am Voltmeter:
+\begin{equation}
+    U_V = R_{iV}I_V \quad\text{und:}\quad \Delta U=\sqrt{(I_V \Delta R_{iV})^2 + (R_{iV} \Delta I_V)^2}
+    \label{eq:spannung_voltmeter}
+\end{equation}
+
+{\textbf{Kompensator}}\\
+Die Spannung am Spannungsteiler, gemessen mit dem Kompensator, wird durch das Umrechnen der Anzeige \(A_p\) des Drehpotentiometers (Kompensationsregler) des Nullabgleichs erreicht (\(\qty{1}{\V}\equiv\num{200}\) Skalenteil Skt):
+\begin{equation}
+    U=\frac{A_p}{200}
+\end{equation}
+Der Fehler wird durch hauptsächlich durch den Linearitätsfehler \(\Delta U=0.0025\cdot U\) bestimmt, zusätzlich kommt noch der Ablesefehler von 1 Skt\(\equiv\qty{0.005}{\volt}\) am Regler und der Eichfehler \(\Delta U=0.0002\cdot\qty{2.5}{\volt}\) dazu, die alle quadratisch addiert werde
+\setcellgapes{3pt}
+\begin{table}[h]
+\centering
+\caption{Spannungsmessung am Spannungsteiler}
+\begin{tabularx}{0.8\textwidth}{xZZ}
+\toprule
+       &  \text{Drehspulinstrument } [\unit{\volt}] & \text{Kompensator} [\unit{\volt}] \\\midrule
+U    & \num{4.20(16)} & \num{4.420(12)} \\
+U_{R1} & \num{1.00(15)} & \num{2.220(8)} \\
+U_{R2} & \num{1.00(15)} & \num{2.220(8)} \\\bottomrule
+\end{tabularx}
+\label{table:Spannungen}
+\end{table}
+
+Die Spannung \(U_{R1}+U_{R2}\) über den Widerständen bei der Messung mit dem Amperemeter sollten nach der Maschenregel \cref{eq:masche} der Klemmenspannung \(U\) entsprechen. Dies ist nicht der Fall, was auf den endlichen/kleinen Innenwiderstand des Voltmeters zurückzuführen ist. Die Masche besteht also auch noch aus einer Spannung \(U_V\) die am Voltmeter abfällt. Durch den endlichen Widerstand ist der Strom im Voltmeter nicht vernachlässigbar klein und sorgt für einen Spannungsabfall am Voltmeter.
+\vspace{0.2cm}
+\hrule \vspace{3pt}
+
+Nach \cref{eq:spannunglast} gilt für die Batteriespannung, bei \(R_L=2R\) mit \(R\) als Widerstand der zwei Spannungsteilerwiderstände; dem Innenwiderstand der Batterie \(R_{iS}\) und dem Widerstand \(R_{iV}\) des Messgerätes, nach dem Ohmschen Gesetz:
+\begin{gather}
+    U=I_0\cdot R_{\text{parallel}}=\frac{U_q}{R_{\text{ges}}}\cdot R_p\\
+    R_p=\frac{R_{iV}2R}{R_{iV}+2R}\qquad \text{und}\qquad R_{\text{ges}}=R_{iS}+R_p\\
+    U = \frac{U_q}{R_{iS}+\frac{R_{iV}\,2R}{R_{iV}+2R}} \frac{R_{iV}\,2R}{R_{iV}+2R}= \frac{U_q \cdot 2R}{R_{iS} + 2R +\underbrace{\frac{R_{iS} 2R}{R_{iV}}}_{\text{Term 1}}}
+\end{gather}
+Hier ist \(R_{\text{parallel}}\) der kombinierte Widerstand von Last und Voltmeter, die parallel geschalten sind, sowie \(R_{\text{ges}}\) der Widerstand des gesamten Schaltkreises.\\
+Man sieht, dass wenn \(R_{iV}\gg R_{is}2R\), so verschwindet dieser Teil und \(U\) wird nicht verfälscht. 
+
+Für \(U_{R1}\) bzw. \(U_{R2}\) gilt:
+\begin{equation}
+    U_{R}= I_0\cdot\underbrace{ \frac{R_{iV}R}{R_{iV}+R}}_{R_p, \text{single}}=\frac{U_q}{R_{iS}+\frac{R_{iV}\,2R}{R_{iV}+2R}}\cdot \frac{R_{iV}R}{R_{iV}+R}=\frac{U_q R}{R_{iS}+2R+\underbrace{\frac{R_{iS}R}{R_{iV}}}_{\text{Term 2}}+\underbrace{\frac{R^2}{R_{iV}}}_{\text{Term 3}}}
+\end{equation}  
+
+Man sieht also: Wenn die Terme \numrange{1}{3} verschwinden, falls \(R_{iV}\to \infty\), dann ist \(U=2U_R\) und die Maschenregel wäre erfüllt. \\
+Der Kompensator hingegen hat einen sehr hohen Innenwiderstand, dementsprechend ist der Spannungsabfall über dem Messgerät vernachlässigbar, was auch an den Werten zu sehen ist. Die Abweichung berechnet sich über:
+\begin{equation}
+    \sigma_{Abw}=\frac{|U-2U_R|}{\sqrt{(\Delta U)^2+(2\Delta U_R)^2}}=1\sigma
+\end{equation}
+Das ist eine nicht signifikante Abweichung. 
+\vspace{0.2cm}
+\hrule \vspace{3pt}
+
+{\textbf{Berechnung von \(R\)}}\\
+Zur Bestimmung von \(R\) bei der Messung mit dem Voltmeter wird die Knotenregel \cref{eq:knoten} verwendet:
+\begin{equation}
+    I_0=I_V+I_R\leftrightarrow I_0=I_V+\frac{U_R}{R}=I_V+\frac{I_V R_{iV}}{R}
+    \label{eq:einsetzen}
+\end{equation}
+Hier ist \(I_V\) die gemessene Stromstärke durch das Voltmeter, mit der \(U_R\) ausgerechnet wurde in \cref{eq:spannung_voltmeter}; und \(I_R\) der Strom durch die Widerstände. Eigentlich hat man in \cref{eq:spannung_voltmeter}, also \(U_R=I_V R_{iV}\) die Spannung \(U_V\) ausgerechnet, jedoch gilt nach Maschenregel \(U_V=U_R\). 
+
+Mithilfe vom Ohmschen Gesetz für \(I_0\), das ist die Stromstärke durch den gesamten Schaltkreis gibt es eine zweite Gleichung:
+\begin{equation}
+    U=I_0\cdot (R_{p, \text{single}}+R)=I_0\cdot (\frac{R_{iV}R}{R_{iV}+R}+R)
+\end{equation}
+Die Unbekannte \(R\) kann jetzt durch Einsetzen von \cref{eq:einsetzen} und umformen bestimmt werden:
+\begin{equation}
+    U=\left(I_V+\frac{R_{iV}I_V}{R}\right)\cdot \left(\frac{R_{iV}R}{R_{iV}+R}+R\right)
+\end{equation}
+\begin{equation}
+    R=\frac{U}{I_V}-2R_{iV}
+    \quad\text{und}\quad \Delta R=\sqrt{\left(\frac{\Delta U}{I_V}\right)^2+\left(\frac{U}{I_V^2}\Delta I_V\right)^2+(2\Delta R_{iV})^2}
+\end{equation}
+Mit \(U=\qty{4.20(16)}{\volt}\), \(I_V=\qty{2.0(3)}{\milli\ampere}\) und \(R_{iV}=\qty{500(5)}{\ohm}\) kommt man auf:
+\begin{rb}
+    R=\qty{1100(80)}{\ohm}
+\end{rb}
+
+
+\subsection{Aufgabe 2: Bestimmung des Innenwiderstands der Batterie}
+Diese Aufgabe basiert auf den Messergebnissen auf der letzten Seite des Messprotokolls. Dazu werden die Messwerte in ein \(U(I)\)-Diagramm eingetragen. Dabei entspricht nach \cref{eq:klemmenspannung} die Steigung \(-R_i\) dem negativen Innenwiderstand der Batterie und der Achsenabschnitt \(U_q\) der Quellenspannung.\\
+Die Fehler \(\Delta U\) wurden analog wie für Tabelle \cref{table:Spannungen} bestimmt. Der Stromstärkenfehler ist mit \(f\) als Vergrößerungsfaktor berechnet mit: 
+\begin{equation}
+\Delta I=\sqrt{(f \cdot \Delta I_{\text{Ablese}})^2+(f \cdot \Delta I_{\text{Messgerät}})^2}=\sqrt{(20\cdot\qty{0.2}{\milli\ampere})^2+(20\cdot\qty{0.25}{\milli\ampere})^2}=\qty{7}{\milli\ampere}
+\end{equation}
+Aus dem \cref{fig:diagramm1} lassen sich die Steigungen der Ausgleichs- sowie der Fehlergeraden ablesen:
+\begin{align}
+    a_A &= \qty{-1.514}{\volt\per\ampere}\\
+    a_F &= \qty{-1.529}{\volt\per\ampere}
+\end{align}
+Dabei entspricht die Steigung gerade dem Ohm'schen Widerstand. Somit ergibt sich für den Innenwiderstand der Batterie:
+\begin{rb}
+    R_i=\qty{1.514(15)}{\ohm}
+\end{rb}
+
+\begin{figure}[p]
+  \centering
+  \includegraphics[height=0.95\textheight]{diagramm1.pdf}
+  \caption{Spannung an der Last als Funktion der Stromstärke}
+  \label{fig:diagramm1}
+\end{figure}
+\clearpage\newpage
+ 
+Die Klemmenspannung der Batterie lässt sich dabei über die Gleichung
+\begin{equation}
+    U_k = U_q - R_i \cdot I
+    \label{eq:klemmenspannung}
+\end{equation}
+bestimmen. Dabei ergibt sich für die Quellenspannung, also dem Achsenabschnitt bei \(I = 0\):
+\[U_q=\qty{4.375(6)}{\volt}\]
+
+Dieser Wert lässt sich nicht direkt aus dem Diagramm ablesen, da die Achse nicht bei 0, sondern 30mA beginnt. Da es sich jedoch um eine lineare Funktion handelt, kann der Achsenabschnitt über die Geradengleichung mit einem bekannten Punkt bestimmt werden. 
+Der Fehler wurde über die Fehlergerade bestimmt. Dabei wurde auch der Achsenabschnitt bestimmt und dann der Absolutbetrag der Differenz zwischen den beiden Achsenabschnitten gebildet. Dieser Wert wurde dann als Fehler angenommen.
+
+\subsection{Bestimmung des Lastwiderstands für maximale Leistung}
+Nun soll bestimmt werden, für welchen Lastwiderstand \(R_L\) die an den Last abgegebene
+Leistung \(P=U I\) maximal ist. Es gilt:
+\begin{equation}
+    I=\frac{U_q}{R_i+R_L}\quad\text{und}\quad U=R_L\cdot I
+\end{equation}
+woraus sich die an der Last abfallende Leistung als Funktion von \(R_L\) über 
+\begin{equation}
+    P(R_L)=U_q^2\frac{R_L}{(R_i+R_L)^2}.
+\end{equation}
+
+Zur Bestimmung eines Extremums wird die erste Ableitung nach \(R_L\) gebildet:
+\begin{align*}
+    \frac{\mathrm{d}P}{\mathrm{d}R_L}
+    &=U_q^2\frac{\mathrm{d}}{\mathrm{d}R_L}\left(\frac{R_L}{(R_i+R_L)^2}\right)\\
+    &=U_q^2\left(\frac{1}{(R_i+R_L)^2}-\frac{2R_L}{(R_i+R_L)^3}\right)\\
+    &=U_q^2\frac{R_i-R_L}{(R_i+R_L)^3}.
+\end{align*}
+Setzt man \(\dfrac{\mathrm{d}P}{\mathrm{d}R_L}=0\), folgt unmittelbar
+\begin{equation}
+    R_L=R_i.
+\end{equation}
+
+Um sicherzustellen, dass es sich um ein Maximum handelt, wird die zweite Ableitung betrachtet   :
+\begin{equation}
+    \frac{\mathrm{d}^2P}{\mathrm{d}R_L^2}
+    =2U_q^2\frac{R_L-2R_i}{(R_i+R_L)^4}.
+\end{equation}
+Für \(R_L=R_i\) ergibt sich
+\begin{equation}
+    \left.\frac{\mathrm{d}^2P}{\mathrm{d}R_L^2}\right|_{R_L=R_i}
+    =-\frac{U_q^2}{8R_i^3}<0,
+\end{equation}
+also liegt tatsächlich ein Maximum vor.
+
+Für \(R_L=R_i\) vereinfacht sich der Strom zu
+\begin{equation}
+    I=\frac{U_q}{2R_i}
+\end{equation}
+und Spannung \(U\) zu
+\begin{equation}
+    U_k=\frac{R_i U_q }{2R_i}=\frac{U_q}{2}
+\end{equation}
+Mit den gemessenen Werten ergibt sich
+\begin{rb}
+    U_k=\qty{2.188(3)}{\volt}
+\end{rb}
+
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

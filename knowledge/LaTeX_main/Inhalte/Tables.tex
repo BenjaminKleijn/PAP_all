@@ -1,0 +1,291 @@
+\subsection{column spacing}
+\verb|\@{}| macht standard \verb|\tabcolsep| auf 0. Nützlich, um z.\ B.\ außen den Abstand zu löschen. Ansonsten mit \verb|\@{\hspace{text}}| benutzerdefinierten Abstand eintragen. 
+
+\paragraph{tabular\*} Difference between \verb|tabular*| and \verb|tabularx| \clink{https://tex.stackexchange.com/questions/341205/what-is-the-difference-between-tabular-tabular-and-tabularx-environments}. You need a command \verb|@{\extracolsep{\fill}}| in tabular* to activate distance filling, this turns on distance filling for every column coming afterwards. Most important takeaway: \verb|@{}l| gets rid of the distance between left table border and first column content. 
+
+\paragraph{makecells}
+write \verb|\setcellgapes{3pt}| in preamble to set extra vertical spacing at top and bottom and then use \verb|\makegapedcells| inside table environment to activate that extra spacing.
+
+\subsection{columns}
+Normally, the command \verb|\begin{tabular}[pos]{cols}| takes different arguments: for \verb|pos|: t,b or c - determines the position of a non float-table(without table env.) to the current text baseline. Example: 
+  \begin{tabular}[c]{c c}
+    A & B \\
+    C & D \\
+  \end{tabular}
+  \captionof{table}{Test baseline table}
+is centered to the middle of the current text baseline. Use \verb|\captionof{float type}{heading}| to create a caption without the table-env. \\
+the \verb|cols| takes following arguments: 
+\begin{itemize}
+\item text alignemnt inside the colums:\\ \verb|l,c,r| and with the array-package: \verb|p{width},m{width},b{width}| for top, middle, bottom.
+\item | for vertical line
+\item \verb|*{num}{form}| for creating multiple same column-formats. 
+\end{itemize}
+See the documentation for package \verb|arraycols| (berichtclass.cls) for more types.
+Analog to l,r,c this package defines L,R,C which are the same but in math mode. \verb|t{width}| produces a text column vertically and horizontally centered. \verb|x,y| generate \verb|$>c<$| with additional space above, provided by cellspace. \verb|z{width}| is x + width. \\
+For using tabularx, arraycols defines T,Z based on default X (which aligns left). T is center-aligned for text, Z is center-aligned with additional height in math-mode.\\
+ONE SHOULD NOTE, that X thus T,Z don't center align vertically.  Per default, c,l,r thus x,y,z, C, L, R only 
+\newpage
+
+\begin{table}[htb]
+  \caption{\texttt{l,c,r} Normale Ausrichtungen}
+  \begin{tabular}{l|c|r}
+    \toprule
+    l&c&r\\\midrule
+    Test der Ausrichtung & anhand der & Standardeinstellungen \verb|l,c,r|\\\midrule
+    l&c&\makecell{vertikal\\mittig}\\\hline
+    mit \verb|\hline| werden & die & Zeilenhöhen also kleiner \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Am Ende sind \verb|\hline| und 1 Zeile später \verb|\bottomrule|.\\
+Note: Die ganze Tabelle ist am linken Seitenrand ausgerichtet. 
+
+\begin{table}[htb]
+  \centering
+  \caption{\texttt{L,C,R} also Standard nur im Mathemodus}
+  \begin{tabular}{L|C|R}
+    \toprule
+    L&C&R\\\midrule
+    \sum_{i=1}^{\infty} \frac{1}{n} & \frac{1}{2} \int_{-\infty}^{\frac{\pi}{2}}\cos{x} & \verb|\newcolumntype{R}{>{$}r<{$}}| \\\midrule
+    k \in \{1,2,3\} und i \in \mathbb{N} & \text{es braucht eine zweite Zeile} & \text{für sichtbare Ausrichtungsresultate}\\
+    \bottomrule
+  \end{tabular}
+\end{table} 
+Am Ende sind \verb|\hline| und \verb|\bottomrule|.\\
+Note: mithilfe von \verb|\centering| wird die Tabelle mittig ausgerichtet.\\
+
+
+\begin{table}[htb]
+  \centering
+  \caption{\texttt{p} Ausrichtung mithilfe des Array Packages}
+  \begin{tabular}{p{2cm}|p{2cm}|p{4cm}}
+    \toprule
+    p&p&p\\\midrule
+    Test der Ausrichtung & von Inhalten anhand & fester Spaltengrößen, die eingestelllt wurden.\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Note: Es ist immer nur eine Ausrichtung pro Tabelle möglich, da die p, m, b um Ankerlinien \enquote{konkurrieren}. Blocksatz, aber bei einzeiligen Inhalten linksbündige Ausrichtung. 
+
+\begin{table}[htb]
+  \centering
+  \caption{\texttt{m} Ausrichtung mithilfe des Array Packages}
+\begin{tabular}{m{2cm}|m{2cm}|m{4cm}}
+  \toprule 
+  Test & Hier wird nun alles mittig ausgerichtet & Auch dieser längere Text blockiert nicht die Zeile \\ \midrule
+  m&m&m\\
+  \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+  \centering
+  \caption{\texttt{y,x,z} Mathemodus mit horizontal links/mittig und vertikal mittig aligned und für z[width]}
+  \begin{tabular}{y|x|z{4cm}}
+    \toprule
+    y&x&z\\\midrule
+    \sum_{i=1}^{\infty} \frac{1}{n} & \frac{1}{2} \int_{-\infty}^{\frac{\pi}{2}}\cos{x} & \frac{3}{2}(\cos{x}sin{x})\\\midrule
+    \verb|\newcolumntype{x}{>{$}Qc<{$}}| & \makecell{1\\2} &  \\
+    \bottomrule
+  \end{tabular}
+  \par
+  Der Zeilenumbruch wurde mit \verb|\makecell{}| erreicht. 
+\end{table}
+
+\newpage
+
+\begin{table}[htb]
+  \centering
+  \caption{\texttt{X,y,x,Z,T} Tabularx Tabelle mit T: X (nur Text), Z: X in Mathmode mit adjusted height}
+  \begin{tabularx}{\linewidth}{|X|y|x|Z|T|}
+    \toprule
+    A good job, lets test out the limits of X & \lim_{\substack{x \to 1 \\ x > 1}} \ln \left( \frac{x^2}{x-1}\right) & \frac{a}{b} & \frac{a}{b} + \int_{1}^{X} \frac{1}{t} \diff t & \makecell{a multi line \\ piece of code}\\\midrule
+    X&y&x&Z&T\\
+    \bottomrule
+\end{tabularx}
+\end{table}
+NOTE: Normale X Spalte ist linksbündig. Z,T wurden mit \verb|\centering| definiert. 
+\verb|\makecell| macht die vertikale und horizontale Ausrichtung kaputt. Wsl. sollte ich einfach das \verb|tabulararray| package lernen. 
+
+\subsection{Examples}
+\setcellgapes{3pt}
+\begin{table}[htbp]
+\centering\makegapedcells
+\caption{Kupferelektrolyse}
+\begin{tabular}{cccccc}
+\hline
+Elektrode & Reaktionsgl. & Elektronen & erzeugte Ionenart & Elektrode \\\toprule
+Anode & \ce{Cu -> Cu^2+ + 2e-}  & Oxidation & Kationen & Pluspol\\\hline
+Kathode & \ce{Cu^2+ + 2e- -> Cu}  & Reduktion & & Minuspol\\\hline
+\end{tabular}
+\label{table:Kupferweg}
+\end{table}
+
+\setcellgapes{3pt}
+\begin{table}[htb]
+\centering\makegapedcells
+\caption{Signal 9 Vergleich der Frequenzen}
+\begin{tabular}{|CC|CCCC|CC|}
+\hline
+\multicolumn{2}{|c|}{Cursor} & \multicolumn{4}{c|}{FFT und $f_{1/2}$}  & \multirow{2}{*}{$\sigma_{1,Abw}$} & \multirow{2}{*}{$\sigma_{2,Abw}$}\\ 
+f_1\;[\unit{\hertz}]& f_2\;[\unit{\hertz}] & f_I\;[\unit{\hertz}] & f_{II}\;[\unit{\hertz}] & f_1\;[\unit{\hertz}] & f_2\;[\unit{\hertz}] & &  \\\hline
+\num{1600(18)} & \num{100.0(12)} & \num{1390(10)}& \num{1590(10)} & \num{1490(7)} & \num{100(7)} & 5.7\sigma & 0\sigma \\\hline
+\end{tabular}
+\label{table:SIgnal9}
+\end{table}
+
+\clearpage
+\setcellgapes{3pt}
+\begin{table}[htbp]
+\centering\makegapedcells
+\caption{$T(p)$ Druck-Temperaturwerte des Gasthermometers, entsprechend zugeordnete Messwerte $U$ und $T_{\text{Pyro}}$}
+\begin{tabular}{CCCCCCCCCCCC}\hline
+\toprule
+\multicolumn{1}{C} {T_p\;[\unit{\degreeCelsius}]} & 5   & 14  & 26  & 35   & 44   & 55   & 65   & 73   & 82   & 90   & \multicolumn{1}{C}{100} \\\toprule\hline
+\multicolumn{1}{|C|} {p\;[\unit{\hecto\pascal}]} & 926 & 948 & 993 & 1027 & 1059 & 1094 & 1128 & 1156 & 1186 & 1218 & \multicolumn{1}{l|}{1242}\\ \hline
+   &     &       &       &       &      &       &      &      &      &      &                           \\ \hline
+\multicolumn{1}{|C|} {\makecell {U[\unit{\milli\volt}] \\ \equiv R[\unit{\ohm}]}} & 102.0 & 103.9 & 108.3 & 112.3 & 117.0  & 120.01 & 124.0  & 128.0  & 131.0  & 135.0  &\multicolumn{1}{C|}{138.0} \\ \hline
+\multicolumn{1}{|C|} {\makecell {\Delta U[\unit{\milli\volt}] \\ \equiv \Delta R[\unit{\ohm}]}}  & 2.5                      & 2.5   & 2.6   & 2.6   & 2.6  & 2.6   & 2.6  & 2.7  & 2.7  & 2.7  &  \multicolumn{1}{C|}{2.7} \\\hline
+   &     &       &       &       &      &       &      &      &      &      &                           \\ \hline
+\multicolumn{1}{|C|} {T_{\text{Pyro}}\;[\unit{\degreeCelsius}]} & 0.1                      & 8.9   & 19.5  & 29.2  & 37.1 & 47.7  & 59.9 & 67.1 & 74.8 & 88.5 & \multicolumn{1}{C|}{94.4} \\\hline
+\end{tabular}
+\label{table:T(p)}
+\end{table}
+
+\newpage
+
+\setcellgapes{3pt}
+\begin{table}[htbp]
+    \centering\makegapedcells
+    \caption{Cursor Werte für Signale 1-4}
+\begin{tabular}{crrrrr}
+\hline
+\multicolumn{1}{|c}{Signal}         & \multicolumn{1}{c}{1} & \multicolumn{1}{c}{2} & \multicolumn{1}{c}{3} & \multicolumn{1}{c}{4}  & \multicolumn{1}{c|}{5}      \\
+\multicolumn{1}{|c}{Abb.}           & \multicolumn{1}{c}{\ref{fig:Signal1}}  & \multicolumn{1}{c}{\ref{fig:Signal2}}  & \multicolumn{1}{c}{\ref{fig:Signal3}}  & \multicolumn{1}{c}{\ref{fig:Signal4}}  &\multicolumn{1}{c|}{\ref{fig:Signal5}}       \\ \hline\hline
+\multicolumn{1}{|c|}{$t_\text{div}$ [\unit{\s}]}          & 0.0025                & 0.001                 & 0.005                 & 0.00025 & \multicolumn{1}{r|}{0.00025}  \\ \hline
+\multicolumn{1}{|c|}{$U_\text{div}$ [\unit{\volt}]}          & 0.5                   & 0.02                  & 1                     & 0.2 &\multicolumn{1}{r|}{0.2}      \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{$T$ [\unit{\s}]}             & 0.00500               & 0.00152               & 0.00250               & 0.001000 & \multicolumn{1}{r|}{0.04200} \\ \hline
+\multicolumn{1}{|c|}{$\Delta T$ [\unit{\s}]}       & 0.00014               & 0.00006               & 0.00028               & 0.000014 & \multicolumn{1}{r|}{0.00028} \\ \hline
+\multicolumn{1}{|c|}{$f$ [\unit{\hertz}]}             & 200                   & 658                   & 400                   & 1000 & \multicolumn{1}{r|}{23.81}     \\ \hline
+\multicolumn{1}{|c|}{$\Delta f$ [\unit{\hertz}]}       & 6                     & 26                    & 40                    & 14 & \multicolumn{1}{r|}{0.16}       \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{$U_\text{min}$ [\unit{\volt}]}        & 0.720                 & -0.4560               & 2.04                  & 0.520 & \multicolumn{1}{r|}{0.568}    \\ \hline
+\multicolumn{1}{|c|}{$U_\text{min}$ [\unit{\volt}]}        & 1.700                 & 0.0432                & 2.96                  & 1.440 & \multicolumn{1}{r|}{1.490}    \\ \hline
+\multicolumn{1}{|c|}{$\Delta U_i$ [\unit{\volt}]}      & 0.020                 & 0.0008                & 0.04                  & 0.008 & \multicolumn{1}{r|}{0.008}    \\ \hline
+                                    &                       &                       &                       & &       \\ \hline
+\multicolumn{1}{|c|}{$U_\text{SP-SP}$ [\unit{\volt}]}         & 0.980                 & 0.0888                & 0.92       & 0.920           & \multicolumn{1}{r|}{0.922}    \\ \hline
+\multicolumn{1}{|c|}{$\Delta U_\text{SP-SP}$ [\unit{\volt}]}   & 0.028                 & 0.0011                & 0.06      &0.011           & \multicolumn{1}{r|}{0.011}    \\ \hline
+                                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{$U_\text{DC, Offset}$ [\unit{\volt}]}       & 1.210                 & -0.0012               & 2.500          & 9.80       & \multicolumn{1}{r|}{1.029}    \\ \hline
+\multicolumn{1}{|c|}{$\Delta U_\text{DC, Offset}$ [\unit{\volt}]} & 0.014                 & 0.0006                & 0.028         &0.006        & \multicolumn{1}{r|}{0.006}    \\ \hline
+                    &                       &                       &                       &                               \\ \hline
+\multicolumn{1}{|c|}{$U_H$ [\unit{\volt}]}       & -              &       -      &      -         & - & \multicolumn{1}{r|}{1.030(6)}    \\  \hline
+\multicolumn{1}{|c|}{$t_H$ [\unit{\s}]}       & -              &       -      &      -         & - & \multicolumn{1}{r|}{0.0024(4)}    \\ \hline
+\end{tabular}
+\label{table:Signal1-4}
+\end{table}
+
+\subsubsection{Tabellen PAP1}
+\begin{table}[h]
+    \centering
+    \caption{Schwingungsdauern für den Drehtisch alleine}
+\begin{tabular}{|c|c|}\hline
+\rule{0pt}{2ex} Nr & Schwingungsdauer 20T{[s]} \\\hline
+1  & 24.18                       \\
+2  & 24.21                       \\
+3  & 24.26                 \\ \hline    
+\end{tabular}
+\label{table:extraWerte}
+\end{table}
+\newpage
+\renewcommand{\arraystretch}{1.3}  
+\begin{table}[!h]
+    \centering
+\begin{tabular}{|c|ccccc|}
+\hline
+                                          \multicolumn{6}{|c|}{\textbf{Methode 1}}                    \\ \hline
+Küvettenlänge $l$ [\si{\meter}]                                        & 1,5    & 3        & 6        & 12      & 24     \\ \hline
+Mittelwert $\overline{I}$ [Counts] & 63917,61 & 58273,11 & 19722,36 & 4290,99 & 192,8  \\
+$\sigma_{\overline{I}}$ [Counts]     & 1,02     & 151,43   & 69,58    & 8,15    & 1,09   \\ \hline
+sign.Stellen $\overline{I}$ [Counts] & 63918 & 58270 & 19720 & 4291 & 192,8  \\
+sign. St. $\sigma_{\overline{I}}$ [Counts]     & 1     & 150   & 70    & 8    & 1,1   \\ 
+\hline\hline
+                                          \multicolumn{6}{|c|}{\textbf{Methode 2}}                    \\ \hline
+Konzentration $c$ [\SI{e-5}{\mole\per\liter}] & 0     & 6,25    & 12,5    & 25    & 50  \\ \hline
+$\overline{I}$ [Counts]             & 63562,43 & 37895,4  & 21215,4  & 6081,18 & 693,26 \\
+$\sigma_{\overline{I}}$ [Counts]    & 133,43   & 32,02    & 46       & 13,24   & 3,01   \\ \hline
+sign. St. $\overline{I}$ [Counts]             & 63560 & 37895  & 21220  & 6081 & 693,3 \\
+sign. St. $\sigma_{\overline{I}}$ [Counts]    & 130   & 32    & 50       & 13   & 3,0   \\ \hline
+\end{tabular}
+\caption{umgerechnete Werte aus dem Messprotokoll}
+\label{table:Werte}
+\end{table}
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Material & $c_{x,\text{ Literatur}}$ [$\frac{\mathrm{J}}{\mathrm{g\,K}}$] & $c_{x,\text{ gemessen}}$  [$\frac{\mathrm{J}}{\mathrm{g\,K}}$] & $\sigma_{\mathrm{Abw}}$ & $c_{\mathrm{x,\,mol}}$  [$\frac{\mathrm{J}}{\mathrm{mol\,K}}$]\\
+\hline
+Graphit & $0,709$ & $(0,814\pm0,021)$ & $4,4\sigma$ & $(9,78\pm0,25)$\\
+Blei & $0,129$& $(0.121\pm0.006)$ & $1,3\sigma$ & $(25,07\pm1,04)$\\
+Aluminium & $0,90$ & $(0.812\pm0.023)$ & $3,8\sigma$ & $(21,9\pm0,6)$\\
+\hline
+\end{tabular}
+\caption{Abweichungen der $c_x$ der Wassermessung zu Literaturwerten bei kleinerem Temperaturfehler}
+\label{table:c_x_<t}
+\end{table}
+\clearpage
+
+\subsubsection{tabular*}
+\begin{table}[htbp]
+\centering
+\begin{tabular*}{0.6\textwidth}{c @{\extracolsep{\fill}} S[table-format=2.1] S[table-format=1.2] S[table-format=1.2] }
+\toprule
+Nr. & {Messreihe $l$ [\unit{\cm}]} & { $n$ } & { $\Delta n$ } \\
+\midrule
+1 & 13.8    &    1.10     & 0.22\\
+2 & 22.2    &     2.08   &  0.32\\
+3 & 30.7    &     3.1    & 0.4 \\
+4 & 39.4    &      4.1   & 0.5 \\
+5 & 48.2    &      5.1   & 0.7\\
+6 & 57.0      &      6.1  & 0.8\\
+7 & 65.3    &      7.1  & 0.9\\
+8 & 74.0      &     8   & 1 \\
+9 & 82.6    &      9   &1 \\
+\bottomrule
+\end{tabular*}
+\caption{Bestimmung der n-ten Harmonischen}
+\label{table:Mode}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Gegenüberstellung der gemessenen Winkel und \(\lambda_{\text{Lit}}\) für Hg und H je nach Farbe} 
+\begin{tabular*}{\textwidth}{l @{\extracolsep{\fill}} S[table-format=2.2]clccc}
+\toprule
+  \multicolumn{3}{c}{Quecksilber} & \multicolumn{3}{c}{Wasserstoff} & Differenz \\\cmidrule[0.5pt](l r){1-3}\cmidrule[0.5pt](l r){4-6}\cmidrule{7-7}
+Nr., Farbe     & {\(\delta_{\text{Hg}}\; [\unit{\degree}]\)}& \(\lambda_{\text{Hg}}^{\text{lit}}\) [\unit{\nm}]   & Nr., Farbe    & \(\delta_{\text{H}}\) [\unit{\degree}]& \(\lambda_{\text{H}}^{\text{lit}}\) [\unit{\nm}] & \(\delta_{\text{Hg}}-\delta_{\text{H}}\) [\unit{\degree}] \\\cmidrule[0.5pt](l r){1-3}\cmidrule[0.5pt](l r){4-6}\cmidrule{7-7}
+1. rot         & 58.65      &  690.7                        & 1. rot        & 62.25      &  656.3 &\\
+2. rot         & 57.83      &  623.4                        & -             &            &        &\\ 
+7. blaugrün    & 56.58      &  491.6                        & 2. türkis     & 60.87      & 486.1 & 4.29\\
+8. blau        & 55.78       &  435.8                        & 3. indigo     & 60         & 434.0 & 4.22\\ 
+9. violett    & 55.3         &  407.8                        & -              &            &      &\\ 
+\bottomrule
+\end{tabular*}
+\label{table:lambdaH}
+\end{table}
+
+\begin{table}[htb]
+  \centering
+  \caption{Reibungsmessung}
+  \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+    \toprule
+       t\,[\unit{\s}]     & 0   & 60  & 120 & 180 & 240 & 300 & 360 & \Delta t = \qty{2}{\s} \\ \cmidrule[0.3pt]{2-8}
+       f_F\,[\unit{\rpm}]  & 650 & 596 & 543 & 499 & 458 & 422 & 386 & \Delta f = \qty{5}{\rpm}\\
+    \bottomrule
+  \end{tabular*}
+\label{table:messwerte1}  
+\end{table}

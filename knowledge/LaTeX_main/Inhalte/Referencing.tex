@@ -1,0 +1,31 @@
+\subsection{Some Section}\label{sectiona}
+\subsection{Some Other Section}\label{sectionb}
+\subsection{Referenced Section}\label{sectionc}
+\label{sec:test}
+\begin{figure}[!ht]
+  \centering
+  \rule{30mm}{20mm}
+  \caption{Some Figure}\label{figure}
+\end{figure}
+
+Using \textbackslash\texttt{autoref}, we can refer to \autoref{chapter}, \autoref{sectiona}, and \autoref{figure}, but using a range fails:
+
+Using \textbackslash\texttt{cleveref}, we can refer to \cref{chapter}, \cref{sectiona}, and \cref{figure}. \Cref{chapter}. \Cref{sectiona}. \Cref{figure}. A list has no problem now:~\cref{sectiona,sectionb}
+Range: \crefrange{sectiona}{sectionb}\\
+\cref{sectionc}\\
+\namecref{sectionc}
+
+\newcommand{\secref}[1]{\nameref{#1} (\autoref{#1})}
+\newcommand{\othersecref}[1]{Abschnitt \ref{#1}.(\nameref{#1})}
+\secref{sec:test}
+\othersecref{sec:test}
+\newcommand{\secrefabschnitt}[1]{Abschnitt \labelcref{#1}.(\nameref{#1})}
+\secrefabschnitt{sec:test}
+
+
+\newcommand{\secreff}[1]{\autoref{#1}.(\nameref{#1})}
+\secreff{sec:test}
+
+\verb|\jump| Custom command, um an eine Stelle zu springen: \#1 erwartet das Ziel des Hyperlinks, das kann vieles sein, alles was hyperref erlaubt. e.g. page.number also page.1 springt zu Seite 1. Die aktuelle Farbe wird mit colorlet in der variable temp gespeichert und darunter wird eine blaue Linie gezeichnet und danach die temp Farbe wieder eingestellt
+\newcommand{\jump}[2]{\hyperlink{#1}{\colorlet{temp}{.}\color{blueurllink}{\underline{\color{temp}#2}}\color{temp}}}
+\jump{page.1}{Spingt zum Inhaltsverzeichnis}

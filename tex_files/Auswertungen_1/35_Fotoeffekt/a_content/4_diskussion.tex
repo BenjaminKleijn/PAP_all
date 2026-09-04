@@ -1,0 +1,69 @@
+\subsection{Untergrundstrom}
+Mir ist erst nach Erstellen aller Werte und Grafiken aufgefallen, dass in unserem Messprotokoll JEDE \(U_{I_0}\) positiv notiert ist (nicht von mir).
+Ich gehe mal davon aus, dass das negative Vorzeichen einfach weggelassen wurde, denn in allen sonst betrachteten Altprotkollen ist der Untergrundstrom negativ erfasst worden. Rein physikalisch macht ein in dieselbe Richtung fließender Untergrundstrom keinen Sinn, da das bedeuten würde, dass es Elektronen gibt, deren Energie WEEEEIIIT über der Fermienergie liegt, die also immer noch auf die Fotoanode treffen. 
+\begin{figure}[htbp]
+	\centering
+	\textbf{\textsf{\large Die Welt, wenn \(U_{I_0}\) in dieselbe Richtung fließt}}\\
+	\includegraphics[width=10cm]{tesseract.png}
+	\caption[\emph{Meme:} higher-dimensional space \autocite{Matthew}]{higher-dimensional space \autocite{Matthew}}
+	\label{fig:tesseract}
+\end{figure}
+
+Naja, meine Werte sind schon umgerechnet (mit positivem \(U_{I_O}\)), die Auswirkung ist sowieso marginal im Vergleich zum Auswählen des \glqq linearen Anteils\grqq{}.
+
+\subsection{Libre Office}
+Es tut mir sehr leid, dass ich die Daten nicht per Hand geplotted habe, dass in Libre Office Calc zu machen, hat mich aber genau so lange gekostet (\emph{Anmerkung: also jetzt insgesamt Zeitaufwand mal 2}), jedesmal ein neues Diagramm formatieren, die Datenreihen auswählen, Achsen formatieren, Farben auswählen,... 
+\par
+Der Grund, dass ich nicht gezeichnet habe, ist, dass mir das mm-Papier ausgegangen ist. Ich hab auch 30 min lang probiert, am Drucker des Vermieters welches auszudrucken, naja, der Drucker hat mir nen verschwommenes Kunstwerk rausgelassen.\par
+\xfigure{htbp}{scale=0.5}{dekadeinemutterpapier.png}{\emph{Meme:} mm-Papier \autocite{teacherscopy}}{Tja, lost, am Wochenende ist die Uni zu. Leider ist die Geometrie unserer Fotozelle nicht \(U\sim \log{U_I}\) \autocite{teacherscopy}}
+
+Die Diagramme sind mittlerweile gezeichnet und unten angehängt.
+
+\subsection{Fehlerbalken}
+Was ich auch vergessen habe in der Auswertung, ist dass die Gegenspannung auch fehlerbehaftet ist. Nun sehe ich auch, dazu wurde auch gar kein Fehler notiert, da haben wohl wir nen Fehler im Messprotokoll gemacht :/\\
+\emph{Anmerkung:} Fürs Zeichnen habe ich nun doch \(\Delta U=\qty{0.01}{\volt}\) benutzt. Darauf basieren die Fehlergeraden der einzelnen Sperrspannungskennlinien. 
+
+\subsection{Sigma-Abweichung von \(h\)}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(h_\infty^{\text{exp}}\) und \(h^{\text{lit}}_\infty\)}
+\begin{tabularx}{\textwidth}{LxxZZS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & h_\infty^{\text{exp}}\;[\qty{e-34}{\joule\s}] & h^{\text{lit}}_\infty\;[\qty{e-34}{\joule\s}] & \text{abs. Abw.}\;[\qty{e-34}{\joule\s}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       \text{LBC} & \num{6.2(1.5)} & 6.6260689 & \num{0.4(1.5)} & \num{7(25)} & 0.3 \\
+       \text{Händisch} & \num{6.6(0.8)} & 6.6260689 & \num{0.0(0.8)} & \num{0(13)} & 0.04 \\
+\bottomrule
+\end{tabularx}
+\label{table:h} 
+\end{table}
+
+Durch das grafische Bestimmen ist die Sigma-Abweichung kurioserweise gesunken, das liegt jedoch daran, dass sich unsere Steigung um ca. \(0.2\sigma\) verändert hat (von \qty{0.0039}{\volt\per\tera\hertz} auf \qty{0.0041}{\volt\per\tera\hertz}). Dadurch liegen dann auch die \(h\)-Werte auseinander.
+Der händische Wert für \(m\) passt halt deutlich besser, um näher an den Literaturwert ranzukommen.
+
+Insgesamt also ziemlich passable Ergebnisse. Die Hauptfehlerquellen des Versuches liegen nach meiner Einschätzung natürlich im händischen Zeichnen der Fehlergeraden für die Spannungskennlinien. Das ist halt einfach nur ungenau möglich, also einmal handwavy. Dann wird es doppelt handwavy, weil diese Fehlergeraden den Fehler für \(h\) bestimmen, durch die handwavy Regel \glqq Fehlergerade = Gerade von maximalen y-Fehler beim minimalsten x-Wert durch minimalen y-Fehler beim maximalsten x-Wert \grqq{}. So wurde die Fehlergerade von \(U_S(f)\) in Diagramm cref{sec:Sperrspannung} bestimmt.\\
+Zusätzlich gibt es in unserem Versuchsaufbau evtl. Fehlereffekte wie: ungenaues Auftreffen der Spektralinien auf der Kathode (wobei das nur die Intensiät verändern würde oder? und demenstprechend keinen Unterschied machen sollte), sowie Umgebungsstrahlung, die für nicht berücksichtige Fotoströme sorgt. 
+
+\subsection{Fazit}
+Zum Versuch:\\
+Die Ziele des Versuches wurden erreicht, die entsprechenden Größen bestimmt, zwar wäre es noch interessant, mit den Daten die Austrittsarbeit von Kalium zu bestimmen, und mit einem Literaturwert zu vergleichen, aber dafür hab ich keine Muße mehr. \\
+Wie immer liest man auf Wikipedia von so vielen tollen Dingen, von denen man noch keine Ahnung hat, und erweitert dadurch den Schatz an \(^{\star\bigstar}\)Things I know I don't know\(^{\bigstar\star}\).
+
+Gut, die Auswertung hat ewig gedauert und kam auch erst spät, weil ich noch ne andere sehr lange Auswertung gemacht hab bis Freitagsnachts.\\Dann habe ich am Samstag stundenlang Inkscape ausgetestet und ausprobiert, um ewig lang Strahlen rumzuschieben, bis das von der Brechung halbwegs realistisch aussah. Würde mich brennend(brechend) interessieren, wie man berechnet, in welchem Winkel der Strahl am ersten Prisma auftreffen muss, damit bei einem Doppelprisma (ich weiß nicht wie die zwei Prismen zueinander ausgerichtet sind) der insgesamte Ablenkwinkel \(\delta = \ang{90}\) beträgt. Dann hab ich ewig in Libre Office die Diagramme erstellt, das große ging am einfachsten; es war eigentlich total unnötig, die anderen davor zu bauen, da ich die Sperrspannungen sowieso mit der Trendformel (\(f(x)\)) bestimmt habe. 
+
+Also insgesamt:
+\begin{figure}[htbp]
+\begin{subfigure}[t]{0.45\textwidth}
+  \textbf{\textsf{\large Me and my PC getting ready to write a PAP protocol}}
+  \centering
+\includegraphics[width=\linewidth]{waitedyears1.png} 
+\caption{before}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.45\textwidth}
+    \centering
+     \textbf{\textsf{\large  finally finished: \\ 23 years/23h later}}
+\includegraphics[width=\linewidth]{waitedyears.png}
+\caption{after}
+\end{subfigure}
+\caption{What it feels like to write a PAP protocol \autocite{Matthew}}
+\end{figure}

@@ -1,0 +1,136 @@
+\subsection{Motivation}
+Temperatur ist eine Größe, mit der jeder Mensch unterbewusst etwas verbindet, thermische Reize lösen automatisch Reaktionen des Gehirns aus, sei es um sich vor Verbrennungen zu schützen, bei Kälte eine Unterkühlung der Organe abzuwehren oder durch Schwitzen die Körpertemperatur zu senken. Diese physikalische Zustandsgröße Temperatur hat eine weitaus größere Tiefe, als einfaches Unterscheiden von warm und kalt, siehe \cref{fig:Busmeme1.png}. Zwar wurden in der Vorlesung Experimentalphysik 1 auch schon ein paar thermodynamische Grundlagen besprochen und Beispielexperimente gemacht, theoretisch aufgearbeitet und axiomatisch hergeleitet, in einem zeitstressbefreiteren Rahmen, wurde die Thermodynamik erst in der Vorlesung Theoretische Physik 2, nun leider ohne Experimente. \\
+Zwar ist zum vollständigen Verständnis der thermodynamischen Größe Temperatur im physikalischen Sinne die Statistische Physik notwendig, aber das ist auch gar nicht das Ziel des Versuches. Es wird ausgenutzt, dass Materialien sich abhängig ihrer Temperatur unterschiedlich verhalten, um aus diesem Verhalten die beeinflussende Temperatur zu messen.
+
+\subsection{Ziele des Versuches}
+Durch das Experimentieren mit verschiedenen Substanzen werden:
+\begin{itemize}
+    \setlength{\itemsep}{-6pt}
+    \item unterschiedliche Methoden der Temperaturmessung angewandt und verglichen
+    \item deren Funktionsweisen, Grenzen und Fehlerquellen eingeführt und untersucht  
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+Zu den verwendeten Geräten gehören:
+\begin{enumerate}
+    \setlength{\itemsep}{-6pt}
+    \item Pyrometer für Infrarotstrahlung
+    \item Pt100 Platin-Widerstandsthermometer mit einer Konstantstromquelle (1 mA) und Adapterbox
+    \item Multimeter zum Anzeigen der abfallenden Spannung am Pt100
+    \item Gasthermometer, welches den Druck eines Gasvolumens misst 
+    \item Thermoelement (Platin-Rhodium PtRh) für Hochtemperaturmessungen
+    \item Flüssigkeitsthermometer
+    \item Heizbad und Magnetrührfisch
+    \item Bunsenbrenner
+    \item Dewargefäß
+    \item untersuchtes Stoffe: festes und flüssiges Wasser (\ce{H2O}), Butangasflamme, Trockeneis (festes \ce{CO2}), flüssiger Stickstoff (\ce{N2})
+\end{enumerate}
+\newpage
+\xfigure{t}{scale=0.8}{Versuchsaufbau.png}{Versuchsaufbau\autocite{Skript_1}}{Versuchsaufbau; Trockeneis\&flüssiger Stickstoff nicht auf dem Bild vorhanden\autocite{Skript_1}}
+Der Messaufbau, zu sehen in \cref{fig:Versuchsaufbau.png}, besteht aus den unterschiedlichen Thermometern, sowie einem Heizbad, in dem Wasser auf unterschiedliche Temperaturen erhitzt wird, die dann gemessen werden. \\
+Zuerst wird zur Eichung des Pt100 eine Mischung aus fl. Wasser und Eis hergestellt, um ungefähr den Schmelzpunkt von \ce{H2O} \(T=0\unit{\degreeCelsius}\) bei Normaldruck als Eichwert zu nutzen. Dafür wird das Minimum des am Voltmeter angezeigten Spannungswertes abgewartet. Nun wird die Temperatur des Gemisches in 10\unit{\degreeCelsius}-Schritten bis zum Sieden (100\unit{\degreeCelsius}) erhöht und stets mit Gasthermometer, Widerstandsthermometer und Pyrometer gemessen. (Als ungefähre Orientierung der 10\unit{\degreeCelsius}-Schritte dient das Flüssigkeitsthermometer)\\
+Im zweiten Teil wird durch Einfüllen von Trockeneis und anschließend fl.Stickstoff separat in ein Dewargefäß die Temperatur dieser Stoffe mit Gasthermometer und Pt100 bestimmt. \\
+Als letzten Teil erfolgt endlich die Nutzung des Thermoelements, hiermit werden qualitativ die Temperaturzonen einer Butangasflamme untersucht. 
+
+Abschließend wurden noch ein paar interessante Experimente mit flüssigem Stickstoff durchgeführt, wie z.B. Menschen damit interagieren, wenn keine Schutzbrille und Handschuhe getragen werden, ist unten dargestellt:
+
+\begin{figure}[t]           
+\centering                                             
+\includegraphics[width=0.8\textwidth]{gimli.png}                  
+\caption[\emph{Meme:} Arbeiten mit flüssigem \ce{N2} \autocite{Gimli}]{Arbeiten mit flüssigem \ce{N2} \autocite{Gimli}}
+\label{fig:gimli.png}
+\end{figure}
+
+\subsection[Theoretische Grundlagen der Physik]{Grundlagen der Physik \autocite{Skript_1}}
+Temperatur hat viele Bedeutungen: Sie ist eine Zustandsgröße eines thermodynamischen Gleichgewichtszustandes. Im Gegensatz zur Wärme(menge), dies ist eine Prozessgröße, die physikalisch gesehen, nur der Beschreibung von Zustandsänderungen eines Systems dient. Bei einem zustandsüberführenden Prozess eines Stoffes ändert sich die innere Energie \(U\) abhängig von mit der Umgebung ausgetauschter Wärme \(\delta Q\) und Arbeit \(\delta W\):
+\begin{equation}
+    dU=\delta Q+\delta W
+\end{equation}
+
+Betrachtet man ein thermisch isoliertes System, indem sich zwei Stoffe mit unterschiedlicher Temperatur \(T_1>T_2\) befinden, so geht es in den stationären Zustand des thermodynamischen Gleichgewichts über, indem die Entropie maximal wird: Durch Wärmefluss gleichen sich die Temperaturen der beiden Stoffe an, dabei fließt die Wärmemenge \(Q\) immer vom Stoff mit der höheren Temperatur zur niedrigeren. Im Gleichgewicht herrscht die Mischungstemperatur:
+\[\overline{T} \defeq T_1'=T_2'\]
+
+Der Zusammenhang mit Temperatur \(T\) ergibt sich durch ihre \glqq Abhängigkeit\grqq{} von \(U\). Nach der statistischen Physik bestehen Stoffe aus (vielen) Teilchen, die kinetische Energie, potentielle Energie und evtl. Anregungsenergie besitzen. Eine Erhöhung der Temperatur hat eine Erhöhung der durchschnittlichen Energie der Teilchen zur Folge. Auch wenn ich das noch nicht ganz verstanden habe: \glqq Im Zustand des thermischen Gleichgewichts verteilen sich die Energiewerte der einzelnen Teilchen statistisch gemäß einer Häufigkeitsverteilung, deren Form durch die Temperatur bestimmt wird.\grqq{}\autocite{Wiki_Temperatur_41} (Hoffentlich bin ich nach Theo5 nicht auch auf der rechten Seite des Busses, in Fahrtrichtung) \\
+Dennoch, hieraus wird schon klar, dass eine Änderung der Temperatur auch eine Änderung des Stoffes mit sich bringt, die Teilchen besitzen nun andere Energien und verhalten sich dementsprechend anders, wechselwirken anders,... Diese Änderung der Stoffeigenschaften können nun genutzt werden, um Rückschlüsse auf die Temperatur zu ziehen. Darauf basieren fast alle verwendeten Thermometer.
+
+\subsubsection{Gasthermometer - Isochore Zustandsänderung}
+Wird das Volumen \(V\) eines idealen Gases (näherungsweise befindet sich in dem Glaskolben ein ideales Gas) konstant gehalten (\(V=\text{const.}\rightarrow\,N=\text{const.}\)), so folgt aus dem idealen Gasgesetz:
+\begin{equation}
+    pV=Nk_BT
+\end{equation} 
+mit Temperatur \(T\), Druck \(p\), Teilchenzahl \(N\), Boltzmannkonstante \(k_B\), dass:
+\begin{equation}
+    \frac{p}{T}=\text{const.}
+    \rightarrow \frac{p_1}{p_2}=\frac{T_1}{T_2}
+    \label{eq:Druck}
+\end{equation}
+Ist also das Tupel \(p_1\), \(T_1\) bekannt, so kann aus einer Druckänderung \(p_1\rightarrow p_2\) direkt auf die geänderte Temperatur \(T_2\) geschlossen werden. Dies ist das Prinzip des Gasthermometer, welches aus einem Barometer besteht, dass diese Druckänderung registriert. Ich hab mal im Manual \autocite{manual_41} nachgeschaut, das Messgerät funktioniert durch einen \glqq piezoresistiven\grqq{} Sensor, einem Halbleiter. Druckänderungen werden auf eine Membran übertragen, deren Verformung sorgt für eine Verformung des Halbleiters. Dadurch ändert sich zwar auch seine Geometrie und dadurch sein Widerstand, aber dieser Effekt ist bei Halbleitern vernachlässigbar gegenüber dem Effekt, den die Änderung des Halbleiter\emph{kristalls} auf seinen spezifischen Widerstand hat. Das ist so das stark vereinfachte Grundprinzip.\\
+Als Referenzpunkte für die Auswertung der Druckdaten dienen die historischen Referenzpunkte der Celsius-Skala: Gefrier- und Siedepunkt von Wasser, 0\unit{\degreeCelsius} und 100\unit{\degreeCelsius}. Es wird angenommen, dass das Wasser-Eis Gemisch eine ungefähre Temperatur von 0 Grad hat. Der gemessene Druck \(p_{gem}\) bei Siedetemperatur muss jedoch noch auf normale Atmosphärenbedingungen umgerechnet werden, da der Siedepunkt vom umgebenden Luftdruck \(p_{L}\) abhängt. Damit ergibt sich für den zweiten Eichpunkt ein normalisierter Wert \(p_{NB}\) von:
+\begin{equation}
+    p_{NB}=p_{gem}\frac{\qty{1013.25}{\hecto\pascal}}{p_L}
+    \label{eq:Druck_Normal}
+\end{equation}
+
+Alle nicht idealen Bedingungen (wie Ausdehnung des Glaskolbens; \ce{O2} ist kein perfektes ideales Gas) sind vernachlässigbar.
+
+\subsubsection{Widerstandsthermometer}
+Der Grund für die Abhängigkeit des Widerstands \(R \sim  T\) bei Metallen liegt in der Beeinflussung der Phononen (gekoppelte Schwingungen der Teilchen in Festkörpern) auf die Bewegung der Elektronen. Da die Temperatur die Ausbildung dieser Schwingungen bestimmt, hängt somit auch der Widerstand von \(T\) ab. Diese Phononen beeinflussen auch die spezifische Wärmekapazität \(c\) eines Stoffes. Je nach Stoff werden diese Phononen erst bei hoher Temperatur angeregt, dadurch steigt der Widerstand und auch \(c\) (mehr Energie muss aufgewendet werden, um den Körper zu erwärmen).\\
+Der Widerstand \(R(T)\) ändert sich gemäß:
+\begin{equation}
+    R(T)=R_0(1+AT+BT^2)
+    \label{eq:R(T)}
+\end{equation}
+\(R_0\) als Nennwiderstand bei \qty{0}{\degreeCelsius} beträgt für das Pt100 \(R_0=\qty{100}{\ohm}\). Die Koeffizienten betragen:
+\[A=3.9083\qty{e-3}{\per\degreeCelsius}\]
+\[B=\qty{-5.755e-7}{\per\degreeCelsius\squared}\]
+Formt man die obige Gleichung nach \(T\) um, erhält man:
+\begin{equation}
+T(R) = \frac{-R_{0}A + \sqrt{R_{0}^{2}A^{2} - 4R_{0}B(R_{0} - R)}}{2R_{0}B}
+\label{eq:T(R)}
+\end{equation} 
+Gemessen wird mit einem Voltmeter der Spannungsabfall, welcher sich über dem Widerstand \(R_T\) des Pt100 bildet, bei einer konstanten Stromstärke von \(I_0=\qty{1}{\milli\ampere}\). Nach dem Ohmschen Gesetz (\(U=RI\)) kann daraus der Widerstand bestimmt werden. Durch Nutzen eines hochohmigen Voltmeters und dem Aufbauen einer Vierleiterschaltung (\cref{fig:vierleiter}) wird der messstörende Widerstand der benutzten Kabel minimiert. Zwei- und Vierleiterschaltung nutzen beide, dass ein parallel geschaltetes Voltmeter (V) mit sehr hohem Widerstand \(R_V\) dafür sorgt, dass nur ein sehr geringer Strom \(I_V<<I_T\) durch die Leitungen zum Voltmeter fließt, da in Parallelschaltungen gilt:
+\[I_0=I_T+I_V;\quad U_{ges}=U_T=U_V \\
+\rightarrow I_V=\frac{U_{ges}}{R_V}\]
+
+Da dieser Strom sehr gering ist, ist auch der Spannungsverlust \(U_{\text{Verlust, V}}=2I_VR_L\) in den Zuleitern zum Voltmeter sehr gering und vernachlässigbar gegenüber \(U_{\text{Verlust, Pt100}}=I_TR_T\), da \(I_V<<I_T\). Der gesamte Spannungsabfall ist dann hauptsächlich durch das Pt100 mit \(R_T\) gegeben. Bei der Zweileiterschaltung ist einfach banal anders, dass das Voltmeter erst nach den Zuleitungen zum \(R_T\) geschaltet ist, sodass der Spannungsabfall der am Voltmeter gemessen wird, aus \(U_{\text{Verlust}}=R_TI_T+2R_LI_T\) besteht. Man nimmt also plump gesagt mehr unerwünschte Widerstände mit.  
+
+\begin{figure}[htbp]
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=0.9\linewidth]{zweileiter.png} 
+\caption{Zweileiterschaltung}
+\label{fig:zweileiter}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[width=0.9\linewidth]{vierleiter.png}
+\caption{Vierleiterschaltung}
+\label{fig:vierleiter}
+\end{subfigure}
+\caption{mögliche Schaltungen zum Messen von \(R_T\)}
+\label{fig:schaltung}
+\end{figure}
+
+\subsubsection{Pyrometer und Wärmestrahlung}
+Jeder Körper strahlt elektromagnetische Strahlung ab, deren Strahlungsleistung \(P\) von \(T\) abhängt. Nach dem Stefan-Boltzmann-Gesetz hängt \(P\) von \(T\), der abstrahlenden Fläche des Körpers \(A\) und seinem Emissionsgrad \(\epsilon (T)\leq 1\) ab:
+\begin{equation}
+    P=\epsilon \sigma AT^4
+\end{equation}
+\(\sigma \) ist die Stefan-Boltzmann Konstante.\\
+Der Emissionsgrad beschreibt das Emissionsvermögen des Körpers; im Bereich von \(\qtyrange{0}{100}{\degreeCelsius}\) kann die Temperaturabhängigkeit von \(\epsilon\) vernachlässigt werden. Nur für den hypothetischen schwarzen Strahler, der alle elektromagnetische Strahlung absorbiert (perfekte Absorption), beträgt \(\epsilon = 1\). (Das liegt daran, dass das Emissions- proportional zum Absorptionsvermögen ist).\\
+Diese emittierte Wärmestrahlung befindet sich im Infrarotbereich (zumindest für nicht extrem hohe Temperaturen), allgemein hängt das abgestrahlte Wellenlängenspektrum von der Temperatur ab. Das Pyrometer erfasst dieses Spektrum in einem Bereich von \(\qtyrange{8}{14}{\micro\m}\), denn das ist der Bereich, indem die Luft/Atmosphäre am wenigstens Strahlung absorbiert. Zur Berechnung der Temperatur kann der Emissionsgrad des Materials eingestellt werden. Zu der von der Luft absorbierten Strahlung kommt als Messfehler hinzu, dass es praktisch ein thermisches Hintergrundrauschen durch die Umgebung gibt, dass auch die Luft und alle anderen Objekte, die man nicht anvisieren will, Wärmestrahlung emittieren. Diese verfälschen die Messung, das wäre bei uns z.B. der Wasserdampf oder die Heizplatte. 
+
+\subsubsection{Thermoelement}
+Legt man eine Temperatur \(T_1\) an die Kontaktstelle zweier unterschiedlicher elektrischer Leitermaterialien, so entsteht durch das Auslösen von Elektronen eine Thermospannung \(U_{Th}\), die durch das Anlegen einer niedrigen Temperatur \(T_2<T_1\) am Ende des Kreises oder den offenen Enden der zwei Leiter noch erhöht werden kann.
+\begin{equation}
+    U_{Th}=K(T_1-T_2)
+\end{equation}
+Dies ist der \emph{Seebeck-Effekt}. Die Thermospannung ist also proportional zur Temperaturdifferenz, multipliziert mit einer Kennzahl \(K\), die die Kombination der Leitermaterialien beschreibt. Leider ist diese Thermospannung sehr klein, d.h. die Energieprobleme der Menschheit werden dadurch nicht gelöst.\\ Probleme an dieser Messmethode sind, dass man nur relative Temperaturen messen kann, für eine absolute Messung muss \(T_2\) kontrolliert und bekannt sein. \\
+Die Funktionsweise ist nochmal hier dargestellt:
+\begin{figure}[htbp]            
+\centering        
+\textbf{\textsf{Der Seebeck Effekt}}\\
+\vspace{2mm}
+\includegraphics[width=14cm]{feuer.png}
+\caption{Die \(U_{Th}\) in ihrem (Thermo-)Element \autocite{Thisisfine}}
+\label{fig:feuer.png}
+\end{figure}

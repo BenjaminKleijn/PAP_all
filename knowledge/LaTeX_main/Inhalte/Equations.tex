@@ -1,0 +1,141 @@
+
+\subsection{custom numbering}
+\verb|\renewcommand{\theequation}{S.\arabic{equation}}| um S.1 Label zu haben
+\begingroup
+\renewcommand{\theequation}{S.\arabic{equation}}
+\newcommand{\groesse}[1]{\hspace{1cm}\makebox[4cm][l]{#1}}
+Die Beschreibung/Größe wurde in der Zeile in eine Box gesetzt, die um 1cm eingerückt ist. In der letzten Zeile ohne Box.
+\begin{flalign}
+      &\groesse{Arithmetisches Mittel}   & \bar{x} &= \mathrm{Mean}(\{x_i\}_{i=1}^n)=\frac{1}{n} \sum_{i=1}^{n} x_i \label{eq:arithmetisches_mittel} \\
+      &\text{Arithmetisches Mittel}   & \bar{x} &= \mathrm{Mean}(\{x_i\}_{i=1}^n)=\frac{1}{n} \sum_{i=1}^{n} x_i 
+\end{flalign}
+\endgroup
+Nach endgroup ist S.1 beendet, aber der counter muss zurückgesetzt werden:
+\verb|\setcounter{equation}{0}|
+\setcounter{equation}{0}
+\begin{equation}
+  Normales Label
+\end{equation}
+
+\subsection{siunitx}
+\[\num[exponent-mode=scientific]{12300} \quad \num[exponent-mode=scientific]{12300(5)} \quad \num[exponent-mode=scientific,exponent-product=\times]{12300}\]
+\begin{gather}
+\num[round-mode = uncertainty,round-precision = 2]{12.345(678)}\\
+\num[round-mode = uncertainty,round-precision = 2]{12.345(123)}\\
+\num[round-mode = uncertainty,round-precision = 1]{12.345}\\
+\num[round-precision = 2]{12.345}\\
+\end{gather}
+
+\begin{gather}
+\num{1.2(3)(4)} \\
+\sisetup{uncertainty-descriptors = {sys, stat}}
+\num{1.2(3)(4)} \\
+\num[uncertainty-descriptor-mode = subscript]{1.2(3)(4)}
+\end{gather}
+
+\subsection{irgendwelche Gleichungen}
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  U_\text{SP-SP}=U_\text{max}-U_\text{min} & \Delta U_\text{SP-SP}=\sqrt{2}\Delta U_i=\dfrac{\sqrt{2}}{25}U_\text{div}
+\end{array}
+\label{eq:U_SP}
+\end{equation}
+
+\begin{gather}
+  equation1 \\
+  \Delta U_\text{DC, Offset}=\sqrt{\left(\frac{\Delta U_\text{max}}{2}\right)^2+\left(\frac{\Delta U_\text{min}}{2}\right)^2}=\frac{1}{25\sqrt{2}} U_\text{div}
+\end{gather}
+Hier wurden (1) und (2) per Hand geschrieben:
+\begin{gather}
+\begin{array}{c@{\hspace{3cm}}c}
+(1)\quad s=\frac{1}{2}at^2+v_0t &v=at+v_0\Leftrightarrow t=\dfrac{v-v_0}{a}\quad (2)\nonumber\\
+\end{array}\\
+(2)\text{ in }(1):\quad v^2=v_0^2+2as
+\label{eq:v^2}
+\end{gather}
+
+\begin{subequations}
+\begin{equation}
+  \operatorname{min}_{a,b,c} 
+  \frac{1}{2}\mathbf{w}^{T}\mathbf{w} + C \sum_{i=1}^{l}\xi_{i} 
+\end{equation}    
+\begin{equation}
+  y_{i}\left(\mathbf{w}^{T}\phi(x_{i})+b\right)
+\end{equation}
+\end{subequations}
+
+
+\subsection{aligning with align}
+Doppeltes \verb|&&| erhöht den Abstand auf das maximal mögliche - verteilt also die Inhalte. Einfaches \verb|<rechtsbündig>&<linksbündig>| sagt: Richte alles links vom \verb|&| rechtsbündig und alles rechts vom \verb|&| linksbündig an dem Zeichen aus. Damit ist die erste Spalte, bestehend aus rechts- und linksbündig beendet. Das nächste \verb|&| eröffnet eine neue Spalte.
+
+\verb|&&&| zwischen den Spalten, \verb|&| natürlich für Ausrichtung der Gleichheitszeichen.
+\begin{align}
+  A&=B&&& C&=D\\
+  1&=2&&& 3&=4
+\end{align}
+Hier eröffnet jetzt das erste \verb|&| des Tripels die neue Spalte, die dann mit \verb|&&| gleichmäßig verteilt wird.
+
+\verb|&| zwischen den Spalten
+\begin{align}
+  A&=B&C&=D\\
+  1&=2&3&=4
+\end{align}
+Hier öffnet das \verb|&| die neue Spalte und macht ein bisschen default abstand. 
+\begin{align}
+  A&B
+\end{align}
+
+\paragraph{align} \verb|&&| zwischen allen Spalten
+\begin{align}
+  A&&B&&C
+\end{align}
+\verb|&&| und \verb|&&&&| vor letzter Spalte
+\begin{align}
+  A&&B&&&&C
+\end{align}
+\verb|&&| und \verb|&&&| vor letzter Spalte 
+\begin{align}
+  A&&B&&&C
+\end{align}
+mit \verb|&| zwischen Spalten
+\begin{align}
+  A&B&C
+\end{align}
+mit \verb|&| und \verb|&&&| vor letzter Spalte
+\begin{align}
+  A&B&&&C
+\end{align}
+
+
+\paragraph{flalign} mit \verb|&&| zwischen allen Spalten
+\begin{flalign}
+  A&&B&&C
+\end{flalign}
+mit \verb|&|
+\begin{flalign}
+  A&B&C
+\end{flalign}
+\verb|&&| und \verb|&|
+\begin{flalign}
+  A&&B&C
+\end{flalign}
+
+\subsection{Mathtexting}
+\subsubsection{overset und overbracket}
+\[\overset{def}{=}\]
+How to use $\overbracket{abcd}^{e}$ \clink{https://tex.stackexchange.com/questions/132526/overbrace-and-underbrace-with-square-bracket}
+\[\overbracket{1}_{indexunten}^{indexoben}\]
+
+Eigener Custom command für Gleichheitszeichen. 
+\newcommand{\mytexteq}[2]{%
+  \mathrel{%
+    \overset{\mbox{\normalfont\tiny\sffamily #1}}{%
+      \underset{\mbox{\normalfont\tiny\sffamily #2}}{=}%
+    }%
+  }%
+}
+\[1\cdot 2\mytexteq{\(x\to\infty\)}{\(\epsilon\uparrow0\)}B\cdot A\]
+
+
+\subsection{Boldsymbol in Heading}
+\subsubsection[\texorpdfstring{\(K_\alpha\) lines}{K-alpha lines}]{\(\boldsymbol{K_\alpha}\) lines}

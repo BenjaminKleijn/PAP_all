@@ -1,0 +1,138 @@
+\subsection{Aufgabe 1 - Tröpfchen Überprüfung}
+Die Formeln in LBC sind völlig richtig eingegeben. Es ist keine Überprüfung notwendig. Man könnte höchstens noch ein wenig Fehlerrechnung machen: Für das erste Tröpfchen wird die 4.te Messung verwendet. Als Fehler nutzen wir \(\Delta s=\qty{1}{\Skt} = \qty{5e-5}{\meter}\) und \(\Delta t=\qty{0.01}{\s}\):
+\begin{align}
+    v=\frac{s}{t}&&\Delta v=\sqrt{\left(\frac{1}{t} \Delta s\right)^2+\left(\frac{-s}{t^2} \Delta t\right)^2}\\
+    v_f=\qty{4.6(5)e-5}{\meter\per\s}&&v_s=\qty{2.20(20)e-5}{\meter\per\s}
+\end{align}
+
+Wenn wir halt jetzt anfangen, mit signifikanten Stellen zu rechnen, geht durch das Runden Information verloren, die in LBC nicht weg gerundet wurde. Der Fehler des Radius bestimmt sich mit:
+\begin{align}
+    r=\sqrt{\frac{9\eta}{2\rho g}v_f}&&\Delta r=r \frac{\Delta v_f}{2v_f}&&r=\qty{6.6(4)e-7}{\meter}
+\end{align}
+\(\Delta \eta, \Delta \rho_{\text{Öl}}\) wurden hier vernachlässigt. 
+\(f(r)\) bestimmen wir mithilfe von \cref{eq:f(r)}, für den Fehler des Luftdruckes nehmen wir \(\Delta p=\qty{20}{\pascal}\), das ist die Skalenteilung des Barometers. Der Fehler folgend berechnet:
+\begin{align}
+    \Delta f(r)=\sqrt{\left(\frac{b\Delta r}{p r^2 \left(\frac{b}{p r}+1\right)^2} \right)^2+\left(\frac{b}{p^2 r \left(\frac{b\Delta p}{p r}+1\right)^2} \right)^2}&&f=\qty{0.895(6)}{}
+\end{align}
+Für \(Q\) ergibt sich nach \cref{eq:q}, unter Vernachlässigen der Fehler der Konstanten, aus denen \(C_1\) besteht:
+\begin{align}
+    Q=\frac{C_{1} \sqrt{f^{3} v_{f}} \left(v_{f} + v_{s}\right)}{U}&& \Delta Q=\frac{1}{2}\sqrt{\frac{9 \Delta_{f}^{2}}{f^{2}} + \frac{\Delta_{v f}^{2} \left(3 v_{f} + v_{s}\right)^{2}}{v_{f}^{2} \left(v_{f} + v_{s}\right)^{2}} + \frac{4 \Delta_{v s}^{2}}{\left(v_{f} + v_{s}\right)^{2}}}
+\end{align}
+\[Q=\qty{1.58(21)e-19}{\coulomb}\]
+
+\subsection{Aufgabe 2 - Histogramm}
+Alle Teilchen, deren Werte in Spalte \(x\) der Tabelle mit 1 oder 2 gekennzeichnet sind, also eine Ladung von unter ungefähr \(Q<\qty{10e-19}{\coulomb}\) tragen, sind im Histogramm aufgetragen. Der Wert der jeweils unter einem Skalenstrich auf der x-Achse steht, ist die obere Klassengrenze. Die Klassenweite beträgt \qty{0.2e-19}{\coulomb}. 
+
+\xfigpdf{p}{scale=0.7,page=1}{Histogramm.pdf}{Histogramm der 87 Werte für \(n<6\)}{Histogramm der 87 Werte für \(n<6\)}
+
+Man sieht sehr schön, dass nur Ladungen auftraten, deren Werte nahe den ganzzahligen Vielfachen der Elementarladung lagen, \(n\cdot e\) sind die grün eingezeichneten Werte.   
+
+\subsection{Aufgabe 3 - Obergrenze der Elementarladung}
+In der LBC-Tabelle ist der obere Grenzwert als \qty{2.4e-19}{\coulomb} festgelegt, manche Größen werden nur für Teilchen berechnet, die eine Ladung unterhalb dieses Wertes hatten. Im Histogramm
+aus \cref{fig:Histogramm.pdf} ist die Grenze durch eine gestrichelte Linie eingezeichnet. Sie liegt
+genau in der Mitte für \(n=1\) bzw. \(n=2\). Ein Messwert dazwischen ist absolut unwahrscheinlich, denn die Schlussfolgerung aus dem Diagramm ist ja, dass es ausgezeichnete Vielfache eines Ladungswertes gibt, die auftreten.\\
+Wäre \(q=\qty{2.4e-19}{\coulomb}\) auch ein Vielfaches vom niedrigst erfassten Wert \(Q_{\text{min}}=\qty{1.6e-19}{\coulomb}\), dann müsste neben \((3.2,4.8,6.4,8.0,\dots )\,\qty{e-19}{\coulomb}\) auch bei
+\((4.0,5.6,7.2,\dots )\,\qty{e-19}{\coulomb}\) ein Peak zu sehen sein. Das ist nicht der Fall, wir beobachten (abgesehen von Messungenauigkeiten) nur ganzzahlige Vielfache von \(n\cdot \overline{Q_1}\). Deshalb ist die Grenze gut gewählt, da sie genau in der Mitte (bei \(n=1.5\)) liegt.
+
+Natürlich ist zwar aufgetreten, dass z.B. für \(n=4\) kein Teilchen gemessen wurde. Das kommt vor, bei einer Wiederholung mit größerer Probenzahl der erhobenen Messungen wird dann evtl. eines dabei sein. 
+
+Die große Streuung um die Werte für \(n=\qtylist{6;7}{}\), also \(Q=\qtylist{8.0;9.6}{\coulomb}\) liegt sehr wahrscheinlich daran, dass die Steigzeitmessungen je höher die Ladung wurde, umso schwerer wurde, denn \(v_s\) steigt dadurch deutlich an - das Teilchen wird stärker vom elektrischen Feld beschleunigt, somit ist es auch schwieriger den exakten Moment abzupassen, an dem es die gewollte Skalenlinie überquert. Insgesamt kann der relative Fehler der Geschwindigkeitsmessung als konstant betrachtet werden (da sowohl Betrag als auch Fehler steigen), damit ist \(\frac{\Delta q}{q}=\text{konstant}\). Somit kann mit \(q\uparrow \implies \Delta q \uparrow\) die höhere Streuung erklärt werden. 
+
+\subsection{Aufgabe 4 - Fehlerrechnung systematischer Fehler}
+Die Fehlerfortpflanzung einer Funktion \(f(x_1,x_2)\) geschieht mit: 
+\begin{equation}
+    \Delta f=\sqrt{\left(\pdb{f}{x_1}\Delta x_1\right)^2+\left(\pdb{f}{x_2}\Delta x_2\right)^2}
+\end{equation}
+Betrachtet man nun z.B. \(f=x_1\cdot x_2\), dann ist:
+\begin{equation}
+    \begin{aligned}
+    \frac{\Delta f}{f}=&\frac{\sqrt{\left(x_2 \Delta x_1\right)^2+\left(x_1 \Delta x_2\right)^2}}{x_1\cdot x_2}\\=&\sqrt{\left(\frac{\Delta x_1}{x_1}\right)^2+\left(\frac{\Delta x_2}{x_2}\right)^2}
+    \end{aligned}
+\end{equation}
+\newpage
+
+Für Exponenten bei \(x_1\) und \(x_2\) ergibt sich dann:
+\[f(x_1, x_2) = x_1^a\cdot x_2^b\]
+\begin{equation}
+\frac{\Delta f}{f} =
+\sqrt{
+\left( \frac{a \, \Delta x_1}{x_1} \right)^2 +
+\left( \frac{b \, \Delta x_2}{x_2} \right)^2
+}
+\end{equation}
+
+Genau dieses Prinzip wird sich hier zu nutze gemacht, dass man den Fehler auch deutlich einfacher berechnen kann, wenn es sich nur um eine Multiplikation von Argumenten mit unterschiedlichen Exponenten handelt. Wenn man nur relative Fehler gegeben hat, dann macht es umso mehr Sinn, einfach dieses Format zu nutzen.\\
+Folglich erhält man für \(\frac{\Delta q}{q}\), da nach \cref{eq:qkorr}:
+\[q\sim s\left(\frac{1}{t_1}+\frac{1}{t_2}\right)\sqrt{\frac{s}{t_1}}\sim s^{\frac{3}{2}}\quad q\sim \rho^{\frac{1}{2}}\quad q\sim \eta^{\frac{3}{2}}\quad q\sim d\quad q\sim U\]  
+Natürlich wurde die Abhängigkeit \(q\sim f(r) \text{ mit } r\sim \sqrt{v_f}\sim\sqrt{s}\) nun vernachlässigt.
+\begin{equation}
+\frac{\Delta q}{q} =
+\sqrt{
+\left( \frac{3 \, \Delta s}{2s} \right)^2 +
+\left( \frac{\Delta \rho}{2\rho} \right)^2 +
+\left( \frac{3 \, \Delta \eta}{2\eta} \right)^2 +
+\left( \frac{\Delta d}{d} \right)^2 +
+\left( \frac{\Delta U}{U} \right)^2}
+\end{equation}
+Die im Skript\autocite{Skript_1} vorgegeben relativen Fehler und der selber geschätzte Fehler der Strecke \(\Delta s=\qty{1}{\Skt}\) führen zu \(\frac{\Delta s}{s}=\frac{\qty{1}{\Skt}}{\qty{10}{\Skt}}=0.1\), sowie von \(\frac{\Delta d}{d}=\frac{\qty{0.05}{\milli\meter}}{\qty{6.0}{\milli\meter}}=0.008\) finden sich hier:
+
+\begin{table}[htbp]
+\centering
+\caption{Relative Fehler der Ladungsmessung}
+\begin{tabularx}{0.8\textwidth}{Txxxxx}
+\toprule
+Größe & s & \rho & \eta & d & U\\\midrule
+Rel. Fehler \(\frac{\Delta x}{x}\) & 0.1 & 0.005 & 0.020 & 0.008 & 0.005\\
+\bottomrule
+\end{tabularx}
+\label{table:relativefehler}
+\end{table}
+
+Es errechnet sich:
+\[\frac{\Delta q}{q}=15\%\]
+
+\subsection{Aufgabe 5 - Standardabweichung}
+Es können unterschiedliche Messungen genutzt werden, um deren Fehler zu untersuchen: Entweder werden nur die Tröpfchen weiter untersucht, die mit \(n_q=1\) geladen waren - insgesamt \(n=15\) (alle Einträge in der Spalte Q1 im Messprotokoll), oder alle mit \(n_q<6\) - insgesamt wurden von diesen \(n=68\) aufgenommen.\\
+Der Fehler einer Einzelmessung ist definiert als:
+\begin{equation}
+    \sigma_{EZ}=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(Q_i-\bar{Q})^2}
+\end{equation}
+Der in LBC angegebene Wert der Standardabweichung einer Einzelmessung entspricht derselben Formel. Die Elementarladung, Spalte \(Q\), wird in LBC mit \cref{eq:qkorr} berechnet, im Skript wird aus irgendeinem Grund jedoch gefordert, für diese Aufgabe mit der unkorrigierten Gleichung zu rechnen. Das macht keinen Sinn, da die Cunningham-Korrektur für schwere Teilchen einen immer größeren Einfluss hat und nicht vernachlässigbar ist. \\
+
+Für die einfach geladenen Teilchen ergibt sich: \(\tcbhighmath{\bar{Q}_{n_q=1}=(1.56\pm0.06_{\text{stat}})\cdot\unit{\mnineteen\coulomb}}\), mit \(\Delta \bar{Q}_{n_q=1}=\sigma_{EZ}(n=15)\).
+
+Für \(n=68\) erhält man \(\bar{Q}_{n_q<6}=(1.58\pm0.08_{\text{stat}})\cdot\unit{\mnineteen\coulomb}\).
+Der Unterschied der beiden Werte liegt an der viel größeren Probenzahl, sowie daran, dass die problematische Messung (49-58) Teil der 68 Messwerte ist. Schließt man diese aus, betreibt als Messbeschönigung und Pfusch, so erhält man eine etwas niedrigere Abweichung: \(\tcbhighmath{\bar{Q}_{n=58}=(1.58\pm0.07_{\text{stat}})\cdot\unit{\mnineteen\coulomb}}\).
+
+\xfigure{htbp}{height=8cm}{drakemillikan}{\emph{Meme:} Anpassungen aus guten Gründen \autocite{historisches,drake}}{Anpassungen aus guten Gründen, siehe Wikipedia:\autocite{historisches,drake}}
+
+\newpage
+\subsection{Aufgabe 6 - Abweichung zum Literaturwert}
+Man kann nun natürlich - angesichts der Tatsache, dass \(n=58\gg1\) - auch den Fehler des Mittelwerts benutzen, in der folgenden Tabelle mit \(\Delta \bar{Q}\) angezeigt. Im Vergleich mit dem exakten Literaturwert \(e=\qty{1.602176634e-19}{\coulomb}\) ergeben sich dann:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(\bar{Q}\) und \(e\)}
+\begin{tabularx}{\textwidth}{LZZxxS[table-format=1.2]}
+    \toprule
+         \text{Messreihe} & \bar{Q}\;[\unit{\mnineteen\coulomb}] & e\;[\unit{\mnineteen\coulomb}] & \text{abs. Abw.}\;[\unit{\mnineteen\coulomb}] & \text{proz. Abw.}\;[\unit{\percent}] & {S\(\;[\sigma]\)} \\\midrule
+       \bar{Q}_{n_q=1} & \num{1.56(0.06)} & 1.602 & \num{0.04(0.06)} & \num{3(4)} & 0.8 \\
+       \bar{Q}_{n=58} & \num{1.58(0.07)} & 1.602 & \num{0.02(0.07)} & \num{1(5)} & 0.4 \\
+       \Delta \bar{Q}_{n_q=1} & \num{1.564(0.014)} & 1.602 & \num{0.038(0.014)} & \num{2.4(0.9)} & 3.0 \\
+       \Delta \bar{Q}_{n_q=1} & \num{1.585(0.009)} & 1.602 & \num{0.017(0.009)} & \num{1.1(0.6)} & 1.9 \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_q_e} 
+\end{table}
+Je nach Art des statistischen Fehlers, kommt die Abweichung an die Grenzen der Signifikanz.
+Würde man nun noch einen halbwegs hohen systematischen Fehler einbeziehen, siehe \cref{table:relativefehler}, dann sinkt die Abweichung natürlich.  
+
+% \begin{table}[htbp]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

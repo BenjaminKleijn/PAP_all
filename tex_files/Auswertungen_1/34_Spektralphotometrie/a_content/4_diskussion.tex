@@ -1,0 +1,67 @@
+\subsection{Spektrallinien}
+Die zu bestimmenden Spektrallinien von \ce{KMnO4} konnten nur schwer überprüft werden. Nach einer Veröffentlichung zweier Schweizer Physiker aus dem Jahre 1922 an der Physikalischen Anstalt der Universität Basel wurden folgende Werte berechnet und mit den gemessenen Werten eines anderen Physikers (Formánek) verglichen: Die Wellenlängen in \cref{table:paper1} sind in der Einheit \emph{Ångström} (\qty{1}{\angstrom} = \qty{0,1}{\nm}) notiert.\\
+\begin{table}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{paper2.png}
+  \caption{Werte aus der Veröffentlichung von \autocite{HagenbachPercy1922_34}}
+  \label{table:paper1}
+\end{table}
+
+In \cref{table:vergleich} wurden die Werte nach Formánek mit unseren Messergebnissen gegenübergestellt, man sieht, ungefähr ergeben sich dieselben Linien. Abweichungen sind wahrscheinlich dem grafischen Ablesen und den unterschiedlichen Spektrometern geschuldet.
+\begin{table}[htbp]
+\centering
+\caption{Vergleich der Spektrallinien}
+\begin{tabularx}{\textwidth}{lZZZZZZ}
+\toprule
+Ordnungszahl & 10 & 9 & 8 & 7 & 6 & 5 \\ \midrule
+eigene Messung \(\lambda;[\unit{\nano\m}]\) & 565   &  545   & 525.1 & 506.7 & 490.5 & 474.4 \\
+Formánek \(\lambda\;[\unit{\nano\m}]\)  & 570.7 &  547.0 & 525.5 & 505.4 & 486.5 & 470.1  \\
+\bottomrule
+\end{tabularx}
+\label{table:vergleich}
+\end{table}
+
+\xfigure{htbp}{scale=0.8}{paper.png}{gemessenes Absorptionsspektrum von \autocite{HagenbachPercy1922_34}}{gemessenes Absorptionsspektrum von \autocite{HagenbachPercy1922_34}}
+
+Vergleicht man diese Ergebnisse (Messung von Hagenbach und Percy) mit der unseren, so sieht man auch eine sehr ähnliche Kurve.
+
+\subsection{Lambert-Beer}
+In der Veröffentlichung wird auch das Lambert-Beersche Gesetz auf seine Gültigkeit geprüft. Sie sind folgend vorgegangen: Wie wir haben sie die Konzentration in einem Verhältnis von \(2:1\) geändert. Für jede Konzentration haben sie mit einem Spektrometer für 61 unterschiedliche Wellenlängen des sichtbaren Spektrums jeweils den Grad der Absorption untersucht und in einer Tabelle dargestellt. Dieser Grad der Absorption ist \(k'\), der dekadische Absorptionskoeffizient, diesen haben sie direkt mit \cref{dekadisch} berechnet. Aus dem Lambert-Beerschen Gesetz (dieser Gleichung) folgt auch (einfach Logarithmus auf beide Seiten wirken lassen), dass:
+\begin{equation}
+  \begin{aligned}
+  \dfrac{I_0 10^{-k_1' l}}{I_0 10^{-k_2' l}} &= \dfrac{I_0 10^{-\epsilon c_1 l}}{I_0 10^{-\epsilon c_2 l}} \\ 
+  \frac{k_1'}{k_2'} &= \frac{c_1}{c_2}
+  \end{aligned}
+\end{equation}
+Das heißt, wenn das Verhältnis der Konzentrationen bekannt ist, dann kann durch Messen der Intensität \(I\), mit Gl. \cref{Beersches} \(k'\) bestimmt werden, und durch dessen Änderung die Vorhersage des Gesetzes überprüft werden, indem die Quotienten \(\frac{k_1'}{k_2'}\) bestimmt werden, ob sie dem Verhältnis der Konzentration entsprechen.\\
+Leider wurde kein Wert für \(l\) genannt, sonst hätte ich aus ihren Ergebnissen \(\epsilon\) ausrechnen können. Dieser wurde von den Autoren leider nicht angegeben, obwohl alle wichtigen Daten erhoben wurden.\\
+Die Überprüfung des Gesetzes wäre eigentlich eine sehr schöne Ergänzung zum Versuch. 
+
+\subsection{Lambert-Gerade}
+Das Eintragen der Wertepaare für \(I(l)\) unterliegt natürlich einer großen zeichnerischen Ungenauigkeit, die ich nicht einschätzen kann (vielleicht könnte die Gerade um ein halbes Grad anders geneigt sein oder so). Die Fehlerbalken sind so klein, dass es auf logarithmischem Papier fast unmöglich ist, diese einzuzeichnen. Die Fehlergerade wurde deswegen so gezeichnet, dass der einzige Punkt, der die Linearität der restlichen Werte gebrochen hat, als maximaler Fehler gewertet wurde. Für die Korrektur des letzten Intensitätswertes wurde ein Fehler von \(\Delta D = \qty{0,2}{\cm}\) angenommen. Obwohl dieser Durchmesser \(D\) eigentlich mit einem Messschieber (\(\Delta s = \qty{0,005}{\cm}\)) gemessen wurde, war es sehr schwierig, den Lichtkegel ruhig einzufangen und dadurch genau vermessen zu können. Der dadurch ziemlich hohe Fehler der letzten Messung sorgt zusammen mit dem eben erwähnten Ausreißerpunkt für die Steigung der Fehlergeraden.
+
+\subsection{Beer-Gerade}
+Hier treten dieselben zeichnerischen Ungenauigkeiten auf. Das Zeichnen der Fehlergerade hat sich auf die fehlerbehaftete Konzentration bezogen, da \(\Delta I\) im Gegensatz dazu zu vernachlässigen ist.
+
+\subsection{Vergleich der Methoden}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(\epsilon^{k^\prime}\) und \(\epsilon^{l}\)}
+\begin{tabularx}{\textwidth}{LZZZx}
+    \toprule
+        \epsilon^{k^\prime}\;[\qty{e3}{\cm\squared\per\mole}]&\epsilon^{l}\;[\qty{e3}{\cm\squared\per\mole}]&\text{abs. Abw.}\;[\qty{e3}{\cm\squared\per\mole}]&\text{proz. Abw.}\;[\unit{\percent}]&S\;[\sigma]\\\midrule
+        \num{2240(20)}&\num{2680(110)}&\num{440(120)}&\num{20(5)}&\num{4}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_e} 
+\end{table}
+
+Das Ablesen der Geradensteigungen unterliegt natürlich einem Fehler. Es ist vor allem schwierig, in den hohen Dekaden einen halbwegs genauen Wert abzulesen, da hier ein Skalenteil/Kästchen schon einer Änderung der Intensität \(I_2\) von \(\pm \qty{2000}{\text{Counts}}\) entspricht. Die Steigung berechnet sich durch folgende Formel, das heißt, man könnte diesen Ablesefehler auch fortpflanzen und dann mit der Differenz zur Fehlergeraden quadratisch addieren:
+\begin{equation}
+  k' = \frac{\log{(I_2)} - \log{(I_1)}}{l_2 - l_1}
+\end{equation}
+Wahrscheinlich kann also durch beliebiges Zeichnen ein Sigma-Abweichungswert in einer großen Range erzielt werden.
+
+\subsection{Fazit}
+Als Fazit ist die errechnete Abweichung wahrscheinlich gar nicht so abwegig, denn neben den Unsicherheiten des Befüllens der variablen Konzentrationsküvette ist auch nicht sicher, wie homogen die Lösung dann gemischt war; ob die angegebene Konzentration der Bürette sowie von den Küvetten der ersten Methode exakt ist, und sich evtl. durch Ablagerungen mittlerweile geändert hat.\\
+Es ist auch ein bisschen schade um das verwendete Spektrometer. Es hat sehr viele Funktionen, die wir nicht annähernd ausgenutzt haben. Eines der Ziele in der Einleitung wurde also nur bedingt erreicht, das Potenzial des Spektrometers ist deutlich größer. Durch das penible Halten ans Skript ohne große Erklärung der vorgenommenen Einstellungen ist es sehr schwierig, den Umgang mit einem solchen Gerät zu lernen.

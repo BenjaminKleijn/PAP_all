@@ -1,0 +1,37 @@
+\subsection{Einstellung des Prismenspektrometers}
+Die Messungen zu erheben, dauert nicht lange. Ein Großteil der Versuchszeit ist dafür vorgesehen, sich mit den Einstellungen, Bauteilen und der Funktionsweise des Prismenspektrometers vertraut zu machen. Dafür sind im Skript verschiedene Schritte zu finden, mit denen die Apparatur vor dem Erheben der Messdaten neu scharfgestellt und justiert wird. Diese Schritte wurden bei uns im Gegensatz zu anderen Gruppen fast vollständig ausgeführt, dennoch ließ sich nie ein so scharfes und eindeutiges Bild wie bei anderen Gruppen erzielen. Die Spektrallinien waren von der Intensität schwach, gekrümmt und der Kontrast zum Hintergrund nicht stark, sie waren eher schlecht zu sehen. Dies war bei anderen Gruppen besser. Leider ließ sich während der Versuchszeit nicht mehr die Ursache dieser komischen Einstellung finden.
+
+Wir waren so lange vergeblich mit Suchen eines scharfen Bildes beschäftigt, dass wir gar nicht dazu kamen, den Minimalwinkel für die grüne Hg-Linie einzustellen. Wir wissen nicht, welchen Winkel wir am Nonius abgelesen haben, ob es der echte Ablenkwinkel ist oder irgendein Nebenwinkel. Das Einstellen der grünen Hg-Linie hätte dieses Problem gelöst, denn im Skript wird nach dem Vornehmen dieser Einstellung davon gesprochen, dass man anschließend die Ablenkwinkel \(\delta(\lambda)\) misst, auf die sich die Fraunhofer'sche Formel bezieht.
+
+\subsection{Eichkurve}
+Im Nachhinein nochmal nachgedacht, war das Nullen der Messwerte unnötig. Wir müssen gar nicht wissen, was für ein gemessener Winkel das ist. Der einzige wichtige Gehalt ist wie er sich abhängig von \(\lambda\) ändert, wie sich also \(\frac{\diff \delta(\lambda)}{\diff \lambda}\) verhält. Der Betrag dieser Ableitung wird durch das Nullen nicht verändert, welches wie folgt funktioniert:
+\begin{equation}
+    \delta_{\text{neu}} (\lambda)=-\;\delta_{\text{alt}} (\lambda) + \qty{360}{\degree}
+\end{equation}
+Hier ist trivial klar, dass:
+\begin{equation}
+    \Big|\frac{\diff\delta_{\text{neu}}}{\diff\lambda}\Big|=\Big|\frac{\diff\delta_{\text{alt}}}{\diff\lambda}\Big|
+\end{equation}
+Wichtig ist, dass die Winkel für Aufgabe 1-3 alle auf die selbe Art und Weise gemessen wurden, ohne dazwischen das Prisma zu verschieben. Das Wissen, welcher Winkel gemessen wird, ist erst für Aufgabe 4 relevant.\\
+Wie unschwer erkennbar, hat die Eichkurve einen annähernd linearen Verlauf für \(\lambda>\qty{460}{\nm}\). Dies hat eine unbekannte Ursache und deckt sich nicht mit den Graphen anderer Gruppen. Zwar ist für den Bereich mit den meisten Messwerten ein gekrümmter Verlauf erkennbar, danach aber eben nicht mehr.
+
+\subsection{Größe der Fehler}
+Wie man in \cref{fig:Graph.pdf} gut sehen kann, sind die Fehlerbalken für die Tupel \(\delta (\lambda_{\text{Hg}})\) sehr hoch, sie liegen bei \(\Delta \delta=\qty{0,1}{\degree}\). Dieser Fehler, der aus dem Ablesen am Nonius stammt, determiniert zusammen mit \(\Delta \delta_{\text{fit}}=\qty{0,1}{\degree}\) durch das in Aufgabe 1 beschriebene Vorgehen (sowie rechts in \cref{fig:Graph.pdf} eingezeichnet) \(\Delta \lambda_{\text{ges}}\). Wahrscheinlich wurde \(\delta_{\text{ablese}}\) einfach zu hoch geschätzt, denn den Nonius konnte man auf zwei Bogenminuten \(\ang{;;2} \mathrel{\widehat{=}} \tfrac{2}{60}\;\unit{\degree} \approx \qty{0,03}{\degree}\) genau ablesen.\\
+Zusätzlich ist der Fit-Fehler auch sehr hoch geschätzt, er hätte auch \(\qty{50}{\percent}\) kleiner sein können. Zusammen ergibt das insgesamt einen sehr hohen Fehler \(\Delta \lambda_{\text{ges}}\). Dieser kompensiert die hohe Differenz zwischen dem ermittelten Wert und dem Literaturwert für \(\lambda\). Nur wegen diesem hohen Fehler für \(\lambda\) ist die \(\sigma\)-Abweichung noch sehr akzeptabel.
+
+Eine Anmerkung zur Bestimmung von \(\Delta \lambda_{\text{ges}}\): Um nicht auch noch einen Fit-Fehler für die Fehlerkurven einbeziehen zu müssen, wurde das oben beschriebene Schlauch-Verfahren angewandt. Ich habe jedoch dann mal nachgeschaut; wenn man die Fehlerkurven nutzt, also den Schnittpunkt von \(f_1=\delta_1\) mit der oberen und unteren Fehlerkurve bestimmt, kommt man abgesehen der zeichnerischen Ungenauigkeiten ungefähr auf denselben Wert für \(\Delta \lambda_{\text{ges}}\).
+
+\subsection{Wasserstofflinien}
+Wie schon in der Auswertung geschrieben, mir ist es unerklärlich, warum die Wasserstofflinien so gemessen wurden, dass sie außerhalb der Range der Eichkurve liegen. Das hat den aufwändigen Angleichungsprozess ausgelöst. Bei diesem Prozess habe ich erstmal einen Fehler gemacht: Die zwei in \cref{table:lambdaH} verglichenen Linien sind blaugrün-türkis und blau-indigo. Ich habe anfangs 9, violett-indigo miteinander verglichen, ein simples Verrutschen in der Zeile. Dadurch ergab sich dann erstmal \(\Delta \delta_{\text{syst}}=\qty{4,5}{\degree}\). Das ist jedoch falsch gewesen, nur ist mir das erst aufgefallen, nachdem ich die braunen Winkel für die neuen angepassten H-Werte eingetragen habe.
+
+Inwiefern die Bestimmung der Wasserstofflinien dennoch eine sinnvolle und legitime Messmethode mit Aussagekraft darstellt, trotz dieses systematischen Fehlers, sei dahingestellt.
+
+\subsection{Rydberg-Konstante}
+Hier ist natürlich auch die berechtigte Frage, wie viel Sinn es macht, mit fragwürdigen Messwerten weiterzurechnen (auch wenn sie angepasst wurden). Es ergaben sich jedoch passable \(\sigma\)-Abweichungen. Interessant ist, dass der gewichtete Mittelwert, solange er richtig berechnet wurde, eine höhere \(\sigma\)-Abweichung hat, als der arithmetisch bestimmte Mittelwert.\\
+Bei beiden Werten wurde ein statistischer Fehler bestimmt, z. B. \(\sigma_{\bar{R}_\infty}\), obwohl nur 3 Werte als Grundlage dienen. Dieser statistische Fehler ignoriert die mit \cref{rydbergfehler} bestimmten Fehler \(\Delta R_{\infty,\,m}\). Was hier die messtechnisch akkurate Lösung wäre, ist mir unbekannt.
+
+\subsection{Fazit}
+Alle Fehlerquellen lassen nur einen Schluss zu: Den Versuch zu wiederholen bzw. neue Messdaten zu erheben (\emph{Anmerkung}: bitte aber nicht nochmal auswerten...). Entweder muss beim erneuten Messen der Aufbau exakt eingestellt werden, um sicherzustellen, dass der Aufbau nicht einfach funktionsunfähig ist, oder es wird mit einem anderen Prismenspektrometer gearbeitet. Dadurch sollte dann auch der geschätzte Fehler für \(\delta\) auf ein niedrigeres Niveau sinken und der Graph einen gekrümmteren Verlauf haben, sodass alle anderen Aufgaben besser bearbeitet werden können.
+
+Aus den genannten Zielen in der Motivation wurde Punkt 1 verfehlt bzw. hat das Anpassen verschiedener Einstellungen nicht den gewünschten Effekt gehabt.\\
+Durch das Studieren der theoretischen Grundlagen ist klarer geworden, wie Spektrallinien entstehen, was diese mit Energieniveaus zu tun haben,\dots; die quantenmechanische Betrachtung steht aber noch aus.

@@ -1,0 +1,126 @@
+\subsection{Motivation}
+Zwar wurden in der Vorlesung Experimentalphysik 1 auch schon ein paar thermodynamische Grundlagen besprochen und Beispiel-Experimente gemacht, theoretisch aufgearbeitet und axiomatisch hergeleitet, in einem zeitstressbefreiteren Rahmen wurde die Thermodynamik erst in der Vorlesung Theoretische Physik 2 behandelt, nun leider ohne Experimente. In diesem Versuch werden die Konzepte von Wärme als Prozessgröße, mit ihr zusammenhängende Größen wie Temperatur und spezifische Wärmekapazität, und auch über die Vorlesung hinausgehende Themen wie Festkörperphysik (von idealen/realen Gasen \(\rightarrow\) Festkörper) untersucht bzw. beleuchtet. Die einen Stoff charakterisierende spezifische Wärmekapazität wird durch verschiedene Methoden gemessen und ein experimentell basiertes Verständnis geschaffen. Vor allem durch das Studieren des neuen Stoffes Festkörperphysik wird eine reale Anwendung der in den Einführungsmodulen gehörten Grundlagen behandelt.
+
+\subsection[Theoretische Grundlagen der Physik]{Theoretische Grundlagen der Physik \autocite{Skript_1}}
+\subsubsection{spezifische Wärmekapazität}
+Wärme(menge) ist keine Zustandsgröße, sondern sie dient nur der Beschreibung, wie sich der Zustand eines Systems ändert; sie ist eine Prozessgröße. Bei einem zustandsüberführenden Prozess eines Stoffes ändert sich die innere Energie \(U\) abhängig von der mit der Umgebung ausgetauschten Wärme \(\delta Q\) und Arbeit \(\delta W\):
+\begin{equation}
+    dU=\delta Q+\delta W
+\end{equation}
+In der PTP2 wurde die isobare Wärmekapazität \(C_p\) eingeführt:
+\begin{equation}
+    c_p=\left.\tfrac{\delta Q}{\partial T}\right\vert_{p}
+\end{equation}
+Diese erstmal nicht besonders verständlich wirkende Größe beschreibt bei konstantem Druck, mit welcher Temperaturänderung \(\partial T\) ein System auf eine geänderte Wärmezufuhr \(\delta Q\) reagiert. Eigentlich ist die Unterscheidung zwischen isobaren und isochoren Prozessen für die Wärmekapazität notwendig, bei Festkörpern spielt es jedoch keine große Rolle. Bei isobaren Prozessen für Gase ist die Wärmekapazität geringer, da ein Großteil der Wärmeenergie für die Volumenexpansion des Gases aufgewendet wird.\\
+Die Temperatur \(T\) ist eine Zustandsgröße eines Systems, die von der inneren Energie abhängt.\\
+Im Skript (\autocite{Skript_1}) wird eine andere Notation benutzt, die isobare und isochore Unterscheidung wird fallen gelassen, sowie \(\delta Q\) als \(Q\) bezeichnet. Ausgehend von \(C\) ergibt sich die spezifische Wärmekapazität \(c\), deren Wert beschreibt, welche Wärmemenge einem Stoff der Masse \(m\) zugeführt werden muss, um eine Temperaturdifferenz \(\Delta T\) zu erreichen:
+\begin{equation}
+    c=\frac{Q}{m\,\Delta T}
+    \label{c}
+\end{equation}
+Ähnlich wird auch die Größe molare Wärmekapazität \(c_{\text{mol}}\) benutzt, um die Wärmekapazität eines Stoffes mit der Stoffmenge \(n\) zu bestimmen. Ist die molare Masse \(M\) bekannt, so ergibt sich:
+\begin{equation}
+    c_{\text{mol}}=\frac{M\,Q}{m\,\Delta T}=\dfrac{Q}{n\,\Delta T}=c\,M
+    \label{c_mol}
+\end{equation}
+
+\subsubsection{Thermisches Zwei-Stoffe-System}
+\paragraph{Mischungsmethode:}
+Betrachtet man ein thermisch isoliertes System, in dem sich zwei Stoffe mit unterschiedlicher Temperatur \(T_1 > T_2\), spez. Wärmekapazität \(c_1,\;c_2\) und Masse \(m_1,\;m_2\) befinden, so geht es in den stationären Zustand des thermodynamischen Gleichgewichts über, indem die Entropie maximal wird: Durch Wärmefluss gleichen sich die Temperaturen der beiden Stoffe an, dabei fließt die Wärmemenge \(Q\) immer vom Stoff mit der höheren Temperatur zur niedrigeren. Im Gleichgewicht herrscht die Mischungstemperatur:
+\[\overline{T} \defeq T_1'=T_2'\]
+Dabei ist die vom Stoff/Körper 1 abgegebene Wärme gleich der vom Körper 2 aufgenommenen Wärme (thermisch isoliertes Gefäß, kein Wärmeverlust an die Umgebung) und es ergibt sich nach \cref{c}:
+\begin{align}
+    Q_{\text{abgegeben}}=&Q_{\text{aufgenommen}}\label{Q}\\
+    c_1\,m_1\,(T_1-\overline{T})=&c_2\,m_2\,(\overline{T}-T_2)
+    \label{c_x}
+\end{align}
+Sind also \(T_1,\;T_2,\;c_2\) bekannt, kann daraus \(c_1\) berechnet werden.
+
+\paragraph{Wasserwert eines Kalorimeters}
+Das verwendete Kalorimeter ist ein thermisch isoliertes Gefäß, in dem die vorgenommenen Mischungen ablaufen. Wir nutzen nicht seine spezifische Wärmekapazität \(c_K\), sondern den Wasserwert \(W\) mit:
+\begin{equation}
+    W=c_K\;m_K
+\end{equation} 
+Dann gilt für den Wasserwert nach \cref{c_x}, wenn das Kalorimeter bei Raumtemperatur \(T_2\) mit Wasser der Temperatur \(T_1,\;c_W,\;m_W\) befüllt wird:
+\begin{equation}
+    W=c_W\,m_W\dfrac{T_1-\overline{T}}{\overline{T}-T_2}
+    \label{eq:Wasserwert}
+\end{equation}
+
+\paragraph{Verdampfungswärme}
+Wird ein Körper 1 (\(c_1,\,m_1,\,T_1\)) mit flüssigem Stickstoff (\(T_{\ce{N2}}\)) gekühlt, so stellt sich keine Mischtemperatur \(\overline{T}\) ein, sondern die vom Körper abgegebene Wärmemenge wird durch Verdampfen von Stickstoff der Masse \(m_V\) mit latenter Verdampfungswärme \(Q_V\) in an die Umgebung abgegebene Wärme umgewandelt, bis sich der Körper auf \(T_{\ce{N2}}\) abgekühlt hat. Dann gilt mit \cref{Q} und \cref{c_x}:
+\begin{equation}
+    Q_{\text{aufgenommen}}=Q_V\,m_V
+\end{equation}
+\begin{equation}
+    c_1=\dfrac{Q_V\,m_V}{m_1\,(T_1-T_{\ce{N2}})}
+    \label{c_x_Stickstoff}
+\end{equation}
+
+\subsubsection{Dulong-Petit-Gesetz}
+Dieses Gesetz ist eine Näherung für die molare Wärmekapazität von Feststoffen bei hohen Temperaturen. Diese Näherung gilt zwar für viele Metalle bei Raumtemperatur, weicht jedoch bei leichteren Elementen oder bei niedrigeren Temperaturen ab. Diesem Gesetz zufolge ist die molare Wärmekapazität \(c_{\text{mol}}\) eines Festkörpers:
+\begin{equation}
+    c_{\text{mol}}= 3R
+    \label{Dulong_mol}
+\end{equation}
+wobei \(R=\qty{8,314}{\J\per\mol\per\K}\) die Gaskonstante ist. Die spezifische Wärmekapazität ist somit:
+\begin{equation}
+    c=\frac{3R}{M}
+    \label{Dulong_x}
+\end{equation}
+
+\subsubsection{Debye-Temperaturen}
+Da die spezifische Molwärme kein konstanter Wert ist, sondern von der Temperatur des Materials abhängt, ist eine genauere Bestimmung von \(c_{\text{mol}}(T)\) notwendig. In mehreren Stufen wurde für Festkörper die Bestimmung der spezifischen Molwärme durch Einbeziehung von Schwingungswechselwirkungen in Atomen und Quanteneffekten genauer. In der besten Theorie nach Peter Debye ist die spezifische Molwärme nur von einem materialeigenen Parameter abhängig, der Debye-Temperatur \(\Theta_D\). Die spezifische Molwärme eines Festkörpers bei tiefen Temperaturen \(T\rightarrow 0\) geht in folgende Abhängigkeit über:
+\begin{equation}
+    c_{\text{mol, Debye}}=\left(\frac{T}{\Theta_D}\right)^{3}
+\end{equation} 
+Die oben beschriebenen Mischmethoden arbeiten in einem gewissen Temperaturintervall \((T_1,T_2)\). Wie in \cref{fig:c_T.png} zu sehen, ändert sich \(c_{\text{mol}}\) innerhalb dieses Bereiches. D. h. die experimentell im Versuch gemessene spez. Molwärme ist ungefähr der Mittelwert der Kurve im Bereich \((T_1,\,T_2)\) aus \cref{fig:c_T.png}. Je nach Material ergeben sich natürlich unterschiedliche spez. Molwärmen bzw. über einen Temperaturbereich gemittelte Werte, die abhängig vom Materialparameter \(\Theta_D\) in \cref{fig:bild1} dargestellt sind.
+\xfigure{htbp}{scale=0.8}{c_T.png}{Temperaturabhängigkeit der spezifischen Wärme nach dem Debye-Modell \autocite{Skript_1}}{Temperaturabhängigkeit der spezifischen Wärme nach dem Debye-Modell für verschiedene Elemente \autocite{Skript_1}}
+\FloatBarrier
+
+Über das Verhältnis der gemessenen spez.\ Molwärmen bei unterschiedlichen Temperaturbereichen lassen sich mit \cref{fig:bild2} die Debye-Temperaturen der untersuchten Stoffe herausfinden. Die rote Kurve ist der Übergang von siedendem Wasser (\qty{373}{\K}) \(\xrightarrow{\ce{H2O}}\) Zimmertemperatur (\qty{300}{\K}), die schwarze von Zimmertemperatur \(\xrightarrow{\ce{N2}}\) \(T_{\ce{N2}}\) (\qty{77}{\K}).
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Debye.png}
+        \captionsetup{justification=raggedright,singlelinecheck=true, width=\linewidth}
+        \caption{\(c_{\text{mol}}(\Theta_D)\) für Temperaturbereiche der Mischmethoden \autocite{Skript_1}}
+        \label{fig:bild1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Debye_V.png}
+        \captionsetup{justification=raggedright,singlelinecheck=true, width=\linewidth}
+        \caption{Verhältnis \(\frac{c_{\text{mol}}(\ce{N2})}{c_{\text{mol}}(\ce{H2O})}(\Theta_D)\) der zwei Temperaturbereiche zur Bestimmung von \(\Theta_D\) \autocite{Skript_1}}
+        \label{fig:bild2}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\clearpage
+\subsection{Physikalische Konstanten und Literaturwerte}
+\renewcommand{\arraystretch}{1.2}  
+\begin{table}[htbp]
+\centering
+\caption{Literatur- und Vergleichswerte \autocite{Skript_1}}
+\begin{tabular}{|p{8cm}|p{4cm}|}
+\hline
+\rule{0pt}{2.5ex}Größe & Wert \\
+\hline
+Siedetemperatur von fl.\ Stickstoff & \(T_S = \qty{-195,8}{\degreeCelsius}\) \\
+Verdampfungswärme von fl.\ Stickstoff & \(Q_V = \qty{199}{\J\per\g}\) \\
+Relative Atommasse von Blei & \(M_{\text{Pb}} = \qty{207,2}{\g\per\mol}\) \\
+Relative Atommasse von Aluminium & \(M_{\text{Al}} = \qty{26,98}{\g\per\mol}\) \\
+Relative Atommasse von Graphit & \(M_{\text{C}} = \qty{12,01}{\g\per\mol}\) \\
+Spez.\ Wärme von Blei (\(\qty{300}{\K}\)) & \(c_{\text{Pb}} = \qty{0,129}{\J\per\g\per\K}\) \\
+Spez.\ Wärme von Aluminium (\(\qty{300}{\K}\)) & \(c_{\text{Al}} = \qty{0,90}{\J\per\g\per\K}\) \\
+Spez.\ Wärme von Graphit (\(\qty{300}{\K}\)) & \(c_{\text{C}} = \qty{0,709}{\J\per\g\per\K}\) \\
+Debye-Temperatur von Blei & \(\Theta_{\text{D,Pb}} = \qty{95}{\K}\) \\
+Debye-Temperatur von Aluminium & \(\Theta_{\text{D,Al}} = \qty{430}{\K}\) \\
+Debye-Temperatur von Diamant & \(\Theta_{\text{D,C}} = \qty{2230}{\K}\) \\
+\hline
+\end{tabular}
+\label{table:Literatur}
+\end{table}

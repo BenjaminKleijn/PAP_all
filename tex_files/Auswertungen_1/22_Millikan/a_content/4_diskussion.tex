@@ -1,0 +1,34 @@
+\subsection{Histogramm}
+Man sieht an der LBC-Tabelle, dass bei den Teilchen die \(Q>5Q_1\) getragen haben, ab Messzeile 49 (das erste Teilchen mit \(n=5\) war noch ziemlich konsistent) für die unterschiedlichen Messungen pro Teilchen sehr schwankende Werte für \(Q\) rauskommen. Teilweise liegt die Abweichung zwischen minimalen und maximalen \(Q\)-Wert der Messreihe eines Teilchens bei \(\pm\qty{1e-19}{\coulomb}\). Dadurch entsteht die gewaltige Streuung im Histogramm für die höheren Werte. \\Die Ursache für diesen komischen Peak im Histogramm bei \(Q=\qty{7.4(2)e-19}{\coulomb}\) kann ich mir nur durch eine sehr fehlerhafte Messreihe erklären. Das ist das Teilchen in der Messzeile 49-58. Eventuell wurde auch ein Teilchen erwischt, das kein reines Öltröpfchen war, sondern verunreinigt durch irgendeinen anderen Stoff. Der Ölzerstäuber ist der Luft ausgesetzt, evtl. wurde auch im Blasebalg ein Staubteilchen angesaugt. Denn diese Messreihe (49-58) ist ziemlich systematisch verschoben. 
+
+Genau beurteilen, ob es ein menschlicher Fehler oder ein systematischer Fehler nur für dieses Teilchen ist, gestaltet sich als schwierig. Es kann sich gut um einen menschlichen Aussetzer, eine Konzentrationsschwäche für wenige Minuten gehandelt haben. Sinnvoll wäre gewesen, dieses Teilchen dann von einer zweiten Person erneut zu untersuchen, denn die Messungen pro Teilchen wurden immer nur von einer Person durchgeführt.
+
+Man sieht am Histogramm, dass die Peaks für \(n=1\) und \(n=2\) die am häufigst aufgetretenen Messwerte sind. Das liegt jedoch daran, dass explizit nur sehr langsame Teilchen untersucht wurden. Um also eine Aussage darüber zu treffen, wie wahrscheinlich bzw. wie unwahrscheinlich es ist, dass ein Teilchen \(Q>1 \cdot e\) trägt, müssen zufällig und vor allem eine größere Stichprobe an Teilchen untersucht wurden. Dementsprechend lässt das keine Aussage darüber zu, wie stark die elektrisch abstoßende Kraft der einzelnen Elektronen ist, die durch Reibung aufgenommen wurden. 
+
+\subsection{relativer Ladungsfehler}
+Es wurde durch den exorbitant hohen Streckenfehler \(\frac{\Delta s}{s}=10\%\), der dann sozusagen bottom boundary des Fehler \(\Delta q\) ist, ein Wert von 
+\[\frac{\Delta q}{q}=15\%\] ermittelt. Damit ergeben sich finale Ergebnisse von:
+\[\tcbhighmath{\begin{aligned}
+\bar{Q}_{n_q=1}=\qty[uncertainty-descriptors = {stat,sys}]{1.56(0.06)(0.24)e-19}{\coulomb}\\
+\bar{Q}_{n=58}=\qty[uncertainty-descriptors = {stat,sys}]{1.58(0.07)(0.24)e-19}{\coulomb}\end{aligned}}\]
+Der hohe systematische Fehler ist sehr wahrscheinlich überschätzt (wir waren beim Messen aber ziemlich müde), durch die geringe Strecke die gemessen wurde (nur \(\qty{10}{\Skt}\), nicht etwa \(\qty{20}{\Skt}\)), steigt der relative Fehler zusätzlich. Diese Überschätzung, für geringe Ladungen zumindest, sieht man schön am Histogramm. Für geringe \(v_s\), also kleine Ladungen \(Q\), ist die Streuung um \(n=1,2,3\) sehr gering. \\
+Für hohe \(v_s\) also \(n=6,7\) streuen die Werte sehr stark, da hier die Zeitmessung deutlich schwieriger war.
+
+\subsection[\texorpdfstring{\(Q_1<e\)}{Q kleiner e}]{\(\boldsymbol{Q_1<e}\)}
+Wie man in der farbig rot und grün markierten Spalte sieht, hab ich mal alle einfach geladenen Teilchen daraufhin untersucht, ob die gemessene Ladung \(Q_1\) kleiner oder größer als die Elementarladung \(e=\qty{1.602176634e-19}{\coulomb}\) ist. Interessanterweise ergeben sich ziemlich konsistente Ergebnisse, von 15 Messungen sind 12 mit \(Q_1<e\). Ich weiß nicht, ob das daran liegt, dass wir bei der Radius-Berechnung nach \cref{eq:r} ohne die Cunningham-Korrektur gerechnet haben. Somit ist dann der Cunningham-Faktor fehlerbehaftet. Im Skript wird zwar davon gesprochen, dass dieser Fehler etwa bei einer Größenordnung von 0.5\% liegt und damit vernachlässigbar ist. Die 15 betrachteten Messungen weichen jedoch durchschnittlich um \(3.5\%\) vom Literaturwert \(e\) ab. (das hab ich in ner anderen Spalte, die nicht mehr auf die Seite passt, berechnet). 
+
+Ah stimmt, es gibt deutlich mehr systematische Fehlerquellen, die auch für diesen Effekt verantwortlich sein können (siehe Aufgabe 4). Das wird die Ursache für diese Abweichung sein. 
+
+
+Wie in Aufgabe 6 bestimmt, ergibt sich eine Abweichung zum Literaturwert von maximal \(3\sigma\). Der sehr hohe relative/systematische Fehler aus Aufgabe 5 liegt an der hohen Abschätzung des Fehlers von \(s\). Dieser Effekt sollte jedoch eigentlich statistischer Natur sein, da dieser beinhaltet, dass das menschliche Reaktionsvermögen nur begrenzt ist. Das aber konstant systematisch falsch gemessen wird über 15 Messungen hinweg, ist unwahrscheinlich. Menschliche Messungen sind eher statistischer Fehlernatur, als systematischer, so zumindest meine Einschätzung aus dem bisherigen Praktikum. Es kann aber auch sein, dass alle Messungen konstant um die Reaktionszeit von \(\Delta t=\qty{0.2}{\s}\) verzerrt sind. \\
+Insgesamt sollte die hohe Sigma-Abweichung wahrscheinlich in einer falschen Einstellung oder falsch notiertem Wert einer der Konstanten liegen. 
+
+\subsection[\texorpdfstring{Ist wirklich \(\bar{Q}_1\approx e\)?}{Ist wirklich Q ungefähr e?}]{Ist wirklich \(\boldsymbol{\bar{Q}_1\approx e}\)?}
+Wir können zwar mit Sicherheit davon ausgehen, dass Ladungen nur in Vielfachen von \(\bar{Q}_1\) auftreten, aber nur für Ladungen \(Q<\bar{Q}_1\). Denn es kann sein, dass unser Mikroskopaufbau wie ein Filter wirkt: Kleine Teilchen, die eine noch geringere Ladung \(q\) tragen, sind tendenziell kleiner. Diese fallen evtl. unter die Auflösungsgrenze des Mikroskops. \\
+Nevermind, das würde ja bedeuten, dass wir Vielfache von \(n\cdot q\) messen würden, also Peaks in kürzeren Abständen erwarten. Da das nicht eingetreten ist, sondern der Abstand der Peaks immer ungefähr, die Genauigkeit lässt sich durch mehr Messungen erhöhen, \(d_Q=\bar{Q}_1\) ist, schlussfolgern wir, dass \(\bar{Q}_1\) unserem Ansatz für die Elementarladung entspricht.
+
+\subsection{Fazit}
+Sehr schönes Experiment! Wo die genauen Fehlerquellen unserer Messung liegen, habe ich nicht exakt diagnostizieren können. 
+Nichtsdestotrotz wurde sehr erfolgreich ein Ansatzwert für die Elementarladung bestimmt.\\
+Die sehr zeitaufwändige Skizze in Inkscape war zwar bisschen unnötig, dafür habe ich wegen dem Ölzerstäuber aber nochmal das Prinzip von Strahlpumpen angeschaut, auch sehr interessant. 
+

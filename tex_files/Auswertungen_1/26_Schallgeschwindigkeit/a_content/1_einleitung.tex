@@ -1,0 +1,118 @@
+\subsection{Motivation}
+Die Schallwelle ist eines der anschaulichsten Beispiele in der Lehre mechanischer Wellen, da sie für den menschlichen Organismus ein evolutionär relevantes und stets erfahrbares Wellenphänomen darstellt. Im folgenden Experiment wird das Verständnis bereits erlernter und bekannter Konzepte der Wellenlehre durch experimentelle Arbeiten vertieft: Stehende Wellen, Resonanzphänomene und die Wellenausbreitung beeinflussende Parameter werden genutzt, um eine experimentelle Schätzung der Schallgeschwindigkeit im Gasgemisch Luft und dem Gas \ce{CO_2} zu erheben. Des weiteren erfolgt durch die Verwendung grundlegender Messinstrumente wie Multimeter, Frequenzgenerator und besonders Oszilloskop eine Einführung in Messmethodiken.
+
+\subsection{Technische Grundlagen, Geräte}
+Versuchsaufbau 1:
+\begin{itemize}
+    \item Steigrohr mit Mikrofon
+    \item Lock-In Verstärker mit Anzeigemultimeter und Taster
+    \item Ausgleichsgefäß für Wasser
+    \item Lautsprecher mit Sinusgenerator
+    \item Gasflasche mit Kohlendioxid, Reduzierventil, Drucktastenventil und Zuführungsschläuchen für das Gas; Streichhölzer zur Kontrolle
+\end{itemize}
+Versuchsaufbau 2:
+\begin{itemize}
+    \item Oszilloskop HM 203
+    \item Sinusgenerator mit den Frequenzen \(\qtylist{2;5;10}{\kilo\hertz}\)
+    \item Kasten mit Schalldämmung, darin eingebaut: Lautsprecher und ein verschiebbares Mikrofon
+\end{itemize}
+
+\xfigure{htbp}{width=0.7\textwidth}{Versuchsaufbau.png}{Versuchsaufbau \autocite{Skript_1}}{linke Seite: Versuch 2; rechte Seite: Versuch 1 \autocite{Skript_1}}
+
+\subsection[Theoretische Grundlagen aus der Physik]{Theoretische Grundlagen aus der Physik \autocite{Skript_1}}
+\subsubsection{Wellencharakteristik}
+Die Wellenmechanik und Ausbreitungsart ändert sich in verschiedenen Medien, da hier jedoch nur Gase betrachtet werden, werden die Grundlagen der Ausbreitung in Festkörpern ausgelassen. In Gasen breitet sich Schall durch \enquote{Komprimierung (Verdichtung) und Ausdehnung (Verdünnung) des Mediums} \autocite{Tipler} aus. Kollisionen zwischen Gasteilchen sorgen für Auslenkung der Nachbarteilchen, die dadurch in Ausbreitungsrichtung der Welle um ihre Ruhelage schwingen. Dies sorgt für Druck- und Dichteschwankungen im Medium, deren charakterisierende Größe der Schalldruckpegel ist, dieser beschreibt, entlang der Luftsäule den Druck der entsprechenden Stelle. Schallwellen in Gasen sind, da die Gasteilchen entlang der Ausbreitungsrichtung schwingen, mechanische Longitudinalwellen, deren physikalischen Kenngrößen Frequenz \emph{f}, Wellenlänge \(\lambda\) folgend mit \emph{c} zusammenhängen und somit zur Bestimmung von c genutzt werden können:
+\begin{equation}
+    c=\lambda \cdot f
+    \label{eq:c}
+\end{equation}
+
+\subsubsection{Schallgeschwindigkeit in Gasen}
+Allgemein (Abk.: allg.) ist die Schallgeschwindigkeit \emph{c} in Gasen durch die folgende Formel gegeben:
+\begin{equation}
+    c=\sqrt{\frac{\kappa RT}{M}}
+    \label{eq:allg}
+\end{equation}
+Die Abhängigkeiten der Schallgeschwindigkeit \emph{c} von Adiabatenkoeffizient \emph{\(\kappa\)}, Temperatur \emph{T} und molarer Masse \emph{M} ergeben sich aus der Beeinflussung dieser Größen auf die Kompression und Kollision der Gasteilchen. Diese Formel wird genutzt, um \(c_{i, allg.}\) (\(i\) nimmt die Werte \emph{Luft, \ce{CO_2}} an) zu berechnen.\\
+Die Kenntnis dieses ohne Ausnutzung von Wellenphänomenen hergeleiteten Wertes von \(c\), nur abhängig von der Temperatur und Luftzusammensetzung des Versuchsumgebung \(T\), wird genauso wie die experimentell durch Welleneigenschaften bestimmten Werte \(c_{i, welle}\) mittels 
+\begin{equation}
+    \frac{c_{0_i}}{c_i} = \sqrt{\frac{T_0}{T_i}}
+    \label{eq:normal}
+\end{equation}
+auf Normalbedingungen (\(T_0=0\)°C bzw. 273K) korrigiert, man schreibt \(c_{0_{i, allg./welle}}\).
+
+\subsubsection[Stehende Wellen und Resonanzhöhen]{Stehende Wellen und Resonanzhöhen\autocite{Tipler, Video, Animation}}
+Überlagern sich zwei gegenläufige Wellen gleicher Frequenz und gleicher Amplitude, so kann sich eine stehende Welle ausbilden, d.h. die Positionen der Orte maximaler Dichte (Druckknoten) und minimaler Dichte (Druckbauch) bleiben stationär - \glqq stehend\grqq. Diese zwei Bereiche haben den Abstand \(\frac{\lambda}{4}\).\\
+Das klassische Beispiel einer eingespannten Seite zeigt die grundlegenden Prinzipien: Sei diese Saite der Länge \(n\) an einem Enden fest und am anderen lose eingespannt (grundlegenderes Bsp. beide Enden fest siehe \autocite{Tipler}) und werde mit einer Frequenz \emph{f} in der Mitte angeregt, so entsprechen den oben genannten gegenläufigen Wellen die von der Mitte nach außen und dann an den Enden wieder reflektierten Wellen. Entspricht die anregende Frequenz nun dem Wert der sogenannten Resonanzfrequenzen \(f_n\;(n = 1,\ 2,\ 3,\ \ldots)\), so bilden sich stehende Wellen - in diesem Bsp. die \emph{n}-te harmonische Schwingung.\\
+Wichtig ist zu beachten, dass nicht jede beliebige Frequenz eine stehende Welle auslöst, denn für stehende Wellen an einem einseitig fest eingespanntes Seil gilt die Bedingung, dass sich am festen Ende ein Schwingungsknoten und am losen Ende ein Schwingungsbauch befinden müssen, siehe \cref{fig:stehend.png}. Dies liegt daran, dass die Teilchen am festen Ende nicht ausgelenkt werden können, da sie fixiert sind. Diese Bedingung schlägt sich in folgender Gleichung nieder, für die Länge \(l\) des Wellenmediums und die Wellenlänge \(\lambda_n \) der stehenden Welle gilt:
+\begin{equation}
+    l=(2n+1)\,\frac{\lambda_n}{4}\qquad\text{mit}\;(n = 0,\ 1,\ 2,\ \ldots)
+    \label{eq:l}
+\end{equation}
+daraus lässt sich bei bekannter Resonanzfrequenz \(f_n\) (in \cref{fig:stehend.png} mit \(\nu_n\) bezeichnet, sowie \(c\) als \(v\)) mithilfe von \cref{eq:c} die Ausbreitungsgeschwindigkeit \(c\) herausfinden:
+\begin{equation}
+    c=\lambda_n\cdot f_n=\frac{4\,l}{2n+1}\cdot f_n\qquad \text{mit}\;(n = 0,\ 1,\ 2, \ldots)
+    \label{eq:c_n}
+\end{equation}
+\xfigure{htbp}{width=0.7\textwidth}{stehend.png}{n-te Harmonische einer schwingenden Saite\autocite{Tipler}}{n-te Harmonische einer schwingenden Saite\autocite{Tipler}}
+
+
+\paragraph{Stehende Schallwellen:}
+Nun muss diese Theorie einer Transversalwelle noch auf Longitudinalwellen, den Schall, übertragen werden. Betrachtet wird eine Luftsäule einer horizontal ausgerichteten Röhre, die am einen Ende offen, am anderen geschlossen ist.\\
+Es gibt zwei verschiedene Größen, deren Verhalten wellenartig ist: Zum einen der relative Druckunterschied zum Atmosphärendruck \(\Delta p\) (der Schalldruckpegel) und zum anderen die relative Auslenkung \(\Delta x\) eines Gasteilchens in Ausbreitungsrichtung x, beide Größen jeweils aufgetragen über die x-Position eines Teilchens in der Luftsäule. Was wir bei der Saite als Wellenbauch/-knoten der stehenden Welle der schwingenden Saite beschrieben haben, können wir jetzt für beide Größen \(\Delta p\) und \(\Delta x\) machen, den Wellenbauch des Schalldruckpegels bezeichnen wir als Druckbauch, den Wellenbauch der Auslenkung als Auslenkungsbauch, -knoten analog (im Englischen etwas schöner: pressure node(deutsch: Knoten) and -antinode(deutsch: Bauch), displacement node and antinode).\\ 
+Nun ist noch unklar, was für eine Auswirkung die einseitig geschlossene Luftröhre auf \(\Delta p\) und \(\Delta x\) hat:
+\begin{center}
+\begin{tabular}{ m{4em} | p{6cm} | p{7cm} } 
+    & geschlossenes Ende & offenes Ende \\ [0.5ex] 
+ \hline
+ \(\Delta x\) & Knoten - da die Teilchen fixiert sind bzw. keine Auslenkung über das Ende hinaus möglich ist & Bauch - Teilchen können ausgelenkt werden\\ 
+ \hline
+ \(\Delta p\) & Druckbauch - Gasteilchen können komprimiert werden & Druckknoten - die Atmosphäre gleicht jegliche Druckunterschiede aus\\
+ \hline
+\end{tabular}
+\end{center}
+
+Aus diesen Überlegungen ergeben sich die Charakteristiken der stehenden Welle von \(\Delta p\) und \(\Delta x\), die am besten mit der Animation unter \autocite{Animation} oder im Video \autocite{Video} beobachtet werden können. Um die Knoten von \(\Delta x\) gut sehen zu können, ist die Einstellung über den Button \enquote{Higher} auf \enquote{2nd overtone}zu wählen. Fast noch besser ist es im Video zu sehen, da hier die Knoten und Bäuche farbig markiert werden.
+
+Zwei Zustände, genau um \(\frac{\pi}{2}\) phasenversetzt, aus der Animation sollen kurz nochmal beleuchtet werden: In \cref{fig:bild1} befinden sich beim nullten/zweiten Einheitsstrich ein Druckbauch, die beiden Teilchen an diesen Stellen bilden jedoch einen Auslenkungsknoten mit \(\Delta x=0\)m, in \cref{fig:bild2} sind sie immer noch an derselben Position \(x\). Eine Verdichtung der Teilchen symbolisiert einen höheren Wert für \(\Delta p\). Es ist schön zu sehen, wie eine halbe Wellenlänge neben dem Druckbauch am zweiten Einheitsstrich in \cref{fig:bild1} nun in \cref{fig:bild2} zwei neue Druckbäuche entstanden sind, an der Position selber ein Druckknoten.
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{erste Auslenkung.png}
+        \caption{\autocite{Animation}}
+        \label{fig:bild1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{zweite Auslenkung.png}
+        \caption{\autocite{Animation}}
+        \label{fig:bild2}
+    \end{minipage}
+\end{figure}
+
+Mit diesem Wissen wird nun auch klar, was für eine Welle in Abbildung 2 aus dem Skript dargestellt ist, es ist die Auslenkung von \(\Delta x\), da sich am geschlossenen Ende ein Knoten befindet.
+
+Das 5cm unter dem offenen Ende montierte Mikrofon detektiert mit einer schwingenden Membran die Druckschwankungen der Luftsäule. Je nach Länge \(l\) des Rohres, also des Wellenleiters, bildet sich eine stehende Welle mit konstanter Frequenz \(f\), da diese voreingestellt ist, und somit auch konstanter Wellenlänge \(\lambda\). \(l\) wird variiert, bis \cref{eq:l} für \(\lambda=\)const. erfüllt ist. Nur in diesen Resonanzfällen, d.h. wenn der Leiter genau die richtige Länge hat, entsteht eine stehende Welle. Deren Druckbäuche (bzw. alles außer den Druckknoten) können nun vom Mikrofon detektiert werden. Es gibt eine elektrische Wechselspannung mit derselben Frequenz aus, die an einem Voltmeter angezeigt wird. Maximaler Ausschlag des Voltmeters bedeutet, dass sich eine stehende Welle entwickelt hat.
+
+Da \(\lambda=\text{constant}\) kann \cref{eq:l} angepasst werden zu:
+\begin{equation}
+    l_n=(2n+1)\frac{\lambda}{4} \qquad \text{mit}\;(n = 0,\ 1,\ 2 \ldots)
+\end{equation}
+Daraus folgt dann für den Abstand \(d\) der unterschiedlichen Längen:  
+\begin{equation}
+    d\defeq l_{n+1}-l_n=(2(n+1)+1-(2n+1))\frac{\lambda}{4}=2\,\frac{\lambda}{4}=\frac{\lambda}{2}
+    \label{eq:d}
+\end{equation}
+
+Sowohl für \(\Delta p\) als auch \(\Delta x\) kann \cref{eq:d} genutzt werden, um \(\lambda\) zu bestimmen und anschließend mithilfe von \cref{eq:c} \(c\) zu berechnen. Formel \cref{eq:c_n} ist nur nutzbar, wenn \(n\) bekannt ist. Wir können jedoch nicht sicher sagen, ob die minimal einstellbare Wasserhöhe \(h=l\) (die cm-Skala war vom Lautsprecher aus in \(-y\)-Richtung ausgerichtet) auch der Fundamentalen/ersten Harmonischen (\(n=0\)) entsprach. Deshalb ist es genauer, mit \cref{eq:d} zu arbeiten.
+
+\subsection{Laufzeitverzögerung}
+Eine andere Methode, \(c\) zu bestimmen, ist die Laufzeit \(\tau\) zu messen, die ein Schallsignal der Frequenz \(f\) für eine bestimmte Wegstrecke \(h\) benötigt. 
+\begin{equation}
+    c=\frac{h}{\tau}
+    \label{eq:tau}
+\end{equation}
+Im vorliegenden Versuchsaufbau ist dies so realisiert, dass ein Signal eines Sinusgenerators parallel an einen Lautsprecher und ein Oszilloskop geleitet werden. Der Lautsprecher konvertiert das Signal des Sinusgenerators in eine Schallwelle gleicher Frequenz, die nach durchlaufen der Strecke \(d\) in einem Mikrofon in eine elektrische Wechselspannung mit selbiger Frequenz umgewandelt wird und dann am zweiten Kanal des Oszilloskops anliegt. Auf diesem werden nun zwei Signale dargestellt. 
+Der Abstand \(h\) zwischen Lautsprecher und Oszilloskop wird nun von \(d_1\) auf \(d_2\) vergrößert, bis die zwei Signalkurven gleicher Frequenz, aber unterschiedlicher Amplitude, am Oszilloskop genau um \(2\pi\), eine ganze Periode, phasenverschoben sind. Die Höhendifferenz \(h=d_2-d_1\) kann nun zusammen mit der Zeitkonstante \(\tau\) für \cref{eq:tau} zur \(c\)-Bestimmung genutzt werden.

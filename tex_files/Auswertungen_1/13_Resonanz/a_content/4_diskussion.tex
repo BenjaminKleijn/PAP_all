@@ -1,0 +1,29 @@
+\subsection{Vergleich Eigenkreisfrequenz mit Resonanzfrequenz}
+Die Ergebnisse in \cref{table:Vergleich_w_0} sind natürlich großen zeichnerischen Abweichungen unterlegen. Eigentlich sollte nach \cref{eq:w'} bei größerem \(\delta\) die Resonanzfrequenz \(\omega'\) sinken. In unsere zeichnerischen Evaluation ist das Gegenteil eingetreten. Ob dies nun ein Anzeichen für einen systematischen Fehler ist, ist schwer zu beurteilen, da bei der geringen und ungenauen Messanzahl, den zeichnerischen Grenzen, es auch sein kann, dass dies durch statistische oder zeichnerische Fehler entstanden ist. 
+
+\subsection{Halbwertsbreite}
+Hier hätte sich zu einer genaueren Bestimmung ausgezahlt, in deutlich kleineren Schritten die Frequenz des Motors zu erhöhen, sodass durch mehr Messpunkte die Resonanzkurve besser in diesem Bereich zu zeichnen ist. \\
+Selbiges gilt auch für den Peak, die Resonanz. Diese wurde auch nicht in kleinen Schritten abgetastet. 
+
+Generell gilt für alle Aufgaben, dass das Plotten mit geeigneter Software deutlich genauer und mathematisch akkurater wäre, als das Zeichnen per Hand. 
+
+\subsection{Resonanzüberhöhung}
+Ich verstehe nicht ganz, wie die \cref{eq:reso_überhöhung}
+zustande kommt und inwiefern die Annahme \(w_0\approx w_f\) wichtig ist. Eigentlich wird dadurch angenommen, dass die Dämpfung sehr klein ist, obwohl das ja dann keinen Sinn macht, in derselben Größe ein zur Herleitung als null genähertes \(\delta\) zu verwenden. 
+
+Der Fehler \(\Delta a(\omega\to0)=0.1\) Skt treibt den relativen Fehler der dritten Methode sehr weit nach oben, da dieser auf kleine Amplituden wirkt. Die Genauigkeit ist also durch diese abzulesende Größe begrenzt.
+
+\subsection{Methodenvergleich}
+Wie man in Tabelle \cref{table:Vergleich_delta} sieht, schwanken die Werte je nach Messmethode. Bei allen liegt das Problem zum einen auf einer schwierigen Ablesbarkeit der Amplitude, zum anderen an nicht vermeidbaren zeichnerischen Ungenauigkeiten. Interessant ist, dass die Ergebnisse für die zwei letzteren Methoden tendenziell systematisch größer sind, als für die Amplitudenabnahme. 
+
+Methode 2\&3 verwenden diesselben Messergebnisse, deswegen sieht man in Tabelle \cref{table:Vergleich_delta}, dass die Abweichung dieser Werte eher niedrig ist. Das liegt jedoch auch daran, dass der hohe Fehler der Resonanzüberhöhung dafür sorgt, dass die Sigma-Abweichung stark nach unten gedrückt wird.\\
+Die Messdaten von Methode 1 wurden durch ein Zeitlupenvideo betrachtet, dass nicht parallaxenfrei aufgenommen wurde. Das bedeutet, die Werte können fehlerhaft sein, so lässt sich vielleicht die Abweichung der ersten Methode von den beiden anderen erklären.\\
+Zusätzlich wurde evtl. die Halbwertsbreite bei beiden Dämpfungen hoch abgeschätzt, wodurch sich ein höheres Delta ergeben hat. 
+
+Es ist unbekannt welchen Reibungseffekten der Motor unterliegt, es wurde mit der umgerechneten generierten Frequenzen gearbeitet, die den Motor ansteuern. In der Umsetzung im Motor sowie über den Exzentrer hat sich die externe Frequenz evtl. geändert.
+
+\subsection{Fazit}
+Der Versuch war in der Durchführung sehr anstrengend. Interessant wäre mal gewesen, die Gleichungen herzuleiten und die Bedeutung der Halbwertsbreite, des Gütefaktors, der Resonanzüberhöhung zu lernen, inwiefern diese relevante Beschreibungsgrößen einer resonanten Schwingung darstellen. 
+
+Viel interessanter ist eigentlich dieses Video von Veritasium \autocite{veritasium_skyscraper}. Hier wird in einem Teil des Videos eine Anwendung von Resonanzvermeidung im Wolkenkratzerbau diskutiert: Es werden sogenannte \emph{Tuned mass damper} benutzt, Schwingungssysteme im Gebäude, die die vom Wind oder eines Erdbebens induzierte Schwingung abdämpfen, indem Schwingungsenergie des Gebäudes in Schwingungsenergie des Mass Dampers übertragen wird und dann durch Reibung sehr schnell absorbiert wird.
+Das Video ist sehr zu empfehlen, vor allem, wenn man mal bisschen etwas zu Structural Engineering erfahren will, hat mir richtig Spaß gemacht zu sehen.

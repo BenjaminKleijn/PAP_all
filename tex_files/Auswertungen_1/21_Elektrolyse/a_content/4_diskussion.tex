@@ -1,0 +1,26 @@
+\subsection{Kupferelektrolyse}
+Man könnte die Größenordnung des Fehlers deutlich verkleinern, indem wir größere Acht auf die gemessene Zeit gegeben hätten, deswegen wurde der Fehler sehr hoch geschätzt.Es ist also kein Ablesegenauigkeitsfehler, sondern eher ein evtl. falsch-gestoppt-Fehler. Die Zeitmessungen für beide Versuche müssen also nochmal geübt werden :)
+
+Aus einem Altprotokoll habe ich eine sehr interessante Idee gefunden:
+\glqq [Es hat sich] vor der Wägung eine Kupferoxidschicht auf den Platten gebildet und [es wurden] daher Sauerstoffionen mit gewogen. Ursache hierfür könnte sein, dass der Minuspol unseres Aufbaus einen Elektronenüberschuss hatte, da wir die Elektroden nach Trennung von der Spannungsquellenicht geerdet haben. Dadurch wurde dann Luftsauerstoff reduziert und als Oxid an den Platten fixiert, die daraus resultierende, dickere Kupferoxidschicht könnte die Wägung
+signifikant beeinflusst haben. Auch der heiße Föhn, der zum Abtrocknen der Platten verwendet wurde, könnte die Oxidation weiter beschleunigt haben.\grqq{}
+
+Mangels chemischen Wissens, ob die Redoxreaktion von Kupfer zu Kupferoxid einfach so unter Normalbedingungen stattfindet, kann ich nicht beurteilen, wie wahrscheinlich die Bildung von Kupferoxid ist. Allerdings haben Elektronen eine sehr geringe Masse, nochmal um vier Größenordnungen kleiner als die eines Protons, dass sollte also bei bei einer Umwandlung von Kupfer in Kupferoxid keinen großen Unterschied machen (ich weiß auch nicht, in welche Größenordnung diese Reaktion stattfinden könnte, da mir die überschüssige Ladungsmenge auch nicht bekannt ist). Es könnte jedoch sein, dass aus der Kupfersulfatlösung, die noch als Film auf der Kupferplatte klebt, die erst weg getrocknet werden musste, noch \ce{Cu^2+}-Ionen zu Kupfer oxidiert sind. Dies würde aber das eingangs erwähnte Prinzip brechen, dass das Elektrolyt insgesamt neutral bleiben muss. Inwiefern dieser Fall also wahrscheinlich ist, weiß ich nicht.  
+
+Der Schiebewiderstand könnte evtl. durch einen einfacher einstellbaren Widerstand ersetzt werden. Zwar machen ein paar Sekunden mehr oder weniger keinen großen Unterschied für den Hauptwert, da die relative Abweichung von \(\frac{1800-\Delta t}{1800}\) immer noch ziemlich klein ist, also einen kleinen Effekt auf die Veränderung von \(F\) hätte. Der Fehler \(\Delta Q\) wird jedoch durch einen hohen Zeitfehler sehr groß.
+
+\subsection{Wasserelektrolyse}
+Hier entstehen durch ungenaue Druck- und Temperaturmessungen einige relative Fehler, deren Werte zusätzlich das Ablaufen der chemischen Reaktion beeinflussen.
+
+Das gemessene Sauerstoffvolumen sollte kleiner als das theoretisch durch Elektrolyse erwartbare Volumen sein, da Sauerstoff mit der Schwefelsäure zu Peroxodischwefelsäure reagiert.   
+
+\subsection{Fazit}
+Durch die einmalige Durchführung jedes Versuches ist die Datengröße, mit der gearbeitet wird, sehr gering. Es kann also zu statistischen Fehlern kommen, die nicht berücksichtigt werden können, bzw. systematischen Fehlern, die jeweils nur pro Messreihe auftreten. Man könnte z.B. die Dauer der Kupferelektrolyse verkürzen, und dies durch eine Erhöhung des Stromes kompensieren, damit noch eine Massendifferenz ähnlicher Größenordnung herauskommt. Da jedoch die Waage ziemlich genau ist, \(\Delta m=\qty{0.0001}{\gram}\), kann die gemessene Masse also noch weitaus reduziert werden, denn der Bottleneck des gesamten Experiments ist der relative Fehler der Stromstärke, (von den Fehlern, die hier berücksichtigt wurden).
+
+Man könnte in der Auswertung auch anstatt der Faraday-Konstante, deren Wert seit 2019 exakt festgelegt ist, da \(e\) und \(N_A\) exakt definiert sind, auch unter Nutzung von \(N_A\) den Wert der Elementarladung bestimmen, und ihn mit dem aus Versuch 22  - Elementarladungsbestimmung nach Millikan vergleichen. 
+
+Insgesamt ist der Versuch ziemlich toll: Man lernt endlich wieder etwas über Chemie und setzt sich komplett anderen Dingen auseinander und merkt, ach so ein Chemiebuch aufschlagen, wäre auch mal interessant. Angesichts der Tatsache, dass Brennstoffzellen und Elektrolyse die Zukunft der Energietechnologien sein sollen, ist es auch ziemlich nützlich, einen einfachen Einstieg in die Funktionsweise hiermit absolviert zu haben.
+
+Rant:\\
+Ich bin ins Wikipedia-Rabbithole gefallen. Ich hab ewig lang über Abscheidepotentiale, Zersetzungsspannungen und Zellspannungen gelesen, und nirgends richtig gefunden, in welchem Zusammenhang die Begriffe stehen. Manchmal werden sie auch teilweise synonym verwendet, bzw nicht richtig voneinander unterschieden, was sehr verwirrend ist. Momentan bin ich jetzt auf diesem Stand: Zellspannung ist Spannung einer Brennstoffzelle und die Zersetzungsspannung ist die notwendige Spannung bei Elektrolyse, die sich aus den Abscheidepotentialen der Ionen an den Elektroden ergibt (also wann es zu einer Redoxreaktion der Ionen an den Elektroden kommt), zusätzlich muss aber noch der Widerstand des Elektrolyts und ein Phänomen namens Überspannung berücksichtigt werden. Eine ausführliche Betrachtung der Fehlerquellen und Abläufe der Elektrolyse w+würde also noch deutlich mehr Arbeit erfordern.
+

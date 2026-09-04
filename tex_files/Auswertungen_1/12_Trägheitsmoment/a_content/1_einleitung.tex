@@ -1,0 +1,86 @@
+\subsection{Motivation}
+Die Newtonschen Axiome sind die grundlegensten Gesetze, denen man immer wieder begegnet. Sie bschreiben das Verhalten von Objekten, explizit die Trägheit physikalischer Körper. Ein Körper behält seine geradlinig-gleichförmiger Bewegung (oder verharrt in Ruhe), sofern keine Kraft auf ihn ausgeübt wird.
+Meist ist das einfachste Beispiel dafür geradlinige Bewegung: Wirkt eine starke bremsende Kraft auf einen Zug, z.B. eine Straßenbahn (die kann ziemlich gut beschleunigen und bremsen), so sorgt die (träge) Masse eines Passagiers, dass dieser eigentich seine ursprüngliche Fahrtrichtung beibehalten will und nach vorne \glq gerissen\grq\ wird. Erst durch die Füße am Boden und durch Festhalten an einer Stange wird die Bremskraft auch auf ihn übertragen.
+
+Bei beschleunigenden Translationsbewegungen ist das Maß für die Trägheit die Masse \(m\) des Körpers, 
+bei Rotationsbeschleunigungen um den Massenmittelpunkt, wie in diesem Versuch eine runde Metallplatte, die mittig gelagert ist, das \emph{Trägheitsmoment}. 
+
+Versteht man diese Größe sowie den Drehimpuls, so erschließen sich viele Phänomene und Anwendungen, wie Kreisel und Gyroskope, Reaktionsräder \autocite{Hubble}, \dots , selbst rotierende Himmelskörper können mit Kreiseltheorie beschrieben werden. Das Ziel des Versuches ist es, das Verständnis für Rotationsbewegungen und ihre physikalische Beschreibung zu vertiefen.
+
+Reaktionsräder beispielsweise werden in der Raumfahrttechnik als elektrisch betriebenes Steuerungssystem eingesetzt, um keine mit Treibstoff laufenden Steuerungsdüsen zu benötigen. Für den Satellit gilt Drehimpulserhaltung, das heißt eine geänderte Drehzahl eines Reaktionsrades sorgt für ein Drehmoment, das den Satellit in die entgegengesetzte Richtung dreht, siehe Newtons 3.Gesetz. Dafür sind sie meist mit mehreren (auch redundanten) Rädern ausgestattet, die in verschiedenen Achsen gelagert sind, sodass jede Drehbewegung möglich ist. 
+
+\subsection{Ziele des Versuches}
+Durch Experimentieren mit einem Drehpendel werden:
+\begin{itemize}
+    \item das Richtmoment \(D\) des Drehpendels bestimmt
+    \item verschiedene Körper hinsichtlich ihrer Trägheitsmomentes \(J\) untersucht.
+    \item die Auswirkung einer von der Schwerpunktachse verschiedenen Rotationsachse auf das Trägheitsmoment, also der Steinersche Satz, untersucht
+\end{itemize}
+
+\subsection{Technische Grundlagen, Geräte und Durchführung}
+Zu den verwendeten Geräten gehören:
+\begin{itemize}
+    \item Drehpendel mit Drehtisch auf der senkrechten Achse 
+    \item Messchieber und Handstoppuhr
+    \item Waage
+    \item Balancierschneide
+    \item Gewichtsteller mit Zugschnur und Gewichten
+    \item Umlenkrolle
+    \item Alu-Scheibe mit Winkelskala 
+    \item eine runde und eine unförmige Messingscheibe, beide auf einem Befestigungstisch festgemacht
+\end{itemize}
+
+Der Messaufbau, zu sehen in \cref{fig:Versuchsaufbau.png}, besteht aus einem Drehpendel, auf dessen senkrechte Achse die zu untersuchenden scheibenförmigen Objekte gelagert werden können. 
+Zuerst wird zur Bestimmung des Richtmoments eine Alu-Scheibe auf den Drehtisch aufgelegt, die mittels einer tangential daran befestigten Schnur über eine Umlenkrolle mit dem Gewichttellers verbunden ist, sodass durch ein kontrolliertes Drehmoment (Gewichtskraft) das Pendel rotierend ausgelenkt werden kann. Die resultierende Auslenkung für unterschiedliche Drehmomente wird durch Ablesen an der Winkelskala notiert.
+
+Im zweiten Teil werden für eine runde und eine irregulär geformte Messingscheiben die Periodendauern gemessen. Dafür werden die Scheiben mit ihrem Schwerpunkt auf die Drehachse des Pendels aufgelegt. Bei der unförmigen Scheibe wurde der Schwerpunkt durch Balancieren auf der Balancierschneide ermittelt, der Schnittpunkt zweier Auflagelinien ergibt den Schwerpunkt.
+
+\xfigure{htbp}{width=0.6\textwidth}{Versuchsaufbau.png}{Versuchsaufbau\autocite{Skript_1}}{Versuchsaufbau\autocite{Skript_1}}
+\FloatBarrier
+
+\subsection[Grundlagen der Physik]{Grundlagen der Physik \autocite{Skript_1}}
+Grundsätzlich ist die Drehbewegung sehr gut mit der linearen Bewegung vergleichbar, viele Gleichungen kann man analog aufstellen, da viele Größen analog sind, bzw. eine ähnliche Bedeutung haben.
+\paragraph{Trägheitsmoment \(\boldsymbol{J}\):}
+Dies ist bei der Drehbewegung das Pendant zur Masse der geradlinigen Bewegung. Es ist ein Maß für die Trägheit eines starren Körpers gegenüber der Änderung seiner Winkelgeschwindigkeit bei der Drehung um eine gegebene Achse. Es hängt zum einen von der Masse \(m\) des Körpers, aber auch von der Massenverteilung relativ zur Rotationsachse ab. 
+\begin{equation}
+    J=\int_V r_{\perp}^2\diff m
+    \label{J}
+\end{equation}
+Hier ist \(r_{\perp}\) der Abstand eines Massenelements \(\diff m\) von der Rotationsachse. 
+
+\paragraph{Drehmoment \(\boldsymbol{M}\):}
+Die analoge Größe zur Kraft \(F\) der gerad.Bew. ist das Drehmoment \(M\), es sorgt für eine Beschleunigung oder Bremsung der Rotation. Wirkt eine Kraft \(F\) rechtwinklig auf einen Hebelarm der Länge \(r\), in unserem Fall tangential auf die Scheibe, sodass \(r\) dem Radius der Scheibe entspricht, so gilt:
+\begin{equation}
+    M=F\cdot r 
+    \label{M}
+\end{equation} 
+Für einen Körper mit Trägheitsmoment \(J\) gilt außerdem, ähnlich wie Newtons 2.Gesetz:
+\begin{equation}
+    M=J\cdot \ddot{\varphi} 
+    \label{M_phi}
+\end{equation}
+Für ein Drehpendel gibt es auch das Pendant des linearen Kraftgesetzes, abhängig des Richtmoments \(D\) (\glqq Federkonstante\grqq) und dem Auslenkwinkel \(\varphi\):
+\begin{equation}
+    M=-D\cdot \varphi
+    \label{M_linear}
+\end{equation}
+
+\paragraph{Schwingungsdauer eines Drehpendels:}
+Analog der geradlinigen Bewegung kann man aus \cref{M_phi} und \cref{M_linear} eine Differentialgleichung aufstellen, die von einer harmonischen Schwingungsgleichung \[\varphi(t)=A\sin(\omega_0t+\phi_0)\] gelöst wird. Hier ist \(A\) die Amplitude, also die anfängliche Auslenkung, \(\phi_0\) die Phase, in der die Schwingung gestartet wurde, und \(\omega_0\) die Eigenfrequenz mit:
+\begin{equation}
+    \omega_0=\sqrt{\frac{D}{J}}
+    \label{omega_0}
+\end{equation}
+Da die Schwingung periodisch ist, beschreibt:
+\begin{equation}
+    T=\frac{2\pi}{\omega_0}=2\pi\sqrt{\frac{J}{D}}
+\end{equation}
+die Periodendauer der Schwingung. Die Frequenz \(f\) bestimmt sich durch \(f=\frac{1}{T}\).
+
+\paragraph{Steinerscher Satz:}
+Das Trägheitsmoment hängt von der Lage der Drehachse ab, dies geht aus \cref{J} hervor. Das Trägheitsmoment \(J\) einer Drehachse mit Abstand \(a\) zur parallelen Achse durch den Schwerpunkt berechnet sich mit:
+\begin{equation}
+    J=J_s+ma^2
+    \label{Steiner}
+\end{equation}
+Hierbei ist \(J_s\) das Trägheitsmoment bzgl. der parallelen Schwerpunktachse.
