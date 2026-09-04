@@ -1,0 +1,36 @@
+\begingroup
+\renewcommand{\theequation}{S.\arabic{equation}}
+\newcommand{\groesse}[1]{\hspace{1cm}\makebox[4cm][l]{#1}}
+\label{sec:AnhangStatistik}
+\paragraph{Varianzen:} Für die statistische Auswertung von \(n\) Messwerten \(\{x_i\}_{i=1}^n\) werden folgende Größen definiert:
+\begin{flalign}
+    &\groesse{Arithmetisches Mittel}   & \bar{x} &= \mathrm{Mean}(\{x_i\}_{i=1}^n)=\frac{1}{n} \sum_{i=1}^{n} x_i && \label{eq:arithmetisches_mittel} \\
+    &\groesse{Varianz}                 & \sigma^2 &= \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2 && \label{eq:Varianz} \\
+    &\groesse{Standardabweichung}      & \sigma &= \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2} && \label{eq:standardabweichung} \\
+    &\groesse{Fehler des Mittelwerts}  & \Delta \bar{x} &= \frac{\sigma}{\sqrt{n-1}} && \label{eq:fehler_mittelwert} 
+\end{flalign}
+\paragraph{Fehlerfortpflanzung:} Der Fehler einer Funktion \(f(x_1,\dots,x_N)\), die von den Variablen \(\{x_i\}_{i=1}^N\) abhängt, wird wie folgt bestimmt:
+\begin{flalign}
+    &\groesse{Gauß'sche Fehlerfortpfl.} & \Delta f &= \sqrt{\sum_{i=1}^{N}\left(\frac{\partial f}{\partial x_i} \Delta x_i\right)^2} && \label{eq:gauss_fehlfortpflanzung} \\
+    &\groesse{relativer Fehler von \(f=\prod_{i=1}^{N}x_i^{\alpha_i}\)} & \frac{\Delta f}{|f|} &= \sqrt{\sum_{i=1}^N\left(\frac{\alpha_i\Delta x_i}{x_i}\right)^2} && \label{eq:relativer_fehler} 
+\end{flalign}
+\paragraph{Ergebnissignifikanz:} Resultate eines Experiments bzw. Berechnung \(a_{\text{exp}}\) und die entsprechenden Literaturwerte \(a_{\text{lit}}\) werden folgend verglichen:
+\begin{flalign}
+    &\groesse{Absolute Abweichung}     & A &= |a_{\text{lit}}-a_{\text{exp}}|&&\notag\\
+    &&\Delta A&=\sqrt{(\Delta a_{\text{lit}})^2+(\Delta a_{\text{exp}})^2}&& \label{eq:absoluteAbweichung} \\
+    &\groesse{Relative Abweichung}     & R[\unit{\percent}] &= \frac{A}{a_{\text{lit}}}\cdot 100 && \label{eq:relativeAbweichung} \\
+    &\groesse{Signifikanz}             & S[\sigma] &= \frac{A}{\Delta A}=\frac{|a_{\text{lit}} - a_{\text{exp}}|}{\sqrt{\Delta a_{\text{lit}}^2 + \Delta a_{\text{exp}}^2}} && \label{eq:Signifikanz}
+\end{flalign}
+\newpage
+
+\paragraph{Fitgüte:} Für einen Fit mit Funktionswerten \(\{F_{a_1,\dots,a_m}(x_i)\}^n_{i=1}\) und Fitparametern \(\{a_j\}_{j=1}^m\) an die experimentellen Messwerte \(\{y_i\}_{i=1}^n\) mit Fehler \(\{\Delta y_i\}_{i=1}^n\) kann die Güte des Fits mit diesen Größen analysiert werden:
+\begin{flalign}
+    &\groesse{\(\chi^2\) Summe} &   \chi^2&=\sum_{i=1}^n \left(\frac{F(x_i)-y_i}{\Delta y_i}\right)^2&& \label{eq:chi2}\\
+    &\groesse{Freiheitsgrade} & f&=n-m &&\label{eq:degreesoffreedom}\\
+    &\groesse{normierte reduzierte \(\chi^2\) Summe} & \chi^2_\text{red}&=\frac{\chi^2}{f}&&\label{eq:chi2red}\\
+    &\groesse{Fitwahrscheinlichkeit} & p&=1-\texttt{chi2.cdf}(\chi^2,f)&&\label{eq:Fitwahrscheinlichkeit}
+\end{flalign}
+Hierbei wird das Modul \verb|chi2| von \verb|scipy.stats| benutzt.
+\endgroup
+\setcounter{equation}{0}
+\vspace{1cm}

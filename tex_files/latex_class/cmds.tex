@@ -1,0 +1,141 @@
+% Stand 2.08.2026 
+
+%% -----------------------------------
+%% |    referencing   |
+%% -----------------------------------
+% section reference, um z.B. einen Abschnitt der Auswertung in der Diskussion zu referenzieren
+\newcommand{\secref}[1]{Abschnitt \labelcref{#1}.(\nameref{#1})}
+% um auf einen Stelle zu springen: #1 erwartet das Ziel des Hyperlinks, das kann vieles sein, alles was hyperref erlaubt. e.g. page.number also page.1 springt zu Seite 1. 
+% die aktuelle Farbe wird mit colorlet in der variable temp gespeichert und darunter wird eine blaue Linie gezeichnet und danach die temp Farbe wieder eingestellt
+\newcommand{\jump}[2]{\hyperlink{#1}{\colorlet{temp}{.}\color{blueurllink}{\underline{\color{temp}#2}}\color{temp}}}
+
+
+%% -----------------------------------
+%% |    textstyles   |
+%% -----------------------------------
+% Roman Numbers
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+
+%% -----------------------------------
+%% |    frequently used math   |
+%% -----------------------------------
+% the differential operator d not cursive, e.g. in \frac{\d x}{\d t} or in \int dx
+\newcommand*\diff{\mathop{}\!\mathrm{d}}      
+
+% partial derivative
+\newcommand{\pdb}[2]{\frac{\partial #1}{\partial #2}}
+
+% for A:=B but nice
+\newcommand{\defeq}{\vcentcolon=}
+
+% e.g. epsilon up to 0 
+\newcommand{\toup}{%
+  \mathrel{\nonscript\mkern-1.2mu\mkern1.2mu{\uparrow}}%
+}
+\newcommand{\todown}{%
+  \mathrel{\nonscript\mkern-1.2mu\mkern1.2mu{\downarrow}}%
+}
+
+% custom command to make equal sign that can be super- and subscribed
+\newcommand{\mytexteq}[2]{%
+  \mathrel{%
+    \overset{\mbox{\normalfont\tiny\sffamily #1}}{%
+      \underset{\mbox{\normalfont\tiny\sffamily #2}}{=}%
+    }%
+  }%
+}
+% custom command to make math operations that can be super- and subscribed
+\newcommand{\mytextmathop}[3]{%
+  \mathrel{%
+    \overset{\mbox{\normalfont\tiny\sffamily #1}}{%
+      \underset{\mbox{\normalfont\tiny\sffamily #2}}{#3}%
+    }%
+  }%
+}
+
+
+%% -----------------------------------
+%% |    Graphics    |
+%% -----------------------------------
+% a quick command for including graphics with all necessary vars
+% use [angle=phi,width=x] as #2 argument for rotating the image
+\newcommand{\xfigure}[5]{\begin{figure}[#1]            
+  \centering                                               
+  \includegraphics[#2]{#3}                                
+  \caption[#4]{#5}
+  \label{fig:#3}
+\end{figure}}
+
+%Beispiel
+%\xfigure{htbp}{width=\textwidth}{filename.png}{Bildbeschreibung fürs \listoffigures}{Bildbeschreibung für unterm Bild \autocite{Skript}}
+
+% for mass including rotated things use this, I put a line/rule over it to distinguish text description from the next image
+\newcommand{\xfigurerot}[5]{\begin{figure}[#1]        
+\rule{\textwidth}{0.4pt}
+\centering
+\includegraphics[angle=270,#2]{#3}
+\caption[#4]{#5}
+\label{fig:#3}
+\end{figure}}
+
+% in PAP1 leider manchmal benutzt, und bin zu faul, das richtig zu machen, unterscheidet sich überhaupt nicht zu xfigure, aaußer dass dadurch gekennzeichnet ist, wo pdfs eingefügt werden
+% pdfpages fügt leider ganze Seiten ein, d.h. eine Bildunterschrift für eine gescannte PDF ist z.B. nicht möglich
+\newcommand{\xfigpdf}[5]{\begin{figure}[#1]
+\centering
+\includegraphics[#2]{./images/#3}
+\caption[#5]{#5}
+\label{fig:#3}
+\end{figure}}
+
+
+% I think you'll never need these for PAP, but thanks to https://www.joni.science, you still got them
+%% ------------------------------------
+%% |    Quantum Mechanics and Math    |
+%% ------------------------------------
+
+% this gives one alignable math environment with only one label, e.g for a long error formula
+\newenvironment{nalign}{
+    \begin{equation}
+    \begin{aligned}
+}{
+    \end{aligned}
+    \end{equation}
+    \ignorespacesafterend
+}
+
+\newcommand{\op}[1]{\operatorname{#1}}                 % to write operators that
+                                                       % are not predefined;
+                                                       % it's just an abbrev.
+                                                       % for the long command
+
+\newcommand{\arr}[2]{\begin{array}{#1}#2\end{array}}   % to create arrays. very 
+                                                       % useful in math env
+
+\newcommand{\ket}[1]{\left|#1\right\rangle}           % \ket{X}  ->  |X>
+\newcommand{\bra}[1]{\left\langle#1\right|}           % \bra{X}  ->  <X|
+\newcommand{\braket}[2]                               % \braket{X}{Y}  ->  <X|Y>
+{\left\langle#1 \middle| #2\right\rangle}
+\newcommand{\bratenket}[3]                            % \bratenket{X}{Y}{Z}  ->
+{\left\langle#1 \middle|\middle| #2 \middle|\middle|  % <X|Y|Z>
+#3\right\rangle}
+\newcommand{\anglemean}[1]                            % \anglemean{X}  ->  <X>
+{\left\langle #1 \right\rangle}                       % \norm{X}  ->  || X ||
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newcommand{\updownarrows}                            % \ket\updownarrows  ->
+{\text{\rotatebox[origin=c]{90}{\(\rightleftarrows\)}}} % |↑↓> (cmt is utf8!)
+\newcommand{\downuparrows}                            % \ket\updownarrows  ->
+{\text{\rotatebox[origin=c]{270}{\(\rightleftarrows\)}}}% |↓↑>
+\newcommand{\neswarrows}                              % \ket\neswarrows  ->
+{\text{\rotatebox[origin=c]{45}{\(\rightleftarrows\)}}} % |↗↙>
+\newcommand{\swnearrows}                              % \ket\swnearrows  ->
+{\text{\rotatebox[origin=c]{225}{\(\rightleftarrows\)}}}% |↙↗>
+
+\newcommand{\cre}{c^\dagger}                          % annihalation operator
+\newcommand{\anh}{c^{\vphantom{\dagger}}}             % creation operator
+\newcommand{\numb}{n^{\vphantom{\dagger}}}            % number operator
+
+\newcommand{\fullstop}{\text{\,.}}                    % fullstop or comma in
+\newcommand{\comma}{\text{\,,}}                       % math mode for use
+                                                      % after equations

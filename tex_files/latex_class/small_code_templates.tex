@@ -1,0 +1,85 @@
+%%% --- pdfpages --- %%%%
+    \markright{\thesection. title} % to change section displayed in header to "sectionnumber. title", stays till next \section{} command
+    \includepdf[pages=-,pagecommand={},addtotoc={Seitenzahl des hyperref Ankers, toc-level, toc-text, label}]{path} % pagecommand={} schaltet das displayen von kopfzeilen wieder ein, was pdfpages eigentlich ausmacht, hyperref Anker: Stelle in der pdf, an die gesprungen wird, wenn man auf den hyperref link drückt)
+    % also Beispiel:
+    \markright{\thesection. Messprotokoll}
+    \includepdf[pages=-,pagecommand={}, addtotoc={1, subsection, 2, Messprotokoll, Messprotokoll}]{Protokoll.pdf}
+    % \markright{3. Auswertung}   % nur wenn pdf innerhalb der Auswertung ist bzw. halt danach noch ein anderer Teil der aktuellen section kommt, bevor eine neue aufgemacht wird, damit danach wieder Auswertung oben steht 
+ 
+    % Messprotokoll als PDF einbinden, mit automatischer Einbindung ins toc, ohne geänderten header-stil, dadurch ist die pdf dann einfach da ohne Titel
+    \includepdf[pages=-,pagecommand={}, addtotoc={1, subsection, 2, Messprotokoll, Messprotokoll}]{Protokoll.pdf}
+
+    % nur pdf mit manueller Überschrift, die dann halt dann ein wenig awkward vor der messprotokoll.pdf hängt1
+    \subsection{Messverfahren}
+    \lipsum
+    \vfill
+    \subsection{Messprotokoll}
+    \includepdf[pages=-]{path}
+
+    % oder halt noch lamer als figure/graphic einbinden, wie in PAP1 gemacht. Ist eigentlich sehr sehr scheiße, weil man jede pdf seite einzeln einbinden muss.
+    \subsection{Messprotokoll}
+    \xfigpdf{htbp}{width=0.8\textwidth}{dateiname}{caption toc}{caption in document}
+
+%%% --- tabularx template --- %%%%
+\begin{table}[htbp]
+  \centering
+  \caption{}
+  \begin{tabularx}{\textwidth}{ZZZZ}
+    \toprule
+            \midrule % \cmidrule[0.5pt](l r{.75em}){1-3} \cmidrule[linethickness in pt](left and right trimm, default is 0.5em){column span} use this for trimmed rules (that covers area < \textwidth)
+    \bottomrule
+  \end{tabularx}
+\label{table:}  
+\end{table}
+
+%%% --- tabular* template --- %%%%
+\begin{table}[htbp]
+  \centering
+  \caption{}
+  \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+    \toprule
+            \midrule % cmidrule{2-8}
+    \bottomrule
+  \end{tabular*}
+\label{table:}  
+\end{table}
+
+% siunitx Spalte für korrektes Alignment der dezimalpunkte bei reinen Zahlenspalten. table-format = vorkommastelle.nachkommastelle (Zahlenformat, e.g.1.21 \sigma) 
+% but escape the header with {}, e.g. {\(S\;[\sigma]\)} (so this cell won't get aligned by siunitx)
+
+%%% --- wrapfigure figure template --- %%%%
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \includegraphics[width=\textwidth]{} 
+    \caption{\autocite{Skript_1}}
+    \label{fig:}
+\end{wrapfigure}
+
+
+%%% --- subfigure template --- %%%%
+% subfigures werden nicht im lof aufgezeigt, wenn nicht auf \setcounter{lofdepth}{2} erhöht wurde
+\begin{figure}[htbp]
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{} 
+    \caption{}
+    \label{fig:}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{}
+    \caption{}
+    \label{fig:}
+    \end{subfigure}
+    \caption[]{}
+\end{figure}
+
+%%% --- meme figure template --- %%%%
+\begin{figure}[htbp]         
+    \centering        
+    \textbf{\textsf{Der Seebeck Effekt}}\\
+    \vspace{2mm}
+    \includegraphics[width=14cm]{}
+    \caption[\emph{Meme:} \autocite{}]{\autocite{}}
+    \label{fig:}
+\end{figure}

@@ -1,0 +1,24 @@
+PAP_2.1
+211_GekoppeltePendel
+212_ZäheFlüssigkeiten
+213_Kreisel
+221_Adiabatenkoeffizient
+222_Heiluftmotor
+223_BrownscheBewegung
+232_Michelsoninterferometer
+233_Fourieroptik
+234_Gitterspektroskopie
+
+PAP_2.2
+241 Wechselstromeigenschaften von RLC-Gliedern
+242 Spannungsverstärkung mit dem
+Operationsverstärker
+243 Bestimmung der Boltzmannkonstante mit Hilfe
+von thermischem Rauschen
+245 Induktion
+Grundlagen der Radioaktivität
+251 Statistik des radioaktiven Zerfalls
+252 Aktivierung mit thermischen Neutronen
+253 Absorption von α-, β- und γ-Strahlung
+255 Röntgenspektrometer
+256 Röntgenfluoreszens
