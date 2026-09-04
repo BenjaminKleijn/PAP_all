@@ -8,6 +8,8 @@ Kontakt: b.k.ballcr@gmail.com
 # Aufbau des PAP Projekts
 *benutzt mit Miktex, perl, latex-workshop in VS-Code*
 
+in `final_submission` sind die fertigen pdf-Dateien (=Altprotokolle)
+
 Jeder Versuch hat seinen Ordner mit Subfolder `a_content` für Inhaltsdateien und `images` für Bilder, .pdfs. 
 In `main.tex` werden:
 * Dateipfade für .bib und images initialisiert
@@ -22,8 +24,6 @@ In `tex_files/latex_class`:
 * in `small_code_templates.tex` finden sich hinweise zum einbinden von pdfs; table, (wrap.,sub-)figure templates
 
 in `tex_files/Auswertung_xxx` ist ein Template für einen PAP-Versuch, zum einfachen kopieren.
-
-in `tex_files/final_submission` sind die fertigen pdf-Dateien (=Altprotokolle)
 
 in `tex_files/knowledge` ist gelerntes Wissen zu LaTeX und python gesammelt, mit vielen Stack_Exchange links zu interessanten Beiträgen
 
