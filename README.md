@@ -8,6 +8,8 @@ Kontakt: b.k.ballcr@gmail.com
 # Aufbau des PAP Projekts
 *benutzt mit Miktex, perl, latex-workshop in VS-Code*
 
+in `final_submission` sind die fertigen pdf-Dateien (=Altprotokolle)
+
 Jeder Versuch hat seinen Ordner mit Subfolder `a_content` für Inhaltsdateien und `images` für Bilder, .pdfs. 
 In `main.tex` werden:
 * Dateipfade für .bib und images initialisiert
@@ -22,8 +24,6 @@ In `tex_files/latex_class`:
 * in `small_code_templates.tex` finden sich hinweise zum einbinden von pdfs; table, (wrap.,sub-)figure templates
 
 in `tex_files/Auswertung_xxx` ist ein Template für einen PAP-Versuch, zum einfachen kopieren.
-
-in `tex_files/final_submission` sind die fertigen pdf-Dateien (=Altprotokolle)
 
 in `tex_files/knowledge` ist gelerntes Wissen zu LaTeX und python gesammelt, mit vielen Stack_Exchange links zu interessanten Beiträgen
 
@@ -73,7 +73,6 @@ Die Sprache (`1: Nebensprache`, `2: Hauptsprache`) sollte als globale Option in 
 In der aktuellen Version dauert das Kompilieren sehr lange. 
 ### Ursachen:
 1. **Schwere Pakete:** `tikz` und `tcolorbox` benötigen viel Rechenzeit. (`tikz` wird selten für Diagramme, sondern meist für Hintergründe/Overlays genutzt; `tcolorbox` dient zur Hervorhebung von Ergebnissen).
-2. **Ordnerstruktur:** Eventuell verlangsamt das Navigieren durch verschachtelte Verzeichnisse die Einbindung von Dateien.
 
 ### Quick Fix (Kompilierzeit optimieren):
 Entferne folgende Zeilen aus der `PAPclass.cls` und auch `\RequirePackage{tcoolorbox}`,etc., wenn nicht benutzt:
