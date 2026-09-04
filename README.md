@@ -73,7 +73,6 @@ Die Sprache (`1: Nebensprache`, `2: Hauptsprache`) sollte als globale Option in 
 In der aktuellen Version dauert das Kompilieren sehr lange. 
 ### Ursachen:
 1. **Schwere Pakete:** `tikz` und `tcolorbox` benötigen viel Rechenzeit. (`tikz` wird selten für Diagramme, sondern meist für Hintergründe/Overlays genutzt; `tcolorbox` dient zur Hervorhebung von Ergebnissen).
-2. **Ordnerstruktur:** Eventuell verlangsamt das Navigieren durch verschachtelte Verzeichnisse die Einbindung von Dateien.
 
 ### Quick Fix (Kompilierzeit optimieren):
 Entferne folgende Zeilen aus der `PAPclass.cls` und auch `\RequirePackage{tcoolorbox}`,etc., wenn nicht benutzt:
