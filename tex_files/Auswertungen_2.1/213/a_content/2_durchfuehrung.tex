@@ -1,0 +1,79 @@
+
+\paragraph{Dämpfung}
+Für alle Versuchsteile soll die Kugel zusammen mit dem angebrachten Farbschirm kräftefreisein. Dafür wird die im Luftkissen gelagerte Kugel auf 90° gekippt, im kräftefreien Fall sollte dann bei geringer Eigenrotation keine Präzessions auftreten, ansonsten wird die Justierungshöhe der Farbscheibe verschoben.
+
+Zur Bestimmung der Dämpfungsstärke über zwölf Minuten die Rotationsgeschwindigkeit gemessen. Dabei wird die Kugel zunächst mit dem Motor auf ca. \(\qty{700}{\rpm}\) beschleunigt und dann jede Minute mit dem Stroboskop
+die Frequenz gemessen.
+
+\begin{table}[htb]
+  \centering
+  \caption{Reibungsmessung}
+  \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+    \toprule
+       t\,[\unit{\s}]     & 0   & 60  & 120 & 180 & 240 & 300 & 360 & \Delta t = \qty{2}{\s} \\ \cmidrule[0.3pt]{2-8}
+       f_F\,[\unit{\rpm}]  & 650 & 596 & 543 & 499 & 458 & 422 & 386 & \Delta f = \qty{5}{\rpm}\\
+    \bottomrule
+  \end{tabular*}
+\label{table:messwerte1}  
+\end{table}
+
+\paragraph{Präzession}
+An den Kreisel mit um \(\ang{45}\) ausgelenkter Stange werden verschiedene Gewichte (vier Gewichtskonfigurationen) befestigt. Die sich einstellende Präzessionsfrequenz wird durch Messen der Periodendauer mit der Stoppuhr bestimmt. 
+Dies erfolgt für drei verschiedene Frequenzen \(\omega_F\). Der Auslenkwinkel ist nicht relevant, da die Präzession unabhängig von diesem ist.  
+
+\begin{table}[htb]
+  \centering
+  \caption{Präzessionsfrequenz}
+  \begin{tabularx}{\textwidth}{ZZZZ}
+    \toprule
+    \text{Masse \(m\)-Abstand \(d\)} & \text{Winkel }[\unit{\degree}]&T_p [\unit{\s}]&f_F [\unit{rpm}]\\
+    \Delta l=\qty{3}{\milli\m} & &\Delta T_p=\qty{0.5}{\s}&\Delta f_F =\qty{5}{\rpm}\\\midrule
+    m-\qty{20}{\cm}& 80 & 76.3  & 486 \\ 
+            & 45 & 75.8  & 493 \\
+            & 45 & 107.2 & 694 \\
+            & 45 & 49.9  & 313 \\\cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+    m-\qty{15}{\cm}  & 45 & 142.9 & 682 \\
+            & 45 & 99.7  & 490 \\
+            & 45 & 56.6  & 269 \\\cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+    2m-\qty{20}{\cm} & 45 & 50.2  & 670 \\
+            & 45 & 36.6  & 490 \\
+            & 45 & 23.3  & 315 \\\cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+    2m-\qty{15}{\cm} & 45 & 64.4  & 630 \\
+            & 45 & 49.2  & 495 \\
+            & 45 & 27.9  & 280\\
+    \bottomrule
+  \end{tabularx}
+\label{table:messwerte2}  
+\end{table}
+\newpage
+\paragraph{Messung der Nutation}
+Zur Beobachtung der Nutation wurde der Kreisel kräftefrei betrieben und durch Ein leichten Stoß am Stabanfang an den kräftefreien Kreisel initiiert die Nutationsbewegung. Für fünf verschiedene Eigenfrequenzen wurde die Zeit für zehn vollständige Farbwechsel gemessen, woraus sich die Umlauffrequenz \(\Omega\) ergibt.
+\begin{table}[htb]
+  \centering
+  \caption{Nutation - \(\Omega\) Messung}
+  \begin{tabularx}{\textwidth}{ZZZ}
+    \toprule
+    f_F\,[\unit{\rpm}]& f_F\,[\unit{\hertz}]& 10T_\Omega\,[\unit{\s}]\\
+    \Delta f_F = 5  & \Delta f_F = 0.08  & \Delta T = 0.5 \\\midrule
+    570                             & 9.50                              & 18.2                           \\
+    480                             & 8.00                              & 22.1                           \\
+    362                             & 6.03                              & 29.2                           \\
+    292                             & 4.87                              & 35.4                           \\
+    400                             & 6.67                              & 26.7  \\
+    \bottomrule
+  \end{tabularx}
+\label{table:messwerte4}  
+\end{table}
+
+Zusätzlich wurde die Nutationsfrequenz direkt mit dem Stroboskop bestimmt. Dazu wurde das Stroboskop zuerst so eingestellt, dass die durch Nutation rotierende Stange scheinbar stillsteht, und unmittelbar danach leicht reduziert, um die Eigenfrequenz abgelesen. Da der Kreisel gedämpft ist, mussten beide Messungen schnell hintereinander erfolgen.
+\begin{table}[htb]
+  \centering
+  \caption{Nutation - Stroboskopmessung}
+  \begin{tabularx}{\textwidth}{Z *{11}{x} Z}
+    \toprule
+    f_F\,[\unit{\rpm}]& 870 & 740 & 710 & 680 & 640 & 630 & 617 & 517 & 430 & 330 & 285& \Delta f_F = 10\\\cmidrule[0.3pt]{2-12}
+    f_F\,[\unit{\rpm}]& 815 & 700 & 670 & 640 & 605 & 600 & 582 & 490 & 400 & 305 & 265& \Delta f_F = 10\\                                               
+    \bottomrule
+  \end{tabularx}
+\label{table:messwerte5}  
+\end{table}

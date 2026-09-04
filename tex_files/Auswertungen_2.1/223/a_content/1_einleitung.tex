@@ -1,0 +1,80 @@
+\subsection{Motivation}
+Am Wort \textit{Brownsche Molekularbewegung} erkennt man die historische Bedeutung dieses Versuches: kleine Teilchen in Flüssigkeiten oder Gasen (in diesem Versuch kugelförmige Partikel in Wasser) zeigen unregelmäßige Bewegung, erzeugt durch Stöße von Molekülen der sie umgebenden Flüssigkeit. Die Erklärung dieses Effektes ist ein bedeutender Schritt auf dem Weg zum Nachweis und der Theorie von Atomen und Molekülen. Es ist ein elegantes Experiment, durch das sich geschichtlich bedeutende Aussagen und Erkenntnisse über die Wärmebewegung von Teilchen treffen lassen. 
+
+\subsection{Ziele des Versuches}
+Es sollen durch Beobachten der Brownschen Bewegung eines Partikels
+\begin{itemize}
+    \item die mittlere quadratische Verschiebung analysiert und durch theoretischen Modelle mit dem makroskopischen Systemparametern verknüpft werden 
+    \item die Diffusionskonstante und die Boltzmannkonstante bestimmt werden
+    \item der Umgang mit einem Mikroskop geübt werden
+\end{itemize}
+Die Bewegung kann statistisch beschrieben werden und dadurch über die Boltzmannkonstante ein Zusammenhang zwischen makroskopisches Größen wie Temperatur und Viskosität und der Bewegung der mikroskopischen Partikel geschaffen werden.  
+
+\subsection{Versuchsaufbau und Geräte}
+\begin{enumerate}
+    \item Durchlichtmikroskop Motic B1 mit CCD-Kamera
+    \item Kugelförmige Partikel suspendiert in Wasser
+    \item Objektträger und Sichtplättchen zur Probenvorbereitung 
+    \item PC mit Mess- und Trackingprogramm
+    \item Thermometer
+    \item Objektmikrometer
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{ht}{width=0.7\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+Die Brownsche Bewegung wurde erstmals 1827 von Robert Brown beobachtet, als er die kleine Bewegung von Blütenpollen in Wasser untersuchte.
+
+\subsubsection{Das Random-Walk Modell} \label{ssec:RndWalk}
+Zur theoretischen Beschreibung der Brownschen Bewegung wird das Modell des eindimensionalen Random-Walks herangezogen. Dabei erfährt ein Partikel in zeitlichen Abständen \(\tau\) zufällige Stöße, die es jeweils um eine feste Distanz \(\delta\) nach links oder rechts (gleiche Wahrscheinlichkeit \(p=\nicefrac{1}{2}\)) verschieben. Bei Teilchensystemen geht man von unabhängiger Bewegung untereinander aus, es gibt also keinen Kraftfaktor \(F_{ij}\) zwischen Teilchen \(i\) und \(j\).
+\xfigure{htbp}{width=\textwidth}{randomwalk.png}{Eindimensionaler Random-Walk \protect\autocite{Skript_2.1}}{Eindimensionaler Random-Walk \protect\autocite{Skript_2.1}}
+
+Diese Stöße werden von den Wasserteilchen ausgeübt, deren kinetische Energie von der Temperatur der Flüssigkeit abhängt. \\Die Wahrscheinlichkeit für beide Richtungen ist gleich groß, sodass die Position nach \(n = t/\tau\) Stößen durch eine Binomialverteilung beschrieben wird. Die Anzahl möglicher Schrittfolgen \(\mathcal{N}\) und die Wahrscheinlichkeit \(P\), die zu einer Endposition \(x = m \delta\) führen, ergibt sich zu:
+\begin{align} \label{eq:binom}
+   \mathcal{N}(m;n)=\binom{n}{\frac{n+m}{2}} = \frac{n!}{\left(\frac{n+m}{2}\right)!\left(\frac{n-m}{2}\right)!}&&P(m;n)= \binom{n}{\frac{n+m}{2}}p^{\frac{n+m}{2}}(1-p)^\frac{n-m}{2}   
+\end{align}
+Für große Stoßzahlen kann die Stirlingsche Näherung
+\begin{equation} \label{eq:stirling}
+    n! \approx \sqrt{2\pi n}\, n^{n} e^{-n}
+\end{equation}
+verwendet werden, wodurch unter einigen weiteren (nicht trivialen, siehe \autocite{Skript_2.1}) Umformungen (\(p=\frac{1}{2}\), Ausdrücken von \(m,n\) durch \(x,t\)) die Binomialverteilung in eine Gaußverteilung übergeht. Die Wahrscheinlichkeit, das Teilchen nach der Zeit \(t\) im Intervall \([x, x+\Delta x]\) zu finden, lautet dann:
+\begin{equation} \label{eq:gauss1d}
+    P(x,t) = \frac{1}{\sqrt{4\pi D t}} \exp\left(-\frac{x^{2}}{4Dt}\right)
+\end{equation}
+wobei \(D\) der Diffusionskoeffizient ist, ein Maß für die Beweglichkeit der Partikel.
+
+Da die Verteilung symmetrisch ist (Gaußverteilung), verschwindet der Mittelwert der Verschiebung. Stattdessen dient das mittlere Verschiebungsquadrat als charakteristische Größe, welches der Varianz \(\sigma^2\) der Gaußverteilung entspricht: 
+\begin{equation} \label{eq:msd1d}
+    \langle x^{2} \rangle = \int_{-\infty}^\infty x^2 P(x;t)\diff x =  2 D t = \sigma^2
+\end{equation}
+
+\subsubsection{Random-Walk in der Brownschen Bewegung} \label{ssec:RndWalkPhys}
+In realen Flüssigkeiten wirkt auf ein Partikel zusätzlich eine Reibungskraft, die durch das Stokes’sche Gesetz beschrieben wird. Für eine Kugel mit Radius \(a\) in einem Medium der Viskosität \(\eta\) lautet der Reibungskoeffizient:
+\begin{equation} \label{eq:stokes}
+    f = 6\pi \eta a
+\end{equation}
+Einstein verknüpfte diesen Reibungskoeffizienten mit der thermischen Energie des Systems und leitete den Stokes–Einstein-Zusammenhang her:
+\begin{equation} \label{eq:stokes_einstein}
+    D = \frac{k_{\mathrm{B}} T}{6\pi \eta a}
+\end{equation}
+In zwei Dimensionen (unserer Objektträger lässt genähert nur zweidimensionale Bewegung zu) ergibt sich für das mittlere Verschiebungsquadrat nach \cref{eq:msd1d}:
+\begin{equation} \label{eq:msd2d}
+    \langle r^{2} \rangle = 4 D t
+\end{equation}
+woraus sich durch einsetzen in \cref{eq:stokes_einstein} die Boltzmannkonstante bestimmen lässt:
+\begin{equation} \label{eq:kfrommsd}
+    k_{\mathrm{B}} = \frac{6\pi \eta a}{4 T t}\,\langle r^{2} \rangle
+\end{equation}
+Die Schlussfolgerung von \cref{eq:msd2d} ist möglich, da hier Isotropie angenommen wird. Es wird also eine Unabhängigkeit von der Richtung vorausgesetzt. Damit erlaubt die Analyse der Brownschen Bewegung eine direkte experimentelle Bestimmung einer fundamentalen Naturkonstante \(k_{\mathrm{B}}\).
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

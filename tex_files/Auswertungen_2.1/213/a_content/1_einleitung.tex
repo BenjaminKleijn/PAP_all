@@ -1,0 +1,104 @@
+\subsection{Motivation}
+Während man sich in PAP1 noch mit der Einführung der Größe \textit{Trägheitsmoment} beschäftigt hat, wird in diesem Versuch das Objekt Kreisel mit den Eigenschaften \textit{Nutation} und \textit{Präzession} genauer untersucht, sowie durch geeignete Messungen die relevanten Trägheitsmomente des Kreisels bestimmt. 
+Ziel des Versuches ist es, Verständnis für Kreiseltheorie, Rotationsbewegungen und ihre physikalische Beschreibung zu vertiefen.
+
+\textit{Anmerkung zum Meme:} Reaktionsräder werden in der Raumfahrttechnik als elektrisch betriebenes Steuerungssystem eingesetzt, um keine mit Treibstoff laufenden Steuerungsdüsen zu benötigen. Für den Satellit gilt Drehimpulserhaltung, das heißt eine geänderte Drehzahl eines Reaktionsrades sorgt für ein Drehmoment, das den Satellit in die entgegengesetzte Richtung dreht, siehe Newtons 3.Gesetz. Dafür sind sie meist mit mehreren (auch redundanten) Rädern ausgestattet, die in verschiedenen Achsen gelagert sind, sodass jede Drehbewegung möglich ist. 
+
+\subsection{Ziele des Versuches}
+\begin{itemize}
+    \item Verhalten des Kreisels qualitativ beobachten und damit vertraut werden
+    \item Dämpfungskonstante und Halbwertszeit der Reibung bestimmen
+    \item aus Präzessionsfrequenz eines schweren Kreisels das Trägheitsmoment \(I_z\) entlang der Figurenachse und das senkrecht dazu liegende Hauptträgheitsmoment \(I_x = I_y\) bestimmen
+    \item obiges Trägheitsmoment auch aus Nutation bestimmen
+\end{itemize}
+
+\subsection{Geräte}
+\begin{enumerate}
+    \item Stahlkugel mit Aluminiumstab (\(m = \qty{4.164}{\kilogram}\) incl. Stab, Kugelradius\(r=\qty{5,08}{\cm}\)) als Kreisel gelagert in einer Luftkissenpfanne
+    \item 2 Gewichte (\(r_a=\qty{0.725}{\cm}\), \(r_=\qty{0.325}{\cm}\), \(h=\qty{1.1}{\cm}\), \(m=\qty{9.85}{\gram}\))
+    \item Farbscheibe mit unterschiedlichen Farbbereichen
+    \item Stroboskop
+    \item Stoppuhr
+    \item Motor mit Netzgerät
+\end{enumerate}
+
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+
+\subsection{Symmetrischer Kreisel}\label{ssec:SymKrei}
+Ein symmetrischer Kreisel ist ein starrer Körper, dessen zwei Hauptträgheitsmomente übereinstimmen, also
+\[I_x = I_y \neq I_z\]
+% \img[0.75]{Gemetrisch_Nutation}{Matehmatische Beschreibung der Drehachsen. \cite{skriptPAP21}}
+
+Die Symmetrieachse wird als \textit{Figurenachse} bezeichnet. Zur Beschreibung der Bewegung werden drei Achsen unterschieden:
+\begin{itemize}
+    \item die Figurenachse \(F\),
+    \item die Drehimpulsachse \(L\),
+    \item die momentane Drehachse \(\vec{\omega}\).
+\end{itemize}
+Fallen diese drei Achsen zusammen, führt der Kreisel eine reine Eigenrotation mit Winkelgeschwindigkeit \(\omega_F\) aus, siehe links in \cref{fig:Kräftefrei_sym.png}. Sobald jedoch ein Stoß oder eine äußere Störung erfolgt, treten Nutation und Präzession auf, wodurch die Achsen nicht länger parallel sind. 
+
+\subsection{Kräftefreier, symmetrischer Kreisel}\label{ssec:NonFKrei}
+Ein Kreisel ist \textit{kräftefrei}, wenn sein Auflagepunkt im Schwerpunkt liegt. Dann wirkt kein äußeres Drehmoment, sodass der Drehimpuls in Richtung und Betrag zeitlich konstant bleibt:
+\[\frac{\diff\vec{L}}{\diff t} = 0\]
+Wird ein rotierender Kreisel leicht angestoßen, beginnt die Figurenachse auf einem sogenannten \textit{Nutationskegel} um die Drehimpulsachse zu rotieren, siehe rechte Seite in \cref{fig:Kräftefrei_sym.png}. Die momentane Winkelgeschwindigkeit \(\omega\) setzt sich aus Eigenrotation \(\omega_F\) und Nutation \(\omega_N\) zusammen:
+\begin{equation}
+    \label{eq:omega_sum}
+    \vec{\omega} = \vec{\omega}_N + \vec{\omega}_F
+\end{equation}
+Für kleine Nutationswinkel kann die Nutationsfrequenz näherungsweise durch
+\begin{equation}
+    \label{eq:nutation}
+    \omega_N \approx \frac{I_z}{I_x}\,\omega_F
+\end{equation}
+beschrieben werden.
+
+\xfigure{htbp}{width=0.8\textwidth}{Kräftefrei_sym.png}{Nutation eine skräftefreien und symmetrischen Kreisel}{Links: kräftefreier, symmetrischer Kreisel. \\ Rechts: Nutationsbewegung selbigen Kreisels nach einem Stoß: Achsen nicht mehr identisch und Körperkegel rollt auf Raumkegel ab \autocite{Skript_2.1}}
+
+Die momentane Drehachse wandert mit einer Winkelgeschwindigkeit \(\Omega\) um die Figurenachse. Zwischen \(\Omega\), \(\omega_N\) und \(\omega_F\) gilt
+\begin{equation}
+    \label{eq:Omega}
+    \Omega = \omega_N \frac{r_{\mathrm{KK}}}{r_{\mathrm{RK}}}
+\end{equation}
+wobei \(r_{\mathrm{KK}}\) und \(r_{\mathrm{RK}}\) die Radien des Körper- bzw. Raumkegels sind. 
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+\includegraphics[width=0.9\linewidth]{farbscheibe.png} 
+\caption{Farbscheibe zur Bestimmung von \(\Omega\) \protect\autocite{Skript_2.1}}
+\label{fig:farbscheibe.png}
+\end{wrapfigure}
+Zur Visualisierung der momentanen Drehachse und ihrer Rotation mit \(\Omega\) auf dem Körperkegel, dient eine farblich segmentierte Scheibe, die zentrisch an der Figurenachse befestigt ist. Immer wenn die Figurenachse gerade in einem Farbsegment liegt, kann man diese Farbe erkennen, ansonsten vermischen sich alle Farben aufgrund der begrenzen Aufnahmefrequenz des Auges. Der Farbwechsel erfolgt mit der Frequenz \(\Omega\).
+Durch kompliziertes Umformen ergibt sich schließlich
+\begin{equation}
+    \label{eq:IxIz}
+    \Omega = \left(1 - \frac{I_z}{I_x}\right)\omega_F
+\end{equation}
+Diese Beziehung erlaubt später die Bestimmung von \(I_x\) aus der beobachteten Umlauffrequenz \(\Omega\). 
+
+\subsection{Schwerer Kreisel}\label{ssec:SchwerKrei}
+Wird der Kreisel nicht im Schwerpunkt gelagert, sondern durch ein Zusatzgewicht \(m\) entlang der Figurenachse belastet, entsteht ein äußeres Drehmoment
+\begin{equation}
+    \label{eq:moment}
+    \vec{M} = \vec{l} \times m\vec{g}=mgl\sin(\alpha)
+\end{equation}
+wobei \(l\) der Abstand der Zusatzmasse vom Auflagepunkt ist, \(g\) die Erdbeschleunigung und \(\alpha\) der Winkel, in dem die Figurenachse ausgerichtet ist.\\
+Dieses Drehmoment führt zu einer zeitlichen Änderung der Drehimpulsrichtung, wodurch der Kreisel eine \textit{Präzessionsbewegung} ausführt. 
+\xfigure{htbp}{width=0.6\textwidth}{Schwere_masse.png}{Präzession eines schweren Kreisels}{Darstellung und Geometrie des schweren symmetrischen Kreisels zur Bestimmung der Präzessionsfrequenz \(\omega_p\) \autocite{Skript_2.1}}
+\FloatBarrier
+Die Präzessionsfrequenz ergibt sich zu
+\begin{equation}
+    \label{eq:prezession}
+    \omega_p = \frac{\diff \varphi}{\diff t}=\frac{\diff L}{L \sin(\alpha)\diff t}=\frac{mgl}{I_z \omega_F}.
+\end{equation}
+Damit ist die Präzession umso schneller, je größer das erzeugte Drehmoment \(mgl\) ist, je kleiner das Trägheitsmoment \(I_z\) ist, je langsamer die Eigenrotation \(\omega_F\) um die Figurenachse ist. \par
+Treten Nutation und Präzession gleichzeitig auf, bewegt sich die Figurenachse auf einer girlandenförmigen Bahn (Nutation ist das Nicken des Kreisels im Altitudwinkel, Präzession das Rotieren im Azimuthwinkel). Für die quantitative Auswertung wird jedoch jeweils ein dominierender Effekt betrachtet.
+
+\subsection{Zusammenhang der Trägheitmomente}\label{ssec:zumHangTraeg}
+Kennt man genügend Messgrößen, so lassen sich aus diesen die Trägheitsmomente bestimmen. Für die im Versuch definierten Achsen ergibt sich nach \cref{eq:IxIz} unter Kenntnis der Figurenfrequenz \(\omega_F\), der Winkelgeschwindigkeit \(\Omega\):
+\begin{equation}
+    \label{eq:ix_formel}
+    I_x = I_y = \frac{\frac{\omega_F}{\Omega}I_z}{\frac{\omega_F}{\Omega}-1}=\frac{m I_z}{m-1}
+\end{equation}
+\clearpage

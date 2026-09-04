@@ -1,0 +1,23 @@
+\paragraph{Mittelwertsbildung}
+Warum wird bei 300 Messpunkten \textbf{kein} Fehler des Mittelwerts genutzt, sondern normale Standardabweichung? Der Fehler des mittleren Verschiebequadrats würde massiv gedrückt werden. Das Skript gab vor, einfach eine normale arithmeische Mittelwertbildung mit \verb|np.mean()| vorzunehmen.
+
+\paragraph{Boltzmannkonstante}
+Der berechnete Wert \(\cdot2\) liegt sehr nah am Literaturwert, wenn noch ein Faktor zwei auftauchen würde. Es ist aber explizit am Aufbau angegeben, dass es sich um den Durchmesser der Partikel und nicht den Radius handelt. Die Abweichungen zum Literaturwert würden stark fallen, auf \(S_1=\num{1}\sigma\) bei der ersten Methode und auf \(S_2=\num{3}\sigma\) bei der zweiten. 
+
+Eine Ungenauigkeit ergibt sich durch die Natur des Versuchs selbst: Während das Mikroskop nur eine zweidimensionale Bewegung aufzeichnet bewegen sich die Partikel in drei Dimensionen. Im Bild sieht man dadurch immer wieder einzelne Partikel auftauchen und verschwinden - manchmal gerade dort, wo sich das verfolgte Partikel befindet. Wir können uns in manchen Fällen also nicht zu völlig sicher sein, ob wirklich immer das gleiche Partikel verfolgt wurde. Es kann auch zu Stößen mit anderen Partikeln kommen.
+
+\paragraph{Diffusionskoeffizient}
+Der Fitfehler ist im Vergleich zur Standardabweichung des Mittelwerts so gering, dass der Fehler des zweiten Diffusionskoeffizienten deutlich geringer ist.
+
+\paragraph{Eichung des Abbildungsmaßstabs}
+Während des Versuches wurde mit einem Objektträger mit bekannten Maßstäben der Abbildungsmaßstab der Bilder (Mikroskopkamera) bestimmt, in welchen dann die Position des Partikels getrackt wurde. Jedoch ist nirgends notiert, welche Einheit die Positionsdaten der \verb|.txt| haben, wäre gut, wenn das in Zukunft in der ersten Zeile eingespeichert wird. Im Skript\autocite{Skript_2.1} wurde die Einheit \(\unit{\micro\m}\) genutzt, diese habe ich übernommen.
+
+\subsection{Fazit}
+Die große Abweichung vom Literaturwert der Boltzmannkonstante lässt vermuten, dass ein systematischer Fehler vorliegt. Ein Grund könnte die Näherung sein, dass sich das Teilchen nur in einer zweidimensionalen Welt bewegt. Das Teilchen ist so klein im Gegensatz zur Dicke des doppelseitigen Klebebands, welches die Tiefe der Flüssigkeitswelt bestimmt, dass auch Stöße in der dritten Dimension auftreten, die aber durch die zweidimensionale Betrachtung nicht erkannt werden. Beobachtet man die Bildsequenzen, so sieht man auch immer wieder, wie Teilchen \enquote{nach oben/unten} aus dem Bild verschwinden, weil sie sich nicht mehr in der Fokusebene der Kamera befinden. Zudem kann es sein, dass mehrere Teilchen (evtl. sogar in der dritten Dimension) aneinanderkleben, sodass der Radius falsch angenommen wurde. Größeres Teilchen bedeutet größere Trägeheit, folglicherweise kann die quadratische Verschiebung systematisch zu klein ausfallen.  
+
+Zudem lässt sich die statistische Mittelung verbessern, indem mehrere Messreihen über unterschiedliche Teilchen und längere Aufnahmedauern erhoben werden. Also insgesamt sollten einfach mehr Datenpunkte erhoben werden.   
+
+Aber dennoch ein spannender Versuch, das Beobachten der Bewegung ist wirklich besonders, direkt eine Auswirkung der thernmischen Molekular/Atombewegung zu sehen, ist beeindruckend.
+\vspace{2cm}
+
+Anmerkung: \cref{fig:Meme.png} habe ich in mühevoller Handarbeit selbst erstellt. Hat über 2h gedauert. Mithilfe von Inkscape habe ich das ISO7001\autocite{ISO_falling} Logo in einen Pfad umgewandelt, dann dessen Positonsdaten in Python gefiltert, um die (x,y) Werte aus dieser Liste zu extrahieren. Es hat lange gedauert, das \verb|re| Modul von Python zu benutzen.

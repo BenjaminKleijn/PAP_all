@@ -1,0 +1,68 @@
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\subsection{Zur Elektrodynamik bewegter Körper}
+Bei der Bewegung eines Stabmagneten innerhalb der Spule (qualitative Untersuchungen zur Induktion) konnten bei einzelnen Bewegungen unförmige Ausschläge im Oszilloskop beobachtet werden. Der exakt gleiche Effekt trat auch bei gleich liegendem Magneten und bewegter Spule auf. Das grundlegende Verhalten ist keinesfalls verwunderlich und ergibt sich direkt aus dem Induktionsgesetz, da die Bewegung des Magneten eine magn. Flussänderung bedeutet. Da die Elektrodynamik außerdem mit der Relativitätstheorie vereinbar ist, ist auch klar dass Bewegung der Spule zum selben Effekt führen muss, nur die Relativbewegung der Körper ist relevant.
+
+\subsection{Vergleich des Helmholtzspulenmagnetfelds}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(B\) und \(B_H\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        B[\unit{\milli\tesla}]&B_H[\unit{\milli\tesla}]&\text{abs.Abw.}[\unit{\milli\tesla}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{3.714(0.023)}&\num{3.02(0.04)}&\num{0.69(0.05)}&\num{18.7(1.3)}&\num{16}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_B_H} 
+\end{table}
+Sehr signifikante Abweichung, es muss fast irgendwo ein gravierender Messfehler unterlaufen sein, damit eine solche Abweichung möglich ist. Ich habe mehrmals nachgecheckt, ob die Spannungen richtig aufgeschrieben sind, ja sie sind richtig. Die Steigung des Fits ist einfach zu hoch, warum also zu hohe Spannungen gemessen wurden, weiß ich nicht. Man könnte die Abweichung natürlich noch senken, indem die zugrundeliegenden Fehler angehoben werden. EIne mögliche Fehlerquelle könnte der Motor sein, der ohne Abwürgen nicht auf unter \(f=\qty{3}{\hertz}\) eingestellt werden konnte und sich vielleicht nicht gleichmäßig gedreht hat. Die Kraftübertragung über den Riemen kann auch für Verluste verantwortlich sein.  
+
+Die absolute Abweichung, dass das experimentell bestimmte Magnetfeld über dem theoretischen Wert liegt, deutet darauf hin, dass bei der Messung zusätzlich zum Helmholtzspulenfeld noch ein anderes Magnetfeld wirkt, welches die Messung beeinflusst. Dies könnte beispielsweise das Erdmagnetfeld sein, welches in der Messung nicht berücksichtigt wurde. Für die Zukunft wäre es vernünftig, an dieser Stelle dieselbe Messung noch einmal mit einem um 90 Grad gedrehten Aufbau zu wiederholen, um diesen Effekt zu überprüfen.
+
+\subsection{Induktionsspannung als Funktion des ext. Feldes}
+In \cref{fig:1.png} wurde auf der rechten Seite \(U_\text{ind}(I_H)\) geplotted. Der y-Achsenabschnitt beträgt hier \(c=U_\text{ind}(0)=\qty{-0.919(0.024)}{\milli\volt}\), wäre dieser positiv, hätte das auf das Detektieren des Erdmagnetfelds hingedeutet. Der Fit gibt hingegen einen verschwindend kleinen, negativen Wert an, der evtl. von starken Schwankungen des Kraftriemens bei kleinen Motorfrequenzen rührt.
+
+\subsection{Induktionsspannung als Funktion des Winkels}
+In \cref{fig:task2_angle.png} ist der Fit \(f=|a \cos(\phi)|+b\) zu sehen, man erhält \(b=\qty{51.7(1.7)}{\milli\volt}\gg 0\). Dies stellt eine signifikante Abweichung dar, evtl. handelt es sich hier wieder um das Erdmagnetfeld oder eine systematische Abweichung der Messelektronik.   
+
+\subsection{Impedanz und Induktivität der Helmholtzspule}
+\cref{fig:verhältnis} zeigt wunderbar, dass die angefittete Funktion vom Auge her gut passt. Die Fitwerte wurden folgend ausgegeben und sind auch ganz in Ordnung (auch wenn weiterhin die Kenntnisse fehlen, um sie gechieit zu interpretieren).
+\begin{rb}
+    \chi^2=\num{11}\quad\quad\chi^2_\text{red}=\num{0.7}\quad\quad p=\qty{84}{\percent}
+\end{rb}
+
+\subsection{Erdmagnetfeld}
+Ganz gut kann die Messung nicht sein, wenn \(B=|\vec{B}|<B_\perp\). \(B=\qty{52(3)}{\micro\tesla}\) wurde ohne Kompensation gemessen, \(B_\perp\) mithilfe dem Kompensationsstrom, wahrscheinlich ist dieser einfach zu hoch. Der Vergleich mit dem im Skript \autocite{Skript_2.2} angebenen Literaturwert für \(B\) ergibt dank des hohen Fehlers zwar eine sehr geringe Sigma-Abweichung, der absolute Fehler ist jedoch nicht groß, also eine überzeugende Messung. Dank dieser geringen Abweichung ist also wahrscheinlich \(B_\perp\) ungenau und nicht \(B\). 
+
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(B_\text{exp}\) und \(B_\text{Lit/Pyth}\)}
+\begin{tabularx}{\textwidth}{ZZZZZx}
+    \toprule
+        &B_\text{exp}[\unit{\micro\tesla}]&B_\text{Lit/Pyth}[\unit{\micro\tesla}]&\text{abs.Abw.}[\unit{\micro\tesla}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \text{Literatur}&\num{52(3)}&\num{49}&\num{3(3)}&\num{6(6)}&\num{1.0}\\
+        \text{Pythagoras}&\num{52(3)}&\num{56.6(0.7)}&\num{5(4)}&\num{9(6)}&\num{1.5}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_B} 
+\end{table}
+Mithilfe des Satz des Pythagoras kann man auch die Abweichung von \(B_\text{Pythagoras}=\sqrt{B_\perp^2 + B_\parallel^2}\) von \(B\) berechnen, diese ist jedoch auch noch akzeptabel.
+
+\paragraph{Inklinationswinkel:} Der Vergleich mit dem im Skript angebenen Literaturwert für den Inklinationswinkel ergibt eine signifikante Abweichung. Bei den hochpräzisen Messungen, die nötig waren, kann es sehr gut sein, dass eine kleine Ungenauigkeit oder Schwankung in \(U_\text{ind}\) oder \(I^\text{Kompensation}_H\) zu einem falschen Wert führt. Der Aufbau hätte ja auch perfekt nach Norden ausgerichtet sein müssen, damit man sichergehen kann, dass nur \(B_\perp\) und nicht noch ein kleiner Teil von \(B_\parallel\) kompensiert wird, und diese Ausrichtung war NIEMALS exakt.
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(\alpha_\text{exp}\) und \(\alpha_\text{Lit}\)}
+\begin{tabularx}{0.8\textwidth}{ZZZZx}
+    \toprule
+        \alpha_\text{exp}[\unit{\degree}]&\alpha_\text{Lit}[\unit{\degree}]&\text{abs.Abw.}[\unit{\degree}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{70.7(1.6)}&66&\num{4.7(1.6)}&\num{6.6(2.3)}&\num{3}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_alpha} 
+\end{table}
+
+\xfigure{htbp}{width=0.7\textwidth}{spiderman.png}{\emph{Meme:} Wo ist Norden?\autocite{spiderman}}{Wo ist Norden?\autocite{spiderman}}
+
+\subsection{Fazit}
+Ich wüsste gerne, warum die Sigma Abweichungen stellenweise so hoch sind. Ansonsten spannender Versuch angesichts der Parallelen zum Generator, ein paar Aufgaben in der Auswertung waren auch herausfordernd. Erstmal herauszufinden, wie man die Induktivität berechnet, war nicht trivial.
+
+Außerdem sollte man sich nochmal genau überlegen, welche Auswirkung eine falsche Ausrichtung auf die Geometrie der Magnetfeldvektoren und was für ein Effekt dann bei den zu messenden Größen zu sehen sein sollte. Dann könnte man beurteilen, ob die Ungenauigkeiten ihren Ursprung in einer falschen Ausrichtung haben.

@@ -1,0 +1,87 @@
+\subsection{Motivation}
+X-ray radiation is one important type of radiation and poses an interesting subject for physics, thus its mechanics need to be understood in order to provide the necessary precision for medical purposes and other applications. The following experiment introduces X-ray radiation, its generation and analysis, and provides the basics of X-Ray spectroscopy, which are used for experiment 256:\emph{ X-ray fluorescence}\autocite{Skript_2.2}. In this experiment however, the aim is, on one hand, to determine fundamental constants of physics experimentally and, on the other hand, to analyze the structure of crystals using diffraction methods. Specifically, Planck's quantum of action \(h\) is to be determined from the short-wavelength end of the bremsstrahlung spectrum as well as from the threshold voltage of a Lithium Fluoride (LiF) crystal. Furthermore, the wavelengths of the characteristic \(K_\alpha\) and \(K_\beta\) lines of a molybdenum anode are to be determined. By using LiF and sodium chloride (NaCl) as diffraction crystals, the connection between crystal lattice structure and macroscopic quantities such as the Avogadro number \(N_A\) can also be established.
+
+\subsection{Experiment goals}
+This experiment is done to study X-ray mechanics: Specifically the spectrum of crystals probed with X-Rays. By using Bragg-Refraction (working with refraction angles), measuring the spectrum and accelerating voltages, one can
+\begin{itemize}
+    \item determine the value of Planck's constant by two different ways
+    \item calculate the lattice constant of a sodium chloride (NaCl) crystal, and Avogadro's number
+    \item find the \(K_\alpha\) and \(K_\beta\) peaks of molybdenum
+\end{itemize}
+
+\subsection{Setup and devices}
+The X-ray chamber consists of a X-ray tube (a heated electrode to create fast electrons which are accelerated towards the molybdenum anode by an electric field, after hitting it, they are slowed down fastly by the anodes material emitting X-ray radiation as Bremsstrahlung). The produced X-ray spectrum is focused onto the crystal and in contrast to experiment 256, only refracted, it doesn't cause secondary X-Ray radiation. The refracted X-ray radiation is analyzed by a counter tube mounted on a rotatable decive, called goniometer, which can be moved to different angles thus allowing to measure different angles on the crystal. The results, hit counts and spectrum data are displayed on the decive and/or by a measurement programm.
+
+\begin{enumerate}
+    \item X-ray chamber with X-ray tube and Mo-anode
+    \item LiF and NaCl crystal plates
+    \item counter tube mounted on a goniometer, like shown in \cref{fig:B_scattering.png}
+    \item desktop PC with measurement programm
+\end{enumerate}
+
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png
+}{experiment setup \protect\autocite{Skript_2.2}}{experiment setup \protect\autocite{Skript_2.2}}
+\clearpage
+
+\subsection[Theoretical background]{Theoretical background \protect\autocite{Skript_2.2}}
+\subsection{X-ray Radiation}
+\paragraph{Generation of X-Rays:} In this experiment, the generation is achieved via an X-ray tube with a molybdenum anode and a heated filament cathode. Inside an evacuated glass vessel, electrons are accelerated by an electric field between the cathode and the anode. The kinetic energy \(E\) of the electrons results from the applied accelerating voltage \(U\):
+\begin{equation} \label{eq:energie}
+    E = e U
+\end{equation}
+where \(e\) represents the elementary charge. 
+Upon impact with the anode, the electrons are decelerated in the Coulomb field of the atomic nuclei. This braking process leads to the emission of a continuous spectrum of electromagnetic radiation, known as the bremsstrahlung spectrum.
+
+The maximum energy of an emitted photon is reached when an electron converts its entire kinetic energy into a single photon. This results in a minimum possible wavelength \(\lambda_{cr}\), the critical wavelength (or short-wavelength limit), which is described by conservation of energy:
+\begin{equation} \label{eq:grenzwelle}
+    e U = h \nu_{cr} = \frac{hc}{\lambda_{cr}}
+\end{equation}
+Here, \(h\) is Planck's quantum of action and \(c\) is the speed of light. 
+\paragraph{X-ray fluorescence:}
+In addition to the continuous spectrum, a characteristic line spectrum is generated if the voltage is sufficiently high: High energy electromagnetic radiation can eject an atom's inner (strongly bound) electrons, analogous to the photoeffect. The resulting holes are filled by electrons of higher shells/states with larger quantum number, emitting a photon of the corresponding energy difference in the process. An electron of the second shell (\(K_\alpha\) radiation) is most likely to fill the ejected electron's place, less likely is an electron of the third shell (\(K_\beta\) radiation). The terms originate by using the final shell letter, \(K\), and the difference between initial and final shell, \(\alpha\mathop{\hat{=}}1\), \(\beta\mathop{\hat{=}}2\).
+For a general transition from the \(n\)-th to the \(m\)-th shell, the energy \(E_{n \to m}\) can be estimated according to Moseley's Law: 
+Starting at the Rydberg-formula (solution to the Schrödingers equation for Hydrogen), one needs to take account for effects to describe the transition energy \(E_{n \to m}\) for heavier objects correctly, thus arriving at:
+\begin{equation} \label{eq:mosley}
+    E_{n \to m} = hc R_\infty (Z - A)^2 \left( \frac{1}{m^2} - \frac{1}{n^2} \right)
+\end{equation}
+Here, \(R_\infty\) denotes the Rydberg constant, \(Z\) the atomic number of the anode material (here molybdenum), and \(A\) a shielding constant, which is approximately \(A \approx 1\) for \(K_\alpha\) radiation (\(n=2 \to m=1\)).
+
+\subsection{Bragg Reflection}
+%\wrap[0.5]{R}{B_scattering}{Idea of Bragg scattering. \cite{skriptPAP22}}
+To measure the wavelengths of the generated X-ray radiation, crystals are used as diffraction gratings. Since the wavelengths of X-ray radiation are of the same order of magnitude as the interatomic distances in crystals, constructive interference occurs at the lattice planes of the crystal. This phenomenon is called Bragg reflection. An incident ray is reflected at various parallel lattice planes. For these reflected rays to overlap constructively, the path difference \(\Delta s\) must be an integer multiple of the wavelength \(\lambda\). Bragg's Law describes this relationship:
+\begin{equation} \label{eq:bragg}
+    2 d \sin(\vartheta) = n \lambda, \quad n \in \mathbb{N}
+\end{equation}
+Here, \(d\) is the distance between adjacent lattice planes, \(\vartheta\) is the angle of incidence (glancing angle), and \(n\) is the order of reflection. By varying the angle \(\vartheta\) and measuring the intensity, the X-ray spectrum can be recorded.
+\xfigure{htbp}{width=0.7\textwidth}{B_scattering.png}{Bragg Scattering\autocite{Skript_2.2}}{Bragg Scattering Herleitung \autocite{Skript_2.2}}
+\FloatBarrier
+
+\subsection{Crystals and Lattice Structure}
+The LiF and NaCl crystals used in the experiment both possess a face-centered cubic structure. In this structure, a unit cell repeats periodically in space. There are four atoms (or ion pairs) per unit cell. For a cut along the principal planes, the lattice plane spacing \(d\) in terms of the lattice constant \(a\) is given by:
+\begin{equation} \label{eq:netzebene}
+    d = \frac{a}{2}
+\end{equation}
+If the wavelength \(\lambda\) is known, the lattice constant \(a\) can be determined from the measured angle \(\vartheta\). Conversely, a known lattice constant enables the determination of microscopic quantities from macroscopically measurable properties. The Avogadro number \(N_A\), which indicates the number of particles per mole, can be calculated via the volume of the unit cell. The volume of a unit cell is \(V = (2d)^3\). With the molar mass \(M_{mol}\) and the density \(\rho\) of the crystal, it follows that:
+\begin{equation} \label{eq:avogadro}
+    N_A = \frac{4 V_{mol}}{(2d)^3} = \frac{4 M_{mol}}{\rho (2d)^3} = \frac{1}{2} \frac{M_{mol}}{\rho d^3}
+\end{equation}
+This relationship allows the Avogadro number to be determined indirectly via X-ray diffraction.
+
+In the evaluation, the statistical nature of radioactive or count-rate-like events is also taken into account. Since the count rate \(N\) follows a Poisson process, the standard error of a single measurement is:
+\begin{equation} \label{eq:fehler_zahl}
+    \sigma = \sqrt{N}
+\end{equation}
+This value is used to incorporate the uncertainty of the measured intensities into the error propagation.
+
+%\img{Lattice_Structure}{Structure of the crystals in use; Here NaCl. \cite{skriptPAP22}}
+
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

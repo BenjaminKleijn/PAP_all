@@ -1,0 +1,141 @@
+\clearpage
+Note: Angegebene Signifikanzen wurden mit \cref{eq:Signifikanz} berechnet, allgemein finden sich in \secref{sec:AnhangStatistik} bekannte/vorausgesetzte Formeln.\par
+Die drei verschiedenen Kopplungslängen \(l\) werden wie folgt abgekürzt:
+\begin{table}[htbp]
+    \centering
+\begin{tabularx}{0.8\linewidth}{LZZZ}
+    \text{Kopplungsart}&\text{weak}&\text{middle}&\text{strong}\\\midrule
+    l\,[\unit{\cm}]&\num{19.20(10)}&\num{29.20(10)}&\num{39.20(10)}\\
+\end{tabularx}
+\end{table}
+
+\subsection{Vergleich der Frequenzen}
+Anfangs wurde die Eigenschwingung beider ungekoppelter Pendel gemessen. Diese liegt bei \(\omega_1=\qty{3.89(12)}{\rad\per\s}\).\par
+Es wurden per FFT \(\omega_{1/2}\) für symetrische/asymetrische/Schwebungs- Schwingung erhoben, das Ablesen erfolgte aus Graphen der Art \ref{fig:beat-weakcoupling_fft}. Hierbei wird durch den Gauß-Fit der Peak angezeigt, als Fehler wird die Halbwertsbreite (FHWM) genommen.
+\begin{figure}[htbp]            
+\centering
+\includegraphics[width=\textwidth]{beat-weakcoupling_fft.pdf}
+\caption{SchwebungsFFT der weak-Kopplung}
+\label{fig:beat-weakcoupling_fft}
+\end{figure}
+
+\begin{table}[htb]
+  \centering
+  \caption{Vergleich der sym.(\(\omega_1\)) und asym.(\(\omega_2\)) Schwingung mit Schwebung (\(\omega^\mathrm{beat}\))}
+  \begin{tabularx}{\textwidth}{TZZSZZS}
+    \toprule
+         Kopplungsart&\omega_1[\unit{\rad\per\s}]&\omega_1^\mathrm{beat}[\unit{\rad\per\s}]  &{\(S[\sigma]\)}  &\omega_2[\unit{\rad\per\s}] &\omega^{\mathrm{beat}}_2[\unit{\rad\per\s}]&{\(S[\sigma]\)}\\\midrule
+        weak    &   \num{3.89(12)}          & \num{3.90(6)}                 &0.07       &\num{4.08(12)}         &\num{4.08(7)}              &\num{0}\\
+        middle  &   \num{3.89(12)}          & \num{3.89(13)}                &0          &\num{4.31(13)}         &\num{4.31(13)}             &\num{0}\\
+        strong  &   \num{3.90(13)}          & \num{3.90(13)}                &0          &\num{4.63(13)}         &\num{4.63(13)}             &\num{0}\\
+    \bottomrule
+  \end{tabularx}
+\label{table:Vergleichsymasym}  
+\end{table} 
+
+Die Schwebungsfrequenzen können auf zwei unterschiedliche Weisen berechnet werden: Einmal durch die Umrechnung einer per Cursormessung erhobenen Periodendauer im \(x(t)\) Bild:
+\begin{equation}
+   \omega_{I/II}=\frac{2\pi}{T_{I/II}} \hspace{2cm} \Delta \omega_{I/II}=\sqrt{\left(- \frac{2 \pi \Delta T_{I/II}}{T_{I/II}^{2}}\right)^{2}}
+\label{eq:Periodendauer}
+\end{equation}
+Sowie mithilfe von:
+\begin{equation}
+   \omega_{I/II} = \frac{\omega_2 \pm \omega_1}{2} \hspace{2cm} \Delta \omega_{I/II}=\sqrt{\left(\frac{\Delta \omega_1}{2}\right)^{2} + \left(\frac{\Delta \omega_2}{2}\right)^{2}}
+\label{eq:Schwebungsfrequenz}
+\end{equation}
+
+\begin{table}[htb]
+  \centering
+  \caption{Vergleich der Schwebungsfrrequenzen}
+  \begin{tabularx}{\textwidth}{cSZSZZS}
+    \toprule
+        &{\text{Cursor}}&\text{Superposition}& &\text{Cursor}&\text{Superposition}&\\
+        Kopplung&{\(\omega_I[\unit{\rad\per\s}]\)}&\omega_I^\mathrm{beat}[\unit{\rad\per\s}]  &{\(S[\sigma]\)}  &\omega_{II}[\unit{\rad\per\s}] &\omega_{II}^\mathrm{beat}[\unit{\rad\per\s}]&{\(S[\sigma]\)}\\\midrule
+        weak    &\num{4.0(0.4)}&\num{3.99(0.05)}&\num{0.04}&\num{0.09030(0.00018)}&\num{0.09(0.05)}&\num{0.01}\\
+        middle  &\num{4.1(0.4)}&\num{4.10(0.09)}&\num{0.10}&\num{0.2051(0.0009)}&\num{0.21(0.09)}&\num{0.05}\\
+        strong  &\num{4.2(0.4)}&\num{4.27(0.09)}&\num{0.07}&\num{0.3696(0.0030)}&\num{0.37(0.09)}&\num{0.05}\\
+        \bottomrule
+  \end{tabularx}
+\label{table:Vergleichschwebung}  
+\end{table} 
+
+\subsection{Kopplungsgrade}
+Aus den gemessenen Periodendauern der Schwebung können nun die Kopplungsgrade berechnet werden. Dafür formt man \(\omega_I\) und \(\omega_{II}\) um, sodass man \(\omega_1=\omega_I-\omega_{II}\) und \(\omega_{I}+\omega_{II}\) erhält. Diese setzt man in \cref{eq:kappa} ein, ergänzt dann mit \(\omega=\frac{2\pi}{T}\) und erhält endlich:
+\begin{equation}
+    \kappa = \frac{\left( \frac{1}{T_I} + \frac{1}{T_{II}} \right)^2 - \left( \frac{1}{T_{II}} - \frac{1}{T_I} \right)^2}{\left( \frac{1}{T_{II}} - \frac{1}{T_I} \right)^2 + \left( \frac{1}{T_I} + \frac{1}{T_{II}} \right)^2}=\frac{2T_IT_{II}}{T_I^2+T_{II}^2}
+\end{equation}
+\begin{equation}
+    \Delta \kappa = \sqrt{\left(\Delta{T_I} \left(- \frac{4 T_{I}^{2} T_{II}}{\left(T_{I}^{2} + T_{II}^{2}\right)^{2}} + \frac{2 T_{II}}{T_{I}^{2} + T_{II}^{2}}\right)\right)^{2} + \left(\Delta T_{II} \left(- \frac{4 T_{I} T_{II}^{2}}{\left(T_{I}^{2} + T_{II}^{2}\right)^{2}} + \frac{2 T_{I}}{T_{I}^{2} + T_{II}^{2}}\right)\right)^{2}}
+\end{equation}
+Man kann den Kopplungsgrad auch wie in \cref{eq:kappa} bestimmen, also über die Frequenzen \(\omega_{1/2}\) der symetrischen und asymetrischen Schwingung. Dies geschieht dann mithilfe folgender Fehlerformel:
+Der Fehler ist dann:
+\begin{equation}
+  \Delta \kappa^\mathrm{sym./asym.} = \sqrt{\left(\Delta_{\omega 1} \left(- \frac{2 \omega_{1} \left(- \omega_{1}^{2} + \omega_{2}^{2}\right)}{\left(\omega_{1}^{2} + \omega_{2}^{2}\right)^{2}} - \frac{2 \omega_{1}}{\omega_{1}^{2} + \omega_{2}^{2}}\right)\right)^{2} + \left(\Delta_{\omega 2} \left(- \frac{2 \omega_{2} \left(- \omega_{1}^{2} + \omega_{2}^{2}\right)}{\left(\omega_{1}^{2} + \omega_{2}^{2}\right)^{2}} + \frac{2 \omega_{2}}{\omega_{1}^{2} + \omega_{2}^{2}}\right)\right)^{2}}
+\end{equation}
+Es ergeben sich die Werte:
+\begin{table}[htb]
+  \centering
+  \caption{Kopplungsgrade, einmal bestimmt über \(\omega_{1/2}\) (sym./asym.) und einmal über \(T_{I/II}\)(Schwebung)}
+  \begin{tabularx}{\textwidth}{TZZZ}
+    \toprule
+        Kopplung& \kappa^\mathrm{sym./asym.} & \kappa^\mathrm{Schwebung} & S[\sigma]\\\midrule
+        weak & \num{0.05(0.04)}&\num{0.045(0.004)}&\num{0.6}\\
+        middle & \num{0.10(0.04)}&\num{0.101(0.009)}&\num{0.9}\\
+        strong & \num{0.17(0.04)}&\num{0.173(0.016)}&\num{0.9}\\
+    \bottomrule
+  \end{tabularx}
+\label{table:Kopplungsgrade}  
+\end{table} 
+
+\subsection{Kopplungsgradverhältnisse}
+Aus der Näherung unter \cref{eq:kappaab} kann nun noch das Verhältnis der Kopplungsgrade (\(\kappa^\mathrm{Schwebung}\)) bestimmt werden. Der Fehler des Kopplungsgradverhältnisse: 
+\begin{align}
+V^l = \frac{l_i^2}{l_j^2} && \Delta V^l &= \sqrt{\left(\frac{2 \Delta_{l i} l_{i}}{l_{j}^{2}}\right)^{2} + \left(- \frac{2 \Delta_{l j} l_{i}^{2}}{l_{j}^{3}}\right)^{2}}\\
+V^\kappa = \frac{\kappa_i}{\kappa_j} && \Delta V^\kappa &= \sqrt{\left(\frac{\Delta_{\kappa_i}}{\kappa_{j}}\right)^{2} + \left(- \frac{\Delta_{\kappa_j} \kappa_{i}}{\kappa_{j}^{2}}\right)^{2}}
+\end{align}
+
+Die Indexe der Verhältnisse werden mit \(w\): weak, \(m\): middle, \(s\): strong bezeichnet.  
+\begin{table}[htb]
+  \centering
+  \caption{Verhältnisse der Kopplungsgrade}
+  \begin{tabularx}{\textwidth}{ZZZZ}
+    \toprule
+        \text{Kopplung}& V^l & V^\kappa & S[\sigma]\\\midrule
+        \nicefrac{\kappa_w}{\kappa_m}&\num{0.432(0.005)}&\num{0.5(0.4)}&\num{0.7}\\
+        \nicefrac{\kappa_w}{\kappa_s}&\num{0.240(0.003)}&\num{0.29(0.25)}&\num{0.6}\\
+        \nicefrac{\kappa_m}{\kappa_s}&\num{0.555(0.005)}&\num{0.6(0.3)}&\num{0.8}\\
+    \bottomrule
+  \end{tabularx}
+\label{table:Kpplungsgradverhältnisse}  
+\end{table} 
+
+Saftige Fehler bei \(V^\kappa\)... huch.
+
+\subsection{LC-Schwingkreis}
+Wie aus dem gekoppelten Pendel nun gelernt und gemessen, beeinflusst der Kopplungsgrad die Schwebungsfrequenzen (\(\omega_{I/II}\propto \kappa\)). In dem nun untersuchten Aufbau, zwei LC Schwingkreisen, der eine davon an ein Spannungsgerät und Oszilloskop angeschlossen, wird \(\kappa\) über den Abstand der Spulen eingestellt.   
+Es ist zu erkennen, dass die Frequenz der Energieübertragung (\(\omega_{II}\)) mit kleinerem Abstand zunimmt, eine Aussage über \(\omega_I\) lässt sich nicht treffen. Die Energieübertragung erfolgt durch das Magnetfeld, dass an der Spule entsteht und somit den zweiten Schwingkreis anregt, indem in der zweiten Spule ein Strom induziert wird. Dieser Strom ist größer, wenn das Magnetfeld stärker ist.\par
+
+\begin{figure}[!ht]
+  \begin{subfigure}{\textwidth}
+    \includegraphics[width=\textwidth]{oszi0cm.png}
+    \caption{Spulenabstand von \(\qty{0}{\cm}\)}
+  \end{subfigure}
+  \vspace{3mm}
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{OOszi7cm.png}
+    \caption{Spulenabstand von \(\qty{7}{\cm}\)}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{OOszi15cm.png}
+    \caption{Spulenabstand von \(\qty{15}{\cm}\), annähernd ein Entladevorgang}
+  \end{subfigure}
+  \caption{Untersuchung verschiedener Kopplungsgrade an einem LC-Schwingkreis}
+\end{figure}
+
+Das Magnetfeld nimmt außerhalb der Spule ab. Ich hab jetzt ewig versucht, diese Formel (Magnetfeld auf der Symetrieachse):
+\begin{equation}
+  B_z = \frac{\mu_0 NI}{2}\left(\frac{z+\nicefrac{l}{2}}{l\sqrt{R^2+(z+\nicefrac{l}{2})^2}}-\frac{z-\nicefrac{l}{2}}{l\sqrt{R^2+(z-\nicefrac{l}{2})^2}}\right)
+\end{equation}
+zu nähern, um herauszufinden, mit welcher Abstandsabhängigkeit das Feld abnimmt, aber hab kein Ergebnis bekommen. Formel siehe \href{https://en.wikipedia.org/wiki/Solenoid}{Zylinderspule} (Länge \(l\), Radius \(R\), Strom \(I\)) im Abstand \(z\).
+Man sieht in den Abbildungen auf jeden Fall sehr gut die Abnahme der Schwebungsfrequenz \(\omega_{II}\) bei zunehmendem Abstand.

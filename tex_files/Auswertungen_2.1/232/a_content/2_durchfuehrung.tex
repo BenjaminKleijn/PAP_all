@@ -1,0 +1,36 @@
+Zu Beginn wird das Michelson-Interferometer sorgfältig justiert, sodass ein stabiles Interferenzmuster sichtbar wird. Die Justage erfolgt über die beiden kippbaren Spiegel, bis ein zentrales Ringsystem erscheint. Anschließend wird die Weißlichtposition bestimmt, an der der Gangunterschied der beiden Interferometerarme minimal ist (\(\Delta x\sim0\)).  
+
+\paragraph{Laserwellenlänge}
+Für die Bestimmung der Laserwellenlänge wird der bewegliche Spiegel mithilfe eines Motors über einen definierten Bereich verfahren. Währenddessen zählt der Diskriminator die vorbeilaufenden Interferenzmaxima. Aus der gemessenen Spiegelverschiebung \(\Delta x\) und der Anzahl der Maxima \(m\) ergibt sich über \cref{eq:Maximanzahl} die Wellenlänge des Lasers:
+\begin{equation}
+    \lambda = \frac{2 \Delta x}{m}.
+    \label{eq:laserWellenlange}
+\end{equation}
+
+\paragraph{Brechungsindex von Luft}
+Zur Bestimmung des Brechungsindex von Luft wird eine Küvette in einen der Interferometerarme eingesetzt und zunächst evakuiert. Anschließend wird schrittweise Luft eingelassen. Nach jeweils fünf vorbeiziehenden Interferenzstreifen wird der Druck in der Küvette notiert. Durch den unterschiedlichen Druck innerhalb der Küvette wird die optische Weglänge erhöht, wodurch ein Gangunterschied induziert wird, gemäß \(\Lambda = 2a\Delta n\),
+wobei \(a\) die Länge der Küvette ist. Aus der Anzahl der vorbeigelaufenen Maxima \(m\) (nach \(\Delta s=m\lambda \Rightarrow m\lambda = 2 a \Delta n= \Lambda\) für ein neues Interferenzmaxima) lässt sich die Brechungsindexänderung bestimmen und über eine Normierung auf Standardbedingungen der Brechungsindex von Luft über 
+\begin{align}
+    n_\text{Luft}=\frac{\lambda}{2a}m+1&&\frac{n_0-1}{n(p)-1}=\frac{p_0T}{pT_0}&&n_0 = \frac{\lambda \, m \, p_0 \, T}{2a \, p \, T_0} + 1
+    \label{eq:brechungsindexnormalbedinungen}
+\end{align}
+berechnen. Der Faktor +1 stammt daher, dass die Anzahl \(m\) in einem Intervall \(\Delta n=(n_\text{Vakuum}=1,n_\text{Luft})\Rightarrow \Delta n=n_\text{Luft}-1\) bestimmt wurde. \(T\) beschreibt die Raumtemperatur in Kelvin und \(p\) den Druck in der Küvette. Der Indize \(0\) beschreibt die Werte der Normalbedinungen mit \(p_0 = \qty{1013.25}{\hecto\pascal}\) und \(T_0 = \qty{273.15}{\kelvin}\).
+
+
+
+\paragraph{Kohärenzlänge der LED}
+Für die Messung der Kohärenzlänge wird der Laser durch eine LED ersetzt. Da LEDs nur eine geringe Kohärenzlänge besitzen, tritt Interferenz nur in unmittelbarer Nähe der Weißlichtposition auf. Durch schnelles Überfahren dieser Position wird ein zeitlich begrenztes Interferogramm aufgenommen, das typischerweise gaußförmig moduliert ist. Aus der Halbwertsbreite des Interferogramms und der bekannten Verfahrgeschwindigkeit des Motors lässt sich die Kohärenzlänge bestimmen.
+\begin{figure}[htbp]
+    \centering
+\includegraphics[width=0.9\linewidth]{TEK00007.png} 
+\caption{Interferogramm der verwendeten Leuchtdiode}
+\label{fig:ledinterferogramm}
+\end{figure}
+\FloatBarrier
+\vfill
+\subsubsection*{Messprotkoll}
+Das Messprotokoll für Aufgabe 1 und 2 liegt in Form einer Libre-Office Tabelle vor. Die Daten der dritten Aufgabe (Werte zur Abbildung \cref{fig:ledinterferogramm} sind in einer CSV-Datei abgespeichert. 
+\begin{figure}[htbp]
+    \includegraphics[width=0.9\textwidth]{232.pdf}
+    \caption{Messprotokoll}
+\end{figure}

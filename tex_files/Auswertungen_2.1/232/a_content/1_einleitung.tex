@@ -1,0 +1,102 @@
+\subsection{Motivation}
+Interferometrie ist ein mächtiges optisches Verfahren, das viele Anwendungen erlaubt, durch das Ändern von Parameter des Aufbaus wie Spiegelverschiebung zur Einstellung eines Gangunterschieds der Strahlengänge oder die Untersuchung von Probekörpern (hier Druckänderung von Luft in einer Küvette), können durch Analysieren der Auswirkungen auf Interferenzerscheinungen Aussagen über die Lichtquelle und den Probekörper getroffen werden. Neben dem Mach-Zehnder-Inteferometer, welches aus EX3 schon bekannt ist, wird in diesem Versuch das historisch bedeutende Michelson-Inteferometer genutzt, um grundlegende Funktionsweisen von optischen Systemen und Lichteigenschaften wie Kohärenz, Frequenzspektrum einer Lichtquelle und Interferenzarten zu untersuchen. 
+
+\subsection{Ziele des Versuches}
+Durch diesen Versuch sollen drei Größen bestimmt werden: Die Wellenlänge eines grünen Lasers, der Brechungsindex von Luft, und die Kohärenzlänge einer Leuchtdiode.
+\subsection{Geräte}
+\begin{enumerate}[noitemsep]
+    \item Michelson Interferometer (zentraler Strahlteiler, mit Motor und Messuhr bewegbarer Spiegel (Auslenkung: bezeichnet als \(\Delta x\)), Schirm)
+    \item Detektor zur Analyse des Interferenzbildes mit einem Oszilloskop
+    \item Diskriminator (Gerät, welches vorüberfahrende Interferenzmaxima zählt)
+    \item Laser, Leuchtdiode als Lichtquellen
+    \item Thermometer
+    \item Vakuumpumpe zur Evakuierung der luftgefüllten Küvette mit Länge \(a\)
+\end{enumerate}
+
+\xfigure{ht}{height=6.5cm}{Versuchsaufbau}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+
+\subsubsection[Interferenz]{Idee der Interferenz}
+Licht lässt sich als elektromagnetische Welle beschreiben, deren elektrische Feldstärke im einfachsten Fall durch eine ebene, monochromatische Welle dargestellt wird. Solch eine monochromatische ebene Welle wird mathematisch über
+\begin{equation}
+    \label{wellengleichung}
+    \vec{E} = \vec{E_0} \, \exp{[i(\vec{k} \cdot \vec{r} - \omega t + \Phi_0)]}
+\end{equation}
+beschrieben. Dabei beschreibt \(\vec{E_0}\coloneq E(t=0,\vec{r}=0)\) die Anfangsamplitude, \(\omega\) die Kreisfrequenz, \(\vec{k}\) die Wellenzahl und \(\Phi_0\) und die Phase.
+Treffen zwei solche Wellen gleicher Wellenlänge aufeinander, überlagern sie sich gemäß dem Superpositionsprinzip. Die beobachtbare Größe ist dabei die Intensität, welche proportional zum zeitlichen Mittelwert des Betragsquadrats der elektrischen Feldstärke ist.
+Für zwei Wellen gleicher Frequenz ergibt sich die Intensität der überlagerten Welle zu
+\begin{equation}
+    \label{Interferenz}
+    I \propto |E_1|^2 + |E_2|^2 + 2 E_{0,1} E_{0,2} \cos(\varphi),
+\end{equation}
+wobei \(\varphi\) die relative Phasenverschiebung ist. Diese hängt vom Gangunterschied \(\Delta s\) der beiden Wellen ab: \(\varphi = 2\pi\frac{\Delta s}{\lambda}\).\\
+Konstruktive Interferenz tritt auf, wenn \(\Delta s = m\lambda\), destruktive Interferenz bei \(\Delta s = (2m+1)\frac{\lambda}{2}\), für \(m\in(\mathbb{N})\). 
+\xfigure{htbp}{width=0.8\textwidth}{Gangunterschiedbrechung}{Gangunterschied zweier ebener Wellen \protect\autocite{Skript_2.1}}{Schematische Visualisierung der Entstehung realer Phasenverschiebung zweier ebener Wellen. a) Einfacher Gangunterschied, b) Gangunterschied durch Brechung verschiedener Medien. \protect\autocite{Skript_2.1}}
+
+Durchläuft eine der beiden Wellen ein Medium mit Brechungsindex \(n\), so ist nicht die geometrische Weglänge entscheidend, sondern die optische Weglänge \(\Lambda\), die von der Wegstrecke \(a\) durch das brechende Material abhängt.
+\begin{equation}
+    \label{OptWeg}
+    \Lambda = 2 n a.
+\end{equation}
+Hier stammt der Faktor 2 direkt aus der Tatsache, dass der Strahlengang zweimal durch das brechende Material führt (im Versuchsfall ist \(a\) die Länge der Küvette). Dies führt zu zusätzlichen Phasenverschiebungen und ist Grundlage vieler interferometrischer Messverfahren.
+
+\subsubsection[Kohärenz]{Kohärentes Licht}
+Interferenz ist nur beobachtbar, wenn die interferierenden Wellen eine konstante Phasenbeziehung besitzen. Dies wird durch die Kohärenz beschrieben. Natürliche Lichtquellen wie Glühlampen emittieren Licht in kurzen, statistisch unabhängigen Wellenzügen, sodass Interferenz nur bei sehr kleinen Gangunterschieden sichtbar wäre.  
+Die räumliche Ausdehnung eines solchen Wellenpakets mit konstanter Phase wird als Kohärenzlänge \(L\) bezeichnet. Sie hängt über die Kohärenzzeit \(\tau\) direkt mit der Lichtgeschwindigkeit zusammen:
+\begin{equation}
+    \label{KohLaenge}
+    L = c \tau.
+\end{equation}
+Für reale Lichtquellen besitzt das Spektrum (ausgestrahlte Wellenlängen) stets eine endliche Breite. Bei einer spektralen Bandbreite \(\Delta \lambda\) ergibt sich für die Kohärenzlänge eines Wellenpakets näherungsweise
+\begin{equation}
+    \label{KohLaengeSpektrum}
+    L \approx \frac{\lambda^2}{\Delta \lambda}.
+\end{equation}
+Laser besitzen aufgrund ihrer geringen spektralen Breite große Kohärenzlängen, während LEDs deutlich kürzere Wellenpakete erzeugen.
+Im Michelson-Interferometer zeigt sich dies darin, dass Interferenz bei LEDs nur in der Nähe der sogenannten Weißlichtposition beobachtbar ist, also dort, wo der Gangunterschied nahezu verschwindet. Wird der Gangunterschied größer als die Kohärenzlänge, so tritt keine klare Interferenz mehr auf. 
+
+\subsubsection{Interferenz gleicher Neigung}
+Trifft ein Lichtbündel auf eine planparallele Platte, so entstehen durch Reflexion und Transmission mehrere Teilstrahlen, die unterschiedliche optische Wege durchlaufen.
+Für zwei benachbarte reflektierte Strahlen ergibt sich der Gangunterschied zu
+\begin{equation}
+    \label{eq:GangunterschiedNeigung}
+    \Delta s = 2 d \sqrt{n^2 - \sin^2 \alpha} - \frac{\lambda}{2},
+\end{equation}
+wobei \(d\) die Plattendicke, \(n\) der Brechungsindex und \(\alpha\) der Einfallswinkel des ausgehenden Lichtbündels ist.  
+Werden die Strahlen anschließend durch eine Linse gesammelt, interferieren alle Teilbündel mit gleichem Einfallswinkel \(\alpha\) im selben Punkt. Da Licht nicht nur als \enquote{Ebene} mit Strahlen unterschiedlicher Einfallswinkel auf die Platte trifft, sondern als dreidimensionaler Kegel (neben \(\alpha\) auch Winkel \(\Psi\)), entsteht ein Ringsystem, die sogenannten \textit{Haidinger-Ringe}.  
+
+\xfigure{htbp}{width=0.8\textwidth}{InterferenzGleicherNeigung.png}{Interferenz gleicher Neigung und Haidinger Ringe \protect\autocite{Skript_2.1}}{c) Schematische Darstellung der Interferenz gleicher Neigung. d) Das dazu entstehende Interferenzmuster. \protect\autocite{Skript_2.1}}
+
+\subsubsection{Michelsoninterferometer}
+Im Michelson-Interferometer gibt es zwei Parameter für die Einstellung der Spiegel, klappt man den einen Arm um \(\ang{90}\) auf den anderen, so lassen sich diese besser ablesen: Die Verschiebung \(\Delta x\) gegeneinander sowie die Neigung um den Winkel \(\epsilon\). Bei \(\epsilon=0\) tritt Interferenz gleicher Neigung auf, bei \(\epsilon\neq 0\) Interferenz gleicher Dicke, bei dieser variiert die Dicke je nach Auftreffpunkt auf dem angwinkelten Spiegel. Alle Lichtbündel, die unter annähernd gleichem \(d(x)\) einfallen, interferieren und es entsteht ein streifenförmiges Muster (\textit{Fizeau-Streifen}).   
+\begin{equation}
+    \Delta s=2d(x)\sqrt{n^2-\sin^2(\alpha)}-\frac{\lambda}{2}
+    \label{eq:gleichedicke}
+\end{equation}
+Besonders einfach ist die Interpretation der vorliegenden Interferenz bei \(\epsilon=0\) im Zentrum des Musters (\(\alpha = 0\)), wo der Gangunterschied nur von der Spiegelverschiebung \(\Delta x\) abhängt:
+\begin{equation}
+    \label{GangunterschiedMI}
+    \Delta s = 2 \Delta x - \frac{\lambda}{2}
+\end{equation}
+Dieses Resultat erhält man auch aus \cref{eq:GangunterschiedNeigung}, unter \(\alpha=0\) und \(d=\Delta x\). 
+
+Große Verwirrung: Beträgt der Winkel \(\alpha=0\), so sollte der Gangunterschied lediglich durch die Verschiebung der Spiegelarme erzeugt werden, oder? Woher kommt dann der Faktor \(-\frac{\lambda}{2}\), der aufgrund eines Phasensprungs bei Reflektion eingeführt wurde, von welcher Reflektion stammt der? Beide Strahlen werden jeweils vollständig an den Spiegeln reflektiert, sowie auf dieselbe Weise am Strahlteiler reflektiert. Dieser Faktor jedoch impliziert, dass ein Strahlengang/Arm eine einzigartige Reflektion erfährt, die sich nicht mit der des anderen Armes aufhebt. 
+Dieser Faktor beeinflusst jedoch nur, was ob bei \(\Delta x=0\), \(\alpha=0\) das nullte Minima oder nullte Maxima zu sehen ist.
+
+Insgesamt stellt sich die Frage, welcher Teil der Apparatur als Dünne-Schichten Inteferenz betrachtet werden kann oder ob die geführte Rechnung das Interferometer beschreibt, obwohl komplexere Winkelstrahlengänge vorliegen. 
+
+Die einzig wichtige Aussage ist: Eine Verschiebung des beweglichen Spiegels um \(\Delta x = \frac{\lambda}{2}\Rightarrow \Delta s=\lambda\) führt zum Auftreten einer neuen Interferenzordnung. Dies bildet die Grundlage zur Bestimmung der Laserwellenlänge, da somit die Anzahl \(m\) an erscheinenden Interferenzordnungen bei Bewegung des Spiegels um \(\Delta x\) folgend zusammenhängen:
+\begin{equation}
+    \Delta x=m\frac{\lambda}{2}
+    \label{eq:Maximanzahl}
+\end{equation}
+
+\xfigure{htbp}{width=0.8\textwidth}{Michelson.png}{Schematische Darstellung des Michelsons-Interferometers}{a) Aufbau. b) Endspiegel bilden Luftplatte ?! ist eine starke Vereinfachung glaube ich}
+\clearpage
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}

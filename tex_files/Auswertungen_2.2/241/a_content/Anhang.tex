@@ -1,0 +1,42 @@
+\newpage
+\section{Oszilloskopbilder}
+Um die Auswertung nicht noch mehr mit Bilder voll zu spammen, werden manche erst hier eingefügt.
+\subsection*{\RNum{1} Halbwertszeit für Konfiguration 1}
+\xfigure{htbp}{width=0.8\textwidth}{A1_Konf1.png}{Halbwertszeit mit Cursorn bestimmen}{Halbwertszeit mit Cursorn bestimmen}
+
+\subsection*{\RNum{3} Bestimmen der Grenzfrequenzen mit der 3dB Methode}
+\xfigure{htbp}{width=0.8\textwidth}{A3_Tiefpass_Frqugang.png}{Grenzfrequenz mit 3dB Methode}{Grenzfrequenz des Tiefpasses wird durch einen Amplitudenabfall von 3dB bestimmt}
+Diese Methode wurde analog auf den Hochpass angewandt. Die untersuchten Bilder, jedoch ohne die ikonische Cursorposition sind in den folgenden Abbildungen zu finden. 
+
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A3_hochfpass_Phaseplot.png}
+        \caption{Hochpasses (CR-Glied)}
+        % \label{fig:3.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A3_Tiefpass_Phaseplot.png}
+        \caption{Tiefpass (RC-Glied)}
+        % \label{fig:3.2}
+    \end{subfigure}}
+    \caption[Hoch- und Tiefpass Frequenzgang am Oszilloskop]{Hoch- und Tiefpass Frequenzgang, bei \(C=\qty{47}{\nano\farad}\) und \(R=\qty{1}{\kilo\ohm}\)}
+      \label{fig:freqgängenoszi}
+\end{figure}
+\FloatBarrier
+
+\subsection*{\RNum{9} ungefiltertes Eingangssignal}
+
+\xfigure{htbp}{width=0.9\textwidth}{A8_signalforms_grundsignal.png}{Eingangssignal ungefiltert}{Eingangssignal, ungefiltert}
+\clearpage
+
+\section{Memes}
+\xfigure{htbp}{width=0.9\textwidth}{Sunsetboot.png}{\emph{Meme:} Sonnenuntergang}{Sonnenuntergang von der Ernst-Walz-Brücke aus}
+
+
+\section{Code-Anhang}
+Bei den Funktionen habe ich teilweise Dinge von verschiedenen Altprotokollen zusammengesucht, und auf meine Bedürfnisse umgeschrieben. Die konkreten Berechnung sind dann eigenständig.
+\includepdf[pages=-]{../Code/241/241.pdf}

@@ -1,0 +1,110 @@
+\subsection{Motivation}
+Helmholtzspulen gehören zu den Standardbeispielen der Experimentalphysik 2 bzw. Elektrotechnik zur Erläuterung von magnetfeld-erzeugenden Spulen. In diesem Versuch werden sie genutzt, um das in den genannten Vorlesungen zentrale Prinzip der Induktion zu studieren: Die 3.Maxwell Gleichung \(\vec{\nabla}\times \vec{E}=-\pdb{\vec{B}}{t}\) führt auf dieses Phänomen. So kann z.B. durch Drehung einer Leiterschleife in einem Magnetfeld eine Spannung induziert, oder umgekehrt durch Erzeugung eines variierenden Magnetfeldes (z.B. durch Wechselstrom) in einer ruhenden Leiterschleife ein Stromfluss erzeugt werden. Der vorliegende Versuch zielt darauf ab, das Induktionsgesetz in verschiedenen physikalischen Szenarien experimentell zu überprüfen und dabei charakteristische Größen des Aufbaus zu bestimmen,u.a. wird ein Generatoraufbau benutzt. 
+
+Die effizienteste Art, einen Motor zu betreiben, also eine Rotationsbewegung zu erzeugen, ist die Funktionsweise eines Elektromotors, der durch elektrische Energie, die durch einen Induktionsaufbau fließt, eine mechanische Bewegung erzeugt (Rotor als sich permanent umpolende Spule innerhalb eines externen Magnetfeld, dem Stator). Energieerzugung wiederum basiert auf dem umgekehrten Prinzip/Richtung des Prozesses: Bewegung wird in elektrische Energie umgewandelt, indem der Rotor mit aufgesetzter Spule in einem externen Magnetfeld rotiert und durch die Lorentzkraft in dieser eine Spannung erzeugt wird. 
+
+\subsection{Ziele des Versuches}
+Genau die eben beschriebene Weise wird in unserem Aufbau erreicht: Das externe Magnetfeld des Stators wird durch die Helmholtzspulen erzeugt und der Rotor, eine flache Induktionsspule kann mit einem Elektromotor (mechanische Leistung) angetrieben werden und ist über Schleifkontakte mit dem Oszilloskop verbunden, sodass die über die Schleifkontakte abgenommene, induzierte Spannung am Oszi angezeigt werden kann. Ziel ist es einerseits, den quantitativen Zusammenhang zwischen Änderungen des magnetischen Flusses und induzierter Spannung zu verifizieren, andererseits durch folgende Messungen Induktivität der verwendeten Helmholtzspule sowie Absolutbetrag und Inklinationswinkel des Erdmagnetfeldes in Heidelberg zu ermitteln:
+\begin{itemize}
+    \item Überprüfung des Induktionsgesetzes: Messung der Induktionsspannung als Funktion der Drehfrequenz und des ext. Magnetfelds
+    \item Winkelabhängigkeit der Induktionsspannung und Bestimmung des Induktivität der Helmholtzspule
+    \item Messung der Induktionscharakteristika zur Bestimmung des Erdmagnetfelds und Inklinationswinkels
+\end{itemize}
+
+\subsection{Geräte}
+\begin{enumerate} 
+\item Oszilloskop
+\item Leistungsfunktionsgenerator
+\item Antriebsmotor mit Treibriemen
+\item Diverse Netzteile
+\item Multimeter
+\item Kompass
+\item RC-Filter
+\item Helmholtzspule mit einer im Zentrum drehbar gelagerten Induktionspule: \begin{itemize}
+    \item Helmholtzspule: Durchmesser \(D=\qty{295}{\milli\m}\), Abstand \(a=\qty{147}{\milli\m}\), Windungszahl \(n_H=\num{124}\)
+    \item Induktionsspule/Flachspule: \(n_F=\num{4000}\), Fläche \(A_0=\qty{41.7}{\cm\squared}\)
+\end{itemize}
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{htbp}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+\subsubsection{Induktionsgesetz}
+Das Induktionsgesetz stellt einen zentralen Bestandteil der Maxwell-Gleichungen dar und beschreibt, wie eine Änderung des magnetischen Flusses eine elektrische Spannung induziert. In differentieller Formulierung lässt sich dies durch das Wirbelfeld des elektrischen Feldes ausdrücken:
+\begin{equation} \label{eq:maxwell_faraday}
+    \vec{\nabla} \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}
+\end{equation}
+Integration über eine Fläche und Anwendung des Stokeschen Satzes liefert den zusammenhängenden Ausdruck für die Induktionsspannung \( U_{\text{ind}}\):
+\begin{equation} \label{eq:flux_definition}
+    U_{\text{ind}} = -n \cdot \frac{d\Phi}{dt}
+\end{equation}
+Dabei steht \( n \) für die Windungszahl der Spule und \( \Phi \) für den magnetischen Fluss, welcher als Oberflächenintegral des magnetischen Feldes definiert ist:
+\begin{equation} \label{eq:magnetic_flux}
+    \Phi = \int \vec{B} \cdot d\vec{A}\quad\mytexteq{\(\vec{B}=\text{const}\)}{}\quad\vec{B}\vec{A}=AB\cos(\alpha)
+\end{equation}
+Im Falle eines konstanten, nicht Flächenabhängigen magn. Feld ist der magn. Fluss gleich dem Skalarprodukt mit Winkel \(\alpha=\sphericalangle (\vec{B},\vec{A})\). 
+
+\subsubsection{Helmholtz-Spulen}
+In diesem Experiment kommt eine spezielle Anordnung zweier stromdurchflossener Spulen zur Anwendung, die als sogenannte Helmholtzspule bekannt ist. Charakteristisch für diese Konfiguration ist die nahezu konstante magnetische Flussdichte im Bereich zwischen den beiden Spulen, insbesondere im Zentrum des Aufbaus, wodurch sich viele Berechnungen vereinfachen und ein homogenes Magnetfeld angenommen werden kann. Eine Helmholtzspulen-Anordnung besteht aus zwei parallel angeordneten, identischen Spulen mit jeweils \( n \) Windungen und Widerstand \(R\). Wählt man den Abstand \( a \) der beiden Spulen gleich ihrem Radius \( r \), erhält man in der Mitte der Spulen ein besonders homogenes Magnetfeld. Diese spezielle Wahl der Distanz resultiert aus einer mathematischen Bedingung: Damit das erzeugte Magnetfeld im Zentrum möglichst konstant bleibt, müssen die ersten beiden Ableitungen des Magnetfelds nach der Raumkoordinate entlang der Spulenachse dort verschwinden. Für diesen Versuch ist diese Homogenität erforderlich, da stets ein einheitliches Magnetfeld an der Induktionsspule angenommen werden soll. Der Betrag des Magnetfeldes \( B_H \) in der Mitte der beiden Spulen berechnet sich gemäß\autocite{Helmholtz}:
+\begin{equation} \label{eq:helmholtz_field}
+    B_H = \frac{\mu_0 \cdot 8 \cdot n_H \cdot I_H}{\sqrt{125} \cdot r}
+\end{equation}
+
+Dabei bezeichnet \( \mu_0 \) die magnetische Feldkonstante und \( I_H \) den Strom, \(U_H\) die Spannung durch die Helmholtzspule. Zu beachten ist, dass bei Wechselstrombetrieb die Impedanz der Helmholtzspule wegen Selbstinduktion frequenzabhängig ist, wobei für die Impedanz \( Z =Z_H = i \omega L + R\) gilt:
+\begin{align} \label{eq:impedance_realpart}
+    |Z_H|=\sqrt{R^2+(wL)^2} && U_H=|Z_H|I_H
+\end{align}
+mit der Induktivität \( L \) und dem Widerstand \(R\) der Helmholtzspule. 
+
+\subsubsection{Rotierende Spule im konstantem Magnetfeld}
+\label{sec:rotating}
+Betrachtet man eine (Induktions-) Spule mit \( n \) Windungen, die in einem konstanten Magnetfeld \( B \) mit der Drehfrequenz \( \omega \) rotiert, ändert sich die effektive Querschnittsfläche der Spule senkrecht zum Magnetfeld zeitlich:
+\begin{equation} \label{eq:rotating_area}
+    A(t) = A_0 \cos(\omega t)
+\end{equation}
+wobei \( A_0 \) die gesamte Querschnittsfläche der Spule darstellt. Daraus ergibt sich der magnetische Fluss:
+\begin{equation} \label{eq:flux_rotating}
+    \Phi(t) = B \cdot A_0 \cdot n \cdot \cos(\omega t)
+\end{equation}
+und somit für die Induktionsspannung:
+\begin{equation} \label{eq:voltage_rotating}
+    U_{\text{ind}}(t) = B \cdot A_0 \cdot n \cdot \omega \sin(\omega t)\implies U_{\text{ind,max}} = B \cdot A_0 \cdot n \cdot \omega 
+\end{equation}
+Damit gilt:
+\begin{equation} \label{eq:B}
+    B=\frac{U_\text{ind, max}}{A_0 n \omega}
+\end{equation}
+
+\subsubsection{Ruhende Spule im periodischen Magnetfeld}
+Im Fall einer ruhenden Spule mit \( n \) Windungen und Querschnittsfläche \( A \), die senkrecht zu einem Magnetfeld \( B \) positioniert ist, welches jedoch zeitlich oszilliert mit Amplitude \( B_0 \) (erreichbar durch Betreiben der Helmholtzspulen mit Wechselspannung) und Kreisfrequenz \( \omega \), lautet das Magnetfeld:
+\begin{equation} \label{eq:periodic_field}
+    B(t) = B_0 \cos(\omega t)
+\end{equation}
+Falls zusätzlich die Normale der Querschnittsfläche in einem Winkel \( \alpha \) zu den Magnetfeldlinien steht, ergibt sich die Fläche senkrecht zu den Feldlinien zu \( A = A_0 \cos(\alpha) \). Einsetzen in den magnetischen Fluss und Ableitung nach der Zeit führt zur induzierten Spannung:
+\begin{equation} \label{eq:voltage_periodic}
+    U_{\text{ind}}(t) = B_0 \cdot n \cdot \omega \cdot A_0 \cos(\alpha) \sin(\omega t)\implies U_\text{ind,max}\quad\mytexteq{\(\alpha=0\)}{}\quad B_0nA_0\omega
+\end{equation}
+Die Cosinus-Abhängigkeit resultiert hierbei aus der Änderung der Größe der Fläche, durch die der magnetische Fluss hindurchtritt. Man beachte, dass ob \(A(t)\) oder \(B(t)\) die zeitlich abhängige Größe ist, für die Aussage über die maximale Induktionsspannung irrelevant ist.  
+
+Im Grenzfall gilt für die mit Wechselspannung betriebene Helmholtzspule bei ruhender Induktionsspule dann die Gleichung eines idealen Transformators. Für uns ist bedeutend, dass das Verhältnis der Eingangs- und Induktionsspannung damit für hohe Frequenzen annähernd konstant ist und zwischen dem obigen linearen Verlauf des Verhältnisses (in Abhängigkeit der Frequenz) und dem konstanten Bereich ein Übergang bestehen muss. Diese Frequenzabhängigkeit des Verhältnisses wird auch in diesem Experiment untersucht. 
+
+\subsubsection{Erdmagnetfeld}
+\begin{wrapfigure}{r}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth]{ErdmagFeld.png} 
+\caption{Schematische Darstellung des Inklinationswinkels für das Erdmagnetfeld\autocite{Skript_2.2}}
+\label{fig:erdmag}
+\end{wrapfigure}
+Die Erde besitzt ein Magnetfeld, dessen Südpol in der Nähe des geographischen Nordpols liegt. Das erzeugte Magnetfeld kann mit dem eines Stabmagneten angenähert werden, der in geographischer Nord-Süd-Richtung orientiert ist. Da die Magnetfeldlinien nicht kreisförmig verlaufen, treffen sie in einem Winkel auf die Erdoberfläche, der an den Polen maximal und am Äquator minimal ist. Dieser Winkel wird als Inklinationswinkel \( \alpha \) bezeichnet und lässt sich mithilfe der Vertikalkomponente \( B_{\text{vert}}=B_\perp\) und der Horizontalkomponente \( B_{\text{hor}}=B_\parallel\), jeweils relativ zur Erdoberfläche, bestimmen:
+\begin{equation} \label{eq:inclination}
+    \tan(\alpha) = \frac{B_\perp}{B_\parallel}
+\end{equation}
+Der Absolutbetrag des Erdmagnetfeldes ergibt sich folglich nach dem Satz des Pythagoras:
+\begin{equation} \label{eq:earth_field_absolute}
+    B = \sqrt{B_\perp^2 + B_\parallel^2}
+\end{equation}
+Für Heidelberg erwartet man einen Absolutbetrag von \( B \approx 49\,\mu\text{T} =\qty{49}{\micro\tesla}\) und einen Inklinationswinkel von \( \alpha \approx \ang{66}\).
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

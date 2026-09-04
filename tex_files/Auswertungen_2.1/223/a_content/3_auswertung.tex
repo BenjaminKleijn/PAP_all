@@ -1,0 +1,106 @@
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+
+\subsection{Teilchenjourney}
+Die Reise des Teilchens durch die große, weite, zweidimensionale Welt des Objektträgers wurde in mühevoller Handarbeit dokumentiert (Tracken der Position auf der 150 Bilder Sequenz durch Mausklicks, eigentlich eien nette Herausforderung für die eingerosteten Aiming Skills). Die Positionsdaten des Mauszeigers \(x(t)\) zur Zeit \(t\), die durch Eichung mit dem Objektträger den wahren Größenverhältnissen entsprechen, sind in einer \verb|.tx(t)| Datei gespeichert. Diese Daten wurden in folgendem Diagramm geplottet:
+\xfigure{htbp}{width=0.7\textwidth}{Nr.1.Graph.png}{getrackte Teilchenposition auf dem Objekträger}{Bewegung des Teilchens auf dem Objekträger}   
+\FloatBarrier
+
+\subsection{Histogramm}
+Da die Richtungen unabhängig, \emph{isotrop} voneinander sind, lassen sie sich in eine gemeinsames Histogramm eintragen. Dieses zeigt die Häufigkeit einer bestimmten Verschiebung \(\diff x,\diff y\) durch Auftragen der Anzahl einer Verschiebung in einem gewissen Intervall (Bins genannt).
+Es ist eine Wissenschaft für sich, die korrekte Binbreite eines Datasets zu bestimmen, da andere Darstellungen unterschiedliche Informationen und Interpretationen aufzeigen. Aus diesem Grund wurde die \verb|plt.hist(bins='auto')| Funktion genutzt. 
+
+Die gewünschte Verteilung der mittlerem Verschiebung pro Sekunde soll nach theoretischem Modell eine Gauß-Normalverteilung darstellen. Im Histogramm \ref{fig:Nr.2.Histogramm.png} sieht man, dass dies der Fall ist. Die erhobenen Daten entsprechen also dem Random-Walk Modell und lassen sich folgend zur Bestimmung der Boltzmannkonstante verwenden. 
+\xfigure{htbp}{width=0.7\textwidth}{Nr.2.Histogramm.png}{Histogramm der Verschiebungen}{Histogramm der Verschiebungen}
+\FloatBarrier   
+
+\subsection{Mittlere Verschiebung}
+Die diskreten Änderungen der Teilchenposition in zwei Dimensionen zwischen zwei Messaufnahmen werden als \(\diff x=x_{i+1}-x_i\) und \(\diff y=y_{i+1}-y_i\) analog beschrieben und mit der Funktion \verb|np.diff(array)| berechnet.
+Aus diesen wird das mittlere Verschiebungsquadrat über arithmetische Mittelwertsbildung und dessen Fehler über die Standardabweichung \(\sigma\) berechnet: 
+\begin{align}
+    \langle r^2 \rangle=\mathrm{Mean}(\diff x^2+\diff y^2)&&\Delta \langle r^2 \rangle=\sigma(\langle r^2 \rangle)&&\tcbhighmath{\langle r^2 \rangle=\qty{1.30(0.12)}{\micro\m\squared}}
+\end{align}
+Nach \cref{eq:kfrommsd} kann bei Kenntnis der Flüssigkeitstemperatur (Raumtemperatur, gemessen als) \(T=\qty{22.7(3)}{\degreeCelsius}\), der Viskosität \(\eta=\qty{9.4(1)e-4}{\pascal\s}\), dem Partikelradius \(a=\qty{378(15)}{\nano\m}
+\) und der Messzeit \(t=\qty{1}{\s}\) (jede Sekunde eine dokumentierte Verschiebung) die Boltzmannkonstante berechnet werden: 
+\begin{align}
+    k_B=k_{\mathrm{B}} = \frac{6\pi \eta a}{4 T t}\,\langle r^{2} \rangle && \Delta k_B=k_B\sqrt{\frac{\Delta_{T}^{2}}{T^{2}} + \frac{\Delta_{a}^{2}}{a^{2}} + \frac{\Delta_{\eta}^{2}}{\eta^{2}} + \frac{4 \Delta_{r}^{2}}{r^{2}}}
+\end{align}
+\begin{rb}
+k_B=\qty{0.73(8)e-23}{\joule\per\kelvin}
+\end{rb}
+Vergleicht man mit der Naturkonstante \autocite{boltzmannliteraturwert} \(k_B=\qty{1.3806485e-23}{\J\per\K}\) so ergibt sich:
+\begin{table}[htb]
+\centering
+\caption[Boltzmannkonstante Literaturvergleich]{Vergleich der berechneten Boltzmannkonstante mit Literaturwert}
+\begin{tabularx}{\textwidth}{ZZZZZ}
+    \toprule
+        k_B[\unit{\twentythree\J\per\K}]&k_B^\text{Lit.}[\unit{\twentythree\J\per\K}]&\text{abs.Abw.}[\unit{\twentythree\J\per\K}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{0.73(0.08)}&1.3806485&\num{0.65(0.08)}&\num{47(8)}&\num{9}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_k_B} 
+\end{table}
+
+\paragraph{Diffusionskoeffizient \(D\)} Dieser bestimmt sich nach \cref{eq:msd2d} und unter \(t=\qty{1}{\s}\) folgend:
+\begin{align}
+    D=\frac{\langle r^2 \rangle}{4t}&&\Delta D=\frac{\Delta \langle r^2 \rangle}{4t}
+\end{align}
+\begin{rb}
+    D=\qty{0.33(0.03)}{\micro\m\squared\per\s}
+\end{rb}
+
+\subsection{Kumulative Verschiebung}
+Nun ist \(\langle r^2 \rangle\defeq\diff x^2 + \diff y^2\), also explizit nicht der Mittelwert über alle diskreten Verschiebungen, sondern ein Array an 149 Verschiebungen.
+Nach der Einstein-Smoluchowski-Gleichung (\ref{eq:msd2d}) ist die Verschiebung proportional zur Zeit \(t\), das heißt man kann die kumulative Verschiebung \(\langle r^2\rangle_\text{cum.}(t)=\sum_{t_i=1}^t \langle r^2 \rangle (t_i) \) betrachten. Es wurden 149 Werte für \(\langle r^2 \rangle\) gespeichert, die nun also schrittweise addiert werden. Damit ist \(D=\frac{\langle r^2\rangle_\text{cum.}}{4t}\) und man kann über bestimmen der Steigung \(m=\frac{\langle r^2 \rangle_\text{cum.}}{t}=\qty{1.4014(0.0020)}{\micro\m\squared\per\s}\) aus dem Graphen \(\langle r^2 \rangle_\text{cum} (t)\) den Diffusionskoeffizienten berechnen. 
+\xfigure{htbp}{width=0.7\textwidth}{Nr.3.kumuliert.png}{kumulierte Verschiebung}{kumulierte Verschiebung aufgetragen gegen die Messdauer}
+
+\begin{align}
+    D=\frac{m}{4}&&\Delta D=\frac{\Delta m}{4}&&\tcbhighmath{D=\qty{0.3504(0.0005)}{\micro\m\squared\per\s}}
+\end{align}
+
+Auch die Boltzmannkonstante kann wieder bestimmt werden:
+\begin{align}
+    k_B=\frac{6\pi\eta a m}{4T}&&\Delta k_B=k_B\sqrt{\frac{\Delta_{T}^{2}}{T^{2}} + \frac{\Delta_{a}^{2}}{a^{2}} + \frac{\Delta_{\eta}^{2}}{\eta^{2}} + \frac{\Delta_{m}^{2}}{m^{2}}}
+\end{align}
+\begin{rb}
+    k_B=\qty{0.73(0.04)e-23}{\J\per\K}
+\end{rb}
+
+\subsection{Vergleich der Messergebnisse}
+\begin{table}[htbp]
+  \centering
+  \caption{Vergleich der Messergebnisse}
+\begin{tabularx}{\textwidth}{XZZZx}
+    \toprule
+                    & k_B\,[\unit{\twentythree\J\per\K}] & S[\sigma] \text{ zu } k_B^\text{Lit.}    & D\,[\unit{\micro\m\squared\per\s}]    & S[\sigma] \\\midrule
+    Literaturwert   & \num{1.3806}                  & -                                         &  -                                   & - \\
+    Mean(\(\langle r^2\rangle\))& \num{0.73(8)}       & \num{9}                                   &  \num{0.33(3)}                       & - \\
+    \(\langle r^2\rangle_\text{cum.}\) & \num{0.73(4)}   & \num{22}                                  &  \num{0.3504(5)}                     & - \\
+    Abweichung \(S_{1,2}\) &      -                   & \num{0}                                   &      -                                & \num{0.7}\\
+    \bottomrule
+\end{tabularx}
+\label{table:vergleich}  
+\end{table}
+
+Man beobachte, dass die Abweichungen zum Literaturwert der Boltzmannkonstante signifikant sind. Die Messergebnisse untereinander sind kohärent, es macht also keinen großen Unterschied, ob zuerst über alle einzelnen Verschiebungen gemittelt wird, oder der Mittelwert über die Steigung der gefitteten Geraden bestimmt wird. Interssant wäre dennoch zu wissen, welcher Ansatz der statistisch saubere ist.  
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+%             \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

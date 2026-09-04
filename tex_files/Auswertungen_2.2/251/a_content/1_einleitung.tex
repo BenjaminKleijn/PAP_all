@@ -1,0 +1,67 @@
+\subsection{Motivation}
+Bei der Arbeit mit radioaktiven Stoffen liegt auf der Hand, ihre Zerfallscharakteristik zu untersuchen: Genau dies wird im folgenden Versuch mit der Neutronenquelle Cobalt-60 \ce{^{60}Co} gemacht. Die Zerfallsereignisse werden mit einem Geiger-Müller Zählrohr erfasst, dessen Funktion abhängig der Betriebsspannung eingangs untersucht wird. Anschließend werden statistische Methoden angewandt, die dank Aufnehmen einer hohen Anzahl von Messungen möglich sind, um die Statistik des Zerfalls zu beschreiben. Ein grundlegendes Verständnis statistischer Prozesse ist für die Physik essenziell, um fundierte Vorhersagen über die Verteilung von Messgrößen treffen zu können, denn Messgrößen sind im Allgemeinen nicht deterministisch, können aber mit den mächtigen Werkzeugen der Statistischen Physik beschrieben werden.
+
+\subsection{Ziele des Versuches}
+Der radioaktive Zerfall dient als Beispielexperiment, um ein grundlegendes Verständnis von statistischen Methoden in der Experimentalphysik zu gewinnen. Ziel ist es, die statistischen Verteilungen zu charakterisieren, die dem Zerfallsprozess zugrunde liegen, und die Anwendbarkeit verschiedener Wahrscheinlichkeitsmodelle wie der Poisson- und Gauß-Verteilung zu überprüfen.
+
+\subsection{Geräte}
+Der Aufbau besteht im wesentlichen aus einem Geiger-Müller-Zählrohr, welches auf einen Präparatehalter mit Bleiabschirmung ausgerichtet ist, in den das untersuchte Präparat eingespannt wird. Die Halterung befindet sich auf einer Schiene, sodass der Abstand zum Zählrohr angepasst werden kann. Das Zählrohr ist mit dem zugehörigen Betriebsgerät verbunden, mit welchem sich Einstellungen wie Betriebsspannung vornehmen lassen, und welches die Zählrate an einen externen Impulszähler weitergibt, das wiederum seine Messwerte an einen Computer sendet, der die Messdaten speichert und visuell auswertet (in Form von Histogrammen). 
+
+\begin{enumerate}
+    \item Geiger-Müller Zählrohr mit Betriebsgerät  
+    \item externer Impulszähler
+    \item PC
+    \item Präparatehalterung mit Bleiabschirmung
+    \item Radioaktivis Präparat \ce{^{60}Co}
+\end{enumerate}
+\newpage
+% Versuchsaufbau.png
+\xfigure{htbp}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+Radiaktivität ist ein Prozess, bei dem durch Kernreaktionen ionisierende Strahlung ausgesendet wird. Man unterscheidet verschiedene Strahlungsarten anhand der jeweils emittierten Teilchen: Bei \(\alpha\)-Strahlung werden Heliumkerne, bei \(\beta\)-Strahlung Elektronen (oder Positronen beim \(\beta^+\)-Zerfall) und bei \(\gamma\)-Strahlung Photonen ausgesendet. Wann ein einzelner Zerfall stattfindet, ist nicht vorhersagbar, prinzipiell handelt es sich beim Zerfall eines radioaktiven Isotops jedoch um ein Ereignis mit zwei möglichen Ausgängen: Entweder ein radioaktiver Atomkern zerfällt mit der Wahrscheinlichkeit \(p\) innerhalb eines gewissen Beobachtungszeitraums oder nicht. Die Zerfallswahrscheinlichkeit hängt von der Beobachtungsdauer gemäß \(p(t)=1-e^{-\lambda t}\) ab. Ist die Zerfallskonstante \(\lambda\) sehr klein, wie es bei \ce{^{60}Co} der Fall ist, so kann \(p\) für einen festen Beobachtungszeitraum als konstant angenommen werden. 
+
+Damit lassen sich nun statistische Aussagen nutzen, um die Wahrscheinlichkeitsverteilung von \(k\) Zerfällen der Wahrscheinlichkeit \(p\) bei \(n\) Atomkernen in der Zeit \(t\) zu beschreiben. 
+
+\subsection{Binomialverteilung}
+Die Binomialverteilung beschreibt ein diskretes Zufallsexperiment mit genau zwei möglichen Ergebnissen. Führt man ein solches Experiment \(n\)-mal durch, wobei die jeweiligen Durchführungen unabhängig voneinander sind, so ist die Wahrscheinlichkeit \(B\), \(k\)-mal das erste Ergebnis zu erhalten, binomialverteilt mit den Parametern \(n\) und \(p\):
+\begin{equation} \label{eq:binomial}
+    B_{n,p}(k) = \binom{n}{k} p^k (1-p)^{n-k}
+\end{equation}
+Die Binomialverteilung ist im Zusammenhang mit dem radioaktiven Zerfall relevant, da beim Betrachten von \(n\) Kernen im Zeitintervall \((0,t)\) die Anzahl der Zerfälle \(k\) \(B_{n,p}(t)\)-verteilt ist.
+
+\subsection{Poissonverteilung}
+Betrachtet man große \(n\) und kleine \(p\), so lässt sich die Binomialverteilung \(B_{n,p}\) durch die Poissonverteilung \(P_\lambda\) nähern:
+\begin{equation} \label{eq:poisson}
+    P_\lambda(k) = e^{-\lambda} \frac{\lambda^k}{k!}
+\end{equation}
+Dabei ist der Parameter \(\lambda\) der Poissonverteilung näherungsweise gegeben durch \(\lambda = np\). Diese Verteilung beschreibt den radioaktiven Zerfall gut, da man in der Regel viele Kerne (großes \(n\)) und kleine Zerfallswahrscheinlichkeiten betrachtet. Die Kenngrößen der Poissonverteilung sind ihr Erwartungswert \(\mu = \lambda\) und ihre Standardabweichung \(\sigma = \sqrt{\lambda}\).
+
+\subsection{Gaussverteilung}
+Die Gaußverteilung spielt eine entscheidende Rolle in der Wahrscheinlichkeitstheorie und Statistik. Ihre Dichte ist gegeben durch
+\begin{equation} \label{eq:gauss}
+    G_{\mu,\sigma}(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+\end{equation}
+Die Verteilung ist eindeutig bestimmt durch ihren Erwartungswert \(\mu\) und ihre Standardabweichung \(\sigma\). Im Zusammenhang mit dem radioaktiven Zerfall ist relevant, dass sich die Poissonverteilung für große \(\lambda\) durch eine Gaußverteilung mit \(\mu = \sigma^2 = \lambda\) annähern lässt.
+
+\xfigure{htbp}{width=0.6\textwidth}{PosGau.png}{Poisson- genähert durch Gaußverteilung\autocite{Skript_2.2}}{Darstellung der Annährung der Possionverteilung an die Gaussverteilung \autocite{Skript_2.2}}
+\FloatBarrier
+
+\subsection{Das Geiger-Müller-Zählrohr}
+\xfigure{htbp}{width=0.8\textwidth}{GeigerZR.png}{Aufbau Geiger-Müller Zählrohr\autocite{Skript_2.2}}{Schematischer Aufbau des Geiger-Müller-Zählrohres \autocite{Skript_2.2}}
+Das Geiger-Müller-Zählrohr dient als Messgerät für ionisierende Strahlung. Sein Funktionsprinzip basiert auf der Ionisation von Gasatomen innerhalb des Rohrs: Trifft ein ionisierendes Teilchen auf das Füllgas, werden Gasteilchen ionisiert. Die dabei entstehenden freien Elektronen werden durch die anliegende Hochspannung beschleunigt und können durch Stoßionisation weitere Gasatome ionisieren. Dieser Prozess führt zu einer schnellen Vermehrung der Ladungsträger, einer sogenannten Elektronenlawine. Die Lawine erzeugt einen messbaren Strompuls, der verstärkt und von einem Zähler detektiert werden kann. Um sicherzustellen, dass die Elektronenlawine nach jedem Detektionsereignis wieder abklingt und das Zählrohr für das nächste Teilchen bereit ist, wird dem Füllgas ein sogenanntes Löschgas beigemischt.
+
+Die Anzahl der ionisierten Gasatome und damit die Amplitude des erzeugten Strompulses hängen von der Betriebsspannung des Zählrohrs ab. Da energiereichere einfallende Teilchen prinzipiell mehr Gasatome ionisieren, ließe sich theoretisch auf die Energie der Teilchen schließen. Für den vorliegenden Versuch ist jedoch ausschließlich die Bestimmung der Zerfallsanzahl von Interesse. Daher muss das Zählverhalten unabhängig von der Energie der einfallenden Teilchen sein. Dies wird erreicht, indem die Betriebsspannung so eingestellt wird, dass sich das Zählrohr im Plateaubereich seiner Kennlinie befindet. In diesem Bereich ist die Zählfrequenz weitgehend konstant und unempfindlich gegenüber Schwankungen der Spannung oder der Teilchenenergie.
+\xfigure{htbp}{width=0.5\textwidth}{CharakteristikZR.png
+}{Plateaubereich des Geiger-Müller ZR\autocite{Skript_2.2}}{Plateaubereich des Geiger-Müller-Zählrohres \autocite{Skript_2.2}}
+\newpage
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}    
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

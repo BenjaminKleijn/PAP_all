@@ -1,0 +1,497 @@
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+\clearpage
+\subsection{Zeitkonstanten}
+Die Zeitkonstanten \(\tau_\text{theo}\) bestimmen sich folgend: 
+\begin{align}
+    \tau_\text{theo}=RC&&\Delta \tau_\text{theo}=\tau_\text{theo}\sqrt{\frac{\Delta_{R}^{2}}{R^{2}} + \frac{\Delta_{C}^{2}}{C^{2}}}
+\end{align} 
+Die experimentell bestimmten Halbwertszeiten, mithilfe der Cursor aus \cref{fig:A1_Konf1.png} abgelesen, lassen sich in Zeitkonstanten \(\tau_\text{exp}\) umrechnen: 
+\begin{align}
+    \tau_\text{exp}=\frac{T_{\nicefrac{1}{2}}}{\ln(2)}&&\Delta\tau_\text{exp}=\frac{\Delta T_{\nicefrac{1}{2}}}{\ln(2)}
+\end{align}
+\begin{table}[htbp]
+  \centering
+  \caption{Zeitkonstanten der RC-Glieder, bei einer AC-Frequenz von \(f=\qty{140}{\hertz}\)}
+  \begin{tabularx}{\textwidth}{ZZZZZZ}
+    \toprule
+        R[\unit{\kilo\ohm}] & C [\unit{\nano\farad}] &T_{12}[\unit{\micro\s}]& \tau_\text{theo}[\unit{\micro\s}]&\tau_\text{exp}[\unit{\micro\s}]&S[\sigma]\\\midrule
+        \num{1.00(0.05)}&\num{470(50)}&\num{316(6)}&\num{470(60)}&\num{456(9)}&0.24\\
+        \num{10.0(0.5)}&\num{4.7(0.5)}&\num{40(3)}&\num{47(6)}&\num{58(5)}&1.5\\
+        \num{1.00(0.05)}&\num{47(5)}&\num{32.0(1.2)}&\num{47(6)}&\num{46.2(1.8)}&0.13\\
+    \bottomrule
+  \end{tabularx}
+\label{table:zeitkonstanten}  
+\end{table}
+
+\subsection{Beobachtungen am Integrator und Differentiator}
+\label{sec:intdiff}
+Eine integrierte Rechteckspannung und alle folgenden Bezeichnungen sind in \cref{fig:A2_Viereck_INTscape.png} zu finden.
+Ein Gitterfeld im Koordinatengitter der Oszilloskopanzeige wird als ein \verb|div| bezeichnet. Die Zahlen oberhalb des Diagramms stehen hierbei links für \(\frac{U[\unit{\volt}]}{\mathrm{div}}\) (farbkodiert für Channel 1\&2) und rechts für \(\frac{T[\unit{\s}]}{\mathrm{div}}\). Die Zahl neben der Zeit/div-Anzeige ist die Samplerate \(f_s\), angegeben in \(\frac{\mathrm{Megasamples}}{\unit{s}}=10^6\) Samples/s, d.h. \(f_s\) Messwerte werden pro Sekunde erhoben. 
+\xfigure{htbp}{width=0.7\textwidth}{A2_Viereck_INTscape.png}{Integration einer Rechteckspannung}{Integration einer Rechteckspannung}
+\FloatBarrier
+Ein div hat hier also \(f_s\cdot\frac{T}{\mathrm{div}}\) zeitliche Schritte, jeweils mit einem zeitlichen Abstand von \(\frac{1}{f_s}\). \(\frac{U}{\mathrm{div}}\) wird in 32 Werte unterteilt. 
+
+\subsubsection*{Integrator:}
+\begin{figure}[htbp]
+    \caption[Integration verschiedener Signalformen]{Integration. Eingangsspannung in rot, Ausgangsspannung in blau}
+    \label{fig:intop}
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_saw_INT.png}
+        \caption{Integration einer Sägezahnspannung}
+        \label{fig:säge1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_ramp_INT.png}
+        \caption{Integration einer gespiegelten Sägezahnspannung}
+        \label{fig:säge2}
+    \end{subfigure}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_triangle_INT.png}
+        \caption{Integration einer Dreiecksspannung}
+        \label{fig:triangle}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_sinee_INT.png}
+        \caption{Integration einer Sinusspannung}
+        \label{fig:sinus}
+    \end{subfigure}}
+\end{figure}
+\FloatBarrier
+
+Unter scharfem Hinsehen erkennt man jeder Ausgangsspannungsform in \cref{fig:intop} an, dass sie der Integration der Eingangsspannung entspricht. Bei manchen Formen ist dies einfacher zu sehen, bei anderen erfordert es einen schärferen Blick. Eine weitere Beobachtung betrifft die Größenskala von \(U_A\) und \(U_E\): Zwar skaliert das Oszilloskop die beiden Kurven auf dieselbe grafische Größe, der Skalierungsfaktor wird jedoch links oben angezeigt. Die blaue Ausgangsspannung besitzt kleinere \(\frac{U}{\mathrm{div}}\)-Werte, dementsprechend ist die Voraussetzung \(U_A\ll U_E\) in der Herleitung erfüllt.
+% --- LINKES BILD ---
+\tikz[remember picture, overlay] {
+  \node[anchor=north west, opacity=1] at ([xshift=0.2cm, yshift=-14cm]current page.north west) {
+    \includegraphics[width=2cm]{sideeye1.png}
+  };
+}
+\newpage
+\subsubsection*{Differentiator:} Es wurden leider nur ein Bild der Gaußschen- und der Dreiecksspannung unter Differentiaton abgespeichert, die Rechteckspannung lediglich als \verb|.txt| Datei, deshalb habe ich sie in python geplottet. Die Form entspricht den Erwartungen. Mithilfe der Einstellungen aus der Datei ist die Symetrie zur Nulllinie auch schön zu sehen (das macht die Ansicht deutlich angenehmer).
+\xfigure{htbp}{width=0.9\textwidth}{A2_Rechteck_Diff.png}{Differentiation einer Rechteckspannung}{Differentiation einer Rechteckspannung}
+% --- RECHTES BILD ---
+\tikz[remember picture, overlay] {
+  \node[anchor=north east, opacity=1] at ([xshift=-0.2cm, yshift=-8cm]current page.north east) {
+    \includegraphics[width=2cm]{sideeye2.png}
+  };
+}
+\nocite{sideeye}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \caption{Eingangsspannung in rot, Ausgangsspannung in blau}}
+    \label{fig:diffop}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+        \caption{Differentation einer Gaußschen Spannung}
+        \label{fig:gaußdiff}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+        \caption{Differentation einer Dreiecksspannung}
+        \label{fig:trianglediff}
+    \end{subfigure}
+\end{figure}
+\FloatBarrier
+
+\newpage
+\subsection{Grenzfrequenzen bei Hoch und Tiefpass}
+Anhand der Frequenz- und Phasenplots, die gespeichert wurden, kann die Grenzfrequenz \(f_g\) abgelesen werden. Es ist nicht von Notwendigkeit und ohne weiteren Erkenntnisgewinn, die Daten nochmal in Python zu plotten. Ich habs mal doch noch gemacht und es hatte doch noch Erkenntnisgewinn.
+\xfigure{htbp}{width=\textwidth}{uselessfreqplots.png}{Frequenzgang des Hoch- und Tiefpasses in Python}{Frequenzgang des Hoch- und Tiefpasses} 
+
+Leider sieht man komplett räudige Ergebnisse. Die Grenzfrequenzen (zumindest die aus der asymptotischen Bestimmung) sind meilenweit von den 3dB Frequenzen entfernt, die man während des Experiments wie in \cref{fig:A3_Tiefpass_Frqugang.png} bestimmt hat:
+\begin{rbl}
+    \text{Hochpass: }f_g^\text{exp}=\qty{3.34(2)}{\kilo\hertz}\quad\quad\text{Tiefpass: }f_g^\text{exp}=\qty{3.16(2)}{\kilo\hertz}
+\end{rbl}
+Durch die Definition der Grenzfrequenz können auch theoretischen Werte berechnet werden: 
+\begin{align}
+    f_g^\text{theo}=\frac{1}{2\pi RC}&&\Delta f_g^\text{theo}=f_g\sqrt{\frac{\Delta_{R}^{2}}{R^{2}} + \frac{\Delta_{C}^{2}}{C^{2}}}
+\end{align} 
+Somit erhält man folgende Vergleiche: 
+\begin{table}[htb]
+\centering
+\caption{Vergleich von \(f^\text{exp}_g\) und \(f^\text{theo}_g\)}
+\begin{tabularx}{\textwidth}{XZZZZx}
+    \toprule
+         Messreihe & f^\text{exp}_g[\unit{\kilo\hertz}] & f^\text{theo}_g[\unit{\kilo\hertz}] & \text{abs.Abw.}[\unit{\kilo\hertz}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        Hochpass& \num{3.34(0.20)} & \num{3.4(0.5)} & \num{0.0(0.6)} & \num{1(16)} & \num{0.09} \\
+        Tiefpass& \num{3.16(0.20)} & \num{3.4(0.5)} & \num{0.2(0.6)} & \num{7(17)} & \num{0.5} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_fg} 
+\end{table}
+
+\newpage
+\subsection{Induktivität RLC-Schwingkreis} 
+\label{sec:InduktivitätRLC_Schwingkreis}
+Das RC-Glied wird nun zu einem RLC-Serienschwingkreis erweitert. Hierzu wurden im Messprotokoll die Resonanzfrequenzen und entsprechende Spannungen bei verschiedenen Widerständen aufgezeichnet. Nutzt man die Kapazität \(C = \qty{47}{\nano\farad}\) und die aus dem Frequenzgang \cref{fig:A4_RLC_3resonanzkurven.png} bestimmbare Resonanzfrequenz \(f_R\), so lässt sich daraus über \(\omega_R=\frac{1}{\sqrt{LC}}\)
+\begin{align}
+    L_1=\frac{1}{\omega_R^2C}=\frac{1}{4\pi^2f_R^2C}&&\Delta L_1=L_1\sqrt{\frac{4 \Delta_{f R}^{2}}{f_{R}^{2}} + \frac{\Delta_{C}^{2}}{C^{2}}}
+\end{align}
+die Induktivität der Spule bestimmen. Man erhält für die gewählten Widerstände:
+\begin{prbl}
+        L_{1,R=\qtylist{1000;220;47}{\ohm}}=\qtylist{35(4);37(4);37(4)}{\milli\henry}
+\end{prbl}
+Hieraus berechnen wir nun einen Mittelwert für \(L_1\), wobei sich der Fehler hiervon durch Fehlerfortpflanzung ergibt (mittlere Abweichung vom Mittelwert). Die Standardabweichung wurde hier nicht genutzt, da diese deutlich unter dieser bereits notierten Unsicherheit liegen würde. Insgesamt ergibt sich für den Mittelwert 
+\begin{rb}
+    L_1\defeq\bar{L}_1=\qty{36(4)}{\milli\henry}
+\end{rb}
+
+\xfigure{htbp}{width=0.8\textwidth}{A4_RLC_3resonanzkurven.png}{Resonanz Frequenzgang Oszilloskop}{Frequenzgang um \(f_R\) für RLC-Schwingkreis mit schwarz: \(R=\qty{1000}{\ohm}\), blau: \(R=\qty{47}{\ohm}\), rot: \(R=\qty{220}{\ohm}\)}
+
+\subsection{RLC Verlustwiderstand}
+\label{sec:RLC_Verlustwiderstand}
+In Wahrheit muss für einen Serienschwingkreis, wie er oben bereits untersucht wurde, jedoch berücksichtigt werden dass der explizit eingebaute Widerstand \(R\) nicht dem Gesamtwiderstand der Schaltung entspricht (z.B. aufgrund zusätzlicher Widerstände in den Spulendrähten, magnetischer Verluste, etc.). Aus diesem Grund wird ein zusätzlicher Verlustwiderstand \(R_V\) eingeführt, in dem diese Effekte zusammengefasst werden. Dieser wirkt sich auf die Frequenzbreite \(\Delta f = \frac{\Delta\omega}{2\pi}\) des Resonanzmaximums (bei 3dB Abfall) gemäß der Beziehung
+\begin{align}
+    \Delta\omega=2\pi\Delta f=\frac{R+R_V}{L_1}\xrightarrow R_\text{ges}=R+R_V=2\pi\Delta f L_1&&\Delta R_\text{ges}=R_\text{ges}\sqrt{\frac{\Delta_{\Delta f}^{2}}{\Delta_{f}^{2}} + \frac{\Delta_{L_1}^{2}}{L_1^{2}}}
+\end{align} 
+Damit berechnet man mit \(L=\qty{36(4)}{\milli\henry}\) und den Resonanzbreiten aus \cref{fig:A4_RLC_3resonanzkurven.png}:
+\begin{rbl}
+    R_\text{ges,R=\qtylist{1000;220;47}{\ohm}}=\qtylist{1100(130);310(40);143(23)}{\ohm}
+\end{rbl}
+Vor allem für große Widerstände wird hierbei die Unsicherheit für den Verlustwiderstand \(R_V\) sehr groß, da sich über \(L_1\) der hohe relative Fehler von \(\frac{\Delta C}{C}=\qty{10}{\percent}\) fortpflanzt.
+
+Der Verlustwiderstand kann nun auch noch mit einer zweiten Methode bestimmt werden: Die Impedanz des LC-Glieds geht im Resonanzfall gegen Null, sodass für die effektive Spannungsamplitude allein der Widerstand \(R\) und der Verlustwiderstand \(R_V\) verantwortlich sind. Für \(R_V\) gilt nach Umstellen 
+\begin{align}
+    U_A&=\frac{R}{R+R_V}U_E \Rightarrow  R_V^U=\left(\frac{U_E}{U_A}-1\right)R\\
+    \Delta R_V^U&=\sqrt{\frac{\Delta_{U A}^{2} R^{2} U_{E}^{2} + U_{A}^{2} \left(\Delta_{R}^{2} \left(- U_{A} + U_{E}\right)^{2} + \Delta_{U E}^{2} R^{2}\right)}{U_{A}^{4}}}
+\end{align}
+Man berechnet schlussendlich (es wurde kein Fehler für die Spannungen notiert, deswegen gehe ich jetzt von einem pauschalen Fehler von \(\Delta U=\qty{0.01}{\volt}\) aus):
+
+\begin{table}[htb]
+\centering
+\caption{Vergleich von \(R_V^{\Delta f}\) und \(R_V^{U}\)}
+\begin{tabularx}{\textwidth}{ZZZZZx}
+    \toprule
+    R [\unit{\ohm}] & R_V^{\Delta f}[\unit{\ohm}] & R_V^{U}[\unit{\ohm}] & \text{abs.Abw.}[\unit{\ohm}] & \text{proz.Abw.}[\unit{\percent}] &  S[\sigma] \\\midrule
+        \num{1000(50)}& \num{100(140)} & \num{190(30)} & \num{90(150)} & \num{90(200)} & \num{0.7} \\
+        \num{220(11)}& \num{90(50)} & \num{134(12)} & \num{40(60)} & \num{50(70)} & \num{0.9} \\
+        \num{47.0(2.4)}& \num{96(24)} & \num{115(11)} & \num{20(30)} & \num{20(30)} & \num{0.8} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_R_V} 
+\end{table}
+Hier wurde \(R_V^{\Delta }\) folgend bestimmt:
+\begin{align}
+    R_V^{\Delta f}=R_\text{ges}-R && R_V^{\Delta f}=\sqrt{\Delta_{R}^{2} + \Delta_{R_\text{ges}}^{2}}
+\end{align}
+Die Abweichungen sind natürlich sehr klein dank der astronomischen Fehler, die sich aus den hohen relativen Fehlern von \(R\) und \(C\) fortpflanzen.
+
+\subsection{Resonanzüberhöhung}
+\Cref{fig:A5_resonanzüberhöhung_dbscale.png} zeigt den Frequenzgang beim Abnehmen über den 3 verschiedenen Bauteilen, daraus wurden \(f_{R,L,C}=\qtylist{4.0;4.11;3.82}{\kilo\hertz}\) abgelesen. Mithilfe von \cref{eq:Resonanzfrequenzen} und Einsetzen von \(\delta=\frac{R}{2L}\) gelangt man zum Ausdruck:
+\begin{align}
+    L_1^{f_L}=\frac{R}{\sqrt{2(\omega_L^2-\omega_R^2)}}=\frac{R}{\sqrt{8\pi^2(f_L^2-f_R^2)}}&&\Delta L_1^{f_L}=L_1^{f_L}\sqrt{\frac{\Delta_{R}^{2}}{R^{2}} + \frac{\Delta_{f L}^{2} f_{L}^{2}}{\left(f_{L}^{2} - f_{R}^{2}\right)^{2}} + \frac{\Delta_{f R}^{2} f_{R}^{2}}{\left(f_{L}^{2} - f_{R}^{2}\right)^{2}}}
+\end{align}
+Gleichermaßen gilt mittels \(\omega_C\) eine ähnliche Formel
+\begin{align}
+    L_1^{f_C}=\frac{R}{\sqrt{8\pi^2(f_R^2-f_C^2)}}&&\Delta L_1^{f_C}=L_1^{f_C}\sqrt{\frac{\Delta_{R}^{2}}{R^{2}} + \frac{\Delta_{f C}^{2} f_{C}^{2}}{\left(f_{R}^{2} - f_{C}^{2}\right)^{2}} + \frac{\Delta_{f R}^{2} f_{R}^{2}}{\left(f_{R}^{2} - f_{C}^{2}\right)^{2}}}
+\end{align} 
+Damit gelangt man an die Ergebnisse:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich der Induktivitäten bei RLC mit \(R=\qty{220}{\ohm}\)}
+\begin{tabularx}{\textwidth}{cZZZZx}
+    \toprule
+        Messreihe & L_1^{f_{L/C}}[\unit{\milli\henry}] & \bar{L}_1  [\unit{\milli\henry}] & \text{abs.Abw.}[\unit{\milli\henry}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \(L\) & \num{26(12)} & \num{36(4)} & \num{10(13)} & \num{40(60)} & \num{0.8} \\
+        \(C\) &   \num{21(6)} & \num{36(4)} & \num{15(8)} & \num{70(40)} & \num{2.1} \\
+\bottomrule
+\end{tabularx}  
+\label{table:Vergleich_L_1} 
+\end{table}
+
+Diese \(S\)-Abweichungen sind nicht aussagekräftig, denn die Fehler liegen viel zu hoch, der relative Fehler malt hier ein deutlich schlechteres Bild.\\
+Die zwei Methoden der Induktivitätsbestimmung unterscheiden sich vor allem aus einem Grund: Die Resonanzfrequenz, die in \secref{sec:InduktivitätRLC_Schwingkreis} benutzt wurde (selber Schwingkreis, mit denselben Specs) betrug \(f_R=\qty{3.80(7)}{\kilo\hertz}\), in der aktuellen Aufgabe wurde aus der Resonanzkurve jedoch ein anderer Wert \(f_R=\qty{4.00(7)}{\kilo\hertz}\) abgelesen, was zu einer Induktivität \(L_1=\frac{1}{\omega_R^2C}=\qty{34(4)}{\milli\henry}\) führt. 
+Ich weiß nicht, warum sich der Frequenzwert zwischen den Aufgaben so gewandelt hat. Extra die Kurven nochmal in Python zu plotten, um zu überprüfen, ob es sich um einen Ablesefehler handelt, ist glaube ich nicht nötig. Habe ich nun doch mal schnell gemacht, nein es sind keine Ablesefehler, siehe \secref{sec:Frequenzgängeplot}. Die angezeigte Kurve am Oszilloskop sieht man hier:
+\newpage
+\xfigure{htbp}{width=0.8\textwidth}{A5_resonanzüberhöhung_dbscale.png}{Resonanzüberhöhunga m Oszilloskop}{Frequenzgang von orange \(|U_R|\), grün \(|U_C|\), blau \(|U_L|\) RLC-Schwingkreis.}
+
+\subsection{Gedämpfter Schwingkeis}
+\xfigure{htbp}{width=0.8\textwidth}{A6_CRL_dämpfung.png}{Gedämpfte RLC-Schwingung am Oszilloskop}{Gedämpfte RLC-Schwingung}
+\FloatBarrier
+Der RLC-Schwingkreis (\(R=\qty{47}{\ohm}\), \(C=\qty{47}{\nano\farad}\)) wurde nun mit einer Rechteckspannnung betrieben, deren Frequenz so klein ist, sodass sich pro Periode ein gedämpfter Schwingungsvorgang wie in \cref{fig:A6_CRL_dämpfung.png} entwickeln konnte. Wie an den Cursorn zu sehen, wurden die Amplitudenhöhen der Schwingungsberge vermessen, um daraus das 
+\paragraph{logarithmische Dekrement} zu bestimmen:
+\begin{align}
+    \Lambda=\ln\left(\frac{A_{n}}{A_{n+1}}\right)&&\Delta \Lambda=\Delta A_n\sqrt{\frac{1}{1/A_{n+1}^2}+\frac{1}{/A_n^2}}
+\end{align}
+Aus den 4 berechneten  \(\Lambda_i\) und den repsektiven Fehlern wurde das arithmetische Mittel berechnet (anstatt der Standardabweichungen wurde der Fehler auch als Mittelwert der Einzelfehler berechnet)
+Damit erhält man 
+\begin{rb}
+    \bar{\Lambda}=\num{0.31(0.09)}
+\end{rb}
+DAS IST FALSCH. Bzw. wird es leider ungenau. In \cref{fig:A6_CRL_dämpfung.png} zu sehen, dass die Schwingung \(U(t)=U_0\exp^{-\delta t}+c\) um eine Konstante \(c\) um die Nulllinie verschoben ist. Damit nähert sich
+\[
+\Lambda=\ln\left(\frac{A_n+c}{A_{n+1}+c}\right)\xrightarrow{n\to\infty}\ln\left(\frac{c}{c}\right)=0
+\]
+Das ist auch in unserer Messung zu beobachten, die log. Dekremente werden immer kleiner. Deshalb kann \(\Lambda\) nicht genutzt werden, um \(\delta\) zu bestimmen. Stattdessen können die Amplitudenpeaks geplotted werden und die Funktion \(U(t)\) kann mit \verb|curve-fit| angefittet werden. 
+\xfigure{htbp}{width=0.8\textwidth}{AVII_dämpfung.png}{Fit an gedämpfte Schwingung}{Fit an gedämpfte Schwingung zur Bestimmung von \(\delta\)}
+\FloatBarrier
+Aus diesem Graphen erhält man \(\tcbhighmath{\delta_{\qty{47}{\ohm}}=\qty[per-mode=reciprocal]{1900(400)}{\per\s}}\).
+\paragraph{Berechnung des Verlustwiderstand}
+Nutzt man dieses Ergebnis zusammen mit \(\bar{L}_1=\qty{36(4)}{\milli\henry}\) und der Definition von \(\delta\), ergibt sich:
+\begin{align}
+    \delta=\frac{R^\delta}{2L}\Rightarrow R^\delta_V=2\delta L-R&&\Delta R^\delta_V=\sqrt{4 \Delta_{L}^{2} \delta^{2} + \Delta_{R}^{2} + 4 \Delta_{\delta}^{2} L^{2}}&&\tcbhighmath{R^\delta_V=\qty{90(40)}{\ohm}}
+\end{align}
+Vergleicht man mit den Werten aus \secref{sec:RLC_Verlustwiderstand}, so zeichnen sich diese Ergebnisse ab:
+\begin{table}[htb]
+\centering
+\caption{Vergleich Verlustwiderstände \(R_V\) für \(R=\qty{47}{\ohm}\)}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+        \text{Messreihe} & R_V^{\Delta f/U} [\unit{\ohm}] & R_V^\delta [\unit{\ohm}]& \text{abs.Abw.}[\unit{\ohm}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \Delta f& \num{96(24)} & \num{90(40)} & \num{10(50)} & \num{10(50)} & \num{0.13} \\
+        U&\num{115(11)} & \num{90(40)} & \num{30(50)} & \num{20(40)} & \num{0.7} \\
+\bottomrule
+\end{tabularx}  
+\label{table:Vergleich_R_V_VII} 
+\end{table} 
+
+Mal wieder Sigma-Abweichungen, die nicht aussagekräftig sind. Der absolute Fehler hält sich sogar noch in Grenzen. 
+
+\paragraph{Schwingungsdauer} 
+Es wurde \(T=\qty{0.25(0.05)}{\ms}\) gemessen. Ich weiß nicht, warum man jetzt einfach annimmt, dass der RLC-Kreis gedämpft mit der Resonanzfrequenz schwingt, aber here we go:
+\begin{align}
+    f^\text{theo}_R=\frac{1}{T}&&\Delta f_R^\text{theo}=\frac{\Delta T}{T^2}&&\tcbhighmath{f_R^\text{theo}=\qty{4.0(0.8)}{\kilo\hertz}}
+\end{align} 
+Es handelt sich um denselben Schwingkreis, der in Aufgabe 4 im Messprotokoll untersucht wurde. Damit kann man die \(f_R\) vergleichen:
+\begin{table}[htb]
+\centering
+\caption{Abweichung von exp. und theo. Resonanzfrequenz am RLC}
+\begin{tabularx}{\textwidth}{ZZZZZ}
+    \toprule
+        f_R^\text{exp}[\unit{\kilo\hertz}]&f_R^\text{theo}[\unit{\kilo\hertz}]&\text{abs.Abw.}[\unit{\kilo\hertz}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{3.82(0.07)}&\num{4.0(0.8)}&\num{0.2(0.9)}&\num{5(22)}&\num{0.23}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_Resonanzfreq_ausT} 
+\end{table}
+
+\subsection{Parallelschwingkreis}
+\xfigure{htbp}{width=0.8\textwidth}{A7_resonanz_parallelRLC.png}{Frequenzgang des Parallelschwingkreises am Oszilloskop}{Frequenzgang des Parallelschwingkreises}
+Als Resonanzfrequenz liest man in \cref{fig:A7_resonanz_parallelRLC.png} \(f_R=\qty{3.88(1)}{\kilo\hertz}\) ab. Die theoretische Resonanzfrequenz beträgt:
+\begin{align}
+    f_R=\frac{1}{2\pi \sqrt{LC}}&&\Delta f_R=f_R\frac{\sqrt{\frac{\Delta_{L}^{2}}{L^{2}} + \frac{\Delta_{C}^{2}}{C^{2}}}}{2}&&\tcbhighmath{f_R=\qty{3.87(20)}{\kilo\hertz}}
+\end{align}
+Damit ergibt sich eine Abweichung von:
+\begin{table}[htb]
+\centering  
+\caption{Abweichung von exp. und theo. Resonanzfrequenz am Parallelschwingkreis}
+\begin{tabularx}{\textwidth}{ZZZZZ}
+    \toprule
+        f_R^\text{exp}[\unit{\kilo\hertz}]&f_R^\text{theo}[\unit{\kilo\hertz}]&\text{abs.Abw.}[\unit{\kilo\hertz}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{3.88(0.10)}&\num{3.87(0.20)}&\num{0.01(0.23)}&\num{0(6)}&\num{0.05}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_Resonanzfreq_parallel} 
+\end{table}
+
+\newpage
+\subsection{RC- und RLC-Filterschaltungen}
+Für 4 verschiedene Filterschaltungen (dabei einmal mit zwei unterschiedlichen Widerständen gebaut, d.h. insgesamt 5 Fälle) wurden Bilder des Spektrums (FFT) und des Zeitbilds (Oszilloskopbild) gemacht. Zur Untersuchung der erwähnten Größen wurden die verschiedenen Filter auf das in \cref{fig:A8_signalforms_grundsignal.png}\&\ref{fig:1} dargestellte Eingangssignal angewendet. Dieses besteht laut Skript \autocite{Skript_2.2} aus den Frequenzen \(f=\qtylist{0.1;3.6;8}{\kilo\hertz}\).
+
+In der Time Domain ist die Abszisse die Zeit \(T\) (Skala entsprechend div-Werten) und die Ordinate die Spannung \(U\) (Skala auch entsprechend den Channel-div-Werten). In der Frequency Domain ist auf der Abszisse logarithmisch die Frequenz \(f[\unit{\kilo\hertz}]\) des Signals aufgetragen, mit der Amplitude \(A\)[dB]. Die Amplitude wird folgend als Parameter/quantitative Orientierung für die Dämpfung \(D\) eines Frequenzanteils nach Passieren der Filterschaltung genutzt:
+\begin{equation}
+    D[\text{dB}]=A_\text{gedämpft}-A_\text{ungedämpft}
+\end{equation} 
+Aus der Definition des Pegels\autocite{decibel} \(Q\defeq10\log\left(\frac{U_1^2}{U_2^2}\right)\unit{\decibel}=20\log\left(\frac{U_1}{U_2}\right)\unit{\decibel}\), also dem dekadischen logarithmischen Verhältnis einer Größe, hier einer Spannung \(U_1\) zu \(U_2\), kann man leicht eine Tabelle auftragen, um ein Gefühl für die Aussage des Pegels/der Dämpfung zu bekommen:
+\begin{table}[htb]
+\centering
+\caption{die Einheit \(\unit{\decibel}\)}
+\begin{tabularx}{\textwidth}{Z*{15}{z{0.6cm}}}
+    \toprule
+        \text{Pegel } [\unit{\decibel}] & -40 & -30 & -20 & -10 & -6 & -3 & 0 & 3 & 6 & 10 & 20 & 30 & 40\\\midrule
+        \frac{U_1}{U_2} & 0.01 & 0.03 & 0.1 & \frac{1}{\sqrt{10}} & 0.5 & \frac{1}{\sqrt{2}} & 1 & \sqrt{2} & 2 & \sqrt{10} & 10 & 31.62 & 100\\
+    \bottomrule
+\end{tabularx}
+\label{table:dBPegel} 
+\end{table}
+
+Numerische Werte: \(\sqrt{2}\approx1.41,\frac{1}{\sqrt{2}}\approx0.71,\sqrt{10}\approx3.16,\frac{1}{\sqrt{10}}\approx0.32\). 
+
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_signalforms_grundsignalzoom.png}
+        \caption{Oszilloskopbild (Time Domain), herangezoomt.}
+        \label{fig:1.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_signalforms_grundsignalfft.png}
+        \caption{Spectrum Analyzer (Frequency Domain)}
+        \label{fig:1.2}
+    \end{subfigure}}
+    \caption{Ungefiltertes Eingangssignal}
+    \label{fig:1}
+\end{figure}
+\FloatBarrier
+Man sieht an den Bildern also sehr schön die den Grundfrequenzen entsprechenden Peaks in der Frequency Domain: \(A^\text{ungedämpft}_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{-2.75;-8.06;-8.69}{\decibel}\)V, mit diesen Werten wird in den folgenden Fällen die Dämpfung berechnet.
+
+\newpage
+\subsubsection{RC-Hochpassfilter}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_RChochpass_oszi.png}
+        \caption{Time Domain, rot: Eingangs. blau: Ausgangs}
+        \label{fig:2.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_RChochpass_fft.png}
+        \caption{Frequency Domain}
+        \label{fig:2.2}
+    \end{subfigure}}
+    \caption{Filterung durch RC-Hochpassfilter}
+      \label{fig:2}
+\end{figure}
+\FloatBarrier
+Die Dämpfungen betragen \(D_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{-28.85;-2.94;-1.31}{\decibel}\). 
+Der Hochpass dämpft tiefe Frequenzen, wie schön links zu sehen ist, das Ausgangssignal besitzt keine Trägerfrequenz von \(f=\qty{100}{\hertz}\) mehr, die mit \(D_{\qty{0.1}{\kilo\hertz}}=\qty{-28.85}{\decibel}\) sehr stark auf nur noch \(\approx\qty{3}{\percent}\) ihrer ursprünglichen Amplitude gedämpft wurde. Die modulierten Frequenzen sind jedoch noch sichtbar, auch wenn z.B. die \(\qty{3.6}{\kilo\hertz}\) Frequenz nur noch \(\qty{71}{\percent}\) ihrer Ausgangsamplitude besitzt.
+
+\subsubsection{RC-Tiefpassfilter}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_RCtiefpass.png}
+        \caption{Time Domain, rot: \(U_E\), blau \(U_A\)}
+        \label{fig:3.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_RCtiefpass_fft.png}
+        \caption{Frequency Domain}
+        \label{fig:3.2}
+    \end{subfigure}}
+    \caption{Filterung durch RC-Tiefpassfilter}
+      \label{fig:3}
+\end{figure}
+\FloatBarrier
+Der Tiefpass hat die zumindest eine der aufgespielten Frequenzen stark gedämpft. \\ 
+Zieht man die Amplituden in der Frequency Domain hinzu, so betragen \(D_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{0.19;-4.19;-8.87}{\decibel}\). D.h. \(D_{\qty{8}{\kilo\hertz}}\) wurde ungefähr doppelt so stark gedämpft, als \(\qty{3.6}{\kilo\hertz}\). 
+
+\newpage
+\subsubsection{LC-Tiefpassfilter}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_LCtiefpass.png}
+        \caption{Time Domain, rot: \(U_E\), blau \(U_A\)}
+        \label{fig:4.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_LCtiefpass_fft.png}
+        \caption{Frequency Domain}
+        \label{fig:4.2}
+    \end{subfigure}}
+    \caption{Filterung durch LC-Tiefpassfilter}
+      \label{fig:4}
+\end{figure}
+\FloatBarrier
+Mit \(D_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{0.19;16.12;-9.81}{\decibel}\) ist erkennbar, dass die Trägerfrequenz die Schaltung weiterhin passiert, die Trägerfrequenz kann man auch in der Time Domain noch gut erkennen. Im Gegensatz zum Hochpass wird eine der aufgespielten Frequenzen, \(f=\qty{3.6}{\kilo\hertz}\), sogar um \(\qty{600}{\percent}\) verstärkt. Die andere \(\qty{8}{\kilo\hertz}\) Frequenz wurde gedämpft, sodass in der Time Domain ein ziemlich klares Bild zu sehen ist: Das Ausgangssignal besteht nun nur noch aus der Trägerfrequenz und der kleineren Modulationsfrequenz.
+
+\subsubsection{Bandpassfilter}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_bandpass.png}
+        \caption{Time Domain, rot: \(U_E\), blau \(U_A\)}
+        \label{fig:5.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_bandpass_fft.png}
+        \caption{Frequency Domain}
+        \label{fig:5.2}
+    \end{subfigure}}
+    \caption[Filterung durch Bandpassfilter 1 k\(\Omega\)]{Bandpassfilter, \(R=\qty{1}{\kilo\ohm}\), \(C=\qty{47}{\nano\farad}\)}
+      \label{fig:5}
+\end{figure}
+\FloatBarrier
+Anhand der Dämpfungen \(D_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{-28.85;-1.06;-3.81}{\decibel}\) und an der Time Domain ist gut erkennbar, dass die Trägerfrequenz ähnlich stark wie beim RC-Hochpass, also auf nur noch \(\qty{3}{\percent}\) ihrer Ausgangsamplitude gedämpft, und damit annähernd herausgefiltert wurde.
+
+\newpage
+\subsubsection{Bandpassfilter Nr.2}
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_bandpass47.png}
+        \caption{Time Domain, rot: \(U_E\), blau \(U_A\)}
+        \label{fig:6.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{A8_bandpass47_fft.png}
+        \caption{Frequency Domain}
+        \label{fig:6.2}
+    \end{subfigure}}
+    \caption[Filterung durch Bandpassfilter 47 \(\Omega\)]{Bandpassfilter, \(R=\qty{47}{\ohm}\), \(C=\qty{47}{\nano\farad}\)}
+      \label{fig:6}
+\end{figure}
+\FloatBarrier
+Aus den Dämpfungen \(D_{\qtylist{0.1;3.6;8}{\kilo\hertz}}=\qtylist{-54.85;-11.34;-27.31}{\decibel}\) kann man schließen, dass eigentlich alle Frequenzen bis auf die mittlere Frequenz herausgefiltert wurden. Die Trägerfrequenz ist nur noch mit \(\qty{0.2}{\percent}\) vertreten, die hohe aufmodulierte Frequenz nur noch mit \(\qty{4}{\percent}\). Damit bestätigt man die Beobachtung in der Time Domain, dass praktisch nur noch eine Frequenz in dem Signal auszumachen ist.
+
+\subsubsection{Zusammenfassung Filterergebnisse}
+Der Hochpass liefert ähnliche Ergebnisse, der Tiefpass leicht andere. Das Grundkonzept, das entsprechende Frequenzen stark/fast gar nicht gedämpft werden, ist konistent.
+
+Das herauszufilternde Signal ist \(f=\qty{3.6}{\kilo\hertz}\). Dieses wurde am besten mit dem zweiten Bandpassfilter extrahiert, auch wenn es selber dort auf nur noch \(\qty{30}{\percent}\) seiner Amplitude gedämpft wurde. Es ist aber immer noch um einen Faktor von 7 bzw. 150 mal stärker als die Störsignale (modulierte Frequenz bzw. Trägerfrequenz). Bei keiner anderen Schaltung wurde es jedoch so stark gedämpft.\\
+In der Praxis könnte man das Signal jedoch wieder verstärken und so immer noch das insgesamt beste Resultat erzielen.
+
+\paragraph{Dämpfung 100 Hz Signal:}
+Die letzte Fragestellung der Aufgabe verlangte, die Dämpfung mit derjenigen aus Aufgabe \RNum{3} zu vergleichen, dort wurden die Werte im Plot \ref{fig:uselessfreqplots.png} markiert.
+\begin{table}[htbp]
+\centering
+\caption{Vergleich der Dämpfungen aus Plot \ref{fig:uselessfreqplots.png} und aus dem Spectrum Analyzer (FFT)}
+\begin{tabularx}{\textwidth}{XZZZZ}
+    \toprule
+        Schaltung &D_\text{Plot}[\unit{\decibel}] & D_\text{FFT} [\unit{\decibel}] & \text{abs.Abw.}[\unit{\decibel}] & \text{proz.Abw.}[\unit{\percent}]\\\midrule
+        RC-Hochpass & \num{-29.1(1.0)}&\num{-28.9(1.0)}&\num{0.3(1.5)}&\num{1(5)}\\
+        RC-Tiefpass & \num{-3.3(1.0)}&\num{0.2(1.0)}&\num{3.4(1.5)}&\num{110(60)}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_Dämpfungen} 
+\end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

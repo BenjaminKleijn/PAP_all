@@ -1,0 +1,97 @@
+\subsection[\texorpdfstring{\(K_\alpha\) lines}{K-alpha lines}]{\boldmath\(K_\alpha\) lines}
+Mean \(\mu\) and variance \(\sigma\) of gaussians curves fitted on the primary and secondary spectral peaks in \cref{fig:allelemente.png} are used for determining the energies \(E_\alpha,\,E_\beta\) and their respective errors.
+\xfigure{htbp}{width=\textwidth}{allelemente.png}{metal spectrums}{spectrums of all known metals}
+
+As \cref{eq:Moseleyslaw} suggests, there is a linear correlation of \(E\) to \(Z\):
+\begin{equation}
+        \sqrt{E}=\sqrt{E_R}(Z-\sigma_{12})\sqrt{\frac{1}{n_1^2}-\frac{1}{n_2^2}}
+\end{equation} 
+Thus, by plotting the \(\sqrt{E_\alpha}\) energies against the charge number (known because the element is known, charge number is shown in the \secref{sec:periodic_table}), one can determine an approximation for \(E_R\) and \(\sigma_{12}\) by using them as fit parameters. The errors for \(\sqrt{E_\alpha}\) are calculated as followed: \(\Delta (\sqrt{E_\alpha})=\frac{\sigma_\alpha}{2\sqrt{E_{\alpha}}}\).
+One arrives at this graph:
+\xfigure{htbp}{width=0.7\textwidth}{Nr.1_Kalpha.png}{linear fit of \(\sqrt{E_\alpha}\) against \(Z\)}{linear fit of \(\sqrt{E_\alpha}\) against \(Z\)}
+\FloatBarrier
+
+By extracting the fit parameters and calculating the rooted energy back into its desired form:
+\begin{align}
+E_R=\sqrt{E_R}^2&&\Delta E_R=2\sqrt{E_R}\Delta\cdot(\sqrt{E_R})
+\end{align}
+one finds the values already shown in the graph.
+\begin{rb}
+E_R=\qty{13.80(0.11)}{\electronvolt}\qquad\sigma_{12}=\qty{0.98(0.15)}{}
+\end{rb}
+
+\newpage
+\subsection[\texorpdfstring{\(K_\beta\) lines}{K-beta lines}]{\boldmath\(K_\beta\) lines}
+The exact same procedure (for \(n_f=1,n_i=3\)) is done for the measured \(K_\beta\) lines. Because it wasn't possible to find a \(K_\beta\) line for Titanium (Ti), it is not part of the data this time. (if only the Titanic could avoid icebergs like Titanium is avoiding measurements)
+\xfigure{htbp}{width=0.7\textwidth}{Nr.1_Kbeta.png}{linear fit of \(\sqrt{E_\beta}\) against \(Z\)}{linear fit of \(\sqrt{E_\beta}\) against \(Z\)}
+\FloatBarrier
+
+\begin{rb}
+E_R=\qty{13.30(0.15)}{\electronvolt}\qquad\sigma_{13}=\qty{1.53(0.22)}{}
+\end{rb}
+
+\newpage
+
+\subsection{\textcolor{blueurllink}{\emph{Updated part:}} Alloys}
+As one can see in the exemplary graph shown below (the rest are at the end of this section), the alloy's spectrums were taken seperately and corresponding energy lines of elements from the periodic table were fitted to determine their composition. One alloy was secured by plastic stripes/adhesive tape, probably it was present in a dusty form, it was certainly not in a solid metal crystal form in one big block like the others.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth, trim={1cm 1.5cm 2cm 1cm}, clip]{stainlesssteel_Fe,Ni,Cr.pdf}
+    \caption{stainless-steel}
+\end{figure}
+
+The composition, that could be visually identified as common alloys, present itsel as:
+\begin{itemize}
+    \item stainless steel: \ce{Fe}, \ce{Ni}, \ce{Cr}
+    \item brass: \ce{Cu}, \ce{Zn}
+    \item magnet: \ce{Fe}, \ce{W}, \ce{Ti}, \ce{Br}
+    \item unknown alloy: \ce{Cu}, \ce{Pb}, \ce{Ge}, \ce{As}
+\end{itemize}
+
+Brass was identified correctly, it consists generally of \(\nicefrac{2}{3}\) copper (\ce{Cu}) and \(\nicefrac{1}{3}\) of zinc (\ce{Zn})\autocite{brass}. \\
+Stainless steel is refined iron to prevent corrosion, this is done by adding chromium (and other metals). In contrast to the first measurement, we didn't detect Molybdenum but Nickel. According to this source \autocite{stainlesssteel}, Nickel (Ni) can also be part of the alloy for even better corrosion-resistance.\\
+I double checked if Neodym could be fitted on the magnet's spectrum, but sadly apparently its no a Neodym-magnet. (For better evaluation it would've been better to include Neodyms enery lines with a different color, to show this clearly, sorry). The only detected element, included in a Neodym-magnet alloy, is Iron (Fe), Bor (Br) was not detected. Additionally, I detected Wolfram (W) and Titanium (Ti), two metals. The last one, Brom (Br) makes no sense, because under normal conditions, it is a liquid. More dangerously though is the fact, that Brom in elementary form is highly toxic. Nevertheless, it aligns perfectly with two peaks in the magnet's spectrum.\\
+The unknown alloy shows different possible metals: Copper (Cu), lead (Pb), Germanium (Ge) and Arsen (As). I have no further insight on this probe, I have no idea, how likely it is for the lab to have waste pieces of those metals, to be put inside the tape just to be analyzed in this experiment. Kind of useless measurement.
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{brass_Cu,Zn.pdf}
+    \caption{brass}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{magnet_W,Fe,Ti,Br.pdf}
+    \caption{magnet}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{unknown_alloy_Cu,Pb,Ge,As.pdf}
+    \caption{unknown-alloy}
+    \label{fig:unknownalloy}
+\end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

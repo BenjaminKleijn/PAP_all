@@ -1,0 +1,104 @@
+\subsection{Motivation}
+Um wenigstens ein wenig Fluiddynamik in der Experimentalphysik zu behandeln, wird in diesem Versuch die Viskosität eines - interessanten - Öls (Polyethylenglykol kurz PEG) untersucht. Zusätzlich wird eine tolle Errungenschaft von Stokes untersucht: Stokes'sche Reibung. Endlich mal Reibung untersuchen :). Außerdem sind die Grundlagen des Modells eine schöne Wiederholung von Kräften.
+
+\subsection{Ziele des Versuches}
+Auf zwei unterschiedliche Weisen wird die Viskosität von PEG untersucht:
+\begin{itemize}
+    \item durch Messen der Fallzeit über Stokes'sche Reibung
+    \item durch Messen des Durchflussstroms in einem Kapillarviskosimeter nach dem Gesetz von Hagen-Poiseuille
+\end{itemize}
+Beim Kugelfallversuch wird zusätzlich der Übergang von laminarer zu turbulenter Umströmung der Kugel untersucht, um rudimentär die Gültigkeitsgrenze des Stokes'schen Gesetzes zu bestimmen. Die mit beiden Methoden erhaltenen Werte werden abschließend verglichen und auf Konsistenz unter Berücksichtigung der Messunsicherheiten geprüft.
+
+\begin{minipage}{0.4\textwidth}
+    \raggedright
+    \subsection{Geräte}
+    \begin{enumerate}
+    \item Messzylinder/-behälter, gefüllt mit Polyethylenglykok (PEG), aufgedruckter Messskala und Präzisionskapillare am unteren Ende 
+    \item Probekugeln aus Polyacetal (\(\rho_K\)) mit verschiedenen Durchmessern (\(\qtyrange{1(0.025)}{9(0.025)}{\milli\m}\))
+    \item Thermometer
+    \item Pinzetten und Bechergläser
+    \item Stoppuhr
+    \end{enumerate}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{Versuchsaufbau.png}
+    \captionof{figure}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+    \label{fig:Versuchsaufbau.png}
+\end{minipage}
+
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+\begin{wrapfigure}{r}{0.5\textwidth}
+    \includegraphics[width=\linewidth]{Viskosität.png}
+    \caption[Viskosität anhand Flüssigkeitsschichten\protect\autocite{viskosität_wiki}]{schichtweises Bewegen der Flüssigkeit Richtung Kraft \(F\) \;\protect\autocite{viskosität_wiki}}
+    \label{fig:viskosität}
+\end{wrapfigure}
+Die innere Reibung einer Newtonschen Flüssigkeit zwischen einer stationären und einer bewegten Platte mit Abstand \(d\) ist proportional zur tangentialen Scherkraft \(F\), zur Fläche \(A\) und zum Geschwindigkeitsgradienten \(\frac{\diff v}{\diff d}\). Bei gleichförmiger Bewegung der oberen Platte mit Kraft \(F\) und Geschwindigkeit \(v\) ergibt sich, dass die Reibungskraft den selben Betrag hat. Diese Beziehung definiert die Viskosität \(\eta\):
+\begin{equation}
+    \label{eq:newton_shear}
+    F_r = \eta\,A\,\frac{\diff v}{\diff d} \quad \rightarrow [\eta]=\unit{\pascal\s}
+\end{equation}
+
+\subsubsection{Kugelfallviskosimeter nach Stokes}
+\label{ssec:Kugelfallviskosimeter}
+Für eine Kugel mit Radius \(r\), die sich mit konstanter (Sink-)Geschwindigkeit \(v\) durch eine (viskose) Flüssigkeit bewegt, gilt nach dem Stokes'sche Gesetz für die Reibungskraft:
+\begin{equation}
+    \label{eq:stokes}
+    F_{\mathrm{R}} = 6\pi\,\eta\,r\,v
+\end{equation}
+Dieses Gesetz gilt nur für unendlich ausgedehnte Flüssigkeiten, deswegen wird die Reibung für ein Rohr des Radius \(R\) mit einem Korrekturfaktor \(\lambda\) (Ladenburgsche Korrektur) angeglichen, die Näherung lautet
+\begin{equation}
+    \label{eq:ladenburg}
+    F_{\mathrm{R}} = 6\pi\,\eta\,r\,v\,\lambda \quad\text{mit}\quad\lambda \;=\; 1 + 2.1\,\frac{r}{R}
+\end{equation}
+Für eine fallende Kugel mit Materialdichte \(\rho_k\), Flüssigkeitsdichte \(\rho_F\) und Kugelvolumen \(V_k=\tfrac{4}{3}\pi r^3\) stellt sich im stationären Zustand ein Kräftegleichgewicht zwischen Gewichtskraft, Auftrieb und Reibung ein:
+\begin{equation}
+    \label{eq:force_balance}
+    \underbrace{\rho_KV_Kg}_{F_g} - \underbrace{\rho_F V_k g}_{F_a} - \underbrace{6\pi\eta r\,\lambda\,v_s}_{F_r} = 0.
+\end{equation}
+Durch umformen ergibt sich:
+\begin{equation}
+    \label{eq:eta_Fallrohr}
+    \eta = \frac{2}{9}\, g\, \frac{\rho_k - \rho_f}{v_s}\, r^2 \,
+\end{equation}
+\subsubsection{Laminare und turbulente Strömung}
+\begin{minipage}[b]{0.4\textwidth}
+    Man unterscheidet in der Fluiddynamik zwischen laminaren und turbulenten Strömungen, erstere sind eine Idealisierung, jedoch eine zum Beschreiben des Systems freundliche Näherung. 
+\end{minipage}
+\begin{minipage}{0.6\textwidth}
+    \captionsetup{format=plain}
+    \centering
+    \includegraphics[width=0.9\linewidth]{laminar.png}
+    \captionof{figure}[laminare vs. turbulente Strömung\protect\autocite{Skript_2.1}]{Links: Laminare Strömung, keine Vermischung der Flüssigkeitsschichten.\\ Rechts: Turbulente Strömung bei hohen Geschwindigkeiten, es kommt zu Vermischung der Flüssigkeit \protect\autocite{Skript_2.1}}
+    \label{fig:laminarekugel.png}
+\end{minipage}
+
+Das Verhalten der Strömung lässt sich mit der dimensionslose Reynoldszahl charakterisieren, welche das Verhältnis von Trägheits- zu Reibungskräften beschreibt. Für ein Strömungssystem ist \(Re\) definiert durch:
+\begin{equation}
+    \label{eq:reynolds}
+    Re = \frac{\rho\,v\,L}{\eta},
+\end{equation}
+wobei \(L\) eine charakteristische Länge ist (für die Kugelbewegung \(L=2r\), für Rohrströmung \(L=2R\)). Für Rohrströmungen liegt der Übergang zu Turbulenz typischerweise bei \(Re\approx 2300\); für die Umströmung einer Kugel ist der kritische Bereich deutlich kleiner (experimentell \(Re^{\mathrm{krit}}\approx 1\)).
+
+\subsubsection{Viskositätsbestimmung nach Hagen-Poiseuille}
+\label{ssec:HuP}
+Zur Viskositätsbestimmung nach Hagen-Poiseuille wird nun eine Rohrströmung in der Kapillare (Radius \(R\), Länge \(L\)) am unteren Zylinderende betrachtet. Denn durch die aus der Druckdifferenz \(\Delta p \defeq p_1 - p_2\) entstehende Kraft \(F_p = \pi r^2\,\Delta p\) fließt die Flüssigkeit aus der Kapillare hinaus. Dieser Kraft wirkt die Reibungskraft (\cref{eq:newton_shear}) \(F_r = 2 \pi r \, L \, \eta \, \frac{\diff{v}}{\diff{r}}\) entgegen. Beachte: Die Kräfte wirken pro Flüssigkeits-Teilzylinder mit Radius \(r<R\) und Mantelfläche \(A=2\pi r L\). Unter Annahme der Randbedingung \(v(R)=0\) und dem Vorliegen einer laminaren Strömung, wird sich durch den Gleichgewichtszustand zwischen \(F_r\) und \(F_p\) ein \tikz[remember picture,baseline=(A.base)]\node[inner sep=0pt](A){parabolisches};\todo{Pfeil mit tikz zur Formel wäre wild -- Done :)} Geschwindigkeitsprofil entwickeln.
+\begin{subequations}
+    \begin{align}
+            \xrightarrow{F_p=F_r}\;\frac{\diff v}{\diff r}=\frac{\Delta p}{2\eta L}r &&\xrightarrow[\text{Integration über r}]{v(R)=0\text{ und}}&&\tikz[remember picture,baseline=(B.base)]\node[inner sep=0pt](B){\(v(r)\)};=\frac{\Delta p}{4\eta L}(R^2-r^2)
+    \end{align}
+    \begin{align}
+            \xrightarrow[\text{pro Teilzylinder}]{\text{Volumenstrom}}&&\frac{\diff V}{\diff t}=2\pi r v(r)&&\xrightarrow[\text{über r}]{\text{Integration}}&&\dot{V}=\frac{\pi \Delta p R^4}{8 \eta L}
+    \end{align}
+\end{subequations}%
+\begin{tikzpicture}[remember picture,overlay]
+    \draw[->, blue, thick, shorten >= 2pt] (A.south).. controls+(-1,-1) and +(1,1)..(B.north);
+\end{tikzpicture}% 
+Und so kann final die die Viskosität bestimmt werden:
+\begin{equation}
+    \label{eq:final_eta_hup}
+    \eta = \frac{\pi \, \Delta p \, R^4} {8L \, \dot{V}}
+\end{equation}

@@ -1,0 +1,149 @@
+\subsection{Motivation}
+Die Komplexität, die aus Verschalten drei der grundlegenden elektrotechnischen Bauteile: Dem ohmschen Widerstand, dem Kondensator und der Spule, erzielt werden kann, ist hoch. Die Eigenschaften solcher Schaltungen werden in diesem Versuch analysiert. Je nach Anordnung und Kombination dieser Bauteile lassen sich unterschiedliche Charakteristika nutzen, so ist der RLC-Schwingkreis zur Arbeit mit elektrischen Schwingungen nützlich, oder beispielsweise kann das Herausfiltern bestimmter Frequenzen (Bandpassfilter) aus einem gestörten/überlagerten Signal erreicht werden. Zudem ermöglichen diese Bauteile eine Annäherung an die Integration und Differentiation von Signalen. 
+Da der RLC-Schwingkreis ein reales Beispiel für einen harmonischen Oszillator darstellt, können also Grundlagen der klassischen Mechanik mit Grundlagen der Elektrotechnik verknüpft werden, um Aussagen über dieses interessante System treffen zu können.
+
+\subsection{Ziele des Versuches}
+Es gibt verschiedene Aufgaben, die ausführlich im Skript\autocite{Skript_2.2} notiert sind, deren Abschreiben hier nicht von Bedeutung/Nutzen ist. Anhand der erhobenen Messergebnissen werden Eigenschaften von RC, CR, RLC-Schaltungen untersucht, z.B. werden in diesem Versuch die Ausgangsspannungen einerseits im Zeitbereich (z.B. für Dämpfungseffekte, Signalform), andererseits im Frequenzbereich (zum Aufschlüsseln der speziellen Wirkung von Bandfiltern usw. auf verschiedene Frequenzen) analysiert.
+
+\subsection{Geräte}
+\begin{enumerate}
+    \item PC- gesteuerter Funktiongenerator und Speicheroszilloskop
+    \item Widerstände, Spulen, Kondensatoren und eine Diode
+    \item Steckbrett zum Aufbau von Schaltungen
+    \item Impedanzwandler mit Netzteil
+    \item Niederfrequenz-Verstärker mit Netzteil
+    \item Computer
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+
+\subsubsection{RC-Glieder}
+Betrachtet man eine Reihenschaltung aus einem ohmschen Widerstand \(R\) und einem Kondensator \(C\), die an eine Gleichspannungsquelle \(U_E\) gelegt wird, so sammelt sich Ladung auf den Kondensatorplatten an. Da der Isolator zwischen den Platten keinen Stromfluss zulässt, baut sich eine Spannung \(U_C\) auf, die der Eingangsspannung entgegenwirkt. Der Ladevorgang lässt sich durch die Kirchhoff'schen Maschenregeln beschreiben:
+\begin{equation} \label{eq:rc_kirchhoff} U_E = U_C + U_R = U_C + R \cdot I \end{equation}
+Unter Berücksichtigung der Beziehung zwischen Strom und Ladungsänderung \(I = \dot{Q} = C \dot{U}_C\) ergibt sich die lineare Differentialgleichung erster Ordnung:
+\begin{equation} \label{eq:rc_diffgl} U_E = U_C + R C \dot{U}_C = U_C + \tau \dot{U}_C \end{equation}
+
+\xfigure{htbp}{width=0.8\textwidth}{Schaltbild_U_I-Verlauf_s.png}{RC Glied mit Ladevorgang des Kondensators}{Links: Schaltbild eines RC-Glieds. Rechts: Zeitlicher Verlauf von Spannung und Strom beim Laden eines Kondensators\autocite{Skript_2.2}}
+
+Hierbei ist \(\tau = RC\) die Zeitkonstante der Schaltung. Die Lösung dieser Gleichung für den Ladevorgang lautet:
+\begin{equation} \label{eq:rc_laden} U_C(t) = U_E \left(1 - e^{-t/\tau}\right) \end{equation}
+Daraus folgt nach der Kirchhoff'schen Maschenregel \(U_R=U_E-U_C\) für die Spannung am Widerstand \(U_R(t) = U_E e^{-t/\tau}\) und für den Strom \(I(t) = \frac{U_E}{R} e^{-t/\tau}\). Während die Kondensatorspannung asymptotisch gegen \(U_E\) strebt, fällt der Strom exponentiell auf null ab, siehe \cref{fig:Schaltbild_U_I-Verlauf_s.png}. Beim Entladen kehren sich diese Prozesse um. Die Zeitkonstante \(\tau\) bestimmt die Geschwindigkeit des Vorgangs und kann experimentell über die Halbwertszeit \(T_{\nicefrac{1}{2}}\) ermittelt werden, wobei gilt:
+\begin{equation} \label{eq:rc_halbwertszeit} \tau = \frac{T_{\nicefrac{1}{2}}}{\ln 2} \end{equation}
+
+\subsubsection{Impedanzen der R,L,C-Glieder}
+Wird im RC-Glied eine Wechselspannung \(U_E = U_0 e^{i\omega t}\) mit der Kreisfrequenz \(\omega = 2\pi f\) angelegt, so ändert sich das Verhalten grundlegend gegenüber dem Gleichstromfall. Der Widerstand gegen den Stromfluss wird nun durch die komplexe Impedanz \(Z = \frac{U}{I}\) beschrieben. Für einen reinen ohmschen Widerstand bleibt die Impedanz frequenzunabhängig:
+\begin{equation} \label{eq:imp_z} Z_R = R \end{equation}
+Für einen Kondensator ergibt sich aus der Beziehung \(\dot{U}_E = \frac{I}{C}\) und der zeitlichen Ableitung der Wechselspannung \(i\omega U_E = \frac{I}{C}\) die kapazitive Impedanz:
+\begin{equation} \label{eq:imp_c} Z_C = \frac{1}{i\omega C} = -\frac{i}{\omega C} \end{equation}
+Dieser rein imaginäre Wert wird als Blindwiderstand bezeichnet, da er keine aktive Leistung verbraucht. Die Impedanz nimmt mit steigender Frequenz ab; im Grenzfall \(\omega \to 0\) (Gleichstrom) geht sie gegen unendlich, während sie für \(\omega \to \infty\) verschwindet. Der Faktor \(-i\) impliziert eine Phasenverschiebung von \(\pi/2\), wobei der Strom der Spannung vorauseilt.
+\xfigure{htbp}{width=0.8\textwidth}{Bauteile_Impedanzen_s.png}{Impedanzen von R, L und C Bauteilen}{Oben: Bauteile (R, C, L) im Stromkreis. Unten: Spanungsverlauf im Vergleich zum Strom, Phasenverschiebung ersichtlich \autocite{Skript_2.2}}
+
+Analog dazu besitzt eine Spule mit der Induktivität \(L\) die induktive Impedanz:
+\begin{equation} \label{eq:imp_l} Z_L = i\omega L \end{equation}
+Hier eilt die Spannung dem Strom um \(\pi/2\) voraus.
+
+\subsubsection{Frequenzverhalten von RC-Gliedern/Hoch- und Tiefpass}
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{RC-Glied_s.png} 
+\caption{Schaltkreis eines RC-Glieds \autocite{Skript_2.2}}
+\label{fig:RC_Glied}
+\end{wrapfigure}
+Die frequenzabhängige Übertragungsfunktion eines RC-Glieds lässt sich durch die Betrachtung eines Spannungsteilers ableiten. Greift man die Spannung über dem Kondensator ab, so ergibt sich für die komplexe Ausgangsspannung:
+\begin{equation} \label{eq:rc_tiefpass} U_C = \frac{Z_C}{R + Z_C} U_E = \frac{-i/(\omega C)}{R - i/(\omega C)} U_0 e^{i\omega t} \end{equation}
+Der Betrag der Ausgangsspannung beträgt:
+\begin{equation} \label{eq:rc_amplitude_tp} |U_C| = \frac{|U_E|}{\sqrt{1 + (\omega RC)^2}} \end{equation}
+Da die Amplitude für hohe Frequenzen gegen null geht, verhält sich diese Schaltung als Tiefpassfilter. Die Phasenverschiebung \(\phi\) ist gegeben durch \(\tan \phi = -\omega RC\).
+Vertauscht man Widerstand und Kondensator, so wird die Spannung über dem Widerstand abgegriffen. Dies führt zu einem Hochpassfilter, dessen Amplitudengang durch \(|U_R| = \frac{|U_E|}{\sqrt{1 + (1/(\omega RC))^2}}\) beschrieben wird. In beiden Fällen definiert man die Grenzfrequenz \(\omega_g\) als den Punkt, an dem die Amplitude auf den Faktor \(\nicefrac{1}{\sqrt{2}}\) abgefallen ist:
+\begin{equation} \label{eq:rc_grenzfrequenz} \omega_g = \frac{1}{RC} = \frac{1}{\tau} \end{equation}
+
+\xfigure{htbp}{width=\textwidth}{passos.png}{Übersicht Hoch- und Tiefpass\autocite{Skript_2.2}}{Übersicht Hoch und Tiefpass: Frequenz- und Phasengang, Schaltkreis, Ausgangsspannung und Phasenformel\autocite{Skript_2.2}}
+
+\subsubsection{RC-Glied als Differenziator und Integrator}
+Unter bestimmten Bedingungen können RC-Glieder als mathematische Operatoren fungieren. Für einen Tiefpass mit einer sehr großen Zeitkonstante (\(\tau \gg T\), wobei \(T\) die Periodendauer des Eingangssignals ist) und unter der Annahme \(U_A \ll U_E\) vereinfacht sich die Differentialgleichung zu \(\dot{U}_A \approx \frac{U_E}{\tau}\). Integration ergibt:
+\begin{equation} \label{eq:rc_integrator} U_A \approx \frac{1}{\tau} \int U_E \, dt \end{equation}
+Das Ausgangssignal ist somit proportional zum Integral des Eingangssignals. Umgekehrt wirkt ein Hochpass mit kleiner Zeitkonstante (\(\tau \ll T\)) als Differentiator. Hier gilt für die Spannung am Widerstand:
+\begin{equation} \label{eq:rc_differentiator} U_A \approx \tau \frac{d U_E}{dt} \end{equation}
+Dies ermöglicht die Umformung von Signalformen, beispielsweise die Bildung von Spitzen bei Rechtecksignalen (Differentiator) oder die Annäherung an Dreieckssignale (Integrator).
+\begin{figure}[htbp]
+     \caption[Integrator- und Differentiator]{Integrator- und Differentiator. Gestrichelte Linie ist die Eingangsrechteckspannung \(U_E\). In schwarz die Ausgangsspannung \(U_A\)\autocite{Skript_2.2}}
+    \label{fig:mathops}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Integrator.png}
+        \caption{Integrator, mit \(\tau_i=\numlist{0.02;0.5;1;2}T\)}
+        \label{fig:Integrator}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Differentiator.png}
+        \caption{Differentiator, mit \(\tau_i=\numlist{0.02;0.1;0.5;2}T\)}
+        \label{fig:Differentiator}
+    \end{subfigure}
+\end{figure}
+\FloatBarrier
+Man beobachte, dass beim Integrator für \(\max\tau_i=\tau_4=2T\gg T\) die \(U_A\) Kurve am besten der integrierten Eingangsspannung entspricht. Analog ist beim Differentiator die \(\min\tau=\tau_1=0.02T\ll T\) Kurve am besten. 
+
+\subsubsection{Elektrischer RLC-Schwingkreis}
+Ein elektrischer Schwingkreis besteht aus einer Spule \(L\), einem Kondensator \(C\) und einem Widerstand \(R\) in Reihe. Wird ein geladener Kondensator entladen, fließt ein Strom durch die Spule, wodurch ein magnetisches Feld aufgebaut wird. Nach vollständiger Entladung baut sich das Feld wieder ab und induziert eine Spannung, die den Kondensator umgepolt auflädt. Dieser Prozess wiederholt sich periodisch.
+\xfigure{htbp}{width=0.8\textwidth}{RLC_Serienschwingkreis_U_s.png}{RLC-Schwingkreises\autocite{Skript_2.2}}{RLC-Schwingkreises mit Abgriff über unterschiedlichen Bauteilen\autocite{Skript_2.2}}
+
+Die Beschreibung erfolgt über die Maschenregel \(U_R + U_C + U_L = 0\). Mit \(U_R = RI\), \(U_C = Q/C\) und \(U_L = -L\dot{I}\) sowie \(I = \dot{Q}\) erhält man die Differentialgleichung für den Strom:
+\begin{equation} \label{eq:rlc_diffgl} L \ddot{I} + R \dot{I} + \frac{1}{C} I = 0 \end{equation}
+
+Im idealen Fall ohne Widerstand (\(R=0\)) reduziert sich dies auf den harmonischen Oszillator mit der Eigenfrequenz
+\begin{equation} \label{eq:omega_0_the}
+    \omega_0 = \frac{1}{\sqrt{LC}}
+\end{equation}
+Mit Widerstand entsteht ein gedämpfter Oszillator. Für den Schwingfall (\(R^2 < 4L/C\)) lautet die Lösung:
+
+\begin{equation} \label{eq:rlc_loesung} I(t) = I_0 e^{-\delta t} \cos(\omega_f t + \varphi) \end{equation}
+wobei \(\delta = \frac{R}{2L}\) die Dämpfungskonstante und \(\omega_f = \sqrt{\omega_0^2 - \delta^2}\) die gedämpfte Eigenfrequenz ist. Die Amplitude klingt mit \(e^{-\delta t}\) ab. Das logarithmische Dekrement \(\Lambda = \ln(A_n/A_{n+1}) = \delta T\) erlaubt die experimentelle Bestimmung der Dämpfung.
+
+\subsubsection{Frequenzabhängigkeit eines Schwingkreises und Resonanz}
+\label{ssec:final_cite}
+Wird der Serienschwingkreis durch eine externe Wechselspannung angeregt, ist die Gesamtimpedanz \(Z_g = R + i(\omega L - \frac{1}{\omega C})\). Der Strom beträgt \(I = \frac{U_E}{Z_g}\). Die Amplitude des Stroms ist frequenzabhängig:
+\begin{equation} \label{eq:rlc_strom} |I| = \frac{U_0}{\sqrt{R^2 + (\omega L - \frac{1}{\omega C})^2}} \end{equation}
+Durch \(|U_i|=|Z||I|\) lassen sich die Ausdrücke der Spannungen an den drei Bauteilen bestimmen: 
+\begin{align}
+    |U_R|&=\frac{R}{\sqrt{R^2+(\omega L-\frac{1}{\omega C})^2}}U_0\\
+    |U_C|&=\frac{(\nicefrac{1}{\omega C})}{\sqrt{R^2+(\omega L-\frac{1}{\omega C})^2}}U_0\\
+    |U_L|&=\frac{\omega L}{\sqrt{R^2+(\omega L-\frac{1}{\omega C})^2}}U_0\\
+\end{align}
+Mit den Resonanzfrequenzen:
+\begin{align}
+    \omega_R=\frac{1}{\sqrt{LC}}&&\omega_L=\sqrt{\omega_R^2+2\delta^2}&&\omega_C=\sqrt{\omega_R^2-2\delta^2}
+    \label{eq:Resonanzfrequenzen}
+\end{align}
+Bei der Resonanzfrequenz \(\omega_R\) heben sich die Blindwiderstände von Spule und Kondensator auf (\(\omega L = \frac{1}{\omega C}\)). Die Impedanz ist minimal (\(Z=R\)) und der Strom maximal (\(I_0 = U_0/R\)). Die Spannungen an den einzelnen Bauteilen können im Resonanzfall deutlich größer sein als die Eingangsspannung; dieses Phänomen nennt man Resonanzüberhöhung.\\
+Die Frequenzen, bei denen die Amplitude auf \(1/\sqrt{2}\) des Maximalwerts abfällt, definieren die Bandbreite \(\Delta \omega = \frac{R}{L} = 2\delta\), der Bereich, in dem der Schwinkreis resonant ist. Die Güte \(Q\) des Schwingkreises ist definiert als
+\begin{equation} 
+    Q = \frac{\omega_R}{\Delta \omega}
+    \label{eq:guete_def}
+\end{equation}
+\xfigure{htbp}{width=0.8\textwidth}{resonanz.png}{Resonanzkurve eines RLC-Schwingkreises \autocite{Skript_2.2}}{Resonanzkurve eines RLC-Schwingkreises \autocite{Skript_2.2}}
+
+\subsubsection{Resonanzkurve eines Parallelschwingkreises}
+Schaltet man \(L\) und \(C\) parallel, so ergibt sich die Impedanz des LC-Teils zu \(Z_P = \frac{1}{| \frac{1}{\omega L} - \frac{1}{\omega C} |}\). Bei der Resonanzfrequenz \(\omega_0 = \frac{1}{\sqrt{LC}}\) wird der Nenner null und die Impedanz theoretisch unendlich. Der Parallelkreis wirkt in diesem Fall wie ein Isolator (hochohmig). In einer Schaltung mit einem Vorwiderstand führt dies dazu, dass Frequenzen um \(\omega_0\) stark gedämpft werden, während andere Frequenzen durchgelassen werden. Ein solcher Schwingkreis wird daher als Bandsperre bezeichnet, zu sehen beispielsweise in \cref{fig:A7_resonanz_parallelRLC.png}. 
+
+\subsubsection{Filterarten}
+\label{sec:FilterUebersicht}
+Zusammenfassend lassen sich die in den vorherigen Abschnitten behandelten Schaltungen in drei grundlegende Filterkategorien einteilen, die jeweils spezifische Frequenzbereiche durchlassen oder dämpfen.
+Der \textbf{Tiefpassfilter} ist eine Schaltung, die tiefe Frequenzen passieren lässt und hohe Frequenzen dämpft. Typischerweise entsteht er, wenn die Ausgangsspannung über dem Kondensator eines RC-Glieds abgegriffen wird. Das Frequenzverhalten dieses Filters wird durch die Amplitudenfunktion \cref{eq:rc_amplitude_tp} beschrieben, wobei die Grenzfrequenz gemäß \cref{eq:rc_grenzfrequenz} definiert ist.
+Im Gegensatz dazu lässt der \textbf{Hochpassfilter} hohe Frequenzen durch und blockiert tiefe Frequenzen. Er realisiert sich durch Vertauschen von Widerstand und Kondensator, sodass die Spannung über dem Widerstand abgegriffen wird. Auch bei diesem Filter gilt die Grenzfrequenz entsprechend \cref{eq:rc_grenzfrequenz}.
+Ein \textbf{Bandpassfilter} schließlich lässt nur einen bestimmten Frequenzbereich, die sogenannte Bandbreite, passieren und dämpft sowohl tiefere als auch höhere Frequenzen. Dies wird durch einen RLC-Schwingkreis in Reihenschaltung erreicht. Bei der Resonanzfrequenz \cref{eq:omega_0_the} ist die Impedanz minimal und der Strom maximal. Die Breite des durchgelassenen Frequenzbandes wird durch die Bandbreite (definiert als \(\Delta \omega = R/L\)) und die Güte \(Q\) gemäß \cref{eq:guete_def} charakterisiert.
+\newpage
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

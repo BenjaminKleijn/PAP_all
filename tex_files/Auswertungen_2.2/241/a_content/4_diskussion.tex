@@ -1,0 +1,121 @@
+\subsection{Zeitkonstanten} 
+Die Vergleichstabelle \ref{table:zeitkonstanten} zeigt zwar teilweise hohe absolute Abweichungen, die Sigma"=Abweichungen sind dank der hohen Fehler jedoch in Ordnung.
+
+\subsection{Integrator und Differentiator}
+Will man schöne Bilder anschauen, so betrachtet man die Bilder in \\\secref{sec:intdiff} der Auswertung. Das Verhalten des Differentiators für Dreiecks- und Rechteckssignal war interessant, da diese Funktionen rein mathematisch nicht differenzierbar sind. Da hier ein realer Signalgenerator benutzt, gibt es natürlich keine unendlich hohe Flankensteigung. Allgemein kann man bei den Ableitungen mehr unsaubere Artefakte erkennen, was auch an den insgesamt geringen gemessenen Spannungen liegen dürfte (der Widerstand müsste für die Funktionsweise als Differentiator stark erhöht werden um \(U_C\ll U_E\) zu gewährleisten). 
+
+\subsection{Grenzfrequenzen Hoch- und Tiefpass} 
+Die Grenzfrequenzen aus dem Plot \ref{fig:uselessfreqplots.png} mithilfe dieser sich schneidenden Asymptoten zu extrahieren, hat nicht funktioniert. Irgendwo muss ein Fehler gemacht worden sein.\\
+Den 3dB Abfall habe ich hingegen in mühsamer Arbeit nochmal bestimmt, indem das Array abgesucht wurde. Man sieht daran, dass derselbe Wert \(f_g=\qty{3220}{\hertz}\) bei Hoch- und Tiefpass herauskommt, dass die Bestimmung im Plot richtig gemacht wurde, denn die Grenzfrequenz sollte bei beiden Schaltungen gleich sein, wie bei der Berechnung von \(f_g^\text{theo}\) erkennbar.
+
+\subsection{Induktivität des RLC-Schwingkreises}
+Hier tritt wieder der erwähnte Fall auf, dass für eine Familie an \(n\) Messwerten \(x_i\) sowohl explizite Ungenauigkeiten (hier Herstellergenauigkeit von \(R\) und Ablesefehler von \(f_R\)) \(\Delta x_i\) xistieren, als auch ein möglicher statistischer Fehler durch Bilden einer Standardabweichung \(\sigma\) beim Angeben des Fehlers eines Mittelwerts. Eventuell ist die richtige Vorgehensweise hier das quadratische Addieren der Standardabweichung und des Mittelwerts der Einzelfehler. 
+\begin{equation}
+    \Delta \bar{x}=\sqrt{\sigma^2+\left(\frac{1}{n}\sum_i \Delta x_i\right)^2}
+    \label{eq:fehleraddition}
+\end{equation}
+Es gibt jedoch keine explizite Angabe, wie man solche Fälle betrachtet. 
+
+Im vorliegenden Fall würde mithilfe dieser Methode nur eine nicht signifikante Stelle im Fehler hinzukommen: \(\Delta \bar{L}_1= \qty{4.1}{\milli\henry}\). Für die Auswertung wurde nun meistens der auf diesem Wege bestimmte Wert für \(L_1\) benutzt, berechnet aus der Resonanzfrequenz abgenommen über dem Widerstand von \(\qty{220}{\ohm}\): \(\tcbhighmath{L_1=\qty{36(4)}{\milli\henry}}\).
+
+Die Abweichungen zu den anderen Bestimmungsmethoden (über Resonanzfrequenz bei Abnehmen der Spannung über dem Kondensator oder der Spule) sind weiterhin in \cref{table:Vergleich_L_1} zu finden. Auch wenn hier wie erwähnt zwei unterschiedliche Resonanzfrequenzen genutzt wurden, ist das nicht der Hauptgrund für die stark abweichenden Induktivitäten. Nutzt man den in Aufgabe 5 im Messprotokoll notierten Wert von \(f_R=\qty{4.00(7)}{\kilo\hertz}\) beim Abgriff über den Widerstand, so ergibt sich wieder nach \(L_1=\frac{1}{4\pi^2f_R^2C}\) für die Induktivität ein Wert von \(L_1^R=\qty{34(4)}{\milli\henry}\). Dieser weicht nicht stark von \(\bar{L}_1\) ab.
+
+
+\subsection{Verlustwiderstand}
+Der Verlustwiderstand wurde über zwei Weisen berechnet: Einmal über die Resonanzbreite der Resonanzkurve und einmal über die Amplitude der Ausgangsspannung. Die Fehlergrenzen für \(R_V^U\) sind deutlich kleiner als die über \(R_V^{\Delta f}\), weswegen diese Methode zu bevorzugen ist. Dies liegt daran, dass der relative Fehler der Spannung deutlich kleiner als die vorgegebenen Fehler der Widerstände und Kondensatoren sind (welche für in der Resonanzkurvenrechnung über \(L_1\) und \(R\) einfließen.) 
+
+Es war noch gefragt, die Abweichungen der Resonanzfrequenzen für verschiedene Widerstände zu diskutieren. Dazu habe ich überhaupt keine Idee. Mein erster Gedanke war, \(R\uparrow \implies \delta \uparrow \implies \omega_R \downarrow\) aber stimmt die letzte Implikation überhaupt? Wahrscheinlich nicht. Deswegen ist die Beobachtung in \cref{fig:A4_RLC_3resonanzkurven.png} auch das Gegenteil, je höher der Widerstand, desto größer die gemessene Resonanzfrequenz.
+Wie man dieses Mysterium auflöst, who knows. Ich hab auch keine Informationen im Internet oder aus Altprotokollen gefunden, die eine Erklärung haben. Ok doch habe ich: In diesem Video\autocite{rlcloss} wird eine Formel für einen verlustbehafteten, d.h. mit einem inidealen Kondensator ausgestatteten, RLC-Schwingkreis hergeleitet. Man nähert einen Kondensator dazu als Kapazität \(C\) mit parallelem Widerstand \(R_p\sim\qty{e6}{\ohm}\) an. Es folgt für die Resonanzfrequenz \(\omega_R\propto \frac{1}{\sqrt{LC}} (1+\frac{R}{2R_p})\), damit ist dieser Effekt aber völlig zu vernachlässigen sein, angesichts der Größenordnung von \(R_p\).
+
+Es ist glaube ich auch völlig unnötig, hier auf große weite Suche zu gehen, habe schon zu viel Zeit damit verschwendet. Großer Erkenntnisgewinn liegt einfach in der Akzeptanz von Ungenauigkeiten: Die Ergebnisse sind einfach statistisch gestreut. Es besteht ein Einfluss von Signalgenerator und Oszilloskop, Verlustwiderstände nicht nur im Kondesnator, Netzbrummen und Störungen im Stromnetz, allen möglichen Änderungen. \emph{Jede Messung ist einzigartig.} 
+
+Mich würde aber sehr interessieren, was für eine Antwort das Skript vorsieht.
+
+\subsection{Resonanzüberhöhung, Resonanzfrequenz Anomalien}
+\subsubsection{Resonanzfrequenzen für C und L}
+Meine Vermutung ist, dass etwas mit den Formeln oder benutzten physikalischen Größen gar nicht stimmen kann: Es gilt nach Skript:
+\begin{align}
+    f_L^\text{theo}=\frac{1}{2\pi}\sqrt{(2\pi f_R)^2+2\delta^2}&&f_C^\text{theo}=\frac{1}{2\pi}\sqrt{(2\pi f_R)^2-2\delta^2}
+\end{align}
+Damit erhält man unter \(f_R=\qty{4.00(7)}{\kilo\hertz}\) und \(\delta=\qty{1900(400)}{\per\s}\):
+\begin{table}[htb]
+\centering
+\caption{Vergleich von \(f_{L/C}\) aus \cref{fig:freqgängeneu} mit berechneten Werten}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+        \text{Bauteil}&f^{5}[\unit{\kilo\hertz}]&f^\text{theo}[\unit{\kilo\hertz}]&\text{abs.Abw.}[\unit{\kilo\hertz}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        C&\num{3.82(0.07)}&\num{3.98(0.08)}&\num{0.16(0.11)}&\num{4(3)}&\num{1.6}\\
+        L&\num{4.11(0.07)}&\num{4.02(0.08)}&\num{0.09(0.11)}&\num{2(3)}&\num{0.9}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_f45} 
+\end{table}
+NEVERMIND, dieser Vergleich macht gar keinen Sinn, da wir \(\delta\) nur aus einem \(R_{\qty{47}{\ohm}}LC\)-Schwingkreis bestimmt haben. \(\delta\) für einen \(R_{\qty{220}{\ohm}}LC\)-Schwingkreis wäre nötig, um gescheit mit den abgelesen Frequenzen \(f^5\) vergleichen zu können. 
+
+\xfigure{htbp}{height=4cm}{lilowidescreen.png}{\emph{Meme:} Crying Lilo \autocite{liloandstitch}}{Sad Life: Crying \autocite{liloandstitch}}
+
+\subsubsection{Frequenzgänge geplotted}
+\label{sec:Frequenzgängeplot}
+Um sicherzugehen, dass keine Ablesefehler in Aufgabe 4 und 5 im Messprotokoll vorliegen, habe ich die Frequenzgänge aus \cref{fig:A4_RLC_3resonanzkurven.png} und \cref{fig:A5_resonanzüberhöhung_dbscale.png} nochmal im selben Diagramm geplotted. 
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0.7cm 0cm 1cm 0.5cm}, clip]{Diskussion_überhöhunggroß.png}
+        % \caption{Time Domain, rot: \(U_E\), blau \(U_A\)}
+        % \label{fig:3.1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\linewidth,trim={0.7cm 0cm 0.8cm 0.5cm}, clip]{Diskussion_überhöhung.png}
+        % \caption{Frequency Domain}
+        % \label{fig:3.2}
+    \end{subfigure}}
+    \caption[Frequenzgänge neu geplotted]{Frequenzgänge neu in Python geplotted}
+      \label{fig:freqgängeneu}
+\end{figure}
+
+Wie man sieht, existieren zwei Kurven für \(R=\qty{220}{\ohm}\), die aus unterschiedlichen Aufgaben stammen. Mir ist erst jetzt aufgefallen, warum das jedoch kein großes Problem ist: Die Amplitude der Antriebsspannnung, eine sinusförmige Wechselspannung, wurde von \(2V_{pp}\) auf \(0.9V_{pp}\) herabgesetzt für Aufgabe 5. Deswegen ist dann wsl. auch die Amplitude des Frequenzganges von Aufgabe 5 kleiner. 
+
+\subsubsection{Induktivität aus Resonanzüberhöhung/anderen Bauteilen}
+Die Bestimmung von \(L_1\) über \(f_{C/L}\) sorgte für deutlich kleinere Werte, als über \(f_R\). Es gibt zwei Möglichkeiten, die man anhand der Gleichung \(L_1=\frac{R}{\sqrt{8\pi^2|f_{L/C}^2-f_R^2|}}\) diskutieren kann: Entweder der Widerstand ist kleiner als angegeben, oder der Abstand zwischen \(f_{L/C}\) und \(f_R\), welcher implizit in der Rechnung steckt, ist zu groß vermessen worden. Eventuell ist die Auswirkung der Dämfpung des Schwingkreises (die sorgt für die Verschiebung von \(f_{C/L}\) gegenüber \(f_R\)) kleiner als in der Formel \(f_{L/C}=\frac{1}{2\pi}\sqrt{(2\pi f_{L/C})^2\pm\delta^2}\) berücksichtigt. Wäre \(\delta\) kleiner, so sinkt der Abstand zwischen den Frequenzen und damit steigt die berechnete Induktivität. Da die Dämpfung linear vom Widerstand abhängt, können wir also ziemlich sicher schließen, dass der Widerstand \(R<\qty{220}{\ohm}\) ist. 
+
+\subsection{Gedämpfte Schwingung}
+\subsubsection{Verlustwiderstand Methode 3}
+Es konnte erfolgreich \(\delta\) aus einem Plot gewonnen werden, die daraus berechneten Verlustwiderstände zeigen zwar eine ordentliche absolute Abweichung zur anderen Bestimmung von \(R_V\), aber befinden sich innerhalb der Fehlergrenzen.
+
+\subsubsection{Messen der Resonanzfrequenz aus gedämpfter Schwingung}
+Ich bin mir unsicher, inwiefern diese Rechnung sinnvoll war, denn eigentlich ist die über die Periodendauer zu messende Schwingung, die Schwingung eines gedämpften harmonischen Oszillators \(\omega_d=\sqrt{\omega_0^2-\delta^2}\), wobei \(\omega_0=\frac{1}{\sqrt{LC}}\), also Eigenschwingung und Resonanzfrequenz. Nutzen wir diese Formel, mit \(f_d=\frac{1}{T}=\qty{4.0(8)}{\kilo\hertz}\) erhält man:
+\begin{align}
+    f_R=\frac{1}{2\pi}\sqrt{(2\pi f_d)^2-\delta^2}&&\Delta f_d=\frac{1}{2\pi}\sqrt{\frac{\Delta_{\delta}^{2} \delta^{2} + 16 \pi^{4} \Delta_{f d}^{2} f_{d}^{2}}{- \delta^{2} + 4 \pi^{2} f_{d}^{2}}}&&\tcbhighmath{f_0=\qty{4.0(9)}{\kilo\hertz}}
+\end{align}
+In diesen Fehlergrenzen ist viel drinne LMAO. Der nicht signifikantisierte Wert ist \(f_0=\qty{3.988}{\kilo\hertz}\) und liegt damit weiterhin deutlich höher als der experimentell bestimmte Wert von \(\qty{3.82(7)}{\kilo\hertz}\). Es ist auch nicht verwunderlich, dass mit jedem Schritt, mit dem man ein Messergebnis weiter umrechnet, immer und immer mehr Ungenauigkeiten mit hinzukommen. 
+
+Mit welcher Methode die Resonanzfrequenz also am besten bestimmt werden kann, kann ich nicht einschätzen. Da sie anscheinend auch irgendwie mit der Betriebsspannung zusammenhängt (sonst wären die Frequenzgänge aus \cref{fig:freqgängeneu} gleich) gibt es also wirklich viele verschiedene Werte. 
+
+\subsection{Parallelschwingkreis}
+Die Sigma-Abweichung ist sehr niedrig, und dank niedriger Fehlergrenzen auch halbwegs aussagekräftig. YEAH BOI. Das scheint bisher die beste Messung zu sein. 
+
+\subsection{Filterschaltungen}
+Hier konnte man nochmal schöne Bilder bestaunen. Der Bandpassfilter mit \(\qty{47}{\ohm}\) Widerstand war schließlich der beste Filter, da er das gewünschte Signal am besten durchlässt und die anderen Signale am stärksten dämpft - dies ist auch zu erwarten, denn die Bandbreite hängt vom Widerstand ab und bevorzugt somit niedrigere Widerstände. Zu berücksichtigen ist jedoch, dass mit diesem Filter auch das ursprüngliche Signal am stärksten gedämpft wird. Man muss also zwischen der Qualität des Filters (wie genau wird das gesuchte Signal herausgefiltert) und der allgemeinen Qualität des Signals, die natürlich mit fallender Intensität sinkt, abwägen. 
+
+\subsection{Radioempfänger}
+Nach Ende des eigentlichen wurde noch eine exemplarische Anwendung der Schaltungen im Kontext eines Radioempfängers betrachtet. Aber an diesen Versuch erinnere ich mich überhaupt nicht, weil Raphael Schwierz uns zwar alles gezeigt hat, aber ohne es selber auszuprobieren, versteht und lernt man nicht viel. Das wäre aber legit eigentlich der interessanteste Versuchtsteil gewesen, weil man wirklich mal etwas über technologische Anwendungen lernt. 
+
+\subsection{Fazit}
+Man merkt an manchen Ausführungen und unterschiedlichen Messwerten: Es macht wenig Sinn, sich mit kleinsten Unterschiede zu beschäftigen, es sei denn, man arbeitet mit Hochpräzisionsanwendungen.  
+
+Ich würde mir folgendes wünschen: Es sollte nächstes mal erklärt werden, das dBV sind, welche Größe also bei den Frequenzgängen und den Filterschaltungen aufgetragen wird.
+
+Was um alles in der Welt ist die Induktivität von \(L_1\)?!
+
+\xfigure{htbp}{width=0.8\textwidth}{sonnenaufgang.jpeg}{\emph{Meme:} PAP-Aussicht}{Aussicht nach dem Schreiben von PAP-Auswertungen}
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+\includegraphics[width=0.9\linewidth]{bahnfunkrip.jpeg} 
+\caption[\emph{Meme:} Bahnfunk]{Bahnfunkausfall}
+\end{wrapfigure}
+Scharfe Hinseher werden beobachtet haben, dass es sich hierbei NICHT um einen Sonnenuntergang (das wäre die andere Blickrichtung, siehe \cref{fig:Sunsetboot.png}) handelt. Der Grund ist fairly simpel:\vspace{2cm}
+
+und von Funk und Signaltheorie haben wir leider aber immer noch keine Ahnung, trotz \(>25\) Stunden für diese Auswertung!

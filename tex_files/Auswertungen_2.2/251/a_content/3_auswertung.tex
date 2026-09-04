@@ -1,0 +1,135 @@
+% \renewcommand{\thesubsection}{\thesection.\Rom an{subsection}}
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+
+\subsection{Zählrohrspannung}
+Durch Auftragen der Messwerte von Ereignissen \(N\) (bei einer Torzeit von \(t=\qty{30}{\second}\)) bei Zählrohrspannung \(U\) aus Aufgabe 1 erhält man die Punkte in \cref{fig:Zählrohrcharakteristik.png}. Indem nun der erste und letzte Wert außer Acht gelassen werden, da diese nicht zum Plateaubereich der Spannungskurve gehören, kann ein linearer Fit im Plateau angelegt werden. Dieser ist erstmal irrelevant, die wichtige Essenz ist das Ablesen der einzustellenden Zählrohrspannung \(U_0=\qty{545}{\volt}\) als Mittelwert der Plateaugrenzen.
+
+\xfigure{htbp}{width=0.8\textwidth}{Zählrohrcharakteristik.png}{Zählrohrcharakteristik - Spannungskurve}{Zählrohrcharakteristik - Spannungskurve}
+
+\subsection{Plateaubereich des Zählers}
+\paragraph{Plateauanstieg:} Es ist der Plateauanstieg zu bestimmen, der zwischen \(N(U_0)-N(U_0+\qty{100}{\volt})\) vorliegt, indem die Differenz der Zählraten \(n=\frac{N}{t}\) bei erhöhtem \(U_0\) betrachtet werden. Aufgrund der statistischen Verteilung (Poisson Verteilung) besitzen die Messgrößen der Ereignisse \(N\) einen Fehler von \(\Delta N = \sqrt{N}\implies\Delta n=\frac{\sqrt{N}}{t}\). 
+\begin{equation}
+    \begin{aligned}
+        D&=n_{100}-n_0=\frac{N_{100}}{t}-\frac{N_{0}}{t} && \\ \Delta D&=\sqrt{(\Delta n_{100})^2+(\Delta n_0)^2}=\sqrt{\frac{(\Delta N_{100})^{2} + (\Delta {N_0})^{2}}{t^2}}=\sqrt{\frac{N_{100}+N_0}{t^2}}\label{eq:PlateauanstiegD}
+    \end{aligned}
+\end{equation}
+Wäre das Plateau konstant, so sollte natürlich \(D_{60}\) null betragen. Die Abweichung von \(0\) kann nun mittels der Standardabweichung \(\Delta D\) untersucht werden: \(S[\sigma]=\frac{D}{\Delta D}\), man berechnet also, um wie viel \(\sigma\equiv\Delta D\) \(D\) von null abweicht. 
+Man erhält für zwei verschiedene Zeiten \(t=\qtylist{60;180}{\second}\): 
+\begin{rbl}
+D_{60}=\qty{2.4(2.1)}{\per\s}\Rightarrow S=1.2 \qquad\qquad D_{180}=\qty{2.7(1.2)}{\per\s}\implies S=2.3
+\end{rbl}
+Der prozentuale Anstieg wird folgend berechnet: 
+\begin{align}
+    D_\text{rel}=\frac{D}{n_0}=\frac{Dt}{N_0}&&\Delta D_\text{rel}=D_\text{rel}\sqrt{\frac{\Delta {N_0}^{2}}{N_{0}^{2}} + \frac{\Delta{D}^{2}}{D^{2}}}
+\end{align}
+Damit bekommt man noch \(\tcbhighmath{D_{60,\text{rel}}=\qty{2.0(1.8)}{\percent} \qquad D_{180,\text{rel}}=\qty{2.2(1.0)}{\percent}
+}\). 
+\paragraph{1\% Genauigkeit des Anstiegs:} Der Plateauanstieg soll durch lange Messdauer \(t\) auf \(\qty{1}{\percent}=\frac{D}{\Delta D}\) genau bestimmt werden: Dafür werden nun die gemessenen Raten \(n\) benutzt, deren Fehler kann wie in \cref{eq:PlateauanstiegD} durch \(\Delta n=\frac{\sqrt{N}}{t}\) ausgedrückt werden, und mit dem \(t\) im Nenner dann wiederum zu den Raten \(n\) umgewandelt werden (\(\left(\frac{\sqrt{N}}{t}\right)^2=\frac{n}{t}\)):
+\begin{align}
+    0.01&=\frac{\Delta D}{D}=\frac{\sqrt{(\Delta n_{100})^2+(\Delta n_{0})^2}}{n_{100}-n_0}=\frac{\sqrt{n_{100}+n_0}}{\sqrt{t}(n_{100}-n_0)}\leftrightarrow t=\frac{n_{100}+n_0}{0.01^2(n_{100}-n_0)^2}\\
+    \Delta t&=10000 \sqrt{\frac{\Delta_{n 0}^{2} \left(n_{0} + 3 n_{100}\right)^{2} + \Delta_{n 100}^{2} \left(3 n_{0} + n_{100}\right)^{2}}{\left(n_{0} - n_{100}\right)^{6}}}\label{eq:tfehler}
+\end{align} 
+Damit berechnet man mithilfe der Raten \(n=\frac{N}{\qty{180}{\s}} \& \Delta n=\frac{\sqrt{N}}{\qty{180}{\s}}\) der 3min Messung: 
+\begin{rb}
+t=\qty{300000(300000)}{\s}=\qty{5000(5000)}{\hour}
+\end{rb} 
+Die Fehler sind so hoch, da sich die Raten kaum unterschieden und damit \((n_{100}-n_0)^3\) im Nenner von \cref{eq:tfehler} sehr klein ist. 
+Erst wenn die Raten über längere Zeit gemessen werden, kompensiert der Zähler diesen Effekt, indem \(\Delta n_{100/0}\) sehr klein wird, da \(\Delta n\propto\frac{1}{t}\) mit der Messdauer \(t\). 
+\paragraph{Variation der Zählrate:} 
+Meine Interpretation der Aufgabe: \(\Delta D\) entspricht wie man oben gesehen hat, der Standardabweichung von \(D\). Das heißt, wenn sich die Zählrate \(D\) um \(\qtylist{1;2}{\sigma}\) bzw. \(n\sigma\) ändert, also \(D\pm n \cdot\Delta D\), dann betrachtet man den \(n\sigma\) Sigma-Bereich, indem sich die Zählratendifferenz bewegen kann. Die prozentuale Variation \(\text{Var}_{n\sigma}\) ist dann analog zu \(D_\text{rel}\) im Bezug auf \(n_0\) zu ermitteln:
+\begin{equation}
+    \frac{D\pm n \cdot\Delta D}{n_0}=\frac{D}{n_0}\pm\frac{n\cdot\Delta D}{n_0}=D_\text{rel}\pm \text{Var}_{n\sigma}
+\end{equation}
+Diese Gleichung ergibt also ein Intervall, symetrisch um \(D_\text{rel}=\frac{D}{n_0}\), in welchem sich die Zählratendifferenz \(D\) bewegt - abhängig des Sigma-Bereiches. Die Aussage der Größe \(\text{Var}_{n\sigma}\) ist also: Mit der Wahrscheinlichkeit von \(\qtylist{68;95}{\percent}\) liegt bei einer Wiederholungsmessung der Wert für \(D^\prime_\text{rel}\in(D_\text{rel}\pm\text{Var}_{1,2\sigma})\).
+Damit bekommt man für die zwei Zeiten:
+\begin{rbl}
+    \text{Var}^{60}_{\qtylist{1;2}{\sigma}}=\qtylist{1.75;3.5}{\percent} \qquad \text{Var}^{180}_{\qtylist{1;2}{\sigma}}=\qtylist{0.98;1.97}{\percent}
+\end{rbl}
+
+\subsection{Verifizierung der statistischen Natur radioaktiven Zerfalls}
+Durch Aufnehmen der Zerfallsereignisse \(N\) pro Torzeit \(t=\qtylist{0.5;0.1}{\s}\) und das 2000 bzw. 5000-Mal wurde ein Set an Ereigniszahlen generiert, die vom Messprogramm am Experimentiercomputer automatisch in ein Histogramm nach Ereigniscounts (wie häufig trat der Zerfall von \(N\) auf) sortiert wurden, sodass eine Häufigkeitsverteilung erstellt werden konnte. 
+
+Mittels der Scipy-Funktion \verb|curvefit| kann eine Gauß- und Poissonverteilung an die Messdaten gefittet werden. Für die Gaußfunktion wurden als Parameter die Fläche \(A_g\), der Mittelwert \(\mu_g\) und die Standardabweichung \(\sigma_g\) als Parameter gewählt, für die Poissonverteilung die Fläche \(A_p\) und der Mittelwert \(\mu_p\). Außerdem wurden Datenpunkte mit Häufigkeiten < 10 nicht in den Fit einbezogen, da dieser dadurch verfälscht werden könnte. Außerdem wurden gemäß \secref{sec:AnhangStatistik} die \(\chi^2\) Summe, \(\chi^2_\text{red}\) und die Fitwahrscheinlichkeit \(p\) berechnet. 
+
+\xfigure{htbp}{width=\textwidth}{Histogramm0.5.png}{Histogramm und Fit für 2000 Messungen}{Histogramm und Fit für 2000 Messungen}
+\xfigure{htbp}{width=\textwidth}{Histogramm0.1.png}{Histogramm und Fit für 5000 Messungen}{Histogramm und Fit für 5000 Messungen, links nicht logarithmische Skala, um Asymetrie der Verteilung zu sehen}
+\FloatBarrier
+Die Fitergebnisse werden in dieser Tabelle zusammengefasst:
+\begin{table}[!h]
+  \centering
+  \caption{Fitergebnisse der statistischen Natur}
+  \begin{tabularx}{0.8\textwidth}{cZZZ}
+    \toprule
+        Messanzahl & \text{Parameter} & {\text{Gaußfit}} & {\text{Poissonfit}}\\\midrule
+        \multirow{6}{*}{2000} & A & \num{1990(50)} & \num{1990(50)} \\
+        & \mu [\frac{1}{0.5\mathrm{s}}] & \num{61.12(21)} & \num{61.30(21)} \\
+        & \sigma [\frac{1}{0.5\mathrm{s}}] & \num{7.82(19)} & {-} \\
+        & \chi^2 & \num{40.0} &  \num{30.0}\\
+        & \chi^2_\text{red} & \num{1.1} &  \num{1.0} \\
+        & p & \qty{40.0}{\percent} & \qty{52.0}{\percent} \\ \midrule
+        \multirow{6}{*}{5000} & A & \num{4900(80)} & \num{4990(80)}\\
+        & \mu [\frac{1}{0.1\mathrm{s}}] & \num{5.04(4)} & \num{5.08(4)}\\
+        & \sigma [\frac{1}{0.1\mathrm{s}}] & \num{2.174(25)} & {-} \\
+        & \chi^2 & \num{120.0} &  \num{7.0}\\
+        & \chi^2_\text{red} & \num{12.0} & \num{0.6} \\
+        & p & \qty{0.0}{\percent} & \qty{85.0}{\percent} \\
+    \bottomrule
+  \end{tabularx}
+\label{table:statistischeNatur}  
+\end{table}
+\clearpage
+% \begin{table}[htb]
+%   \centering
+%   \caption{Fitergebnisse der statistischen Natur}
+%   \begin{tabularx}{\textwidth}{ZZZ}
+%     \toprule
+%         \text{Parameter} & \text{Messungen} & \text{2000 Messungen}\\\midrule
+%         A_g & \num{1990(50)} & \num{4900(80)} \\
+%         \mu_g & \qty{7.82(0.19)}{\per\s} & \qty{61.12(0.21)}{\per\s} & \qty{5.04(0.04)}{\per2\s} & \\
+%         \sigma_g & \qty{2.174(0.025)}{\per\s} & 
+%         \chi^2_g  & 40.0 &  120.0\\
+%         \chi^2_red_g & 1.1 &  12.0 \\
+%         p & \qty{40.0}{\percent} & \qty{0.0}{\percent} \\ \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%         A_p & \num{1990(50)} & \num{4990(80)}\\
+%         \mu_p & \qty{5.08(0.04)}{\per\s} & 
+        
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}
+
+% \begin{figure}[htbp]
+%     {\captionsetup{list=false}
+%     \caption{Eingangsspannung in rot, Ausgangsspannung in blau}}
+%     \label{fig:diffop}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+%         \caption{Differentation einer Gaußschen Spannung}
+%         \label{fig:gaußdiff}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+%         \caption{Differentation einer Dreiecksspannung}
+%         \label{fig:trianglediff}
+%     \end{subfigure}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}

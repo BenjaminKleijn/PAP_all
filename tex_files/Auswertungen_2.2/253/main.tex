@@ -1,0 +1,91 @@
+﻿% PAPclass.cls (mit packages) muss übergeben werden: Entweder als globale Datei in ein lokal angelegtes MikTeX-Verzeichnis, oder durch pasten in jeden Versuchsordner zur main.tex (schlecht, da dann 30 mal dieselbe Datei).
+% Das Anlegen des globalen Verzeichnisses - siehe README_global_PAPclass.md
+
+% use [draft] for quicker compiling (only loads images as frames and enables showkeys - labels are shown)
+% change position to ngerman, english if experiment is done in english
+\documentclass[final,english,ngerman]{PAPclass}
+\input{../../latex_class/cmds.tex}
+
+
+% %comment% these in case of an english document
+\captionsetup[figure]{name=Abb.}
+\captionsetup[wrapfigure]{name=Abb.}
+
+% Grafikpfade festlegen
+\graphicspath{{./images/}{../Code/253/Diagramme}}
+% \svgpath{{../../Messwerte/}} % if you can bring your tex installation to compile svgs - congrats, pls send me an email: b.k.ballcr@gmail.com and tell me how its done
+
+% pages= {78-87},
+% Biblatex Einstellungen vornehmen
+\addbibresource{../../latex_class/lit.bib}                         % initialisieren der .bib Datei
+\defbibfilter{literature}{not keyword=figure}
+\defbibfilter{figures}{keyword=figure}
+% \NewBibliograhpyString{ZuletztOnline}                            % some way probably to automate setting a date, but idk
+% \DefineBibliographyStrings{german}{ZuletztOnline = {[Online, Stand 02/2026]}}
+
+% KOMA-Script Einstellungen für Header und footer
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{\footnotesize}
+\setkomafont{pagehead}{\scshape}
+\setkomafont{pagination}{}
+\ihead{\versuchnummer\;- \versuch}
+\ohead{\headmark}
+\cfoot{\pagemark}
+
+
+%-Document settings
+% -- Variable Settings
+\newcommand{\documentTitle}{Auswertung Versuch }	    % Titel
+\newcommand{\versuchnummer}{253}
+\newcommand{\versuch}{Absorption von \(\alpha\)-, \(\beta\)- und \(\gamma\)-Strahlung}
+\newcommand{\tutor}{Lewin Dißelmeyer}               
+\newcommand{\Termin}{23.06.2026}	
+
+% -- Fixed Settings
+\newcommand{\documentAuthor}{Benjamin Kleijn}       % Autor				
+% \newcommand{\Abschluss}{Bachelor of Science}	
+\newcommand{\department}{Physik}	                % Fachrichtung
+\newcommand{\locationUniversity}{Heidelberg}	    % Uni Standort
+\newcommand{\Gruppe}{19}	                        % Gruppe
+% \newcommand{\Kurs}{nachmittags}
+
+
+
+
+%% ------------------------------
+%% |    Versuchsausarbeitung    |
+%% ------------------------------
+\begin{document}
+    \input{a_content/titlepage}
+    \clearpage
+    \pagestyle{scrheadings}
+
+    \tableofcontents
+    \clearpage
+    \listoffigures
+    \listoftables
+    \clearpage                    
+    \section{Einleitung}                                % Die Texte werden in den einzelnen Dateien eingefügt.
+    \input{a_content/1_einleitung}
+    \clearpage
+    \section{Durchführung}
+    \input{a_content/2_durchfuehrung}
+    \clearpage
+    \section{Auswertung}\label{sec:Auswertung}
+    \subsection*{Formeln der statistischen Analyse\autocite{Skript_2.2}}
+    \input{../../latex_class/Statistik.tex}
+    \input{a_content/3_auswertung}
+    \newpage
+    \section{Diskussion}
+    \input{a_content/4_diskussion}
+    \clearpage
+    \begingroup
+    \hypersetup{urlcolor=.,citecolor=citerullink}       % set linkcolour for bib to fontcolour
+    \printbibliography[heading=bibintoc,title={Literaturquellen},filter={literature}]
+    \printbibliography[heading=bibintoc,title={Abbildungsquellen},filter={figures}]
+    \endgroup
+    \hypersetup{urlcolor=blueurllink}                   % back to blue
+    \vfill
+    \appendix
+    \input{a_content/Anhang}
+\end{document}

@@ -1,0 +1,210 @@
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+\vfill
+\subsection[Absorption von Betastrahlung]{Absorption von \(\boldsymbol{\beta}\)-Strahlung}
+Prinzipiell ist nach Skriptanleitung die gemessene Zählrate \(n\) bereinigt um den gemessenen Nulleffekt: \(n-n_0^\beta\) mit \begin{equation}
+    \Delta (n-n_0^\beta)=\sqrt{\left(\Delta n^2\right)+\left(\Delta n_0^\beta\right)^2}=\sqrt{\left(\frac{\sqrt{N}}{t}\right)^2+\left(\frac{\sqrt{N_0^\beta}}{t_0}\right)^2}
+\end{equation}
+gegen Absorberdicke \(a\) zu plotten. Das Skript ist äußerst unspezifisch, auf welche Weise aus dem resultierenden Diagramm die maximale Reichweite \(a_0\) (\enquote{diejenige [extrapolierte] Absorberdicke, bei der die Absorptionskurve nahezu senkrecht verlaufen würde}) aus dem Diagramm abgelesen werden soll. Wie man in \cref{fig:1betastrahlung_useless.png} an den blauen eingezeichneten Messpunkten sieht, ergibt sich jedoch überhaupt kein senkrechter Abfall.
+\xfigure{htbp}{width=0.8\textwidth}{1betastrahlung_useless.png}{Betastrahlung: Messpunkte}{Betastrahlung: Messpunkte}
+\FloatBarrier
+
+Altprotokolle setzen ein exponentielles Modell \(f_{A,\beta,c}(a)\defeq (n-n_0^\beta)(a)=A\mathrm{e}^{-\beta a}+c\) als theoretisches Modell zur Beschreibung des Betazerfalls an, dieses Vorgehen ist im Skript nicht erwähnt und in den Altprotokollen nicht motiviert und begründet. Ausgehend vom linearen Trend der Messpunkte in der logarithmischen \cref{fig:1betastrahlung_useless.png} ist ein exponentielles Modell jedoch verständlich. Zwar ist aus Versuch 251: \enquote{Aktivierung thermischer Neutronen}, in welchem Silber- und Indiumisotope erzeugt und deren radioaktiver \(\beta\)-Zerfall untersucht wurde, bekannt, dass die Anzahl der zerfallenen Kerne gemäß \cref{eq:Zerfallsgesetz} dem Zerfallsgesetz \(n=n_0\mathrm{e}^{-\lambda t}\) folgt. Prinzipiell haben statistische Gesetze jedoch mit Absorption in Materie nichts zu tun. Naja, egal. 
+
+Erste Beobachtung: Der Wert \(c\) sollte, da schon um den Nulleffekt bereinigt wurde, \(c=0\) betragen. Damit stößt man auf das erste Problem: Von \verb|curve_fit| wird \(c=\qty{-0.33(0.06)}{\per\s}<0\) berechnet, was sehr unrealistisch ist, denn die Zählrate wird in jedem physikalischen Szenario \(c=f_{A,\beta,c}(a\to\infty)>0\) bleiben. Der gemessene Nulleffekt \(n_0^\beta\) könnte zwar auf den ersten Blick aufgrund statistischer Schwankungen größer als der reale Nulleffekt gemessen worden sein, wodurch dann geringe Zählraten nahe am realen Nulleffekt durch Bereinigung um den zu hohen Nulleffekt negativ wären, aber glücklicherweise lässt sich der Fehler mithilfe von \(\Delta n_0^\beta=\frac{\sqrt{N_0^\beta}}{t_0}=\qty{0.37(0.04)}{\per\s}\) berechnen. Damit ist nur in \(\qty{0.27}{\percent}\) aller Fälle der gemessene Nulleffekt \(n_0^{\beta\;\prime}>n_0^\beta+3\cdot\Delta n_0^\beta\). Wenn man davon ausgeht, dass nur der Nulleffekt in diesem  unwahrscheinlichen Fall zu groß gemessen wurde, dann würde im extremsten Fall \(c=n(a\gg 1)-n_0^{\beta\;\prime}\approx n_0^\beta-n_0^{\beta\;\prime}=-3\Delta n_0^\beta=\qty{-0.12}{\per\s}\) gemessen werden. Und das auch nur in sehr unwahrscheinlichen Fällen. Ein solch negativer Wert für \(c\) wie in dem obigen Fit macht also physikalisch und statistisch keinen Sinn.
+
+Falls man damit weiterarbeitet hat das jetzt den folgenden Effekt: Für hohe Absorberdicken ist \(f_{A,\beta,c}(a)<0\), im halb-logarithmischen Diagramm wird dann aufgrund von \(f_{A,\beta,c}(a)\to 0\implies \ln(f_{A,\beta,c}(a))\to -\infty\) eine senkrecht abfallende Funktion geplotted. Das ist jetzt zwar eine \enquote{Absorptionskurve[, die] nahezu senkrecht verlaufen würde}, aber nur wegen der mathematischen Eigenschaften eines logarithmischen Diagramms smh. 
+\xfigure{htbp}{width=0.8\textwidth}{1betastrahlung_senkrecht.png}{Fit: senkrechter Abfall Betastrahlung}{Fit: senkrechter Abfall Betastrahlung}
+\FloatBarrier
+% --- RECHTES BILD ---
+\tikz[remember picture, overlay]{%
+  \node[anchor=north east, opacity=1] at ([xshift=-0.2cm, yshift=-5.5cm]current page.north east){%
+    \includegraphics[width=2cm]{woody.png}};}%
+Der Vollständigkeit halber sei kurz gesagt, wie weiter vorgegangen werden würde: Die senkrechten Asymptoten als maximale Reichweite \(a_0\) und die Fehlerbestimmung erfolgt dann durch das Berechnen/Betrachten der Nullstellen der (Fehler-)kurven, die durch die Fitparameter \( A, \beta,c\) charakterisiert werden. Mithilfe der 1 Sigmafehler \(\Delta A,\Delta \beta,\Delta c\) aus der Kovarianzmatrix werden die zwei Fehlerkurven \(f_{(A,\beta,c)\pm\Delta (A,\beta,c)}\) gezeichnet, und für die maximale Reichweite ergibt sich dann:
+\begin{align}
+    f_{A,\beta,c}(a^c_0)\overset{!}{=}0\implies a^c_0=-\frac{\ln(-\frac{c}{A})}{\beta}&&\Delta a^c_0=\max_{\pm\Delta}\left(-\frac{\ln(-\frac{c\pm\Delta c}{A\pm\Delta A})}{\beta\pm\Delta\beta}\right)&&
+    \tcbhighmath[colback=white]{a^{c}_0=\qty{2.91(0.13)}{\milli\m}}
+\end{align}
+
+\paragraph{Anderer Ansatz:} Man plottet alle unbereinigten Messdaten \(n^\beta\) und fittet \(f_{A,\beta,C}(a)\), sodass der Parameter \(C\) den Nulleffekt beinhaltet. Dann kann man durch Fitten von \(z_{A,\beta}=A\cdot\mathrm{e}^{-\beta a}\) an den linearen Verlauf im halblogarithmischen Diagramm den Bereich nutzen, der dem exponentiellen Zerfallsgesetz entspricht. Die maximale Reichweite bestimmt man nun, indem dieser Fit \(z\) bis zum Abfallen auf Nulleffektniveau extrapoliert wird. Für die Wahl des Nulleffektniveaus, welches genutzt wird, um den Schnittpunkt von \(f_{A,\beta}\) mit dem horizontalen Nulleffektniveau zu berechnen, hat man nun zwei Optionen: Entweder \(C\) oder \(n_0^\beta\). 
+\begin{align}
+    f_{A,\beta}(a^C_0)=C\implies a^C_0=-\frac{\ln\left(\frac{C}{a}\right)}{\beta}&&\Delta a^C_0=\max_{\pm}-\frac{\ln\left(\frac{C\pm\Delta C}{a}\right)}{\beta}
+\end{align}
+\xfigure{htbp}{width=0.8\textwidth}{1betastrahlung_neu.png}{Fit: Geradenschnitt Betazerfall}{Fit: Geradenschnitt Betazerfall}
+\FloatBarrier
+Damit erhält man \(a^C_0=\qty{3.04(0.16)}{\per\s}\), bzw. wenn statt \(C\) \(n_0^\beta\) benutzt wird: \(a^{n_0^\beta}_0=\qty{2.82(0.07)}{\per\s}\).
+
+Dies lässt sich jetzt mithilfe der Dichte von Aluminium \(\rho_{\ce{Al}}=\qty{2.6989}{\g\per\cm\cubed}\)\autocite{Aluminiumdichte} in eine Flächendichte des Absorbermaterials umrechnen, da jedoch zusätzlich zur Absorption der Aluminiumplatten noch die intrinische Absorption der Präparatkapsel (Fenster aus Edelstahl/Silber, entspricht einer Flächendichte \(R_\mathrm{ES}^\beta=\qty{0.13}{\g\per\cm\cubed}\)) hinzukommt, wird dieser Wert addiert. Im Diagramm hat man nur die maximale Reichweite in Aluminium bestimmt, nachdem ein Teil der potentiellen Reichweite schon durch das Fenster aufgebraucht wurde. Man erhält also eine effektive Flächendichte:
+\begin{align}
+    R_\beta=\rho_{\ce{Al}\cdot a_0}+R_\mathrm{ES}^\beta&&\Delta R_\beta=\rho_{\ce{Al}}\Delta a_0
+\end{align}
+\begin{prba}
+    R^C_\beta=\qty{0.95(0.05)}{\g\per\cm\squared}&& R^{n_0^\beta}_\beta=\qty{0.891(0.019)}{\g\per\cm\squared}&& R^c_\beta=\qty{0.92(0.04)}{\g\per\cm\squared}
+\end{prbla}
+Mit diesem Wert \(R^C_\beta\) kann aus \cref{fig:alpha_betaenergie.png} die entsprechende Energie der Beta-Teilchen abgelesen werden. Als ermitteltes Ergebnis ergibt sich:
+\begin{rbl}
+    E_\beta=\qty{2.01(15)}{\mega\electronvolt}
+\end{rbl}
+
+\subsection[Absorption von Gammastrahlung]{Absorption von \(\boldsymbol{\gamma}\)-Strahlung}
+Wie in der Einführung beschrieben wird nun das Lambert-Beersche Gesetz \(n^\gamma=n_0\cdot\mathrm{e}^{-\mu a}\) verwendet, um die Absorption von Gammastrahlung in Blei zu beschreiben. Dafür werden die gemessenen Zählraten erst um den Nulleffekt der ersten Messung auf \(n^\gamma-n_0\) bereinigt und gegen die Absorberdicke der Bleiplatten aufgetragen. Die exponentielle Natur des Lambert-Beerschen Gesetzes bedeutet einen linearen Verlauf im logarithmischen Diagramm, wie in \cref{fig:2_gammastrahlung.png} zu sehen ist. Aus dem Fit lässt sich der Schwächungskoeffizient \(\mu_{\ce{Pb}}=\qty{0.642(0.023)}{\per\cm}\) bestimmen, der sich mithilfe der Dichte von Blei\autocite{Bleidichte} \(\rho_{\ce{Pb}}=\qty{11.342}{\g\per\cm\cubed}\) in den materialunabhängigen Massenschwächungskoeffizient umrechnen lässt:
+\begin{align}
+    \frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}&&\Delta (\frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}})=\frac{\Delta \mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}&&\tcbhighmath[colback=white]{\frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}=\qty{0.0566(0.0020)}{\cm\squared\per\g}}
+\end{align}
+Mit diesem Wert lässt sich wiederum aus dem im Skript gegebenen Diagramm \ref{fig:massenenergie.png} die Energie der Gammastrahlung bestimmen:
+\begin{rb}
+    E_\gamma=\qty{1.30(1)}{\mega\electronvolt}
+\end{rb}
+\xfigure{htbp}{width=0.8\textwidth}{2_gammastrahlung.png}{Fit: Lambert-Beer an Gammastrahlung}{Fit: Lambert-Beer an Gammastrahlung}
+\FloatBarrier
+
+\subsection[Aktivität des Gammastrahlers]{Aktivität des \(\boldsymbol{\gamma}\)-Strahlers}
+\paragraph{theoretische Aktivität:} Zuerst lässt sich über die Herstellerangaben der Quelle, also die Nennaktivität \(A_0=\qty{3700}{\kilo\becquerel}\), das Herstellerdatum: 2.03.2010 und damit Alter der Quelle\autocite{timecalculater} \(t=\qty{514 771 200}{\s}\) und die Halbwertszeit von \ce{^60Co} \(T_{\nicefrac{1}{2}}=\qty{5.27}{\jahr}\) die theoretische Aktivität\autocite{Aktivität} nach \cref{eq:Zerfallsgesetz} bestimmen:
+\begin{align}
+    A_{\text{lit}}=A_0\cdot \mathrm{e}^{-\lambda t}=A_0\cdot \mathrm{e}^{-\frac{\ln(2)t}{T_{\nicefrac{1}{2}}}}=A_0\cdot\left(2\right)^{-\frac{t}{T_{\nicefrac{1}{2}}}}&&\tcbhighmath{A_{\text{lit}}=\qty{433}{\kilo\becquerel}}
+\end{align}
+
+\paragraph{unkorrigierte Aktivität:} Die experimentell bestimmte Aktivität benötigt erstmal das Sammeln der Größen \(r,l,\epsilon\), die im Skript\autocite{Skript_2.2} oder am Versuchsaufbau gegeben sind: Radius des Zählrohrfenster \(r=\qty{0.7}{\cm}\), Länge des Zahlrohrs \(l=\qty{4}{\cm}\), \(\epsilon=\qty{4}{\percent}\), der Abstand von GMZ und Präparat wurde auf \(d=\qtylist{5;10;20}{\cm}\) mit jeweils \(\Delta d=\sqrt{2}\cdot\qty{0.1}{\cm}\) eingestellt. Die verbleibende Größe \(n=\frac{N}{t}\) wurde durch Messen über eine Minute erhoben und es wird nun analog wie in vorheriger Aufgabe \(n^\gamma-n_0\) mit entsprechendem Fehler genutzt, um \(A\) mit \cref{eq:Aktivität} zu berechnen.
+\begin{align}
+    A=\frac{4(n^\gamma-n_0)d^2}{\epsilon r^2}&&\Delta A=A\sqrt{\frac{4 \Delta{d}^{2}}{d^{2}} + \frac{\Delta{(n^\gamma-n_0)}^{2}}{(n^\gamma-n_0)^{2}}}
+\end{align}
+\begin{rbl}
+    A_{d=\qtylist{5;10;20}{\cm}}=\qtylist{610(40);690(25);730(40)}{\kilo\becquerel}
+\end{rbl}
+Man sieht ein Ansteigen der Aktivität mit zunehmendem Abstand. Eventuell liegt dies daran, dass die Näherung, die Kreisscheibe des GMZ enstpreche einem Kugeloberflächenausschnitt, der dann zum Berechnen des Raumwinkels genutzt wird, für kleine Abstände den Raumwinkel überschätzt: \(A\sim\frac{1}{\Omega\uparrow}\implies A \downarrow\). 
+
+\paragraph{Mitteln der Aktivitäten:} Die Aktivitäten dürfen nicht gemittelt werden, weil die Fehler und Näherungen abhängig vom Abstand sind: Die geometrischen Näherungen sind für größere Abstände zutreffender, dafür entsteht jedoch durch die weite Entfernung ergo niedrige Zählrate ein großer statistischer Fehler \(\frac{\Delta n}{n}=\frac{1}{\sqrt{N}}\). Im vorliegenden skaliert der relative Fehler des Abstandes mit \(\frac{\Delta d}{d}=\frac{\sqrt{2}\cdot\qty{0.1}{\cm}}{d}\sim\frac{1}{d}\), damit kompensieren sich die relativen Fehler von \(n\) und \(d\) gegenseitig. 
+
+\paragraph{Korrektur des Abstandes:} Der Raumwinkel lässt sich wie in der Einleitung über einen korrigierten Abstand \(d=d+\frac{l}{2}\) genauer abschätzen, sodass ein Korrekturfaktor \(k_1\) eingeführt werden kann:
+\begin{align}
+        k_1&=\frac{(d+\frac{l}{2})^2}{d^2}&\Delta k_1&=\frac{1}{2}\sqrt{\frac{\Delta_{d}^{2} l^{2} \left(2 d + l\right)^{2}}{d^{6}}}\\
+        A_{\mathrm{korr}}&=\frac{4(n^\gamma-n_0)(d+\frac{l}{2})^2}{\epsilon r^2}=k_1\cdot A&\Delta A_{\mathrm{korr}}&=A\sqrt{\frac{16 \Delta{d}^{2}}{\left(2 d + l\right)^{2}} + \frac{\Delta{(n^\gamma-n_0)}^{2}}{(n^\gamma-n_0)^{2}}}
+\end{align}
+Damit erhält man:
+\begin{rbla}
+    k_{1,\qtylist{5;10;20}{\cm}}&=\numlist{1.96(0.04);1.440(0.007);1.2100(0.0016)}\\
+    A_{d=\qtylist{5;10;20}{\cm}}^{\mathrm{korr}}&=\qtylist{1200(90);990(40);880(50)}{\kilo\becquerel}
+\end{rbla}
+Für große Abstände wird die Korrektur klein, da \(d\gg l\). Für kleinen Abstand von \(d=\qty{5}{\cm}\) ist die Korrektur ziemlich hoch; da für kleine Abstände die Raumwinkel Näherung jedoch auch schon nicht mehr zutrifft, ist es m.M.n. gerechtfertigt, hier von einer unrealistischen Korrektur zu reden. 
+\newpage
+
+\subsubsection*{Vergleich Korrektur 1 mit theoretischer Aktivität}  
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(A_{\text{korr}}\) und \(A_{\text{korr}}^{\text{lit}}\)}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+         \text{Messreihe }d\,[\unit{\cm}]& A_{\text{korr}}[\unit{\kilo\becquerel}] & A_{\text{lit}}[\unit{\kilo\becquerel}] & \text{abs.Abw.}[\unit{\kilo\becquerel}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        5 & \num{1200(90)} & 433 & \num{770(90)} & \num{64(9)} & \num{9} \\
+        10 & \num{990(40)} & 433 & \num{560(40)} & \num{56(5)} & \num{14} \\
+        20 & \num{880(50)} & 433 & \num{450(50)} & \num{51(7)} & \num{9} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_A} 
+\end{table}
+Bei den schwankenden Ergebnissen ist eine große Sigma-Abweichung erwartbar, dass die absolute Abweichung jedoch so hoch ist, ist sehr überraschend. Es scheinen Messfehler oder die Realität und den Experimentaufbau nicht korrekt beschreibenden Berechnungen genutzt worden zu sein, die die experimentellen Ergebnisse dermaßen verzerren. (wenn die theoretische Aktivität richtig ist.)
+
+\paragraph{Korrektur um Abschirmung in Präparatkapsel:} Zwischen \(\gamma\)-Strahler \ce{^60Co} und der großen weiten Welt befindet sich noch ein Abschirmungsfenster mit Dicke \(x=\qty{1.4}{\mm}\) und Dichte \(\rho=\qty{7.9}{\g\per\cm\cubed}\), welches die Aktivität der Quelle weiter senkt. Der experimentell gemessene Wert \(A_\text{korr}\) ist damit um den Faktor \(1/k_2\) niedriger als der eigentliche Wert der offenen Quelle \(A_\text{exp}\). 
+\begin{align}
+    A_{\text{korr}}=A_{\text{exp}}\cdot\mathrm{e}^{-\mu x}\implies A_\text{exp}&=A_\text{korr}\cdot\exp(\frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}\rho_\text{ab}x)=A_\text{korr}\cdot k_2\\\Delta A_{\text{exp}}&=A_{\text{exp}}\sqrt{\left(\Delta\frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}\right)^2 \rho_\text{ab}^{2} x^{2} + \frac{\Delta A_\text{korr}^{2}}{A_\text{korr}^{2}}}
+\end{align} 
+\begin{rbla}
+    k_2=\num{1.0646(0.0024)} && A_\text{exp}=\qtylist{1280(100);1050(50);940(60)}{\kilo\becquerel}
+\end{rbla}
+
+\subsubsection*{Vergleich Korrektur 2 mit theoretischer Aktivität}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(A_{\text{exp}}\) und \(A_\text{lit}\)}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+         \text{Messreihe }d\,[\unit{\cm}]&A_{\text{exp}}[\unit{\kilo\becquerel}] & A_\text{lit}[\unit{\kilo\becquerel}] & \text{abs.Abw.}[\unit{\kilo\becquerel}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        5& \num{1280(100)} & 433 & \num{850(100)} & \num{66(10)} & \num{9} \\
+        10& \num{1050(50)} & 433 & \num{620(50)} & \num{59(6)} & \num{13} \\
+        20& \num{940(60)} & 433 & \num{510(60)} & \num{54(8)} & \num{9} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_A_exp} 
+\end{table}
+Es ist nicht verwunderlich, dass die Abweichungen weiter so schlecht sind, denn durch diese Abschirmungskorrektur sind die Aktivitätswerte um \(k_2>1\) gestiegen (da zuvor die reale Aktivität unterschätzt wurde). Weiterhin bleiben die Abweichungen in galaktischer Entfernung zur erwartbaren Aktivität.
+
+\subsection[Absorption von Alphastrahlung]{Absorption von \(\boldsymbol{\alpha}\)-Strahlung}
+In \cref{fig:4_gammastrahlung.png} wurde die gemessene Zählrate \(n\) gegen den Druck \(p\) aufgetragen und die Funktion
+\begin{equation}
+    f_{a,b,c,d}(p)=a\arctan(bp-c)+d    
+\end{equation}
+angefittet. Nach Skriptanweisung ist der Druck \(p_1\defeq p(\frac{n_\text{max}}{2})\)auf halber maximaler Zählrate \(\frac{n_\text{max}}{2}=\frac{1}{2\cdot3}\sum_{i=1}^3 n_i\) zu bestimmen. Die halbe maximale Zählrate wurde anhand der ersten 3 Messwerte festgelegt, da der arctan Fit die maximal gemessenen Zählraten nicht erreicht. Anschließend bestimmt man \(p_1\) mit:
+\begin{align}
+    \frac{n_\text{max}}{2}=a\arctan(bp_1-c)+d\implies p_1=\frac{1}{b}\left(\tan\left(\frac{\frac{n_\text{max}}{2}-d}{a}\right)+c\right)&&\tcbhighmath[colback=white]{p_1=\qty{359.7(0.3)}{\milli\bar}}
+\end{align} 
+\xfigure{htbp}{width=0.8\textwidth}{4_gammastrahlung.png}{Alphastrahlung: Messpunkte und Fit}{Alphastrahlung: Messpunkte}
+
+Das Ziel ist es nun einen Bremsweg/maximale Reichweite \(R_\alpha=\sum_i s_i\) zu berechnen: Nach Skript lässt sich aus \(p_1\) der erste Faktor \(s_1\) durch diese Formel bestimmen:
+\begin{align}
+    s_1=\frac{p_1}{p_0}s_0&&\Delta s_1=s_1\sqrt{\frac{\Delta_{p 1}^{2}}{p_{1}^{2}} + \frac{\Delta_{s 0}^{2}}{s_{0}^{2}}}
+    &&\tcbhighmath[colback=white]{s_1=\qty{1.58(0.04)}{\cm}}
+\end{align}
+Hierbei ist \(s_0=\qty{4.45(1)}{\cm}\) der am Versuchsaufbau notierte Abstand von Präparat und Zählrohr.
+
+Zudem trägt durch die Dicke des Zählrohrfensters aus Glimmer ein weiteres Material mit Flächendichte \(\rho_\text{Gl}=\qty{2.35}{\milli\gram\per\cm\squared}\) zu zusätzlicher Absorption/zusätzlichem Bremsweg bei:
+\begin{align}
+    s_2=\frac{\rho_\text{Gl}}{\qty{1.43}{\milli\gram\per\cm\squared}}\qty{1}{\cm}&&\tcbhighmath[colback=white]{s_2=\qty{1.64}{\cm}}
+\end{align}
+\(s_2\) ist also die Luftstrecke bei Normaldruck, die äquivalent zum Bremsvermögen des Glimmerfensters ist.\\
+Des weiteren ist die \(\alpha\)-Quelle \ce{^241Am} mit einer \(\qty{3}{\micro\m}\) dicken Goldschutzschicht bedampft, das entspricht nach Skript einer zusätzliche Reichweite von \(\tcbhighmath[colback=white]{s_3=\qty{0.68}{\cm}}\). Bis auf \(s_1\) sind die eben benutzten Werte zur Berechnung der anderen \enquote{Luftstrecken} vom Skript als fehlerfrei angegeben. Man erhält also: \(\tcbhighmath[colback=white]{R_{\alpha}=\qty{3.900(0.018)}{\cm}}\). Damit lässt sich in die Energie der Alphateilchen in \cref{fig:alpha_betaenergie.png} ablesen:
+\begin{rb}
+    E_\alpha=\qty{5.500(10)}{\mega\electronvolt}
+\end{rb}
+
+
+\clearpage
+\subsection*{Ablesen der Teilchenenergien}
+An den folgenden Grafiken wurde geeyeballed\autocite{not_sure_if} (in einer logarithmischen Skala kleine Fehler einzuzeichnen, ist ziemlich schwierig) die Strahlungsenergie abgelesen.
+\tikz[remember picture, overlay] {
+  \node[anchor=north west, opacity=1] at ([xshift=0.2cm, yshift=-12cm]current page.north west) {
+    \includegraphics[width=2cm]{NOTSUREIF.jpg}
+  };
+}
+\xfigure{htbp}{width=\textwidth}{massenenergie.png}{Ablesen der Energie der Gammastrahlung\autocite{Skript_2.2}}{Massenschächungskoeffizient-Energie Beziehung für Gammastrahlung\autocite{Skript_2.2}}
+
+\xfigure{htbp}{width=\textwidth}{alpha_betaenergie.png}{Ablesen der Energie der Alpha- und Betastrahlung\autocite{Skript_2.2}}{Flächendichte-Energie Beziehung für Alpha- und Betastrahlung\autocite{Skript_2.2}}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}
+
+% \begin{figure}[htbp]
+%     {\captionsetup{list=false}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+%         \caption{Differentation einer Gaußschen Spannung}
+%         \label{fig:gaußdiff}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+%         \caption{Differentation einer Dreiecksspannung}
+%         \label{fig:trianglediff}
+%     \end{subfigure}}
+%     \caption{Eingangsspannung in rot, Ausgangsspannung in blau}
+%     \label{fig:diffop}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}

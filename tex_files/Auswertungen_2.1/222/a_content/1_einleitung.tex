@@ -1,0 +1,192 @@
+\subsection{Motivation}
+Die industrieelle Revolution wurde von der Dampfmaschine katalysiert, die erste Wärmekraftmaschine, die es ermöglichte Wärmeenergie in mechanische Energie umzuwandeln. Die Deckung der Energiebedürfnisse unserer Zivilisation waren und sind seitdem Grundlage und Motivation für stetige Verwendung von Ressourcen, Humankapital, Forschung und Entwicklung, Ingenieurkunst an Methoden der Energieerzeugung/-umwandlung von für den Menschen nicht nutzbaren in nutzbare Formen. 
+Zur Untersuchung der Effizienz und thermodynamischen Funktionsweise von Energieumwandlung sind das Konzept der Carnot-Maschine und thermodynamische Grundlagen essentiell. 
+
+Der vorliegende Versuch beschäftigt sich anhand des Stirling-Motors (der zweitältesten Wärmekraftmaschine nach der Dampfmaschine) mit den Grundprozessen einer Wärmekraftmaschine und der Realisation in Form des Stirling-Motors. Dieser zeichnet sich durch äußere Wärmezufuhr, hohe Laufruhe und einen im Idealfall sehr hohen Wirkungsgrad aus.
+
+\subsection{Ziele des Versuches}
+Es wird die Funktionsweise eines \(\beta\)-Typs Stirlingmotors sowohl im Betrieb als Wärmekraftmaschine als auch in der umgekehrten Betriebsweise als Kältemaschine bzw. Wärmepumpe. 
+\begin{itemize}
+    \item Bestimmung der Kälteleistung des als Kältemaschine betriebenen Stirling-Motors
+    \item Betrieb als Kältemaschine und Wärmepumpe und Aufzeichnung des Temperaturverlaufs
+    \item Betrieb als Wärmekraftmaschine und Analyse der Motorperformance
+    \item Betrieb als belastete Wärmekraftmaschine durch Bremsung
+\end{itemize}
+
+\subsection{Geräte}
+\begin{enumerate}
+    \item \(\beta\)-Typ Heißluftmotor
+    \item Aufsätze: Heizwendel mit regelbarem Netzteil als externe Wärmequelle; Reagenzglas mit Wasser an dem Arbeit verrichtet wird
+    \item Sensorsystem \textit{Cassy} mit Druck- Temperatur- und Wegsensor
+    \item Durchflussmengen-Messgerät des Kühlwassers
+    \item Dreikanal Thermometer
+    \item PC mit Drucker zur Auswertung/Aufzeichnung der Messdaten
+    \item Multimeter
+    \item optisches Drehzahlmessgerät (Messen der Drehfrequenz des Schwungrades)
+    \item Elektrischer Antriebsmotor mit regelbarem Netzteil für den Betrieb als Kältemaschine/Wärmepumpe
+    \item Riemen als Kraftübertrag von externem Antrieb auf Schwungrad des Motors
+    \item Prony-Zaum mit Federkraftmesser
+\end{enumerate}
+
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}\label{sec:Physics}
+
+\subsubsection{Der Beta-Typ Stirlingmotor} \label{ssec:bTS}
+\begin{wrapfigure}{r}{0.5\textwidth}
+\includegraphics[width=0.9\linewidth]{Sterling_beta_typ.png} 
+\captionsetup{format=plain}
+\caption{Schematischer Aufbau des \(\beta\)-typ Stirlingmotors \protect\autocite{Skript_2.1}}
+\label{fig:betasterling}
+\end{wrapfigure}
+
+Der im Versuch verwendete Stirlingmotor ist ein \(\beta\)-Typ, bei dem sich Arbeits- und Verdrängungskolben in einem gemeinsamen, gasgefüllten Zylinder befinden. Der obere Bereich des Zylinders wird beheizt, während der untere Bereich aktiv gekühlt wird. Der Verdrängungskolben bewegt das Arbeitsgas periodisch zwischen den beiden Temperaturzonen, ohne es dabei zu komprimieren. Die eigentliche Volumenänderung erfolgt durch den Arbeitskolben.\\
+Beide Kolben sind über eine Kurbelwelle mit einem Schwungrad gekoppelt und bewegen sich nahezu sinusförmig mit einer Phasenverschiebung von etwa \(\ang{90}\). Im Inneren des Verdrängers befindet sich ein Regenerator aus Kupferwolle, der als kurzzeitiger Wärmespeicher dient und den Wirkungsgrad des Prozesses erhöht, indem er Wärme zwischen den isochoren Zustandsänderungen zwischenspeichert.
+\subsubsection{Der Stirlingmotor als Wärmekraftmaschine} \label{ssec:SterWa}
+Der ideale Stirlingprozess durchläuft einen Kreisprozess aus vier Zustandsänderungen: einer isothermen Expansion, einer isochoren Abkühlung, einer isothermen Kompression und einer isochoren Erwärmung.
+
+\begin{itemize}[noitemsep]
+    \item \textcolor{teal}{Isotherme Expansion}: Der Verdrängungskolben befindet sich im unteren Endpunkt und die Luft im beheizten Bereich erhält dadurch kontinuierlich Wärme \(Q_1\). Hierbei bleibt die Temperatur \(T_1\) konstant. Das Gas verrichtet die Arbeit \(W_1\) am nach unten gedrückten Arbeitskolben, indem es sich vom Volumen \(V_1\) auf \(V_2\) ausdehnt.
+    \item \textcolor{teal}{Isochore Abkühlung}: Während der Verdrängungskolben sich nach oben bewegt, wird das Gas in den gekühlten Bereich verdrängt. Dort gibt es die Wärme \(Q_2\) ab und erlebt einen Temperaturabfall auf \(T_2 < T_1\).
+    \item \textcolor{teal}{Isotherme Kompression}: Im nächsten Schritt nutzt der Arbeitskolben seinen Schwung und komprimiert das Gas im gekühlten Bereich isotherm von \(_V2\) zurück auf \(V_1\). Hierbei wird die Wärmemenge \(Q3\) abgegeben.
+    \item \textcolor{teal}{Isochore Erwärmung}: Als letztes bewegt sich der Verdrängungskolben wieder nach unten. Dadurch erwärmt sich das Gas im beheizten Bereich unter Aufnahme der Wärmemenge \(Q_4\) wieder auf die Temperatur \(T_1\).
+\end{itemize}
+\xfigure{htbp}{width=0.8\textwidth}{sterling_kreislauf.png}{Kreislaufprozess des Sterling-Motors\protect\autocite{Skript_2.1}}{\(pV\)-Diagramm des idealen Stirling Prozess (bei Verwendung
+als Wärmekraftmaschine). Rechts: Korrespondierende Stellungen des Arbeits-
+und Verdrängungskolbens bei einem \(\beta\)-Typ Heißluftmotor \protect\autocite{Skript_2.1}}
+
+Grundlage aller Prozesse ist der erste Hauptsatz der Thermodynamik, welcher einen Zusammenhang zwischen der Wärme \(Q\), der inneren Energie \(U\) und der Volumenarbeit \(p\diff V\) beschreibt (\(p\) ist der Druck und \(V\) das Volumen),
+\begin{equation}
+    \label{1HS}
+    \diff Q = \diff U + p\,\diff V = c_V v\, \diff T + p\, \diff V .
+\end{equation}
+wobei die innere Energie eines idealen Gases ausschließlich von der Temperatur \(T\) abhängt, hier ausgedrückt mit der molaren Wärmekapazität \(c_V\) und molarem Volumen \(v\).\\ 
+Zudem ist das ideale Gasgesetz zentral:
+\begin{equation}
+    \label{Gas}
+    pV = \nu RT 
+\end{equation}
+wobei \(\nu\) die Gasmenge in mol ist und \(R\) die ideale Gaskonstante, dem ersten Hauptsatz der Thermodynamik \eqref{1HS} und der Zerlegung der vier Prozessschritte in isotherme und isochore Zustandsänderungen.
+
+Angewandt auf die 4 Prozesse des idealen Sterling-Motors erhält man folgende Ergebnisse:\\ Bei der \textcolor{teal}{isotherme Expansion} gilt \(\diff T = 0\), also \(\diff U = 0\) und somit:
+\begin{equation}
+    \diff Q_1 = pdV = \nu RT_1 \frac{\diff V}{V}
+\end{equation}
+was nach Integration über \(V\) auf
+\begin{equation}
+    Q_1 = W_1 = \nu RT_1 \ln \left( \frac{V_2}{V_1} \right)
+\end{equation}
+führt. Wir sehen \(W_1 = Q_1\).\\
+Bei der \textcolor{teal}{isochoren Abkühlung} bleibt das Volumen konstant, d.h.
+\begin{equation}
+dQ_2 = -c_V \nu \, dT \;\;\Rightarrow\;\; Q_2 = -c_V \nu (T_1 - T_2)
+\end{equation}
+wieder mit Integration über \(V\). Hieraus folgt wiederum, da keine Volumensarbeit geleistet wird, dass \(W_2 = 0\).\\
+Betrachtet man die \textcolor{teal}{\textcolor{teal}{isotherme Kompression}}, so zeigt sich (analog zur isothermen Expansion)
+\begin{equation}
+Q_3 = W_3 = -\nu R T_2 \ln\left(\frac{V_2}{V_1}\right)
+\end{equation}
+gilt. Ähnlich erhalten wir im Fall der \textcolor{teal}{isochore Erwärmung}:
+\begin{equation}
+Q_4 = c_V \nu (T_1 - T_2) \quad \text{und} \quad W_4 = 0
+\end{equation}
+Die isothermen Schritte wandeln zugeführte Wärme vollständig in Volumenarbeit um, während die isochoren Schritte ausschließlich die innere Energie ändern.
+\subsubsection{Wirkungsgrad}
+Die (Nutz-)Arbeit \(W_\text{N}\) pro Zyklus ergibt sich aus der im \(pV\)-Diagramm eingeschlossenen Fläche. Für den idealen Prozess gilt
+\begin{equation}
+    \label{WN}
+    W_\mathrm{N} = \oint_V p\diff V= v R (T_1 - T_2)\, \ln\!\left(\frac{V_2}{V_1}\right).
+\end{equation}
+Ohne Regenerator setzt sich die aufgenommene Wärme \(Q^+\) aus der isothermen Expansion und der isochoren Erwärmung zusammen. Mit perfektem Regenerator entfällt der zweite Beitrag, da alle Wärme zwischengespeichert wird und dann als \(Q_4\) wieder aus der Kufperwolle entnommen werden kann. Die einzige externe Wärmezufuhr erfolgt also während der isothermen Expansion. Der ideale Wirkungsgrad entspricht dann dem Carnot-Wirkungsgrad,
+\begin{equation}
+    \label{Carnot}
+    \eta_\mathrm{th} =\frac{W_\text{N}}{Q^+}= 1 - \frac{T_2}{T_1}.
+\end{equation}
+Reale Stirlingmotoren weichen hiervon ab, da die Kolbenbewegung kontinuierlich erfolgt und die Zustandsänderungen überlappen. Dies führt zu Verlusten durch unvollständige Regeneration, Wärmeleitung, Reibung und Totvolumen.
+\subsubsection{Betrieb des Motors als Kältemaschine} \label{ssec:SterKa}
+Wenn man den Motor von Außen antreibt (d.h. Arbeit zuführt), wird er zur Wärmepumpe bzw. Kältemaschine, was den Prozess im \(pV\) -Diagramm umkehrt.
+\xfigure{htbp}{width=0.7\textwidth}{sterling_kreislauf.png}{}{Links: umgedrehte Umlaufrichtung im \(pV\)-Diagramm bedeutet Betrieb als Kältemaschine/Wärmepumpe. Rechts: Energiebilanz, siehe auch Drehrichtung des Motors, die die Richtung des Wärmetransports indiziert \protect\autocite{Skript_2.1}}
+Durch das Verrichten von äußerer mechanischer Arbeit \(W_\text{M}\) wird das Gas zyklisch komprimiert und expandiert, sodass Wärme \(Q_2\) aus einem kalten Reservoir entzogen/aufgenommen und zusammem mit der mechanischen Arbeit als \(Q_1\) an ein warmes Reservoir abgegeben wird. Die Energiebilanz lautet
+\begin{equation}
+    \label{Kaelte}
+    Q_1 = Q_2 + W_\mathrm{M}
+\end{equation}
+Alternativ lässt sich \(Q_1\) auch über die kalorische Zustandsgleichung der Kühlflüssigkeit bestimmen
+\begin{equation}
+    \label{eq:mit_ordentlich_kalorien}
+    Q_1 = \frac{c_\text{W} \, \rho_\text{W} \, \Delta T \, \dot V}{f} 
+\end{equation}
+wobei der Index W für Wasser steht. \(c\) ist die Wärmekapazität, \(\rho\) die Dichte, \(\Delta T\) die Temperaturdifferenz und \(f\) die Frequenz des Motors.
+Auch für die entzogene Wärme aus dem obigen Reservoir \(Q_2\) (hier ist es eine Heizwendel) lässt sich ein Ausdruck finden, denn diese entspricht gerade der zugeführten elektrischen Heizarbeit \(W_\text{H}\)
+\begin{equation}
+    \label{qZWEI_ist_es_diesessmalalasdhj}
+    Q_2 = W_\text{H} = \frac{U_\text{H} \, I_\text{H}}{f} 
+\end{equation}
+mit dem Heizstrom \(U_\text{H}\) und der Heizspannung \(I_\text{H}\).
+
+Für die Leistungsbewertung werden zwei Größen verwendet. Zum einen der Wirkungsgrad der Kältemaschine, (hier wird \(Q_2\) unter Aufwand von \(W_M\) von oben nach unten transportiert) 
+\begin{equation}
+    \label{nK}
+    \eta_\mathrm{K} = \frac{Q_2}{W_\mathrm{M}} 
+\end{equation}
+und zum anderen die Leistungszahl der Wärmepumpe, bei der unter Aufwand von \(W_M\) die aus der Umgebung gezogene Wärme \(Q_2\) nach oben transportiert wird.  
+\begin{equation}
+    \label{WP}
+    \eta_\mathrm{WP} = \frac{Q_1}{W_\mathrm{M}} 
+\end{equation}
+
+
+Im Versuch wird die Kälteleistung sowohl über eine Kompensationsmessung als auch über die Gefrierzeit einer Wasserprobe bestimmt, letztere Methode erfolgt über das Wasservolumen \(V_\text{W}\), die Schmelzenthalpie     von Wasser \(\lambda_\text{W}\), der Wasserdichte \(\rho_\text{W}\) und der Gefrierzeit \(t_0\):
+\begin{equation}
+    \label{kalteleistung_muhaha}
+    P_\text{K} = \frac{V_\text{W} \, \lambda_\text{W} \, \rho_\text{W}}{t_0}
+\end{equation}
+bestimmt werden. Diese kann auch über die Heißspannung \(U_\text{H}\) und dem Heißstrom \(I_\text{H}\) bestimmt werden:
+\begin{equation}
+    \label{kalteleistung_muhaha_anders}
+    P_\text{K} = U_\text{H} \, I_\text{H}
+\end{equation}
+\vspace{2cm}
+\xfigure{htbp}{width=\textwidth}{gimli.png}{\textit{Meme:} Mount Caradhras Kühlleistung \(\to \infty\)}{Wenn man den Motor zulange laufen lässt \protect\autocite{Gimli}}
+
+\subsubsection{belastete Wärmekraftmaschine}
+Wird der Motor unter Verwendung einer Heizwendel unter Zuführung der elektrischen Energie \(Q_el\) von außen beheizt, so wird diese in Wärmeverluste umewandelt: Apparuturbedingte Wärmeverluste namens \(Q_v\) sowie nicht genutzte, durchs Kühlwasser abgeführte Wärmeenergie \(Q_{ab}\), die durch \cref{eq:mit_ordentlich_kalorien} (Messung des Kühlwasserstroms und dessen Temperatur)  bestimmbar ist. Der Rest wird als thermische Prozessarbeit \(W_{pV}\) im Kolben zum Antrieb eines Schwungrades genutzt, diese Größe ist im \(pV\)-Diagramm als Fläche des Kreislaufes quantifizierbar. Damit ist 
+\begin{equation}
+    \label{eq:WpV}
+    W_{pV}=W_D+Q_R+\Delta E_{rot}
+\end{equation}
+Hierbei ist \(W_D\) eine - ich zitiere - eine \enquote{qewisse Lastarbeit}, die im zweiten Teil des Experimentes zur Wärmekraftmaschine (belasteter Stirlingmotor) an einem angelegten Bremszaum der Länge \(l\) umgesetzt wird. \(Q_R\) sind Reibungsverluste und \(\Delta E_\text{rot}\) Änderungen der Rotationsenergie des Schwungrades. Der Motor muss theoretisch im eingefahrenen Zustand (Schwungrad dreht sich) nur Reibungsverluste kompensieren. 
+Für den unbelasteten Teil gilt also: 
+\begin{equation}
+    Q_{el}=W_{pV}+Q_v+Q_{ab}=Q_R+Q_v+Q_{ab}
+\end{equation}
+
+Wird nun eine Bremskraft \(F\) eingestellt, erzeugt diese ein Drehmoment \(D = lF\) . Pro Motorzyklus wird somit die Arbeit \(W_D=2\pi D=2\pi lF\) als Bremsarbeit aufgewandt. 
+Nun lässt sich eine Gesamtenergiebilanz aufstellen: 
+\begin{equation}
+    Q_{el}=W_D+Q_R+Q_v+Q_{ab}
+\end{equation} 
+Setzt man \(Q_V = Q_v + Q_R\) als Gesamtverlust, so kann man eine untere Schranke für alle Verluste bestimmen:
+\begin{equation}
+    Q_V=Q_{el}-Q_{ab}-W_D
+\end{equation}
+
+Nun gibt es noch zwei andere Wirkungsgrade, die betrachtet werden können: Der thermische Wirkungsgrad wird über das Verhltnis aus thermi-scher Prozessarbeit WpV zur gesamten zugeführten elektrischen Energie Qel. Der effektive Wirkungsgrad hingegen bezeichnet den Anteil der zugeführten Arbeit, der an den Bremszaum abgegeben wird, um die Bremsung zu kompensieren. 
+\begin{align}
+    \eta_{th}=\frac{W_{pV}}{Q_{el}}\label{eq:etath}\\
+    \eta_\text{eff}=\frac{W_D}{Q_{el}}\label{eq:etaeff}
+\end{align}
+
+Die im Versuch gemessenen Größen wie Druck, Volumenänderung, Temperaturdifferenzen, Drehzahl und elektrische Leistungen ermöglichen eine vollständige Energiebilanzierung der verschiedenen Betriebsarten.
+
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

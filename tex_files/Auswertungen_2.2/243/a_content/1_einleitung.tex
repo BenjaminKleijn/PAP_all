@@ -1,0 +1,76 @@
+\subsection{Motivation}
+Kein Messsignal ist perfekt, sondern es ist stets mit einem Rauschen behaftet, welches die Messgenauigkeit negativ beeinflusst und begrenzt. Kenntnis des Rauschens und seiner Ursachen/Quellen erlaubt, die störenden Effekte zu minimieren und das Signal bestmöglich zu im Gegensatz zum Rauschen zu messen (Signal/Rauschverhältnis maximieren). Möglichkeiten sind zum Beispiel das Einsetzen von Kühlung (Verringerung von thermischen Rauschen), das Verringern der Messbandbreite, Mittelwertbildung, Verwendung von rauscharmen Bauteilen oder Abschirmung von Rauschquellen.
+
+\subsection{Ziele des Versuches}
+Aus der Bestimmung der Rauschspannung an verschiedenen Widerständen und einem Verstärker kann die Boltzmannkonstante \(k_B\) bestimmt werden. Da die Rauschspannungen im Mikrovolt-Bereich liegen, ist ein rauscharmer Verstärker notwendig, dessen Eigenrauschen separat bestimmt und vom Gesamtsignal abgezogen werden muss. Zusätzlich wird der Frequenzgang eines Verstärkers und eines Bandfilters aufgenommen, um diese in der Auswertung in Python zu untersuchen.
+
+\subsection{Geräte}
+\begin{enumerate}
+    \item Netzteil mit zwei 12 V Batterien
+    \item Zimmerthermometer
+    \item Verschiedene ohmsche Widerstände in einem gemeinsamen Gehäuse montiert
+    \item Rauscharmer Verstärker mit 1000-facher Verstärkung (60 dB) und zuschaltbarem Bandpassfilter
+    \item Dämpfungsglied 1/1000-fach (-60dB)
+    \item Beheizbarer Widerstand \(\qty{4}{\kilo\ohm}\) bei \(\qty{0}{\degreeCelsius}\) (Pt4000-Widerstand)
+    \item Heizungsnetzteil mit integrierter Regelelektronik für den beheizbaren Widerstand
+    \item Oszilloskop mit Spektrumanalyzer
+    \item Funktionsgenerator
+    \item Multimeter Agilent HP34401
+    \item PC
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+
+Thermisches Rauschen, auch als Johnson-Nyquist-Rauschen bezeichnet, ist ein statistisches Phänomen, das in allen elektrischen Leitern auftritt, sofern diese eine Temperatur oberhalb des absoluten Nullpunkts besitzen. Da es ein chaotisches System ist, sind nur statistische Messungen, also über Mittlung gewonnene Ergebnisse sinnvoll. Die Ursache liegt in der thermischen Energie der Ladungsträger, die eine ungeordnete, zufällige Bewegung ausführen. Diese Bewegung wird oft als Brownsche Bewegung der Ladungsträger beschrieben. Selbst ohne Anlegung einer äußeren Spannung führt diese ungerichtete Bewegung zu einem statistisch variierenden elektrischen Potenzial im Leiter. Misst man die Spannung über einem Widerstand mit einem hochempfindlichen Oszilloskop, so beobachtet man eine fluktuierende Spannung \(U_r(t)\), die statistisch um einen Mittelwert schwankt. Da sich die Anzahl der Teilchen im Widerstand proportional zur Avogadro-Konstante \(N_A=\qty{6.022e23}{\per\mole}\) ist, und es somit viele zufällige Möglichkeiten (auch zeitlich zufällig) der ungerichteten Bewegung gibt, überlagenrn sich die Bewegungen genähert zu Wechselspannungen, die Messung detektiert also Wechselspannungen einer kontinuierlichen Frequenzverteilung.
+Zudem sorgt die ungerichtete Bewegung dafür, dass sich positive und negative Beiträge im zeitlichen Mittel aufheben, sodass der Erwartungswert der Rauschspannung verschwindet:
+\begin{equation} \label{eq:mean_zero}
+    \langle U_r \rangle = \lim_{t' \to \infty} \frac{1}{t'} \int_0^{t'} U_r(t) \, dt = 0
+\end{equation}
+Um die Stärke des Rauschens dennoch zu quantifizieren, muss daher nicht der Mittelwert, sondern der quadratische Effektivwert (Root Mean Square oder auch rms) herangezogen werden. Alle im Versuch gemessenen Rauschspannungen sind solche rms-Werte. Dieser entspricht der Wurzel aus dem zeitlichen Mittelwert des Quadrats der Spannung:
+\begin{equation} \label{eq:rms_def} 
+    \sqrt{\langle U_r^2 \rangle} = \sqrt{\lim_{t' \to \infty} \frac{1}{t'} \int_0^{t'} U_r(t)^2 \, dt} .
+\end{equation}
+
+Bei der Untersuchung des Frequenzspektrums einer solchen thermischen Rauschquelle stellt man fest, dass alle Frequenzanteile bis in den Terahertz-Bereich in gleichem Maße vorhanden sind. Keine Frequenz wird gegenüber einer anderen bevorzugt. In Analogie zum weißen Licht, bei dem alle sichtbaren Frequenzen gleich stark vertreten sind, wird dieses Phänomen als weißes Rauschen bezeichnet. Harry Nyquist leitete 1927 eine Beziehung her, die den quadratischen Effektivwert der Rauschspannung \(\langle U_r^2 \rangle\) eines ohmschen Widerstands \(R\) bei der Temperatur \(T\) in Abhängigkeit von der Messbandbreite \(\Delta f\) beschreibt:
+\begin{equation} \label{eq:nyquist} 
+    \langle U_r^2 \rangle = 4 k_B T R \Delta f .
+\end{equation}
+In dieser Gleichung stellt \(k_B\) die gesuchte Boltzmann-Konstante dar und \(R\) die allgemeine Gaskonstante. Die Bandbreite \(\Delta f\) bezieht sich hierbei auf die Bandbreite der verwendeten Messelektronik (Verstärker, Filter, Messgerät). Da das Rauschen frequenzunabhängig ist, trägt jeder Frequenzbereich gleichermaßen zur gesamten Rauschleistung bei; eine größere Bandbreite führt somit zu einer höheren gemessenen Rauschspannung.
+
+Da die Rauschspannung bei Zimmertemperatur und typischen Widerstandswerten und Bandbreiten nur im Bereich von Mikrovolt liegt, ist eine direkte Messung ohne Verstärkung nicht möglich. Deshalb wird ein rauscharmer Verstärker mit einer Verstärkung \(V\) (im Versuch ca. 1000-fach bzw. 60 dB) eingesetzt. Allerdings stellt der Verstärker selbst eine weitere Rauschquelle dar. Die Rauschbeiträge des Widerstands \(\langle U_R^2 \rangle\) und des Verstärkers \(\langle U_V^2 \rangle\) addieren sich quadratisch, da sie statistisch unabhängig voneinander sind und ihre Mittelwerte null sind:
+\begin{equation} \label{eq:total_noise} 
+    \langle U_{R+V}^2 \rangle = \langle (U_R + U_V)^2 \rangle = \langle U_R^2 \rangle + \langle U_V^2 \rangle .
+\end{equation}
+Um die Boltzmann-Konstante bestimmen zu können, muss das Eigenrauschen des Verstärkers \(\langle U_V^2 \rangle\) experimentell ermittelt werden, indem der Verstärkereingang kurzgeschlossen wird (Nullmessung), und später von der Gesamtmessung subtrahiert werden. Zudem wird zur präzisen Bestimmung der effektiven Bandbreite ein Bandfilter verwendet, welcher aus einem Hochpass- und einem Tiefpassfilter besteht. Der Hochpass unterdrückt niederfrequente Störungen, während der Tiefpass hochfrequentes Rauschen filtert und eine scharfe Begrenzung der oberen Grenzfrequenz ermöglicht.
+
+Zur Bestimmung der Bandbreite wird der Frequenzgang \(g(f)\) des gesamten Messsystems (Verstärker plus Bandfilter) untersucht, dieser ist definiert als das Verhältnis der Ausgangsspannung zur Eingangsspannung bei einer bestimmten Frequenz \(f\):
+\begin{equation} \label{eq:freq_response} 
+    g(f) = \left. \frac{U_{\text{aus}}(f)}{U_{\text{ein}}(f)} \right|_f .
+\end{equation}
+Die Ausgangsrauschleistung ergibt sich durch Integration des quadratischen Frequenzgangs über alle Frequenzen, multipliziert mit der Nyquist-Leistungsdichte. Unter Berücksichtigung des Verstärkerrauschens gilt für die gemessene Ausgangsspannung:
+
+\begin{equation} \label{eq:output_voltage} 
+    \langle U_{\text{aus}}^2 \rangle = 4 k_B T R \int_0^\infty g(f)^2 \, df + \langle U_V^2 \rangle = 4 k_B T R B + \langle U_V^2 \rangle .
+\end{equation}
+
+Das Integral \(B = \int_0^\infty g(f)^2 \, df\) wird als äquivalente Rauschbandbreite des Messsystems bezeichnet. Durch Umstellen dieser Gleichung lässt sich die Boltzmann-Konstante berechnen:
+
+\begin{equation} \label{eq:boltzmann_calc} 
+    k_B = \frac{\langle U_{\text{aus}}^2 \rangle - \langle U_V^2 \rangle}{4 T R B} .
+\end{equation}
+
+
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

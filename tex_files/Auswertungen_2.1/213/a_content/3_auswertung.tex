@@ -1,0 +1,91 @@
+\subsection{Dämpfungskonstante}
+Die Werte aus \cref{table:messwerte1} werden von [\(\unit{\rpm}\)] in [\(\unit{\rad\per\s}\)] umgerechnet und dann in einem logarithmischen Graphen aufgetragen. Da erwartet wird, dass exponentielle Abnahme vorliegt:
+\begin{equation}
+    \omega_F(t)=b\cdot e^{-\delta t}\qquad \ln(\omega_F)=\ln(b)-\delta t
+    \label{eq:Dämpfung}
+\end{equation}
+lässt sich eine Gerade \(\ln(y)=-\delta t+\ln(b)\) durch die logarithmischen aufgetragenen Messwerte fitten, deren Parameter \(\delta\) die Dämpfungskonstante ist, \(\Delta \delta\) wird aus dem Fitfehler extrahiert. Zu beachten ist jedoch, dass der Fehler \(\Delta^{\mathrm{ln}} \omega_F = \pdb{\ln(\omega_F)}{\omega_F}\Delta \omega_F=\frac{\Delta\omega_F}{\omega_F}\) beim Fitten wie hier dargestellt umgewandelt werden muss, gemäß \hyperref[eq:gauss_fehlfortpflanzung]{Gauß'scher Fehlerfortpflanzung \ref{eq:gauss_fehlfortpflanzung}}.
+Mithilfe der Dämpfungskonstante kann noch die Halbwertszeit \(T_{\nicefrac{1}{2}}\) berechnet werden:
+\begin{align}
+    T_{\nicefrac{1}{2}}=\frac{\ln(2)}{\delta}&&\Delta T_{\nicefrac{1}{2}}=\frac{\ln(2)}{\delta^2}\Delta\delta
+\end{align}
+\begin{rb}
+    \delta=\qty{145(4)e-5}{\per\s} \qquad T_{\nicefrac{1}{2}}=\qty{480(13)}{\s}
+\end{rb}    
+\xfigure{htbp}{width=0.8\textwidth}{Nr.1_Reibung.png}{Aufgabe 1: \(\ln(\omega_F(t))\) Fit}{Ermittlung der Reibungskonstante durch logarithmisches Auftragen}
+
+\subsection{Präzession}
+Man sieht an der ersten Zeile in \cref{table:messwerte2}, dass die Präzessionsdauer unabhängig des Winkels der Figurenachse ist, die Abweichung der beiden Werte beträgt nur \(\num{1.2}\sigma\). 
+
+Zur Bestimmung des Trägheitmoments \(I_z\) wird \cref{eq:prezession} verwendet. \(\omega_P\) wird aus den den Periodendauern erhoben.
+Die Frequenz \(\omega_F\) ändert sich während der Präzessionsdauer, deswegen wird die Anfangsfrequenz \(\omega^i_F\) mittels der Dämpfungskonstante in eine Endfrequenz \(\omega^f_F\) umgerechnet, und dann der Mittelwert \(\bar{\omega}_F\) gebildet. Natürlich werden hiervor die mithilfe des Stroboskops gemessenen Frequenzen \(f^i_F\) in Kreisfrequenzen umgewandelt.
+\begin{subequations}
+\begin{align}
+    \omega_P&=\frac{2\pi}{T_P}&&\Delta \omega_P=\frac{2\pi}{T_P^2}\Delta T_P\\
+    \omega^i_F&=2\pi f^i_F &&\Delta \omega^i_F=2\pi \Delta f^i_F\\
+    \omega^f_F&=\omega^i_F\cdot e^{-\delta T_P}&&\Delta \omega^f_F=e^{-\delta T_P}\sqrt{(\Delta \omega^i_{F})^2 + (\omega^i_{F} \delta \Delta T_P)^2 + (\omega^i_{F} T_p \Delta \delta)^2}\\
+    \bar{\omega}_F&=\frac{\omega^i_F+\omega^f_F}{2}&&\Delta\bar{\omega}_F=\frac12 \sqrt{(\Delta \omega^i_F)^2+(\Delta\omega^f_F)^2}
+    \end{align}
+\end{subequations}
+So wurden alle benötigten Werte berechnet. Jetzt werden pro äußerem Drehmoment (es gab 4 Konfigurationen) \(T_P(\omega_F)\) in ein Diagram aufgetragen und eine Gerade gefittet. Die Steigungen ergeben sich zu: 
+
+\begin{prba}
+    a_{m-20}=\qty{1.602(0.020)}{\s\squared} && a_{m-15}=\qty{2.275(0.019)}{\s\squared}\\
+     a_{2m-20}=\qty{0.763(0.021)}{\s\squared} && a_{2m-15}=\qty{1.061(0.021)}{\s\squared}
+\end{prbla}
+\xfigure{htbp}{width=0.8\textwidth}{Nr.2_Präzession.png}{Aufgabe 2: Präzession}{Steigungsbestimmung der Präzessionsdauer \(T_P(\omega_F)\)}
+
+Diese Steigungen werden gemäß \cref{eq:prezession} genutzt, um die Trägheitsmomente \(I_z\) zu bestimmen. Die Trägheitsmomente der präzessionserzeugenden Gewichtsstücke können vernachlässigt werden. Da die Kugel selber so gelagert ist, dass sie sich um ihren Schwerpunkt dreht, trägt sie nicht zum Drehmoment bei, welches die Präzession erzeugt.
+
+\begin{align}
+    T_P=\overbracket{\frac{2\pi I_z}{mgl}}^{=a}\bar{\omega}_F&&\xrightarrow{}&& I_z=\frac{amgl}{2\pi}&&\Delta I_z=I_z\sqrt{\frac{\Delta_{a}^{2}}{a^{2}} + \frac{\Delta_{g}^{2}}{g^{2}} + \frac{\Delta_{l}^{2}}{l^{2}}}
+\end{align}
+Mit den Längen aus \cref{table:messwerte2}, der Heidelberger Erdbeschleunigung \(g=\qty{9.80984(2)}{\m\per\s\squared}\) und der Masse \(m=\qty{9.85}{\gram}\) ergeben sich die folgenden Werte:
+\begin{prba}
+  I_{m-20}=\qty{4.93(0.10)e-3}{\kg\m\squared}&&
+I_{m-15}=\qty{5.25(0.12)e-3}{\kg\m\squared}\\
+I_{2m-20}=\qty{4.70(0.15)e-3}{\kg\m\squared}&&
+I_{2m-15}=\qty{4.90(0.14)e-3}{\kg\m\squared}
+\end{prbla}
+Als Ergebnis wird der Mittelwert verwendet, dessen Fehler über quadratisches Addieren der Standardabweichung und des Mittelwerts der Einzelfehler bestimmt wurde. 
+\begin{rb}
+    I_z\defeq\bar{I}_z=\qty{4.95(0.14)e-3}{\kg\m\squared}
+\end{rb}
+
+
+\subsection{Beobachtung der Nutation}
+Die Farbwechselrichtung (\(\Omega\)) wurde zwar aufgeschrieben: \enquote{grün - rot - gelb}, jedoch ist die Umlaufrichtung der Figurenachse (\(\omega_F\)) nicht mehr bekannt. Ist diese gleichgerichtet mit der Rotation der Farbscheibe, so ist \(\frac{\Omega}{\omega_F}>0\). Dies sorgt nach \cref{eq:IxIz} dafür, dass \(1-\frac{I_Z}{I_x}>0\), daraus folgt \(I_x>I_z\), wie dies im Skript\autocite{Skript_2.1} steht.
+
+Wenn \cref{eq:ix_formel} betrachtet wird, um eine Aussage zu der im nächsten Abschnitt betrachteten Steigung des Fits zu machen, so entsteht folgendes: We denote \(\frac{m}{m-1}\defeq V\):
+\[
+    \text{für } m = \frac{\omega_F}{\Omega}
+    \qquad
+    \begin{cases}
+    \in(-\infty,0]\Rightarrow 0\le V<1 :& I_x < I_z \\[2pt]
+    \in[0,1)\Rightarrow V<0:& I_x<0 \text{  nothing real} \\[2pt]
+    \lim_{m \todown 1} V\to\-\infty:& I_x<0 \text{  nothing real}  \\[2pt]
+    \in(1,\infty)\Rightarrow V>1  :& I_x > I_z \\[2pt]
+    \end{cases}
+\]
+
+\subsubsection[\texorpdfstring{Berechnung von \(I_x\)}{Berechnung von I x}]{Berechnung von \(\boldsymbol{I_x}\)}
+Nach \cref{eq:I_XXX} kann bei Kenntnis von \(I_z\) und \(m\defeq\frac{\omega_F}{\Omega}\) das Trägheitsmoment \(I_x\) bestimmt werden. \(m=\qty{173(5)}{}\) wurde aus der Steigung des linearen Fits von \(\Omega(\omega_F)\) aus den Messwerten von \cref{table:messwerte4} bestimmt. 
+\xfigure{htbp}{width=0.8\textwidth}{Nr.4_w-w_F.png}{Aufgabe 4: \(\omega_F(\Omega)\) Fit}{Fitten einer linearen Funktion an \(\omega_F(\Omega)\)}
+
+\begin{align}
+    I_x=\frac{mI_z}{m-1}&&\Delta I_x=I_x\sqrt{\frac{\Delta_{I z}^{2}}{I_{z}^{2}} + \frac{\Delta_{m}^{2}}{m^{2} \left(m - 1\right)^{2}}}
+    \label{eq:I_XXX}
+\end{align}
+\begin{rb}
+    I_x=\qty{4.98(0.15)e-3}{\kg\m\squared}
+\end{rb}
+
+\subsubsection[\texorpdfstring{Berechnung von \(I_x\) die zweite}{Berechnung von I x again}]{BERECHNUNG von \(\boldsymbol{I_x}\) again}
+Aus \cref{eq:nutation} folgt, dass wenn \(m\defeq\frac{\omega_N}{\omega_F}\) die Steigung eines linearen Fits an \(\omega_N(\omega_F)\) ist (an die Messwerte aus \cref{table:messwerte5}), so ist: 
+\begin{align}
+    I_x=\frac{I_z}{m}&&\Delta I_x=I_x\sqrt{\frac{\Delta_{I z}^{2}}{I_{z}^{2}} + \frac{\Delta_{m}^{2}}{m^{2}}}
+\end{align}
+\xfigure{htbp}{width=0.8\textwidth}{Nr.5_w_N-w_F.png}{Aufgabe 5: Nutationsfrequenz}{Fitten einer linearen Funktion an \(\omega_N(\omega_F)\)}
+\begin{rb}
+    I_x=\qty{5.21(0.16)}{\kg\m\squared}
+\end{rb}

@@ -1,0 +1,10 @@
+\begin{align}
+    U_a=\frac{-c}{m} && U_a=\sqrt{\left(\pdb{U_a}{c}\Delta c\right)^2+\left(\pdb{U_a}{m}\Delta c\right)^2+2\pdb{U_a}{m}\pdb{U_a}{c}\cdot (\Delta \mathrm{cov}(m,c))^2}
+\end{align}
+with \[\begin{pmatrix}
+    \Delta m &\Delta \mathrm{cov}(m,c)\\
+    \Delta \mathrm{cov}(m,c) & \Delta c
+\end{pmatrix}=\begin{pmatrix}
+    \sigma_m^2 & \mathrm{cov}(m,c)\\
+    \mathrm{cov}(m,c) & \sigma_c^2
+\end{pmatrix}^{\frac{1}{2}}={\texttt{pcov}}^{\frac{1}{2}}\]

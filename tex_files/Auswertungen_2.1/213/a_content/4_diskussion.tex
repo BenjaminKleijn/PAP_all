@@ -1,0 +1,22 @@
+\subsection{Fitfehler}
+Bei jeder einzelnen Aufgabe sollten aus linearen Fits Größen gewonnen werden, die zur Rechnung notwendig waren. NUR ist hier das Problem, dass ein standardmäßiger \verb|curvefit(lin)| einer linearen Funktion \verb|lin| mit der least-squares Methode berechnet wird. Dies beinhaltet nur Fehler in \verb|ydata|, den auf der y-Achse aufgetragenen Messwerten. Die extra berechneten Fehler der \verb|xdata| Sets fließen also überhaupt nicht in (Un-)Genauigkeit der Fitergebnisse ein. 
+
+\subsection{Dämpfung}
+Ob die Messwerte dem realen Versuchsaufbau entsprechen, wäre interessant zu wissen.  Sinnvoll wäre es unter Umständen gewesen, die Dämpfung auch bei anderen Gewichtsverteilungen zu testen, um zu prüfen, ob die Übertragung des Dämpfungskoeffizienten (der unter Belastung mit zwei Gewichtsststücken ermittelt wurde) auf die anderen Konfigurationen gerechtfertigt ist.
+
+Es gibt in allen Fits keine außergewöhnlichen Messpunkte, die auf einen systematischen Fehler bei einer bestimmten Frequenz hinweisen würden, alle linearen Verläufe sehen gut aus. 
+\subsubsection[\texorpdfstring{Berechnung von \(I_x\)}{Berechnung von I x}]{Berechnung von \(\boldsymbol{I_x}\)}
+Im Skript steht eigentlich, dass man den linearen Fit an \(\Omega(\omega_F)\) legen soll, jedoch ist der relative Fehler von \(\frac{\Delta\omega_F}{\omega_F}>\frac{\Delta\Omega}{\omega}\). Ein einfacher linearer \verb|curvefit| ignoriert die Unsicherheiten der x-Werte, deswegen habe ich mit der Steigung \(m=\frac{\omega_F}{\Omega}\) weitergerechnet. Am Ende habe ich beide Methoden verglichen, und es kommt nach Signifanten Stellen dasselbe raus, OBWOHL der relative Fehler von \(\frac{\Delta m_1}{m_1}=\qty{2.9}{\percent}\) und \(\frac{\Delta m_2}{m_2}=\qty{0.6}{\percent}\). 
+Also war die Überlegung schon gut, komischerweise trägt sie beim Endergebnis keine Früchte.
+
+Ah, ich hab herausgefunden, warum. Wenn man Gleichung \cref{eq:I_XXX} betrachtet, und die einzelnen Summanden ausrechnet, so wird sichtbar, dass der hauptauschlaggebende Fehler nicht von \(m\) kommt, sondern von \(I_z\). 
+\subsubsection[\texorpdfstring{Vergleich der Methoden zur \(I_x\) Bestimmung}{Vergleich der Methoden zur I x Bestimmung}]{Vergleich der Methoden zur \(\boldsymbol{I_x}\) Bestimmung}
+Die Abweichung der berechneten Ergebnisse beläuft sich auf \(\num{1.1}\sigma\). Dies ist keine nennenswerte Abweichung. Jedoch sollte man bemerken, dass die erste Methode einen Wert ergab, der nur \(\qty{0.03e-3}{\kg\m\squared}\) höher als der \(I_z=\qty{4.95(14)}{\kg\m\squared}\) Wert liegt, und diese Werte somit innerhalb des anderen Wertes Fehlergrenzen liegen. Die Bedingung \(I_x>I_z\) ist also nur knapp erfüllt. Für diese Methode sagt die Steigung \(m=\num{175(3)}\) nach \(V=\frac{m}{m-1}\) klar aus, dass das Verhältnis \(V\) zwischen \(I_x=V\cdot I_z\) nur knapp größer 1 ist. 
+
+Ein Grund für die Abweichung der zwei Methoden ist ziemlich sicher der Wechsel der Messgeräte: Für die Ermittlung von \(f_F\) in \cref{table:messwerte4} wurde das Laser/Infrarotlicht betriebene Frequenzmessgerät genutzt (PeakTech 2780), für die Ermittlung von \(\omega_F\) in \cref{table:messwerte5} jedoch das Stroboskop. Während beim Stroboskop ein Mensch als Sensor fungiert und die entsprechende Frequenz einstellt, wird diese beim Laser automatisch gemessen - die hier vorliegende Nutation führt jedoch dazu, dass der Lichtstrahl nicht immer perfekt zurück auf den Sensor reflektiert wird, was eine fehlerhafte Frequenzmessung zur Folge hat. 
+
+\subsection{Fazit}
+Schöner Versuch, Kreiselphänomene wurden gut aufgearbeitet, man kann sich nun besser etwas unter den Effekten vorstellen. Die Theorie und die Vorversuche waren sehr interessant.  
+
+Der Meme über Hubble stammt übrigens schon aus PAP1, der ist mir also nicht erst beim Lesen der Versuchsmotivation im Skript eingefallen, in der Hubble explizit erwähnt wird :)
+Was mich aber interessieren würde, hast du den Meme verstanden?

@@ -1,0 +1,101 @@
+% \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+\clearpage
+\subsection{Zerfall von aktivierten Silberisotopen}
+Die Aktivität \(A\) wird in der Einheit Becquerel \([\unit{\becquerel}]=[\unit{\per\s}]\) gemessen, um somit konsistent zu bleiben, müssen alle erhobenen Messungen der Zerfälle \(N\) pro Torzeit \(T\) in Zählraten \(n\) umgerechnet werden:
+\begin{align}
+    n=\frac{N}{T}&&\Delta n=\frac{\sqrt{N}}{T}
+\end{align}
+
+Die 4 Messreihen \(N_i\) einer Gesamtdauer von \(t=\qty{400}{\s}\) bei Torzeit \(T=\qty{10}{\s}\) (jede dieser Messreihen besteht also aus 40 Werten) werden zu einer Gesamtanzahl an Zerfällen \(N\) addiert und durch die vierfache Torzeit geteilt, um bei der realen Zählrate zu bleiben und keine vierfache zu betrachten. Der Fehler wird gemäß der dem radioaktiven Zerfall zugrundeliegenden Poissonverteilung bestimmt:
+\begin{align}
+    n=\frac{1}{4T}\sum_{i=1}^{4} N_i=\frac{N}{4T} && \Delta n=\frac{\sqrt{\sum_{i=1}^{4} N_i}}{4T}
+\end{align}
+Die Untergrundmessung bei Torzeit \(T=\qty{10}{s}\) und Messdauer von 8 min (besteht also aus 48 Werten \(N_{0_i}\)) wird jetzt nicht mit dem Faktor 4 multipliziert, da die Zählraten oben schon durch \(4T\) wieder heruntergerechnet wurden. \(n_0\) wird durch arithmetische Mittelung bestimmt:
+\begin{align}
+    n_0=\frac{1}{48\cdot T}\sum_{i=1}^{48} N_{0_i}&&\Delta n_0=\frac{\sigma(N_{0_i})}{T\cdot\sqrt{48-1}}
+\end{align} 
+Man beachte: \(n_0\) ist ein Skalar, \(n\) ein Array. Der Fehler \(\Delta n_0\) bestimmt sich durch den Fehler des Mittelwerts (\cref{eq:arithmetisches_mittel}).
+
+Diese Messreihe \(n(t)\) kann nun geplottet und eine entsprechende Funktion für die Zahl der Zerfälle \(Z\) angefittet werden, die aus der Superposition der einzelnen Zerfallsmodelle für \ce{^108Ag} und \ce{^110Ag} sowie dem Untergrund ausgeht:
+\begin{equation}
+    Z(t)=A_{108}\cdot\mathrm{e}^{-\lambda_{108}t}+A_{110}\cdot\mathrm{e}^{-\lambda_{110}t}+n_0
+\end{equation}
+Es werden nun zur Fehlerbestimmung von \(\lambda\) sukzessive Fits durchgeführt, die sich in der Wahl von \(n_0\) unterscheiden:
+\begin{align}
+    \lambda=\lambda_{n_0}&&\Delta \lambda=\sqrt{\mathrm{Mean}(|\lambda_{n_0}-\lambda_{n_0\pm\Delta n_0}|)^2+\Delta \lambda_{n_0}^2}
+\end{align}
+Hierbei sind die indizierten \(\lambda\) die Fitparameter-Ergebnisse bei fester \(n_0\) Wahl und \(\Delta \lambda_{n_0}\) der Fitfehler aus der Kovarianzmatrix für den Fit mit reinem Untergrundwert \(n_0\).
+Man erhält damit aus den Fits in \cref{fig:silberlog.png} die Ergebnisse für \(\lambda\) und nach Umrechnung in Halbwertszeiten \(T_{\nicefrac{1}{2}}\) und Lebensdauern \(\tau\) mittels:
+\begin{align}
+    T_{\nicefrac{1}{2}}&=\frac{\ln 2}{\lambda}&\Delta T_{\nicefrac{1}{2}}&=\ln(2)\frac{\Delta \lambda}{\lambda^2}\\
+    \tau&=\frac{1}{\lambda}&\Delta \tau&=\frac{\Delta \lambda}{\lambda^2}
+\end{align}
+\begin{rbla}
+    \lambda_{110}&=\qty{0.030(0.008)}{\per\s} & T_{110}&=\qty{23(7)}{\s}&\tau_{110}&=\qty{33(9)}{\s}\\
+    \lambda_{108}&=\qty{0.0048(0.0024)}{\per\s}  & T_{108}&=\qty{140(80)}{\s} & \tau_{108}&=\qty{420(110)}{\s}
+\end{rbla}
+Aus der Einleitung bzw. dem Skript ist bekannt, dass \ce{^108Ag} eine sechsfach höhere Halbwertszeit \(T_{\nicefrac{1}{2}}\) hat. Dementsprechend konnten die Halbwertszeiten und Zerfallskonstanten identifiziert werden.
+\xfigure{htbp}{width=\textwidth}{silberlog.png}{Fit der Zerfallsfunktion für Silberisotope}{Fit der Zerfallsfunktion für Silberisotope}
+
+\paragraph{Fitgüte:} Die Güte des Fits lässt sich gemäß den Größen aus \secref{sec:AnhangStatistik} beurteilen:
+\begin{rb}
+\chi^2= 19.0 \qquad \chi^2_\text{red}= 0.6 \qquad p= \qty{98}{\percent}
+\end{rb}
+
+\subsection{Zerfall des aktivierten Indiumnuklids}
+Bei dieser Messung wird analog vergegangen, jedoch existiert diesmal nur eine Messreihe und die Untergrundmessung. Die Messreihe wird analog wie oben geplottet und analsysiert, mit einzigem Unterschied in der angefitteten Funktion:
+\begin{equation}
+    Z(t)=A_{116}\cdot\mathrm{e}^{-\lambda_{116} t}
+\end{equation}
+Man erhält damit aus den Fits in \cref{fig:indiumlog.png} die Ergebnisse für \(\lambda_{116}\), \(T_{\nicefrac{1}{2}}\) und \(\tau\):
+\begin{rbl}
+    \lambda_{116}=\qty{0.000218(12)}{\per\s} \qquad T_{116}=\qty{3180(180)}{\s}\qquad\tau=\qty{4600(300)}{\s}
+\end{rbl}
+\paragraph{Fitgüte:} Es lässt sich wiederum analog die Güte des Fits beurteilen:
+\begin{rb}
+\chi^2= 30.0 \qquad \chi^2_\text{red}= 1.7 \qquad p= \qty{3.0}{\percent}
+\end{rb}
+Das sind wie auch oben schon schlechte Werte, optimalerweise sollte \(p=\qty{50}{\percent}\) betragen. Die Gründe werden später diskutiert.
+\xfigure{htbp}{width=\textwidth}{indiumlog.png}{Fit der Zerfallsfunktion für Indiumisotope}{Fit der Zerfallsfunktion für Indiumisotope}
+\clearpage
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}
+
+% \begin{figure}[htbp]
+%     {\captionsetup{list=false}
+%     \caption{Eingangsspannung in rot, Ausgangsspannung in blau}}
+%     \label{fig:diffop}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+%         \caption{Differentation einer Gaußschen Spannung}
+%         \label{fig:gaußdiff}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+%         \caption{Differentation einer Dreiecksspannung}
+%         \label{fig:trianglediff}
+%     \end{subfigure}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}

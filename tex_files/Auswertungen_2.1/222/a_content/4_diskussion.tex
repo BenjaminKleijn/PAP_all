@@ -1,0 +1,31 @@
+Die meisten Ergebnisse wurden schon erläutert. 
+\paragraph{Energieverluste in Aufgabe 1}
+\(Q_V=\qty{64}{\percent}W_M\), das heißt mehr als \(\nicefrac{2}{3}\) der Elektromotorleistung, mit der die Kältemaschine angetrieben wird, geht verloren. Dies liegt an den etlichen Verlustfaktoren:  Abwärme in den Drähhten zum Elektromotor und der Heizwendel, der Wirkungsgrad des Elektromotors, Abwärme an die Umgebung (Folgen der mangelhaften Isolation), Reibungsverluste im Kolben, usw.
+
+\paragraph{Kälteleistung}
+Man beobachtet die Bestätigung des Wirkungsgrads einer Kältemaschine: \(\eta_c=\frac{T_1}{T_1-T_2}\). Für eine Kältemaschine gilt: Je höher die Temperaturdifferenz zwischen Arbeitsmittel, effektiv bei uns also die Leistung der Wasserkühlung, und zu kühlendem Objekt, desto niedriger der Wirkungsgrad (Kolbenraum, externe Motorleistung, die die Wärmetransportfähigkeit des Arbeitsgases beeinflussen, sind fixe Parameter). Man beobachte, dass dies genau der inverse Carnotsche Wirkungsgrad einer Wärmekraftmaschine ist, da bei einer Kältemaschine nicht die durch \(Q\) erzeugte Arbeit \(W\) im Vordergrund steht, sondern der von \(W\) erzeugte Wärmetransport \(Q\).\\ Wie in der Auswertung schon beschrieben, ist hiermit die große Abweichung von \(14\sigma\) zwischen den zwei berechneten Kälteleistungen erklärbar. Bei Aufgabe 2 lässt sich der Wirkungsgrad noch bestimmen: Die Motorleistung ist gleich wie in Aufgabe 1. Damit erhält man \(\tcbhighmath{\eta=\qty{3.9(1.4)}{\percent}}\). Verglichen mit Aufgabe 1 natürlich niedriger, da die Kälteleistung niedriger ist.
+
+Zusätzlich muss erwähnt werden, dass bei der Kompensationsmessung von Aufgabe 1 vernachlässigt wurde, dass die von der Heizwendel erzeugte Wärme nicht alleine von der Kältemaschine abtransportiert wurde, sondern auch von der Umgebungsluft, dementsprechend wurde die Kälteleistung überschätzt.\\
+Bei Aufgabe 2 wurde vernachlässigt, dass nicht nur das Wasser gekühlt wurde, sondern eine kleine Umgebung des Reagenzglases. 
+
+Ich weiß nicht, ob folgende Gleichung aus dem Skript stimmt: \(\eta=\frac{Q_2}{W_M}=\frac{T_2}{T_1-T_2}\). Denn setzt man hier die Zulaufkühlwassertemperatur als \(T_1=\qty{18}{\degreeCelsius}\) und \(T_2=\qty{273.15}{\kelvin}\), da die Probe während der Kälteleistungsmessung gerade den Phasenwechsel vollzogen hat, so erhält man kein komplementäres Ergebnis, diese zweite Gleichung gibt  keine Werte im Intervall \((0,1)\) an. Ich glaube auch, dass die Energiegleichung und die Temperaturgleichung für \(\eta\) zwei unterschiedliche Dinge berechnen: Den Coefficient of Performance und den Carnot Wirkungsgrad. Letzterer muss kleiner 100\% sein (außer bei der Wärmepumpe, wenn man Umgebungswärme als contributing factor nicht in die Rechnung mit einbezieht). Da der Carnot Wirkungsgrad mit den eingesetzten Temperaturen jedoch einen schwachsinnigen Wert \(>>1\) ergibt, hab ich mich hier mit den gewählten Temperaturen vertan. 
+
+\paragraph{Leistungsverluste}
+Aus irgendeinem Grund sackte die Drehfrequenz des Motors bei Durchführung von Aufgabe 2 mehrmals ab, von \(\approx\qty{320}{\rpm}\) auf \(\qty{240}{\rpm}\), obwohl der Motor in dieser Aufgabe eigentlich extern vom Elektromotor getrieben ist. Wirklich komisch. 
+
+\paragraph{belasteter Motor: Wirkungsgrade}
+Zwar wurde gesagt, dass der thermische Wirkungsgrad der Tendenz nach dem Leerlaufbetrieb zustrebt, jedoch stimmt dies nicht ganz. Der Leerlaufbetrieb hat sogar einen geringeren Wirkungsgrad als bei minimaler Belastung. Durch mehrere Messreihen könnte dies noch genauer untersucht werden, eventuell ist es einfach ein statistischer Zufall, und beim Leerlaufbetrieb ergibt sich ein höherer Wirkungsgrad als in dieser einen Messreihe festgestellt.
+
+\paragraph{Generelles}
+Es wurde davon ausgegangen, dass die Heizleistung der Heizwendel, mit der der Motor betrieben wurde oder die Kompensationsmessung durchgeführt wurde, vollständig als Antriebsleistung genutzt werden kann. Dies ist jedoch nicht der Fall, da die Heizwendel in alle Richtungen abstrahlt und damit nur ein Teil der zugeführten Energie auch am Stirlingmotor anliegt.  
+
+\subsection{Fazit}
+Vor allem die Charakteristika der Wasserkühlung waren interessant. Es ist auch schön, mal ein wenig über Wärmekraftmaschinen zu erfahren.\\
+Ich lese mir jedoch lieber Wikipedia Artikel über Kernkraftwerke durch, die Tschernobyl Serie und die dort angeschnittene Erklärung der Funktionsweise von Reaktoren haben mich vor einem Jahr gehooked. Es ist unglaublich interessant, sich die einzelnen Artikel zu \href{https://de.wikipedia.org/wiki/Internationale_Bewertungsskala_f%C3%BCr_nukleare_Ereignisse}{außergewöhnlichen Ereignissen} durchzulesen.
+\vspace{1cm}
+\begin{figure}[h]
+	\centering
+	\textbf{\textsf{\Large Me watching myself wasting hours upon hours for protocols instead of learning for exams}}\\\vspace{0.3cm}
+	\includegraphics[width=9cm]{OIP.jpg}
+	\caption[\textit{Art or Reality?:} Denial, Dellusion, Disbelief, disappointement]{Ich habe es kommen sehen und kann nichts dagegen ausrichten, es ist schlimm. \protect\autocite{chernobyl}}
+\end{figure}

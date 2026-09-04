@@ -1,0 +1,87 @@
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+Die Messung des Nulleffekts erfolgte zu Anfang des Versuches, zu einem Zeitpunkt, an welchem keine radioaktiven Quellen im Raum waren. D.h. der reale Nulleffekt während der Durchführung des Experiments, ist höher, da nun auch Hintergrundstrahlung durch die verwendeten, im Raum präsenten Quellen hinzukommt. Entweder führt man also die Nulleffektmessung bei laufendem Betrieb durch, oder achtet bei jeder Messung darauf, alle weiteren Quellen außerhalb des Raumes zu verfrachten. 
+
+\subsection{Betastrahlung}
+Der bestimmte Energiewert der Betastrahlung eines \ce{^90Y} Präparats (dem Tochternuklid von \ce{^90Str}) kann mit dem im Skript angegebenen Literaturwert verglichen werden:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(E^{\mathrm{exp}}_\beta\) und \(E^{\mathrm{lit}}_\beta\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        E^{\mathrm{exp}}_\beta[\unit{\mega\electronvolt}]&E^{\mathrm{lit}}_\beta[\unit{\mega\electronvolt}]&\text{abs.Abw.}[\unit{\mega\electronvolt}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{2.01(0.15)}&2.274&\num{0.26(0.15)}&\num{13(8)}&\num{1.8}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_E_beta} 
+\end{table}
+
+Die Abweichung ist akzeptabel und angesichts der im Skript erwähnten Schwierigkeiten \enquote{[diverse Effekte] erschwer[en] weiterhin eine genaue Auswertung der Absorptionskurve bezüglich der Energie-Reichweite-Beziehung} sowie der nicht klaren Vorgehensweise der \(a_0\) Bestimmung auch nicht verwunderlich. Mögliche Fehlerquellen wie etwa kleine Zwischenräume oder vom gegebenen Wert abweichende Dicken der verwendeten Aluminiumplatten, scheinen sich nicht signifikant ausgewirkt zu haben.
+
+\paragraph{andere Flächendichte:} Die zwei anderen Ansätze (senkrechte Asymptoten und anderes Nullniveau) zur Bestimmung der maximalen Reichweite ergaben Flächendichten, die kleiner sind als \(R^C_\beta\), welches in \cref{fig:alpha_betaenergie.png} zur Energiebestimmung genutzt wurde. Da die Werte \(R^c_\beta,R^{n^\beta_0}_\beta\) kleiner sind, würde auch die resultierende Energie ein wenig kleiner sein, und damit eine höhere absolute Abweichung ergeben. 
+
+\subsection{Gammastrahlung}
+Der bestimmte Energiewert der Gammastrahlung des \ce{^60Co} Präparats kann mit dem im Skript angegebenen Literaturwert verglichen werden:
+
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(E^{\text{exp}}_\gamma\) und \(E^{\text{lit}}_\gamma\)}
+\begin{tabularx}{\textwidth}{cZZZZx}
+    \toprule
+          Messreihe & E^{\text{exp}}_\gamma[\unit{\mega\electronvolt}] & E^{\text{lit}}_\gamma[\unit{\mega\electronvolt}] & \text{abs.Abw.}[\unit{\mega\electronvolt}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \ce{4^+ -> 2^+}& \num{1.30(0.10)} & 1.173 & \num{0.13(0.10)} & \num{10(8)} & \num{1.3} \\
+        \ce{2^+ -> 0}& \num{1.30(0.10)} & 1.333 & \num{0.03(0.10)} & \num{3(8)} & \num{0.4} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_E_gamma} 
+\end{table}
+Wiederum gute Sigma-Abweichung Ergebnisse, liegt aber natürlich auch an dem konservativ abgeschätzten Ablesefehler in \cref{fig:massenenergie.png}.  
+
+\paragraph{Aktivität des Gammastrahlers:} Wie in \cref{table:Vergleich_A_exp} gezeigt, die Sigma-Abweichungen zur theoretischen, auf dem Alter der Quelle basierenden Wert, sind so hoch, dass eine falsche Messung vorliegen muss oder dass die falsche Quelle mit falschen Werten aus der im Labor ausliegenden, dem Messprotokoll angefügten Tabelle genutzt wurde, jedoch nur, wenn die Beschriftung der Quellen anders als auf diesem Dokument ist. Auf dem Metallstab, an dessen Ende das Präparat eingelassen ist, war SN372 graviert, die Daten dieser Quelle wurden der Tabelle entnommen. Als weitere Ursachen für die zu hoch ermittelten Aktivitäten gibt es nur noch \(r\) und \(d\): Der Zählrohrradius ist jedoch richtig notiert, der Abstand von GMZ und Präparat ist auch sorgfältig vermessen worden. Es bleibt als Ansatz  höchstens eine fehlerhafte Messung der Zählraten, ich habe jedoch keine Idee, warum diese ausgerechnet in dieser Messung, bei den anderen Messreihen taucht nämlich nicht das Problem einer ggf. zu hohen Zählrate auf, systematisch größer gemessen werden sollten. Deutlich wahrscheinlicher finde ich hier eine fehlerhafte Zuordnung von benutztem Präparat und dessen Daten.
+
+Wie erwähnt, baut die \cref{eq:Aktivität} auf der Näherung \(d\gg r\), was für kleine Abstände nicht gegeben ist. Aus diesem Grund ist der höchste Abstand als Messung zu bevorzugen, bei welchem alle geometrischen Näherungen und Korrekturen am besten zutreffen, auch wenn durch niedrigere Zählrate der statistische relative Fehler steigt.
+
+Eine Möglichkeit, statistische Schwankungen als Fehlerquelle auszuschließen, ist die Aufnahme mehrere Messreihen bei selbem Abstand und Messdauer, um dann einen gemittelten Aktivitätswert pro Abstand festlegen zu können. Zudem könnte es sich lohnen, einen weiteren Abstandswert von \(d=\qty{15}{\cm}\) zu erheben, bzw. mathematisch genau zu untersuchen, welche Näherungen und Korrekturen bei welchen Abständen zutreffen und wann nicht. 
+
+\paragraph{Fensterkorrektur:} Vielleicht habe ich mich beim Denken vertan (was ich nicht glaube), und um die echte Aktivität der Quelle zu berechnen, muss man mit \(\exp\left(-\frac{\mu_{\ce{Pb}}}{\rho_{\ce{Pb}}}\rho_{\text{ab}}x\right)\) multiplizieren, wodurch diese zweite Korrektur den Aktivitätswert um \(k_2=\num{0.9393(21)}\) verringern würde - dies ändert an den Größenordnungen wenig.
+
+\subsubsection[\texorpdfstring{\textcolor{blueurllink}{\emph{Grober Fehler:}} Zerfallskaskade von \ce{^60Co}}{Zerfallskaskade von Kobalt 60}]{\textcolor{blueurllink}{\emph{Grober Fehler:}} Zerfallskaskade von \ce{^60Co}}
+Wie im Skript zu sehen ist, zerfällt \ce{^60Co} in einer Kaskade: 
+\begin{align}
+    \ce{^{60}_{27}Co -> ^{60}_{28}Ni^*+ e^- + \bar{\nu}_e}\\
+    \ce{^{60}_{28}Ni^* -> ^{60}_{28}Ni + \gamma_1 + \gamma_2}
+\end{align}
+Wobei die zwei \(\gamma\)-Quanten den Übergangen \ce{4^+ -> 2^+} und \ce{2^+ -> 0} des angeregten \ce{^60Ni^*}entsprechen. Diese zwei Gamma-Quanten bilden die Zerfallskaskade: Jeder Zerfall eines \ce{^60Co} Kerns führt zu zwei ausgesendeten Gamma-Quanten. Das bedeutet für diese Auswertung: Die berechnete Aktivität \(A_\text{korr}\) und \(A_{\text{exp}}\) sind um den Faktor 2 zu hoch. Der Literaturwert des \(\gamma\)-Strahlers gibt nur den Zerfall der \ce{^60Co}-Kerne an. Damit erhält man auf einmal viel bessere Werte: 
+\begin{table}[htbp]
+\centering
+\caption{\textcolor{blueurllink}{\emph{Neu:}} Vergleich von \(A_{\text{exp}}\) und \(A_\text{lit}\)}
+\begin{tabularx}{\textwidth}{xZZZZx}
+    \toprule
+         \text{Messreihe }d\,[\unit{\cm}]&A_{\text{exp}}[\unit{\kilo\becquerel}] & A_\text{lit}[\unit{\kilo\becquerel}] & \text{abs.Abw.}[\unit{\kilo\becquerel}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+         5& \num{640(50)} & 433 & \num{210(50)} & \num{32(9)} & \num{5} \\
+        10& \num{525(25)} & 433 & \num{92(25)} & \num{18(5)} & \num{4} \\
+        20& \num{470(30)} & 433 & \num{40(30)} & \num{8(7)} & \num{1.3} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_A_exp_neu} 
+\end{table}
+
+Die geringste Abweichung zeigt sich für den höchsten Abstand, bei welchem der Wert m.M. am wenigsten durch geometrische Näherungen verzerrt wird bzw. die Korrektur mit \(k_1\) am kleinsten ausgefallen ist. Bevor ich jetzt überall diese zwei ergänze, ist es glaube ich in Ordnung, das hier beim Endergebnis aufgezeigt zu haben.
+
+\subsection{Alphastrahlung}
+\begin{table}[htbp]
+\centering
+\caption{Vergleich von \(E_\alpha^\text{exp}\) und \(E_\alpha^\text{lit}\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        E_\alpha^\text{exp}[\unit{\mega\electronvolt}]&E_\alpha^\text{lit}[\unit{\mega\electronvolt}]&\text{abs.Abw.}[\unit{\mega\electronvolt}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{5.500(0.010)}&5.48&\num{0.020(0.010)}&\num{0.36(0.19)}&\num{2.0}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_E_alpha} 
+\end{table}
+Sehr akzeptable Sigma-Abweichung, die angesichts des sehr geringen Fehlers von \(E_\alpha^\text{exp}\) umso aussagekräftiger ist, denn für eine geringe Sigma-Abweichung muss in diesem Fall eine sehr geringe absolute Abweichung vorliegen. Insgesamt ist diese Messung und Berechnung am unkompliziertesten bzw. ohne Komplikationen verlaufen, was sich auch in den Ergebnissen widerspiegelt. Irgendwie könnte man noch die Fehler der Fitparameter einbeziehen; und es werden außer des statistischen Fehlers von \(n\) selbstverständlich noch andere Fehlerquellen in dieser Apparatur existieren. Zur Frage, warum ausgerechnet der Druck bei halber maximaler Zählrate genutzt wird: Es ist der gemittelte Wert, an dem die maximale Reichweite der Alphateilchen erreicht ist.
+
+\subsection{Fazit}
+Die Auswertung war sehr anstrengend, bis auf die Druckmessung, das war spaßig, vor allem wegen der schlechten Beschreibung im Skript. Es wurden häufig einfach Formeln ohne Motivation bzw. überhaupt nicht angegeben. Zudem ist es sehr ernüchternd, sorgfältige Fehlerrechnungen zu machen, wenn man am Schluss dann in einem logarithmischen Diagramm winzige Fehler ablesen soll. Deswegen würde sich eine genauere Skalierung anbieten, bzw. sogar eine \verb|.svg| Datei, sodass die Skala nicht verzerrt wird. 
+
+\xfigure{htbp}{width=0.7\textwidth}{Meme2_My_Time_Has_Come.jpg}{\emph{Meme:} My time has come \autocite{My_time_has_come}}{Nun, nach all dieser Zeit, der letzte PAP Versuch\autocite{My_time_has_come}}

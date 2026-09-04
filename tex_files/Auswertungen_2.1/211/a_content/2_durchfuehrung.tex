@@ -1,0 +1,19 @@
+\subsection{Messverfahren}
+Die Durchführung beschränkte sich auf wenige Schritte: 
+\begin{itemize}
+    \item die Eigenschwingungen (\(\omega_1\)) der ungekoppelten Pendel messen
+    \item für drei verschiedene Kopplungsgrade waren die Eigenschwingung der symetrischen (\(\omega_1\)) und asymetrischen (\(\omega_2\)) Schwingung zu bestimmen
+    \item bei Schwebungsschwingung per FFT \(\omega_1\) und \(\omega_2\) bestimmen, sowie durch eine Cursormessung im \(x(t)\) Bild die Schwebungs- und Schwingungsfrequenz
+    \item Beobachtung zweier gekoppelter elektrischer Schwingkreise
+\end{itemize}
+Die Anwendung der FFT ist ziemlich einfach, die \verb|.tx(t)| Datei wird geladen (generational joke), daraus bestimmt der Rechner das \(\mathcal{F}[x(t)](f)=X(f)\) Bild, durch Input der Cursor-Markierungen an den Peaks wird als letzter Schritt eine Gauss-Kurve angefittet.
+
+\subsection{Messprotokoll}
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \includegraphics[width=7cm]{redacted.png}
+    \caption{These files have been redacted}
+    \label{fig:redactet}
+\end{wrapfigure}
+Es liegt kein dedizierte Messprotokoll vor. 
+Die Auslenkungsdaten liegen in \verb|.txt| Dateien vor, außerdem existieren Bilder der FFT-Diagramme. 
+\clearpage

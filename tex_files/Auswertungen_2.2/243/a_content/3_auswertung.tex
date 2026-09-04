@@ -1,0 +1,128 @@
+% \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}  \thesection Befehlt: ruft aktuelle Nummer und Formatierung auf; subsection: Variable mit aktueller Nummer
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+\clearpage
+\subsection{Beobachtungen Vorversuch}
+Im Vorversuch wurden Rauschspektren aufgenommen, d.h. erfasst, mit welchem Pegel Frequenzen im Bereich von \(\qtyrange{100}{2e6}{\hertz}\) im Rauschsignal vorhanden sind. Dazu wurden die Widerstände von \(\qtyrange{5}{30}{\kilo\ohm}\) direkt ans Oszilloskop/PC angeschlossen, eine weitere Aufnahme wurde bei einem erhöhten Frequenzbereich auf \(\qty{3}{\mega\hertz}\) und bei vorgeschaltetem Bandfilter gemacht. Die Spektren sind in den folgenden Abbildugen zu sehen.
+
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{5kohm_fspectrum.png}
+        \caption{Spektrum bei \(R=\qty{5}{\kilo\ohm}\)}
+        \label{fig:5ko}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{30kohm_fspectrum.png}
+        \caption{Spektrum bei \(R=\qty{30}{\kilo\ohm}\)}
+        \label{fig:30ko}
+    \end{subfigure}}
+    \caption{Rauschspektrum für \(f=\qtyrange{100}{2e6}{\hertz}\)}
+    \label{fig:spectrum5_30_ohne3Mhz}
+\end{figure}
+Man sieht nur sehr schwierig die Aussage der Messung: Höherer Widerstand bedeutet höherer Rauschpegel. Um es besser zu sehen, habe ich es in den selben Graphen reingeplottet. 
+Man sieht in folgendem Bild gut die Beobachtung, die im Vorversuch gemacht werden sollte:
+\xfigure{htbp}{width=0.7\textwidth}{Rauschpegel_5_30.png}{Rauschpegel Plot \(\qtylist[list-final-separator={und}]{5;30}{\kilo\ohm}\)}{Rauschpegel Plot \(\qtylist[list-final-separator={und}]{5;30}{\kilo\ohm}\)}
+Der Pegelunterschied im Intverall \(\qty{100}{\hertz}\) - \(\qty{2}{\mega\hertz}\) beträgt \(\Delta P=\qty{-7}{\decibel}\), damit ist der Rauschpegel des größeren Widerstands um \(\qty{224}{\percent}\) stärker.
+
+Als weiterer Vorversuch sollte das erweiterte Rauschspektrum sowohl mit als auch ohne nach dem Verstärker geschalteten Bandfilter betrachtet werden:
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{30kohm_fspectrum_3mhz.png}
+        \caption{\(R=\qty{30}{\kilo\ohm}\)}
+        \label{fig:30ko3mhz}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{30kohm_fspectrum_3mhz_bandpass.png}
+        \caption{\(R=\qty{30}{\kilo\ohm}\) mit Bandpassfiter}
+        \label{fig:30kO_bandpass}
+    \end{subfigure}}
+    \caption{Rauschspektrum für \(f=\qtyrange{100}{3e3}{\hertz}\) und vorgeschaltetem Bandpassfilter}
+    \label{fig:spectrum30kO_bandpass}
+\end{figure}
+
+Man erkennt gut am erweiterten Spektrum, dass der Rauschpegel für höhere Frequenzen weiterhin fällt. Dies liegt an der frequenzabhängigen Verstärkung durch den Operationsverstärker. Leider wurden zu diesen Messungen keine \verb|.csv| Dateien abgespeichert, deswegen kann kein Plot erstellt werden und man ist auf die Beobachtungen in \cref{fig:spectrum5kO_bandpass} eingeschränkt: Das gesamte Spektrum ist gedämpft, zudem sieht man den Effekt des Bandpassfilters oberhalb von \(\qty{40}{\kilo\hertz}\): Diese Frequenzen werden noch stärker gedämpft, der Bandpass \enquote{filtert} sie dadurch heraus. 
+
+\subsection{Frequenzgang}
+Die aufgenommenen Werte \(P(f)\) werden durch Umrechnen mit dem Dämpfungswert \(D=\qty{1}{1000}\) gemäß \(g(f)=\frac{P}{D}\) dargestellt. An diese Messdaten soll ein Fit gemäß des Frequenzgangs \(g(f)\) eines Verstärkers mit Hochpassfilter und nachgeschaltetem Tiefpass n-ter Ordnung gesetzt werden:
+\begin{equation}
+    g(f)=\frac{V}{\sqrt{1+1/(f/\Omega_1)^{2n_1}}\sqrt{1+1/(f/\Omega_2)^{2n_2}}}
+\end{equation}
+Die wichtigen Größen sind: Die hier als frequenzunabhängig genäherte Verstärkung \(V=1000\), die Grenzfrequenz des Hoch- bzw. Tiefpassfilters \(\Omega_1=\qty{1000}{\hertz},\Omega_2=\qty{50000}{\hertz}\) und die Filterordnungen \(n_1=n_2=5\).
+\xfigure{htbp}{width=0.7\textwidth}{Frequenzgang_Fit.png}{Fit an Frequenzgang des Bandpassfilters}{Fit an Frequenzgang des Bandpassfilters}
+Als Fitergebnisse ergeben sich:
+\begin{rbla}
+    V&=\num{1010.1(0.4)} && \Omega_1&=\qty{1024.2(0.8)}{\hertz} && \Omega_2=\qty{47190(40)}{\hertz}\\
+    n_1&=\num{4.896(0.019)} && n_2&=\num{4.861(0.019)}
+\end{rbla}
+
+\subsection{Bandbreite berechnen}
+Die angefittete Funktion kann nun benutzt werden, um die Bandbreite \(B\), also das Integral 
+\begin{align}
+    B=\int_0^\infty g(f)^2 \diff f && \tcbhighmath{B=\qty{4.79(10)e10}{\hertz}}
+\end{align}
+zu berechnen. Dazu wird der quadratische Frequenzgang \(g(f)^2\) aus den Fitparametern berechnet und numerisch integriert. Dies geschieht mit der Funktion \verb|quad| aus dem Python-Paket \verb|scipy.integrate|, die eine numerische Integration durchführt. Da der numerische Fehler sehr gering ist, der Fit nicht exakt ist (der Fitfehler ist jedoch auf jeden Fall sehr gering, da die relativen Abweichungen aller Fitparameter \(<\qty{0.4}{\percent}\)), wurde der relative Fehler auf \(\frac{\Delta B}{B}=\qty{2}{\percent}\) gesetzt.   
+
+\subsection{Fitten der effektiven Spannungen}
+Aus Aufgabe 2 im Messprotokoll können die gemessenen Spannungen \(\sqrt{\langle U_\text{aus}^2 \rangle}\), nach quadrieren und bereinigen um die mittlere Verstärkerspannung \(\langle U_V^2 \rangle\), nun abhängig vom Widerstand \(R\) gefittet werden, um somit für \cref{eq:boltzmann_calc} einen Wert für die Steigung \(c\) zu erhalten:
+\begin{equation}
+    c=4k_BTB=\tcbhighmath{\qty{8.088(19)e-10}{\volt\squared\per\ohm}}  
+\end{equation}
+\xfigure{htbp}{width=0.7\textwidth}{Differenz_D.png}{Fit an rms-Werte der Rauschspannungen}{Fit an bereinigte rms-Werte der Rauschspannungen}
+
+\subsection{Boltzmannkonstante}
+Im Messprotokoll \(T=\qty{298.2(5)}{\kelvin}\) notiert, aus den vorherigen Berechnungen hat man \(B\) und \(c\) erhalten. Damit gilt nun
+\begin{align}
+    k=\frac{c}{4TB}&&\Delta_\text{stat} k=k\sqrt{\frac{\Delta_{T}^{2}}{T^{2}} + \frac{\Delta_{c}^{2}}{c^{2}}}&&\Delta_\text{syst} k=k\frac{\Delta B}{B}
+\end{align}
+\begin{rb}
+k_B=\qty{1.415(5)(30)}{\joule\per\kelvin}
+\end{rb}
+Dabei ist der erste Fehler der statistische Fehler aus der Temperatur \(T\) und der Steigung \(c\), und der zweite Fehler der systematische Fehler aus der Bandbreite \(B\). 
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}
+
+% \begin{figure}[htbp]
+%     {\captionsetup{list=false}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+%         \caption{Differentation einer Gaußschen Spannung}
+%         \label{fig:gaußdiff}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+%         \caption{Differentation einer Dreiecksspannung}
+%         \label{fig:trianglediff}
+%     \end{subfigure}}
+%     \caption[]{Eingangsspannung in rot, Ausgangsspannung in blau}
+%     \label{fig:diffop}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}

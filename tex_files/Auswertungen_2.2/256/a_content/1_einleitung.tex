@@ -1,0 +1,64 @@
+\subsection{Motivation}
+X-ray radiation is one important type of radiation used in medical applications due to its ability to penetrate solid substances, e.g. identifying broken bones. Additionally, it can be used in material science to analyze chemical elements and material testing (evaluate its structural stability). Like other radiation types, it poses as an interesting subject for physics, its mechanics need to be understood in order to provide the necessary precision for medical purposes. The following experiment introduces X-ray radiation and hints at interesting concepts such as detecting methods with semiconductors. But most importantly it provides a useful insight on atomic behaviour after excitation by X-ray radiation, a nice experimental addition to atomic physics studied in the corresponding quantum mechanics lectures.
+
+\subsection{Experiment goals}
+This experiment is done to study X-ray mechanics: production/emission, detection and interaction with materials. Different types of metal plates under X-ray radiation are studied, explicitally the experiment aims to:
+\begin{itemize}
+    \item analyze the \(K_{\alpha^-}\) and \(K_{\beta^-}\) emission lines of said metals 
+    \item compare the values with the theoretical model of \enquote{Mosley's law} 
+    \item determine the composition of different alloys by studying their emission lines
+\end{itemize}
+
+\subsection{Setup and devices}
+The X-ray chamber consists of a X-ray tube (a heated electrode to create fast electrons which are accelerated towards the anode by an electric field, after hitting it, they are slowed down fastly by the anodes material emitting X-ray radiation as Bremsstrahlung). The created X-ray spectrum is focused onto the probe, a small metal plate. The resulting secundary X-ray radiation caused by atomic transitions (which themselves are driven by the primary X-ray radiation) in the probe is analyzed by an energy detector coupled with an amplifier to generate voltages corresponding to certain transitions, which are then processed by a multiple channel analyzer and displayed by the measurement programm.
+
+\begin{enumerate}
+    \item X-ray chamber with X-ray tube
+    \item X-ray energy detector (PIN diode)
+    \item multiple channel analyzer
+    \item metal probes in plate form
+    \item desktop PC with CassyLab (measurement programm)
+\end{enumerate}
+
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png
+}{experiment setup \protect\autocite{Skript_2.2}}{experiment setup \protect\autocite{Skript_2.2}}
+
+\subsection[Theoretical background]{Theoretical background \protect\autocite{Skript_2.2}}
+\subsubsection{X-ray fluorescence}
+X-ray radiation is high energy electromagnetic radiation, which can eject an atom's inner (strongly bound) electrons, analogous to the photoeffect. The resulting holes are filled by electrons of higher shells/states with larger quantum number, emitting a photon of the corresponding energy difference in the process. An electron of the second shell (\(K_\alpha\) radiation) is most likely to fill the ejected electron's place, less likely is an electron of the third shell (\(K_\beta\) radiation). The terms originate by using the final shell letter, \(K\), and the difference between initial and final shell, \(\alpha\mathop{\hat{=}}1\), \(\beta\mathop{\hat{=}}2\).
+
+\subsubsection{Moseley's law}
+Starting at the Rydberg-formula (solution to the Schrödingers equation for Hydrogen), one needs to take account for effects to describe the transition energy \(\Delta E\) for heavier objects correctly. Looking at the transition between the states with quantum number \(n=2\to n=1\) and their corresponding energys \(E_1;E_2\), one introduces a shielding constant \(\sigma_{12}\) to describe the shielding of the cores charge by other electrons. The effective core nuclear charge number is corrected by \(Z_\text{eff}=Z-\sigma_{12}\). Therefore one arrives at:
+\begin{equation}
+    E\defeq\Delta E=E_2-E_1=chR_\infty(Z-\sigma_{12})^2(\frac{1}{n_1^2}-\frac{1}{n_2^2})
+\end{equation}
+(where \(c\) is the speed of light, \(h\) planck's constant)\\
+Leading to Moseley's law by taking the square root and substituting \(chR_\infty=E_{Ry}=\qty{13.6}{\electronvolt}\):
+\begin{equation}
+    \sqrt{\frac{E}{E_R}}=(Z-\sigma_{12})\sqrt{\frac{1}{n_1^2}-\frac{1}{n_2^2}}
+    \label{eq:Moseleyslaw}
+\end{equation}
+We neglect finestructure effects.\\
+If we examine the \(K_\alpha\) line, \(\sigma_{12}=1\) and Moseley's law breaks down to this simple form:
+\begin{equation}
+        \sqrt{\frac{E}{E_R}}=(Z-1)\sqrt{\frac{1}{3}-\frac{1}{4}}
+        \label{eq:Moseleyslaw_alpha}
+\end{equation}
+
+\subsubsection{Energy detector}
+The device responsible for measuring the emitted X-ray frequencies is the energy detector: a PIN-diode. One can explain the system in these simplified terms: one layer\footnote{Sir Layer Cake, 1875-1941} of an n-type semiconductor (\enquote{negative} side containing freely moving electrons) connected with one layer of a p-type semiconductor (\enquote{positive} side containing freely moving electron holes) is creating a pn-transition: At its electrical junction, electrons and electron holes diffuse to the respective other side thus creating a depletion zone without moving charge. This allows electric current to pass through the junction only in one direction. This zone can be enlargened by applying external voltage. This region is of great interest, because whenever a X-ray photon hits the depletion zone, it can get absorbed whilst releasing a photoelectron. This photon is scattered on the crystal structure of the junction, creating new electron-hole pairs in the process. These are drawn away by the external voltage and the signal, proportional to the incoming X-ray photons, is measured.
+
+The multi-channel-system categorizes the signals in different channels. Each channel holds information about the count of appearance of its signal (event counts). Wavelengths, that are produced more frequently in the metal's atomic transitions are therefore associated with a higher count.
+
+The last necessity to interpret the measured data is to calibrate/gauge the energy scale: This is done by measuring the X-ray fluorescence(signals) of a well known material (iron and molybdän in this case), and attributing its results to theoretical/characteristic values. 
+
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

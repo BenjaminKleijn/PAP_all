@@ -1,0 +1,51 @@
+The whole accuracy of the experiment relies on the calibration. So potential errors in this process/of those elements trickle down to all other measurements. 
+As far as I understood the mechanism, I assume that only high energy radiation will trigger the detector. So any background radiation, say visible wavelengths won't trigger it. Therefore this background noise won't pose that much of an issue. The effect of dark current still exists, because it's not examined in this lab experiment, I'll view it as negligible. 
+
+\paragraph{\(\bm{E_\alpha}\) examination}
+One can compare the values to the Rydberg energy's literature value: 
+\begin{table}[htb]
+\centering
+\caption[result comparison with literature values, first method]{Comparing the results for \(E_R\) and \(\sigma_{12}\) derived by the \(E_\alpha\) data with the literature \protect\autocite{Rydbergconstant} \autocite{Moseleyslaw}}
+\begin{tabularx}{0.9\textwidth}{ZZZZZ}
+    \toprule
+        E_R[\unit{\electronvolt}]&E_{R,\text{lit}}[\unit{\electronvolt}]&\text{abs.Abw.}[\unit{\electronvolt}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\
+        \num{13.80(0.11)}&13.60514138&\num{0.19(0.11)}&\num{1.4(0.9)}&\num{1.8}\\\midrule
+        \sigma_{12}&\sigma_{12,\text{lit}}&\text{abs.Abw.}&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\
+        \num{0.98(0.15)}&\num{1.0}&\num{0.02(0.15)}&\num{2(16)}&\num{0.17}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_E_R_alpha}
+\end{table}
+
+We notice, that both parameters have acceptable deviations under \(3\sigma\). 
+
+\paragraph{\boldmath\({E_\beta}\) examination} Once again for the second calculation:
+
+\begin{table}[htb]
+\centering
+\caption[result comparison with literature values, second method]{Comparing the results for \(E_R\) and \(\sigma_{13}\) derived by the \(E_\beta\) data with the literature \protect\autocite{Rydbergconstant} \autocite{Moseleyslaw}}
+\begin{tabularx}{0.9\textwidth}{ZZZZZ}
+    \toprule
+        E_R[\unit{\electronvolt}]&E_{R,\text{lit}}[\unit{\electronvolt}]&\text{abs.Abw.}[\unit{\electronvolt}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\cmidrule[0.3pt](l{0.8cm}r{1.0cm}){1-5}
+        \num{13.40(0.15)}&\num{13.60514138}&\num{0.21(0.15)}&\num{1.5(1.2)}&\num{1.4}\\\toprule
+        \sigma_{13}&\sigma_{12,\text{lit}}&\text{abs.Abw.}&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\cmidrule[0.3pt](l{0.8cm}r{1.0cm}){1-5}
+        \num{1.53(0.22)}&\num{1.8}&\num{0.27(0.22)}&\num{15(13)}&\num{1.3}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_E_R_beta} 
+\end{table}
+
+I couldn't decide on a table design layout, so there are two versions here. \\
+Once again, looking at the deviations, one draws the conclusion, that both parameters are measured in a reasonable and acceptable way.
+
+The result errors of the second part are higher than the first one, this can be attributed to the \(K_\beta\) peaks: They stood out less cleary than the \(K_\alpha\) peaks, thus the gaussian fits should be less accurate than for the main peak. 
+\newpage
+\subsection{\textcolor{blueurllink}{\emph{Updated part:}} Alloys}
+All accesible information was already discussed in the analysis. While a few elements seemingly could be identified correctly, there were also a lot of questionable results. One can argue, that there was a certain bias in fitting Cu and Zn for brass - because one knows the alloy already, one only tries to fit known elements and won't explore other elements.
+
+Also, a lot of emission lines that were fitted on the spectrums only apply rudimentary, in german we say \enquote{über den Daumen gepeilt}. Some definite peaks couldn't be fitted at all, so either the calibration is off, or the whole process has some flaws not accounted for or known of. The script's information on the process of detecting materials with this X-ray machine is scarce. 
+
+One thing, it would be useful to find out, why the height of energy lines, that can be displayed by clicking on the periodic table, differ. Some are so small, that it's very hard to accurately tell, if they correspond to a peak in the spectrum. If the setting could be found to change that, it would make things easier, but probably those different heights even have a scientific reason?  
+
+\subsection{Conclusion}
+I can't think of nice error sources of the apparatus. What is the effect on the \(K_\alpha,\beta\) lines, if the metal probes are contaminated by lets say sweat/grease/dust? What if the probes aren't pure samples, does this shift the emission line of the element? I would suggest no, because as the alloy exercise proposed, you can detect each element of an alloy/mix seperately. I don't think the energy niveaus of a single atom are shifted by positioning it near other atoms of a different kind, but I'm no expert.

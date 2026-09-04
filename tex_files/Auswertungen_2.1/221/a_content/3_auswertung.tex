@@ -1,0 +1,48 @@
+\subsection{Clément-Desormes}
+Gemäß \cref{CD_k_final} und Gaußscher Fehlerfortpflanzung bestimmt sich der Fehler zu:
+\begin{equation}
+    \Delta \kappa^{\text{CD}}=\sqrt{\frac{\Delta_{h 1}^{2} h_{3}^{2} + \Delta_{h 3}^{2} h_{1}^{2}}{\left(h_{1} - h_{3}\right)^{4}}}
+\end{equation}
+Hierbei sind die Höhenfehler identisch, \(\Delta h=\qty{0.08}{\cm}\), dies ergibt sich durch quadratisches Addieren der Differenzhöhen, die zur Bestimmung von \(h_1,h_3\) genutzt wurden. 
+\begin{table}[htb]
+  \centering
+  \caption{Adiabatenkoeffizienten nach Clément-Desormes}
+  \begin{tabular}{SSS}
+    \toprule
+    {\(h_1\,[\unit{\cm}]\)}&{\(h_3\,[\unit{\cm}]\)}&{\(\kappa\)}\\
+    \midrule
+        \num{7.85(0.08)}&\num{2.2(0.08)}&\num{1.390(0.021)}\\
+        \num{6.25(0.08)}&\num{1.65(0.08)}&\num{1.359(0.025)}\\
+        \num{4.5(0.08)}&\num{1.2(0.08)}&\num{1.37(0.04)}\\
+        \num{5.25(0.08)}&\num{1.1(0.08)}&\num{1.266(0.025)}\\
+        \num{4.0(0.08)}&\num{1.1(0.08)}&\num{1.38(0.04)}\\
+    \bottomrule
+  \end{tabular}
+\label{table:kappa_CD}  
+\end{table}
+Der Wert in Zeile Nummer 4 lässt vermuten, dass hier ein Ablesefehler vorliegt. Aus diesem Grund wird der gewichtete Mittelwert nur mit den passablen Werten berechnet. Mithilfe von:
+\begin{align}
+    \bar{\kappa}=\frac{\sum \frac{\kappa_i}{\Delta \kappa_i^2}}{\sum \frac{1}{\Delta \kappa_i^2}}&&\Delta \bar{\kappa}=\sqrt{\frac{1}{\sum \frac{1}{\Delta \kappa_i^2}}}
+\end{align}
+berechnet man als Ergebnis:
+\begin{rb}
+    \bar{\kappa}^{\text{CD}}_\text{Luft}=\num{1.377(0.014)}
+\end{rb}
+
+\subsection{Rüchardt}
+Zur finalen Berechnung müssen erst noch ein paar Werte eingesammelt werden: Der Druck \(p\) bestimmt sich nach \cref{R_p} und Gaußscher Fehlerfortpflanzung:
+\begin{equation}
+    \Delta p=\frac{\sqrt{\frac{\pi^{2} \Delta_{p 0}^{2} r^{6} + 4 \Delta_{r}^{2} g^{2} m^{2} + r^{2} \left(\Delta_{g}^{2} m^{2} + \Delta_{m}^{2} g^{2}\right)}{r^{6}}}}{\pi}
+\end{equation}
+Hier wurden die Heidelberger Erdbeschleunigung (\(g=\qty{9.80984(2)}{\m\per\s\squared}\)), sowie die im Messprotokoll angegeben Werte benutzt. Für den Druck wurde ein Fehler von \(\Delta p_0=\qty{0.5}{\hecto\pascal}\) angesetzt. 
+\tcbset{highlight math style={colback={white},borderline={.1pt}{0pt}{resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=-1pt,extrude right by=-1pt,extrude top by=0pt,extrude bottom by=0pt,boxsep=\fboxsep}}
+Damit ergibt sich \(\tcbhighmath{p^\text{Luft}=\qty{1020.0(0.6)}{\hecto\pascal}\), \(p^\text{Argon}=\qty{1020.1(0.6)}{\hecto\pascal}.}\)
+
+Nach \cref{R_k_final} ist der relative Fehler 
+\begin{equation}
+    \frac{\Delta \kappa}{\kappa}=\sqrt{\frac{4 \Delta_{T}^{2}}{T^{2}} + \frac{\Delta_{V}^{2}}{V^{2}} + \frac{\Delta_{m}^{2}}{m^{2}} + \frac{\Delta_{p}^{2}}{p^{2}} + \frac{16 \Delta_{r}^{2}}{r^{2}}}
+\end{equation}
+Damit ergeben sich die Ergebnisse:
+\begin{rb}
+   \kappa^\text{R}_\text{Luft} = \num{1.357(0.018)} \qquad \kappa^\text{R}_\text{Argon}=\num{1.603(0.023)}
+\end{rb}

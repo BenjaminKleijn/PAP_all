@@ -1,0 +1,277 @@
+\clearpage
+\subsection{Sonnenspektrum}
+\subsubsection{Absorption der Glasscheibe}
+Folgend ist das Sonnenspektrum mit und ohne Glas zu sehen. Es ist ein erkennbarer Intensitätsunterschied vorhanden.\par
+\xfigure{htb}{width=0.9\textwidth}{Nr.1_Himmel_m_o_G.png}{}{Intensität des Sonnenspektrums im sichtbaren Bereich}
+Die Berechnung der Absorption wird mithilfe der Formel durchgeführt: 
+\begin{equation}
+  A_\text{Glas}(\lambda)=1-\frac{I_\text{mG}(\lambda)}{I_\text{oG}(\lambda)}
+  \label{eq:Absorption}
+\end{equation}
+Es ergibt sich der Graph:\par
+\xfigure{htb}{width=0.75\textwidth}{Nr.1_Absorption_Glas.png}{}{Absorptionsauswirkung eines Glasfensters auf das Sonnenspektrum}
+Wir erkennen, dass die Absorption von Glas nicht für alle Wellenlängen gleich ist und gerade im
+niedrigen Wellenlängenbereich (dem für Menschen schädlichen UV-Licht) am größten ist, während es im sichtbaren Bereich eine relativ geringe Absorption aufweist. Im Infrarotbereich (Wärmestrahlung) steigt die Absorption wieder annähernd linear an, da das Fensterglas ein wärmeisolierendes Fassadenobjekt ist. 
+
+\subsubsection{Fraunhoferlinien}
+In \cref{fig:Nr.1_Fraunhoferlinien.png} ist das Sonnenspektrum zu sehen, in dem anhand der zu sehenden Intensitätsdips schwarze Linien eingezeichnet wurden. In rot ist die Balmerserie des Wasserstoff-Atoms zu sehen, und in golden die Heliumlinie, die Literaturwerte siehe \autocite{Skript_2.1}.\par
+\xfigure{htb}{width=\textwidth}{Nr.1_Fraunhoferlinien.png}{}{gemessene Fraunhoferlinien und eingezeichnete theoretische Balmerserie}
+Zur Vermeidung eines überladenen Diagramms ist in \cref{fig:Nr.1_Fraunhoferlinientheoretisch.png} das selbige Sonnenspektrum eingezeichnet, nun zusätzlich der theoretischen Fraunhoferlinien von Gasen der Erd- und Sonnenatmosphäre.
+Nun werden die gemessenen Wellenlängen (deren Position bestmöglich mit dem Cursor erfasst wurde) mit den Literaturwerten verglichen. Als Messfehler dient pauschal \(\Delta \lambda=\qty{1}{\nano\m}\).
+\newpage
+\begin{table}[htb]
+  \centering
+  \caption{Vergleich der Fraunhoferlinien in \cref{fig:Nr.1_Fraunhoferlinien.png} und \cref{fig:Nr.1_Fraunhoferlinientheoretisch.png} mit den Literaturwerten}
+  \begin{tabularx}{\textwidth}{TZZZ}
+    \toprule
+        Element&\lambda_{theo}\,[\unit{\nano\m}] & \lambda_{exp}\,[\unit{\nano\m}]&\sigma_{Abw.}\\\midrule
+        \multirow{2}{*}{\ce{Ca}}    &\num{393.4}&\num{394.6(10)}&\num{1.2}\\
+                                    &\num{396.8}&\num{398.0(10)}&\num{1.2}\\\cmidrule[0.5pt](l{1.5cm}r{1.5cm}){1-4}               
+        \multirow{2}{*}{\ce{Fe},\ce{Ca}}&\num{430.8}&\num{431.5(10)}&\num{0.7}\\
+                                    &\num{527.0}&\num{527.5(10)}&\num{0.5}\\\cmidrule[0.5pt](l{1.5cm}r{1.5cm}){1-4}
+        \ce{Mg}                     &\num{518.4}&\num{517.7(10)}&\num{0.7}\\
+        \ce{He}                     &\num{587.6}&\num{586.4(10)}&\num{1.2}\\\cmidrule[0.5pt](l{1.5cm}r{1.5cm}){1-4}                 
+        \multirow{2}{*}{\ce{Na}}    &\num{589.0}&\num{589.9(10)}&\num{0.9}\\
+                                    &\num{589.6}&\num{589.9(10)}&\num{0.3}\\\cmidrule[0.5pt](l{1.5cm}r{1.5cm}){1-4}                            
+        \multirow{2}{*}{\ce{Ca}}    &\num{686.7}&\num{687.5(10)}&\num{0.8}\\
+                                    &\num{759.4}&\num{760.8(10)}&\num{1.4}\\\cmidrule[0.5pt](l{1.5cm}r{1.5cm}){1-4}
+        \multirow{4}{*}{\ce{H}}     &\num{410.1}&\num{411.4(10)}&\num{1.3}\\
+                                    &\num{434.1}&\num{435.2(10)}&\num{1.1}\\
+                                    &\num{486.1}&\num{486.8(10)}&\num{0.7}\\
+                                    &\num{656.1}&\num{656.6(10)}&\num{0.5}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Fraunhoferlinien}  
+\end{table}
+
+Hier sind nochmal alle Linien eingezeichnet:
+\xfigure{!h}{width=0.9\textwidth}{Nr.1_Fraunhoferlinientheoretisch.png}{}{gemessene Fraunhoferlinien und Literaturwerte einzelner Atmosphärenelemente}
+\clearpage
+
+\subsection{verschiedene Leuchtmittel}
+\xfigure{htb}{width=\textwidth}{Nr.2_Lichtquellen.png}{}{Spektren verschiedener Lichtquellen}
+Es wurden viele verschiedene Leuchtmittel untersucht, deren Spektren sind in folgendem Diagramm überlagert zu sehen. Die mittleren Wellenlängen lassen sich mithilfe folgender Formel berechnen, die aus einem Altprotokoll kopiert wurde: \begin{equation}
+  \bar{\lambda}=\frac{\sum\lambda_i I_i}{\sum I_i}
+  \label{eq:mittlereWellenlänge}
+\end{equation}
+Hiermit ergeben sich die folgenden Werte: 
+\begin{table}[htb]
+  \centering
+  \caption{die mittleren Wellenlängen der verschiedenen Lichtquelle}
+  \begin{tabularx}{0.4\textwidth}{xXxx}
+    \toprule
+      &Lichtquelle&\bar{\lambda}\,[\unit{\nano\m}]&\\\midrule
+      &Energiesparlampe&\num{573.91}&\\
+      &Glühlampe&\num{658.13}&\\
+      &Laser&\num{534.54}&\\
+      &LED blau&\num{467.16}&\\
+      &LED gelb&\num{594.17}&\\
+      &LED rot&\num{630.93}&\\
+      &LED weiß&\num{553.64}&\\
+    \bottomrule
+\end{tabularx}
+\label{table:Lichtquellen}  
+\end{table}
+
+Wie erwartet ist die effizienteste Lichtquelle hinsichtlich maximal mögliche Monochromatizität der Laser, gefolgt von den LEDs. Gut erkennbar ist das breite Spektrum der Glühlampe, welche bis in die Infrarotstrahlung übergeht. Deren mittlere Wellenlänge ist rotverschoben, weswegen ihre Farbtemperatur als warmweiß erscheint.
+Gut zu sehen sind auch die einzelnen Emissionslinien der Energiesparlampe, einer Gasentladungslampe mit Quecksilberdampf, dessen ultraviolettes Spektrum dann von einem Leuchtstoff an der Innenseite in sichtbares Licht umgewandelt wird. 
+Die mittlere Wellenlänge liegt im grün-gelben Bereich, was die Lampe eher als
+kaltweiß erscheinen lässt. \\
+Interessant ist auch das Spektrum der weißen LED. Dieses hat
+einen breiten blauen Peak und einen breiten rötlichen Peak mit hoher Intensität.  Die mittlere Wellenlänge ist größer als die der Leuchtstoffröhre, weshalb das Licht nicht mehr so kalt erscheint.
+Das Spektrum der weißen LED zeigt, dass das hier betrachtete weiße Licht vermutlicherweise nicht durch eine gleichmäßige Überlagerung der Farben rot, grün und blau
+entsteht, sondern durch ein deutlich breiteres Spektrum im blau-grünen sichtbaren Bereich.
+Dies steht im Einklang zu einer üblichen Bauweise von weißen LEDs: Eine Lumineszenz-Schicht ist an der Innenseite aufgetragen, die die Wellenlängen des blauen Lichts ins gelbliche verschiebt. Ich vermute, dass der starke blaue Peak von der blauen LED stammt, und der verschobene im grün-gelblichen durch die Fluoreszenzschicht entsteht.
+Wie erwartet, ist bei den LEDs als energieeffizientester Lichtquelle keine Infrarotstrahlung zu sehen.
+
+\subsection{Natriumdampflampe}
+\subsubsection{plotten und bestimmen der Emissionslinien}
+\xfigure{htbp}{width=0.9\textwidth}{Nr.3_650-850Linien_FHWM.png}{}{Analyse des logarithmisch aufgetragenen Spektrums von Natrium im Infrarotbereich}
+
+Die ganzen restlichen Plots sind im Anhang zu finden, hier ist beispielhaft einer aufgetragen. Zur einfacheren Analyse habe ich mit Unterstützung von ChatGPT eine kleine Funktion geschrieben, die automatisch durch Anklicken der Peaks im Plot Emissionslinien hinzufügt und deren Halbwertsbreite bestimmt. 
+Eigentlich sollte dies die Breite des Peaks bei halber Maximumsintensität sein, da manche Spektren jedoch ein Grundrauschen/Grundintensität beinhalten, da die Integrationszeit stark erhöht wurde, um schwache Peaks sichtbar zu machen, wird bei jedem Peak eine Referenznullhöhe (am \enquote{Fuß} des Peaks) durch erstmaliges Klicken festgelegt. 
+Durch Drücken des Buttons wird der Prozess gestoppt, der Plot gespeichert und die Daten mit Fehler als Latex-Code in einer \verb|.txt| Datei gespeichert.
+
+Durch Berechnen der theoretischen Werte der Nebenserie und vergleichen mit den in den \verb|.txt| Dateien gespeicherten, gemessenen Wellenlängen, wurde die finale \cref{table:Emissionslinienzugeordnet} in \cref{sec:Zuordnung} (Zuordnung der Linien) erstellt. 
+
+\subsubsection{Berechnung der 1. Nebenserie}\label{sec:BerechnungNS1}
+Als erstes berechnen wir die theoretischen Werte der Linien der 1. Nebenserie \(ms\to 3p\). Hierbei ist die Korrektur nahezu Null, weshalb sich die Gleichung für die Grundenergie \(E_{3p}\) zu
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+E_{3p}[eV] = \dfrac{E_{Ry}[eV]}{m^2} - \dfrac{hc}{\lambda_m} & \Delta E_{3p} = \dfrac{hc}{\lambda_m^2} \Delta \lambda_m
+\end{array}
+\label{eq:E3p}
+\end{equation}
+bestimmt. 
+Hierbei sind die Konstanten \(h\) das Plancksche Wirkungsquantum, \(c\) die Lichtgeschwindigkeit und \(E_{Ry}=-hcR_{\infty}=\qty{-13.605}{\electronvolt}\) die Rydbergenergie. Nun ordnet man dem Peak bei \(\lambda=\qty{819.0(10)}{\nano\m}\)
+den Wert \(m=3\) zu und berechnet mit \cref{eq:E3p} die Energie:
+\begin{rb}
+  E_{3p}=\qty{-3.0256(28)}{\electronvolt}
+\end{rb}
+Mithilfe dieses Wertes konnten nun die restlichen Werte für \(\lambda_m\; m\in(3,13)\) berechnet werden, die in \cref{table:Emissionslinienzugeordnet} zu finden sind. Dies geschieht, indem
+die obige Gleichung nach \(\lambda_m\) umgestellt wird:
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+\lambda_m = \dfrac{hc}{\left( \frac{E_{Ry}}{m^2} - E_{3p} \right)} & \Delta \lambda_m = \dfrac{hc}{\left( \frac{E_{Ry}}{m^2} - E_{3p} \right)^2} \Delta E_{3p}
+\end{array}
+\label{eq:lambdam}
+\end{equation}
+
+
+
+\subsubsection{Berechnung der 2. Nebenserie}
+Unter zuhilfenahme der eben berechneten Energie \(E_{3p}\) kann mithilfe folgender Formeln die zweite Nebenserie \(mp \to 3s\) berechnet werden. Da die D-Linie, also der Übergang \(3p\to 3s\), der Wellenlänge \(\lambda=\qty{589.0(10)}{\nano\m}\) entspricht, kann so die Grundenergie \(E_{3s}\) berechnet werden.
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  E_{3s}=E_{3p}-\frac{hc}{\lambda}&\Delta E_{3s}=\sqrt{(\Delta E_{3p})^2+\left(\frac{hc}{\lambda^2}\Delta \lambda\right)^2}
+\end{array}
+\label{eq:E_3s}
+\end{equation}
+\begin{rb}
+  E_{3s}=\qty{-5.131(6)}{\electronvolt}
+\end{rb}
+Denn diese Grundenergie der 2.Nebenserie wird nun benutzt, um den notwendigen Korrekturfaktor \(\Delta_s\) zu berechnen:
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  \Delta_s=3-\sqrt{\frac{E_{Ry}}{E_{3s}}}&\Delta \Delta_s=\frac{1}{2}\sqrt{\frac{E_{Ry}}{E_{3s}^3}}\Delta E_{3s}
+\end{array}
+\label{eq:Deltas}
+\end{equation}
+Somit berechnet sich:
+\begin{rb}
+   \Delta_s=\num{1.3715(10)}
+\end{rb}
+
+Schlussendlich lässt sich wieder die gesuchte Formel für \(\lambda_m\;m\in (4,9)\) aufstellen:
+\begin{equation}
+\begin{array}{l@{\hspace{1cm}}c}
+\lambda_m = \frac{hc}{\frac{E_{Ry}}{(m-\Delta_s)^2} - E_{3p}} & 
+\Delta \lambda_m = \frac{hc}{\left( \frac{E_{Ry}}{(m-\Delta_s)^2} - E_{3p} \right)^2} \sqrt{ \left( \frac{2 E_{Ry}}{(m-\Delta_s)^3} \Delta \Delta_s \right)^2 + (\Delta E_{3p})^2 }
+\end{array}
+\label{eq:lambdam2ns}
+\end{equation}
+
+\subsubsection{Berechnung der Hauptserie}
+Der Korrekturfaktor der Hauptserie \(\Delta_p\) bestimmt sich durch:
+\begin{equation}
+\begin{array}{c@{\hspace{2cm}}c}
+  \Delta_p=3-\sqrt{\frac{E_{Ry}}{E_{3p}}}&\Delta \Delta_p=\frac{1}{2}\sqrt{\frac{E_{Ry}}{E_{3p}^3}}\Delta E_{3s}
+\end{array}
+\label{eq:Deltap}
+\end{equation}
+\begin{rb}
+   \Delta_p=\num{0.8794(19)}
+\end{rb}
+
+Zur Bestimmung der Wellenlängen für \(m\in (4,5)\) wird wieder \cref{eq:lambdam2ns} benutzt, nur ersetzt man \(\Delta_s\)\ce{<=>}\(\Delta_p\) und \(E_{3s}\)\ce{<=>}\(E_{3p}\).
+\newpage
+\subsubsection{Zuordnung der gemessenen zu berechneten Linien}\label{sec:Zuordnung}
+In \cref{table:Emissionslinienzugeordnet} wurden alle Ergebnisse der vorherigen Abschnitte zusammengetragen: Die aus den Plots per Hand abgelesenen Emissionslinien, deren Werte dann den anhand der obigen Formeln zu theoretisch berechneten Linien zugeordnet wurden.\par
+
+\begin{table}[htb]
+  \centering
+  \caption{Theoretisch berechnete Emissionslinien der Hauptserie gegenübergestellt mit den gemessenen Wellenlängen}
+  \setlength{\cmidrulekern}{1.7cm}
+  \begin{tabularx}{\textwidth}{ZZZZ}
+    \toprule
+        m&\lambda_{theo}\,[\unit{\nano\m}] & \lambda_{exp}\,[\unit{\nano\m}]&\sigma_{Abw.}\\\midrule
+        \multicolumn{4}{c}{\textbf{1.Nebenserie}}\\\cmidrule[0.5pt](lr{1.5cm}){1-4}
+        3&\num{819.0(1.5)}&\num{819.1(1.1)} &0.05\\
+        4&\num{570.0(0.7)}&\num{569.2(1.0)}&0.66\\
+        5&\num{499.7(0.6)}&\num{498.9(1.0)}&0.69\\
+        6&\num{468.3(0.5)}&\num{467.6(0.9)}&0.68 \\
+        7&\num{451.2(0.5)}&\num{452.2(1.7)}&0.56 \\
+        8&\num{440.8(0.4)}&\num{439.7(1.1)}&0.94\\
+        9&\num{433.9(0.4)}&\num{434.7(1.0)}&0.74\\
+        10&\num{429.1(0.4)}&\num{428.2(1.4)}&0.62\\
+        11&\num{425.6(0.4)}&-&-\\
+        12&\num{423.0(0.4)}&-&-\\
+        13&\num{421.0(0.4)}&\num{421.1(1.1)}&0.09\\\midrule
+        \multicolumn{4}{c}{\textbf{2.Nebenserie}}\\\cmidrule[0.5pt](lr{1.5cm}){1-4}
+        4&\num{1173.8(3.5)}&-&-\\
+        5&\num{622.4(0.9)}&\num{616.2(0.4)} &6.30\\
+        6&\num{518.7(0.6)}&\num{515.8(1.0)} &2.49 \\
+        7&\num{477.6(0.5)}&\num{475.8(1.1)} &1.49\\
+        8&\num{456.5(0.5)}&\num{456.0(1.0)} &0.45\\
+        9&\num{444.1(0.4)}&\num{439.7(1.1)} &3.76\\\midrule
+        \multicolumn{4}{c}{\textbf{Hauptserie}}\\\cmidrule[0.5pt](lr{1.5cm}){1-4}
+        4&\num{332.1(0.6)}&-&-\\
+        5&\num{286.4(0.4)}&-&-\\
+    \bottomrule
+\end{tabularx}
+\label{table:Emissionslinienzugeordnet}  
+\end{table}
+Dass der erste Wert übereinstimmt ist klar (dieser wurde ja in Wahrheit experimentell bestimmt) und
+auch die geringen Sigma-Abweichungen der 1.Nebenserie sind erfreulich, aber nicht verwunderlich, da immer der am besten passendste Werte gewählt wurde. Die Peaks für \(m=11,12\), bei denen
+die Zuordnung nicht klar war, wurden z.B. gar nicht erst in die Tabelle aufgenommen. \\
+Der Hauptserie konnte kein Wert zugeordnet werden, da wie in Abbildung \cref{fig:Nr.3_Natriumspektrumkleinelinie.png} erkennbar, der Peak hier in Sättigung ist. Kleinere Wellenlängen als \(\qty{350}{\nano\m}\) wurden nicht vermessen.
+
+\xfigure{htbp}{width=0.9\textwidth}{Nr.3_Natriumspektrumkleinelinie.png}{}{Analyse des logarithmisch aufgetragenen Spektrums von Natrium im kurzwelligen Bereich}
+
+\subsubsection{Nutzen der Messergebnisse zur Bestimmung der Serienenergien und Korrekturfaktoren}\label{sec:Fitten}
+Für die zwei Nebenserien können die einer Quantenzahl \(m\) zugeordneten Wellenlängen \(\lambda_m\) nun in einem Diagramm aufgetragen werden, und eine Funktion angefittet werden.\\
+Bei der 1. Nebenserie, wird \cref{eq:lambdam} genutzt, nur diesmal mit \((m-\Delta_d)^2\) im Nenner:
+\begin{equation}
+  \lambda_m (m,E_{Ry},E_{3p},\Delta_d) = \dfrac{hc}{\left( \frac{E_{Ry}}{(m-\Delta_d)^2} - E_{3p} \right)}
+  \label{eq:lambdamns1_fit}
+\end{equation}
+\(\Delta_d\) ist der durchs Fitten zu bestimmende Korrekturfaktor, \(E_{Ry}\) und \(E_{3p}\) sollen ebenso bestimmt werden. 
+Der Fit ergibt folgende Ergebnisse:
+\xfigure{htbp}{width=0.5\textwidth}{Nr.3_Nebenserie1.png}{}{Fitten der Messergebnisse aus \cref{table:Emissionslinienzugeordnet} an Funktion \ref{eq:lambdamns1_fit}}
+\begin{tcolorbox}[width=\linewidth,ams align*,center,halign=flush center,colback=resultsbackground,colframe=resultscolor]
+    E_{Ry}&=\qty{-13.31 (23)}{\electronvolt}\qquad E_{3p}= \qty{-3.023(4)}{\electronvolt}\\
+    \Delta_d&=\num{0.031(23)}
+\end{tcolorbox}
+
+\begin{table}[htb]
+  \centering
+  \caption{Vergleich der Fitergebnisse mit Literaturwerten/berechneten Größen}
+  \begin{tabularx}{\textwidth}{ZZZxx}
+    \toprule
+      \text{Größe}&\text{Vergleichswert}&\text{Fit-Wert}&\sigma_{Abw}&\text{proz. Abw. }[\unit{\percent}]\\\midrule
+      E_{Ry}[\unit{\electronvolt}]&\num{-13.605(0)}\pm 0&\num{-13.31(23)}&\num{1.3}&\num{2.2}\\
+      E_{3p}[\unit{\electronvolt}]&\num{-3.0256(28)}&\num{-3.023(4)}&\num{0.5}&\num{0.09}\\
+      \Delta_d&-&-&-&-\\
+    \bottomrule
+\end{tabularx}
+\label{table:VergleichFit1}  
+\end{table}
+
+Jetzt bestimmen wir noch die \(\chi^2\)-Summe sowie die reduzierte \(\chi^2\)-Summe, um die Güte des Fits zu beurteilen.
+\begin{equation}
+  \begin{array}{c@{\hspace{2cm}}c}
+    \chi^2 = \sum_{i=1}^{N} \frac{(\lambda_{theo,i} - \lambda_{exp,i})^2}{\Delta \lambda_{exp,i}^2}&\chi^2_{\text{red}} = \frac{\chi^2}{f}
+  \end{array}
+\end{equation}
+
+Hierbei ist \(N\) die Anzahl der Datenpunkte und \(f\) die Anzahl der Freiheitsgrade. Außerdem können wir mit Python noch die Fitwahrscheinlichkeit berechnen. Wir erhalten:
+
+\begin{rbl}
+  \chi^2=\num{2.5} \hspace{2cm} \chi^\text{red}=\num{0.4} \hspace{2cm} P_\text{fit}=\qty{86.0}{\percent}
+\end{rbl}
+\vspace{1cm}
+
+\textbf{Die zweite Nebenserie} erfolgt analog: Diesmal wird \cref{eq:lambdam2ns} an die Handvoll Messergebnisse aus \cref{table:Emissionslinienzugeordnet} gefittet.
+\xfigure{htbp}{width=0.6\textwidth}{Nr.3_Nebenserie2.png}{}{Fitten der Messergebnisse aus \cref{table:Emissionslinienzugeordnet} an Funktion \ref{eq:lambdam2ns}}
+\begin{tcolorbox}[width=\linewidth,ams align*,center,halign=flush center,colback=resultsbackground,colframe=resultscolor]
+    E_{Ry}&=\qty{-15.4(25)}{\electronvolt}\qquad E_{3p}= \qty{-3.060(32)}{\electronvolt}\\
+    \Delta_s&=\num{1.16(25)}
+\end{tcolorbox}
+
+\begin{table}[htb]
+  \centering
+  \caption{Vergleich der Fitergebnisse mit Literaturwerten/berechneten Größen}
+  \begin{tabularx}{\textwidth}{ZZZxx}
+    \toprule
+      \text{Größe}&\text{Vergleichswert}&\text{Fit-Wert}&\sigma_{Abw}&\text{proz. Abw. }[\unit{\percent}]\\\midrule
+      E_{Ry}\;[\unit{\electronvolt}]&\num{-13.605(0)}\pm 0&\num{-15.4(25)}&\num{0.7}&\num{13.2}\\
+      E_{3p}\;[\unit{\electronvolt}]&\num{-3.0256(28)}&\num{-3.060(32)}&\num{1.1}&\num{1.13}\\
+      \Delta_s&\num{1.3715(10)}&\num{1.16(25)}&\num{0.8}&\num{16.7}\\
+    \bottomrule
+\end{tabularx}
+\label{table:VergleichFit2}  
+\end{table}
+
+\begin{rbl}
+  \chi^2=\num{6.3} \hspace{2cm} \chi^\text{red}=\num{3.2} \hspace{2cm} P_\text{fit}=\qty{4.0}{\percent}
+\end{rbl}

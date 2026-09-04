@@ -1,0 +1,107 @@
+\subsection{Motivation}
+Die Untersuchung radioaktiven Zerfalls hat grundlegende Bedeutung für das Verständnis von Kernprozessen und ermöglicht Anwendungen in verschiedenen Bereichen der Physik, Medizin und Technik, deswegen wird in diesem Versuch der Zerfall von unterschiedlichen Isotopen untersucht.
+
+Genutzt werden in diesem Versuch durch Kernspaltung aktivierte Isotope: Auf diesem Prinzip der Kernspaltung beruhen Kernkraftwerke und Atombomben: Ein schwerer Atomkern spaltet sich unter Energiefreisetzung und typischerweise Emission von schnellen Neutronen in zwei oder mehr kleinere Spaltprodukte. Diese Spaltung wird durch thermische (langsame) Neutronen induziert, die aus schnellen Neutronen durch Abbremsen mithilfe des \emph{Moderators} gewonnen werden können, und somit ist unter bestimmten Voraussetzungen eine Kettenreaktion möglich, bei der das radioaktive Material in einen \emph{verzögert kritischen} bzw. beim Hochfahren des Reaktors \emph{verzögert überkritischen} (Kernkraftwerke) oder \emph{prompt überkritischen} Zustand (Atombomben) überführt werden kann. Dies dient der Energiegewinnung und Produktion von radioaktiven Materialen bei kommerziellen Kernreaktoren, Forschungszwecken bei Forschungsreaktoren und Massenvernichtung bei Atombomben.
+
+Es macht also Sinn, die grundlegenden Eigenschaften von radioaktiven Isopotopen wie Zerfall und Aktivierung zu untersuchen.
+
+\subsection{Ziele des Versuches}
+Durch Neutronenbeschuss kann ein stabiles Isotop zu einer radioaktiven Quelle aktiviert werden, welches dann mit einer gewissen Halbwertszeit zerfällt. In diesem Versuch stehen zur Untersuchung das aktivierte Indium(In)-Isotop \ce{^116In} und die aktivierten Silber(Ag)-Isotope \ce{^108Ag} und \ce{^110Ag} zur Verfügung, um folgendes zu erreichen:
+\begin{itemize}
+    \item Bestimmung der Halbwertszeit von \ce{^116In}
+    \item Bestimmung der Halbwertszeit von \ce{^108Ag} und \ce{^110Ag}
+    \item durch Anfitten der Zerfallsfunktion an die aufgenommenen Messdaten
+\end{itemize}
+
+\subsection{Geräte}
+Eine Neutronenquelle, bestehend aus einem Gemisch von Berylliumspänen und dem \(\alpha\)-Strahler Americium-241, wird von einem moderierenden Paraffinblock umgeben, der die schnellen Neutronen auf thermische Energien abbremst. Die zu aktivierenden Proben (Silber- und Indiumbleche) werden in einer Probenhalterung positioniert und während der Aktivierungsphase in die Nähe der Neutronenquelle gebracht.
+Nach der Aktivierung wird das Präparat vor ein Geiger-Müller-Zählrohrs gespannt, welches über ein Betriebsgerät bedient und ausgelesen werden kann. Der Impulszähler zählt die registrierten Zerfälle über jeweils festgelegte Zeitintervalle (Torzeiten). Die Daten werden auf einem PC gesammelt und anschließend mit geeigneter Software ausgewertet.
+
+\begin{enumerate}
+    \item Geiger-Müller-Zählrohr mit Betriebsgerät
+    \item Externer Impulszähler
+    \item Neutronenquelle
+    \item Präparatehalterung
+    \item Indium- und Silberbleche
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{htbp}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+\subsubsection[Kritikalität]{Kritikalität\autocite{Kritikalität,hiroshima}}
+Für eine Kettenreaktion gibt es zwei Bedingungen: Es muss genügend Material/Atomkerne vorhanden sein, sodass auch jedes freigesetzte Neutron wieder zur einer weiteren Spaltung führt, dies wird durch die \emph{kritische Masse} beschrieben, die von der Geometrie und der Anzahl an Atomkernen abhängt. Und zudem muss die Neutronenbilanz, also wie viele spaltungsfähige Neutronen pro spaltungsfähigem Neutron erzeugt werden, entsprechend ausgestaltet sein. Es macht mehr Sinn von einer Spaltungsbilanz zu sprechen, da pro Neutron/Spaltung mehrere Neutronen erzeugt werden, die jedoch nicht alle wieder zu einer weiteren Spaltung führen (keine kritische Masse, technische Effekte), deswegen dient der Multiplikationsfaktor \(k\) eher dazu, die Anzahl neuer Spaltungen pro gespaltenem Kern zu beschreiben. Mehr als \(\qty{99}{\percent}\) aller Neutronen, die \emph{prompten} Neutronen, werden auf einer sehr geringen Zeitskala von \(t<\qty{e-14}{\s}\) emittiert, die restlichen sind sogenannten \emph{verzögerten} Neutronen die zu \(k\) den Faktor \(\beta\) beitragen und erst nach ein paar Millisekunden bis Minuten emittiert werden. Sie sind somit auf einer Zeitskala, auf welche mithilfe von technischen Mitteln reagiert werden kann, in der Steuerung von \(k\) und \(\beta\) liegt die Kunst der Reaktorregelung:  
+\begin{itemize}
+    \item \(k<1\) unterkritisch, Neutronenverlust überwiegt
+    \item \(k=1\) verzögert kritisch, ausgeglichene Spaltungsbilanz. 
+    \item \(1<k<1+\beta\) verzögert überkritisch, Neutronenerzeugung, aber nur durch verzögerte Neutronen, überwiegt -verlust. Regelbarer Bereich
+    \item \(k=1+\beta\) prompt kritisch, jede minimale Schwankung lässt das System direkt in die nächste Stufe übergehen
+    \item \(k>1+\beta\) prompt überkritisch, exponentielle Kettenreaktion, Reaktorexplosion bzw. nukleare Explosion einer Atombombe
+\end{itemize}
+Für den hiesigen Versuch ist es leider nicht sehr relevant, aber die technischen Mittel/Rückkopplungen um Überkritikalität erst zu vermeiden/rückgängig zu machen, sind sehr interessant. 
+
+\subsubsection{Erzeugung von Neutronenstrahlung}
+Eine radioaktive Quelle kann durch Aktivierung stabiler Isotope mithilfe von Kernreaktionen hergestellt werden. Für die Anregung solcher Kernreaktionen werden häufig Neutronen verwendet, da diese elektrisch neutral sind und somit nicht der Coulomb-Wechselwirkung unterliegen. Der entsprechende Atomkern kann ein Neutron daher besonders leicht einfangen.
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north,opacity=0.4,inner sep=0] at ([yshift=-4cm]current page.north)
+      {\includegraphics[width=0.8\textwidth]{hiroshima1.png}};
+\end{tikzpicture}
+
+Für diesen Versuch wird eine Neutronenquelle eingesetzt, die aus einem Gemisch von Berylliumspänen und dem \(\alpha\)-Strahler Americium-241 (\ce{^241Am}) besteht. Es tritt folgende Kernreaktion auf:
+\begin{equation}
+    \label{eq:neutronenerzeugung}
+    \ce{^9_4Be}  + \alpha = \ce{^9_4Be + ^4_2He -> ^12_6C + n}
+\end{equation}
+Bei dem Beschuss von Beryllium mit \(\alpha\)-Teilchen entsteht Kohlenstoff sowie ein freies Neutron. Das so erzeugte Neutron besitzt eine hohe kinetische Energie im Bereich von etwa \(\qtyrange{1}{10}{\mega\electronvolt}\).
+
+\subsubsection{Abbremsen der Neutronen (thermische Neutronen)}
+Die bei der oben beschriebenen Reaktion entstehenden schnellen Neutronen müssen zunächst abgebremst werden, damit sie für bestimmte Kernreaktionen nutzbar gemacht werden können. Je langsamer ein Neutron ist, desto höher ist die Wahrscheinlichkeit, dass es von einem Atomkern eingefangen wird. Der Abbremsvorgang erfolgt hier durch einen Paraffinblock, der die Neutronenquelle umgibt.
+
+Paraffin als Moderator ist für diesen Prozess besonders geeignet, da es zahlreiche Wasserstoffkerne (Protonen) enthält. Trifft ein Neutron auf ein Proton, kommt es zu einem elastischen Stoß, bei dem das Neutron etwa die Hälfte seiner kinetischen Energie verliert. Bei Stößen mit Kohlenstoffkernen im Paraffin geht dagegen weniger Energie verloren, da die Kohlenstoffkerne deutlich größer als die Neutronen sind. Die nach diesem Prozess abgebremsten Neutronen besitzen eine nahezu thermische Energie und werden als thermische Neutronen bezeichnet.
+
+\subsubsection{Aktivierung von Silber (Erzeugung von Silberisotopen)}
+\label{sec:silberaktivierung}
+Natürliches Silber\autocite{Silber} setzt sich zusammen aus \(\qty{51.893}{\percent}\) \ce{^107Ag} und \(\qty{48.161}{\percent}\) \ce{^109Ag}. Wird natürliches Silber wie oben erläutert aktiviert, entsteht aus \ce{^107Ag} das Isotop \ce{^108Ag} und aus \ce{^109Ag} das Isotop \ce{^110Ag}. Beide entstandenen Isotope stellen \(\beta^-\)-Strahler dar, die durch Zerfall in \ce{^108Cd} bzw. \ce{^110Cd} übergehen.
+
+\ce{^110Ag} hat eine um den Faktor sechs kürzere Halbwertszeit und erreicht daher den Sättigungswert, wenn sich Erzeugung von \(N\) radioaktiven Atomkernen und Zerfall \(Z\sim N\) ausgleichen, vor \ce{^108Ag}. Bei längerer Aktivierungszeit \(t^\prime\) dominiert \ce{^108Ag} aufgrund seiner deutlich längeren Halbwertszeit, da von \ce{^110Ag} bei längeren Aktivierungszeiten die maximale Anzahl durch den Sättigungswert schon erreicht ist. Bei kurzen Aktivierungszeiten wird hingegen hauptsächlich \ce{^110Ag} gebildet. Das Aktivitätsverhältnis der beiden Isotope verändert sich also mit der Bestrahlungszeit während der Aktivierung. In \cref{fig:Silber_plt.png} ist als gestrichelte Linie die im Versuch genutzte Aktivierungszeit von 7 min eingezeichnet. Hier stehen die zwei Isotope annähernd im selben Verhältnis.
+
+\xfigure{htbp}{width=0.8\textwidth}{Silber_plt.png}{Aktivierung von Silberisotopen\autocite{Skript_2.2}}{Aktivierung der natürlich vorkommenden Silberisotope \(\qty{51}{\percent}\) \ce{^107Ag} und \(\qty{49}{\percent}\) \ce{^109Ag}\autocite{Skript_2.2}}
+\FloatBarrier
+
+Während des Aktivierungsprozesses werden kontinuierlich neue radioaktive Kerne gebildet, während gleichzeitig bereits vorhandene zerfallen. Die Aktivität \(A(t^\prime)\) (Zahl der Zerfälle pro Sekunde) folgt dem Gesetz:
+\begin{equation} \label{eq:aktivitaet_buildup}
+    A(t^\prime) = A_{\infty}\left(1 - \mathrm{e}^{-\lambda t^\prime}\right)
+\end{equation}
+Dabei bezeichnet \(A_{\infty}\) die maximale Aktivität im Gleichgewicht (Sättigungsaktivität), \(\lambda\) die Zerfallskonstante des Isotops und \(t^\prime\) die Aktivierungszeit. Für \(t^\prime \rightarrow \infty\) nähert sich \(A(t^\prime)\) asymptotisch an \(A_{\infty}\) an.
+
+\subsubsection{Aktivierung von Indium (Erzeugung von Indiumisomeren)}
+Durch Aktivierung von stabilem Indium kommt es zur Bildung zweier Isomere eines radioaktiven Indiumisotops. Zum einen entsteht das Isotop \ce{^116In}, welches sich im energetischen Grundzustand befindet, zum anderen \ce{^116^mIn}, welches sich im metastabilen Zustand befindet. Beide Isotope sind \(\beta^-\)-Strahler, zeigen aber unterschiedliche Halbwertszeiten. Beide Isotope des Indiums zerfallen zu \ce{^116Sn} (Zinn).
+
+Nach Abschluss der Aktivierung beginnt der rein radioaktive Zerfall, da keine neuen radioaktiven Kerne mehr erzeugt werden. Dann folgt:
+\begin{equation} \label{eq:aktivitaet_decay}
+    A(t) = A_0 \cdot \mathrm{e}^{-\lambda t}
+\end{equation}
+Für die Halbwertszeit gilt abhängig der spezifischen Zerfallskonstante \(\lambda\):
+\begin{equation} \label{eq:halbwertszeit}
+    T_{1/2} = \frac{\ln(2)}{\lambda}
+\end{equation}
+Zusätzlich kann auch die mittlere Lebensdauer \(\tau\) definiert werden als:
+\begin{equation} \label{eq:lebensdauer}
+    \tau = \frac{1}{\lambda}
+\end{equation}
+
+Durch Messung der Zerfallsrate über die Zeit lässt sich die Zerfallskonstante bestimmen, woraus sich gemäß \cref{eq:halbwertszeit} die Halbwertszeit berechnen lässt. Dies bildet die Grundlage der experimentellen Auswertung.
+
+\subsubsection{Zerfallskarte}
+In folgendem Bild sieht man den Ausschnitt der Nuklidkarte mit entsprechenden Zerfallsarten, Elemente und Massenzahlen, sowie Energien und Halbwertszeiten.
+\xfigure{htbp}{width=0.8\textwidth}{Nuklioide.png}{Nuklidkartenausschnitt\autocite{Skript_2.2}}{Ausschnitt der Nuklidkarte mit den Halbwertszeiten und der Energie der emittierten Strahlung\autocite{Skript_2.2}}
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

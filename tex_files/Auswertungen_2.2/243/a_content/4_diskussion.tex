@@ -1,0 +1,63 @@
+
+\subsection{Vorversuch}
+Der Effekt des Bandfilters konnte nur beim \(\qty{30}{\kilo\ohm}\) Widerstand festgestellt werden, beim \(\qty{5}{\kilo\ohm}\) war keine Auswirkung sichtbar, wie man an folgenden Diagrammen sieht. Sowohl in \cref{fig:spectrum30kO_bandpass} als auch in \cref{fig:spectrum5kO_bandpass} sieht man, dass hohe Frequenzen in der Bandpassschaltung keinen Abfall zeigen, wie er in der bandpasslosen Schaltung aufgrund der verringerten Verstärkung hoher Frequenzen zu sehen ist. Dies liegt daran, dass der Bandpassfilter alle Frequenzen außerhalb des Filterbandes auf einen konstanten Pegel herunterdämpft. Interessant ist die Beobachtung, dass keinerlei Abfall
+bei niedrigen Frequenzen festgestellt werden konnte, es wäre gut zu wissen, was für ein Filterband den Bandpassfilter auszeichnet.
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{5kohm_fspectrum_3mhz.png}
+        \caption{\(R=\qty{5}{\kilo\ohm}\)}
+        \label{fig:5ko3mhz}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{5kohm_fspectrum_3mhz_bandpass.png}
+        \caption{\(R=\qty{5}{\kilo\ohm}\) mit Bandpassfiter}
+        \label{fig:5kO_bandpass}
+    \end{subfigure}}
+    \caption{Rauschspektrum für \(f=\qtyrange{100}{3e3}{\hertz}\) und vorgeschaltetem Bandpassfilter}
+    \label{fig:spectrum5kO_bandpass}
+\end{figure}
+
+
+\paragraph{Rauschpegel:}
+Es hat ewig gedauert, \cref{fig:Rauschpegel_5_30.png} zu erstellen, denn das Oszi-Programm hat als Spaltentrenner Kommas benutzt, aber angefangen, als Tausendertrennzeichen auch Kommas zu nutzen. Ich hab jetzt ewig gebraucht um Regex Pattern zu schreiben, die das aufheben. (war halt auch am Samstag stuck in der Hitze am Stuttgarter Hbf, kein Wunder, dass ich da nicht schneller ne Lösung gefunden habe).
+
+Die qualitativen Beobachtungen des Rauschpegels entsprachen im Grunde der theoretischen Erwartung: Die Nyquist-Beziehung beagt, dass die Effektivspannungen (das beobachtete Rauschen) mit erhöhten Widerständen steigen, dies sieht man in \cref{fig:Rauschpegel_5_30.png}. 
+
+\subsection{Frequenzgang}
+Die Übereinstimmung zwischen Fit und Messwerten ist grandios (zumindest sagt mein Auge das). Da keine Fehler für \(P(f)\) aus \cref{fig:Frequenzgang_Fit.png} existieren, kann hier leider keine \(\chi^2\) Summe berechnet werden. 
+
+\subsection{Fitgüte der eff. Spannungen}
+Bei Evaluieren der Fitgüte von \cref{fig:Differenz_D.png} erhält man:
+\begin{rbla}
+    \chi^2=149&&\chi^2_\text{red}=29.8&&p=\qty{0}{\percent}
+\end{rbla}
+Diese Werte sehen sehr schlecht aus. Der Grund ist, dass durch Wählen von \(\Delta \sqrt{\langle U_\text{aus}^2\rangle}=\frac{\sigma}{\sqrt{100}}\) mit \(\sigma\) der vom Programm angezeigten Standardabweichung der 100 Messwerte, der Fehler \(\Delta D\) sehr klein wird. Dadurch ist \(\chi^2\) sehr hoch. 
+
+Unter Verwendung der reinen Standardabweichung als Fehler erhält man diese Werte:
+\begin{align*}
+        \chi^2=1.49&&\chi^2_\text{red}=0.29&&p=\qty{91}{\percent}
+\end{align*}
+Da uns immer noch nicht erklärt wurde, wie man diese Werte interpretiert, kann ich dazu nur eine Aussage treffen: Da die Fitwahrscheinlichkeit angibt, wie wahrscheinlich bei einer Wiederholungsmessung \(\chi^{2\prime}\geq \chi^2\) ist, sollte optimalerweise \(p=\qty{50}{\percent}\) sein, denn dann tritt das Gegenteil in der anderen Hälfte der Fälle ein. Damit ist der Fit der wahrscheinlichste Fall. 
+
+\subsection{Boltzmannkonstante}
+Beim Vergleich des bestimmten Wertes (und dem systematischen Fehler) mit dem Literaturwert der Boltzmannkonstante\autocite{boltzmannliteraturwert} ergeben sich folgende Werte:
+\begin{table}[htbp]
+\centering
+\caption{Vergleich der Boltzmannkonstante mit dem Literaturwert}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        k_\text{exp}[10^{-23}\unit{\joule\per\kelvin}]&k_\text{lit}[10^{-23}\unit{\joule\per\kelvin}]&\text{abs.Abw.}[10^{-23}\unit{\joule\per\kelvin}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{1.42(0.03)}&1.380649&\num{0.03(0.03)}&\num{2.4(2.2)}&\num{1.2}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_k_B} 
+\end{table}
+Die Sigma-Abweichung ist sehr gut. 
+Mögliche Fehlerquellen ist der (mit meinem Wissen) nicht quantifizierbare Fehler der Bandbreite \(B\), die durch Integration des Fits bestimmt wurde, eine möglich schwankende Temperatur und der Fitwert \(c\) als Geradensteigung aus \cref{fig:Differenz_D.png}. Dieser Fit spuckt zwar fragwürdige \(\chi^2\) Werte aus, wie vorhin erwähnt, ein klarer linearer Zusammenhang ist jedoch ersichtlich.  
+
+\subsection{Fazit}
+Guter Versuch, Rauschen zu untersuchen ist immer sehr spannend. Auch den Namen Nyquist zu lesen, auch sehr toll. Die Versuchsergebnisse zeigen keine Probleme, es existieren keine Messwerte oder Ergebnisse, die nicht erklärbar sind.

@@ -1,0 +1,100 @@
+\subsection{Verstärkung bei DC und AC}
+Zuerst werden die Messwerte für Gleichspannung geplottet und eine Gerade als linearer Fit eingefügt, da nach \cref{eq:Betriebssverstärkung} \(V^\prime=\left|\frac{U_a}{U_1}\right|\). 
+Die Betragsstriche bei der Berechnung der Verstärkung aus den Spannungen rühren daher, dass sich für Wechselspannung eine Phasenverschiebung von \(\ang{180}\) einstellt, die das Vorzeichen ändert. Dieser Effekt wird hiermit negiert.
+D.h. \(V^\prime_\text{exp}\) entspricht einfach der Steigung der Gerade. Im Plot wird \(U_1\defeq U_E\) notiert. Der Fehler wird als der von \verb|curve_fit| ausgebene Fitfehler in der Kovarianzmatrix angenommen.
+\xfigure{htbp}{width=\textwidth}{Nr.1_Gleichspannung.png}{Plot \(U_A(U_E)\), Verstärkung bei Gleichspannung}{Plot \(U_A(U_E)\), Verstärkung bei Gleichspannung}
+\newpage
+Dasselbe Vorgehen wird für die zwei Wechselspannungsmessungen wiederholt: 
+\xfigure{htbp}{width=\textwidth}{Nr.1_Wechselspannung.png}{Plot \(U_A(U_E)\), Verstärkung bei Wechselspannung}{Plot \(U_A(U_E)\), Verstärkung bei Wechselspannung}
+\FloatBarrier
+
+\paragraph{Vergleich der theoretischen und experimentellen Werte}
+
+Nach \cref{eq:Betriebssverstärkung} gilt für \(V^\prime\) auch:
+\begin{align}
+    V^\prime_\text{theo}=\frac{R_g}{R_e} && \Delta V^\prime=V^\prime\sqrt{\frac{\Delta_{R e}^{2}}{R_{e}^{2}} + \frac{\Delta_{R g}^{2}}{R_{g}^{2}}}
+\end{align}
+Somit können die theoretischen zu erwartenden Verstärkungen berechnet werden. Hierfür wird am Gerät \(R_e=\qty{3.0(3)}{\kilo\ohm}\) abgelesen, die Kopplungswiderstände sind jeweils die in der Überschrift der Plots zu findenden Werte. Die Fehler der Widerstände sollen gemäß Aufgabenstellung im Skript\autocite{Skript_2.2} auf \(\qty{10}{\percent}\) gesetzt werden. Durch Vergleichen mit den aus den Diagrammen entnommenen Fitergebnissen ergibt sich folgende Vergleichstabelle:
+\begin{table}[htbp]
+\centering
+\caption[Vergleich von \(V^\prime_\text{exp}\) und \(V^\prime_\text{theo}\)]{Vergleich von \(V^\prime_\text{exp}\) und \(V^\prime_\text{theo}\), Analyse gemäß \secref{sec:AnhangStatistik}}
+\begin{tabularx}{\textwidth}{xZZZZZ}
+    \toprule
+        \text{Nr.} & V^\prime_{\text{exp}}[\unit{\volt}] & V^\prime_{\text{theo}}[\unit{\volt}] & \text{abs.Abw.}[\unit{\volt}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \text{DC}_{\qty{48.7}{\kilo\ohm}}& \num{16.31(0.04)} & \num{16.0(2.3)} & \num{0.3(2.4)} & \num{2(15)} & \num{0.14} \\
+        \text{DC}_{\qty{274}{\kilo\ohm}} & \num{89.57(0.07)} & \num{91(13)} & \num{1(14)} & \num{2(15)} & \num{0.11} \\
+        \text{AC}_{\qty{274}{\kilo\ohm}}& \num{81.2(0.3)} & \num{91(13)} & \num{10(14)} & \num{12(17)} & \num{0.8} \\
+        \text{AC}_{\qty{680}{\kilo\ohm}}& \num{207.8(0.3)} & \num{230(40)} & \num{20(50)} & \num{11(20)} & \num{0.6} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_Vexp} 
+\end{table}
+
+\subsection{Frequenzgang}
+\label{sec:Frequenzgang}
+Nun wird aus den Messwerten der Frequenzgänge für die verschiedenen Rückkopplungswiderstände ein Bode-Diagramm erstellt. Dazu wird der Betrag der Leerlaufverstärkung in Abhängigkeit von der Frequenz in doppellogarithmischer Darstellung geplottet. Die Verstärkung ergibt sich wiederum aus \cref{eq:Betriebssverstärkung}, der Fehler folgt dann nach Gauß: 
+\begin{equation}
+    \Delta V^\prime=V^\prime\sqrt{\frac{\Delta_{U A}^{2}}{U_{A}^{2}} + \frac{\Delta_{U SS}^{2}}{U_{SS}^{2}}}
+\end{equation}
+Hierbei ist nun \(U_{SS}\defeq U_1\). In der Legende beschreibt \(C_g\) die Kapazität des Kopplungskondensators am Ausgang, der parallel zu \(R_g\) geschaltet ist und \(C_e\) den Widerstand des vorgeschalteten Eingangskondensators (Eingangshochpass), der bei der violetten Linie zum Tragen kommt.
+\xfigure{h}{width=\textwidth}{Nr.Frequenzgang.png}{Bode-Diagramm: Frequenzgang für unterschiedliche Schaltungen}{Bode-Diagramm: Frequenzgang für unterschiedliche Schaltungen}
+
+In dem Diagramm erkennt man für den Verlauf der blauen, orangenen, grünen und roten Kurve, dass diese zunächst bei kleinen Frequenzen eine konstante Verstärkung haben, wie es auch durch erfolgreiche Rückkopplung erwartbar ist. Dabei ist die Verstärkung umso größer, je größer der Rückkopplungswiderstand ist (auch erwartbar nach \(V^\prime=\frac{R_g}{R_e}\)). Ab einer bestimmten Frequenz fällt die Verstärkung dann näherungsweise linear ab. Die konstanten Verstärkungen gehen bei größeren Widerständen bereits bei kleineren Frequenzen in den Abfall über.\\
+Im Vergleich der roten (aktiver Tiefpass) und der grünen (gleicher Rückkopplungswiderstand wie rot, aber kein Ausgangskondensator) Kurve sieht man gut, dass das aktive Tiefpassverhalten die Verstärkung für hohe Frequenzen senkt. \\
+Interessant ist das Verhalten der violetten Kurve, also der Schaltung mit dem Eingangskondensator \(Cg = \qty{47}{\nano\farad}\) und Kopplungskondensator \(C_g=\qty{560}{\pico\farad}\). Diese Schaltung unterdrückt tiefe Frequenzen, gemäß des Eingangshochpasses und die Kennlinie geht bei höheren Frequenzen in das aktive Tiefpassverhalten (wie bei rot) über. Es wurde also eine Art Filter realisiert.
+
+\subsection{Form des Rechtecksignals}
+Im abschließenden Versuchsteil werden die zuvor ermittelten Eigenschaften des Frequenzgangs exemplarisch auf ein Rechtecksignal angewandt. Grundlage bildete die Fourier-Analyse, die jedes periodische Signal als Summe von Sinus- und Kosinusanteilen unterschiedlicher Ordnung beschreibt. Das Rechtecksignal entspricht demnach einer Überlagerung an harmonischen Funktionen, die niederfrequenten Komponenten bestimmen das grobe Profil, beispielsweise Plateauhöhe sowie Pulsbreite, die hochfrequenten Anteile sind verantwortlich für die feinen Details, also steile Flanken und kantige Übergänge. Sämtliche untersuchten Schaltungskonfigurationen wurden hierzu erneut am Oszilloskop überprüft. Die folgenden Bilder zeigen das Eingangssignal in gelb und das korrespondierende Ausgangssignal in blau, wobei beide Kanäle unterschiedlich skaliert sind. Die \(\ang{180}\) Phasenverschiebung wird vom Operationsverstärker erzeugt. Beobachtungen werden immer unter dem jeweiligen Bild getroffen.
+
+\begin{enumerate}
+    
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0001.JPG}{Rechteckpuls bei S1-2 und S2-4}{Rechteckpuls bei S1-2 und S2-4}
+\item Der aktive Tiefpass ist an den unscharfen Übergängen/Kanten erkennbar, da die hochfrequenten harmonischen Funktionen vom Ausgangshochpass stärker rückgekoppelt werden und somit im Ausgangssignal nicht stark repräsentiert sind. \\
+Was ich nicht verstehe, ist warum nur eine Seite des Signals abgerundet wird, eigentlich sollte die Unschärfe an beiden Kanten gleich sein. 
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0002.JPG}{Rechteckpuls bei S1-2 und S2-3}{Rechteckpuls bei S1-2 und S2-3}
+\FloatBarrier
+\item Wie es später nochmal beschrieben wird, filtert diese Schaltung hohe Frequenzen am wenigsten heraus (kein aktiver Tiefpass und geringer Rückkopplungswiderstand), weswegen die linke Flanke am besten zu sehen ist. Hier werden zudem, wie bei allen ersten vier Bildern auch geringe Frequenzen nicht herausgefiltert, weswegen auch Pulsplateau gut zu sehen ist (im Gegensatz zu \cref{fig:TEK0006.JPG}). Somit stellt diese Schaltung die beste Rekonstruktion der Form des Ausgangssignals dar.
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0003.JPG}{Rechteckpuls bei S1-2 und S2-2}{Rechteckpuls bei S1-2 und S2-2}
+\FloatBarrier
+\item Mit steigendem Rückkopplungswiderstand sinkt die Verstärkung für hohe Frequenzen, deswegen steigt die Unschärfe der Kanten bis zum folgenden Bild (\cref{fig:TEK0004.JPG}).
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0004.JPG}{Rechteckpuls bei S1-2 und S2-1}{Rechteckpuls bei S1-2 und S2-1}
+\end{enumerate}
+\newpage
+\subsubsection*{Ab hier nun mit Eingangshochpass}
+\begin{enumerate}[resume]
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0005.JPG}{Rechteckpuls bei S1-3 und S2-4}{Rechteckpuls bei S1-3 und S2-4}
+\FloatBarrier
+\item Man sieht direkt, dass die linke Flanke/Kante des Rechteckpusles dank scharfer hoher Frequenzen dargestellt werden kann, das Plateau jedoch durch Fehlen der tiefen Frequenzen (die vom Eingangshochpass gefiltert wurden) nicht gehalten werden kann. Was im Unterschied zwischen obigem Bild und folgendem Bild sehr gut erkennbar ist: Beim obigen Bild entspricht die Schaltung mit Eingangshochpass und aktivem Tiefpass durch Kopplungskondensators der violetten Kurve in \cref{fig:Nr.Frequenzgang.png}. Hohe als auch tiefe Frequenzen fehlen. im Kontrast dazu entspricht dem nächsten Bild d as grüne Frequenzgangverhalten für hohe Frequenzen, die im Vergleich zu allen anderen Schaltungen am wenigsten herausgefiltert werden, da weder ein Ausgangshochpass (\(C_g=\qty{0}{\farad}\)) existiert, noch die Höhe des Rückkopplungswiderstand selber dafür sorgt, dass hohe Frequenzen weniger verstärkt werden (Erkenntnis aus \secref{sec:Frequenzgang}). Insgemant unterdrückt die Schaltung also hohe Frequenzen am wenigsten, die Flanken sollten also am schärfsten sein, diese Beobachtung wird im folgenden Bild auch bestätigt. Gleichzeitig unterdrückt der Eingangshochpass weiterhin tiefe Frequenzen, sodass das Pulsplateau nicht dargestellt werden kann.
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0006.JPG}{Rechteckpuls bei S1-3 und S2-3}{Rechteckpuls bei S1-3 und S2-3}
+\FloatBarrier
+\item Wie erwähnt ist die Flanke am Schärfsten abgebildet, explizit auch besser als beim vorherigen Bild, da dort der Ausgangskondensator als aktiver Tiefpass wirkt.
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0007.JPG}{Rechteckpuls bei S1-3 und S2-2}{Rechteckpuls bei S1-3 und S2-2}
+\FloatBarrier
+\item Die Flanke wird weiterhin schlecht dargestellt, obwohl der aktive Tiefpass durch \(C_g\) nicht mehr existiert. Dessen Effekt übernimmt aber jetzt das frühe Abfallen der Verstärkung für hohe Frequenzen bei hohem Kopplungswiderstand. 
+\xfigurerot{htbp}{width=0.7\textwidth}{TEK0008.JPG}{Rechteckpuls bei S1-3 und S2-1}{Rechteckpuls bei S1-3 und S2-1}
+\FloatBarrier
+\item Der Rückkopplungswiderstand ist größer als im vorherigen Bild, ergo hohe Frequenzen werden schon ab einer niedrigeren Grenzfrequenz weniger verstärkt (siehe \cref{fig:Nr.Frequenzgang.png}), deswegen ist die Flanke im Gegensatz zum vorherigen Bild auch unschärfer. 
+\end{enumerate}
+
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

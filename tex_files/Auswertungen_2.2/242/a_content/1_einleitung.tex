@@ -1,0 +1,88 @@
+\subsection{Motivation}
+Messgeräte basieren meistens auf Sensoren, die die Informationen der zu messende Größe in eine korrespondierende Spannung verwandeln, die dann ausgelesen werden kann. Im Allgemeinen müssen diese Spannungen mithilfe eines Operations-/Spannungsverstärkers verstärkt werden.  
+
+\subsection{Ziele des Versuches}
+In diesem Versuch wird nicht auf die Funktion und innere Bauweise eines Spannungsverstärkers eingegangen, sondern es wird das Verhalten je nach Eingangsspannungsart: Wechselspannung (AC) und Gleichspannung (DC), Frequenz der Wechselspannung, und Rückkopplungswiderstand \(R_g\) untersucht. Es werden auch ein Eingangshochpass und eine Kopplung mit einem Ausgangs RC-Schwingkreis betrachtet.
+
+Zudem wird durch Einstellen einer Rechteckspannung und Variation der Eingangsschaltungen und Ausgangswiderstände (bzw. der RC-Schaltung) der Ausgangsspannungsverlauf fotografisch festgehalten. 
+
+Aus den aufgenommenen Werten kann dann folgendes bestimmt werden:
+\begin{itemize}
+    \item Betriebsverstärkung je nach Eingangswiderstand und Spannungsart
+    \item Frequenzabhängigkeit (Frequenzgang) der Verstärkung  
+\end{itemize}
+
+\subsection{Versuchsaufbau und Geräte}
+\begin{enumerate}
+    \item Operationsverstärker \(\upmu\)A741 mit Beschaltung
+    \item Netzgerät für \(\upmu\)A741 und als Gleichspannungsquelle
+    \item PeakTech Signalgenerator (für Wechselstrom)
+    \item Tektronix TDS1072 Zweikanal Oszilloskop
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{htbp}{width=0.7\textwidth}{Versuchsaufbau}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+
+\xfigure{htbp}{width=0.7\textwidth}{spannungsverstärker.png}{Schaltplan des Operationsverstärkers}{Schaltplan der Kopplungsarten des Operationsverstärkers}
+\FloatBarrier
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+\subsubsection{Einführung Operationsverstärker}
+Der hier verwendete Verstärker ist ein Differenzverstärker, d.h. die Spannungsdifferenz zwischen seinen beiden Eingängen wird verstärk. Ein Eingang wird als invertierender (-) und der andere als nicht invertierend (+) bezeichnet. Wird die Eingangsspannung am invertierenden Eingang angelegt, so sinkt die um \(\ang{180}\) phasenverschobene Ausgangsspannung, beim nicht invertierenden Eingang steigt die Ausgangsspanung und ist phasengleich. Üblicherweise wird dabei einer der Eingänge auf Masse gelegt, sodass die am anderen Eingang anliegende Spannung verstärkt wird. In diesem Versuch wird ein \(\mu A741\) als invertierender Verstärker betrieben, die Gegenkopplungsschaltung ist in \cref{fig:schaltung.png} zu sehen. 
+
+\xfigure{htbp}{width=0.7\textwidth}{schaltung.png}{Schaltung des invertierenden Verstärkers\autocite{Skript_2.2}}{Schaltung eines invertierenden Verstärkers\autocite{Skript_2.2}}
+
+Eine wichtige Eigenschaft eines Operationsverstärkers ist die große Sensitivität, d.h. selbst bei kleiner Differenz an den Eingängen, ist die Verstärkung sehr hoch und erreicht damit ziemlich schnell das Maximum (die Versorgungsspannung). Um dies zu verhindern, wird ein Teil des Ausgangssignals auf den Eingang zurückgekoppelt, bis die beiden Eingänge potentialgleich sind und dadurch ein stabiles Gleichgewicht erreicht wurde. Mehr habe ich auch nicht verstanden, ganz schlau bin ich jezt noch nicht aus der Funktionsweise geworden, ich finde den Wikipedia-Artikel\autocite{Operationsverstärker} sehr schwierig zu verstehen, und die Informationen im Skript\autocite{Skript_2.2} sind auch mangelhaft. Schade.
+
+\paragraph{Spannungsverstärkung}
+Die Funktionsweise des Operationsverstärkers sorgt dafür, dass die Differenz zwischen nicht invertierendem(\(U_+\)) und invertierendem(\(U_-\)) Eingang durch Verstärkung mit dem Faktor \(V_0\) als Ausgangsspannung \(U_A\) ausgegeben wird:
+\begin{equation}
+    U_A=V_0(U_+-U_-)
+\end{equation}  
+Der Verstärkungsfaktor \(V_0\) wird durch das Modell und die Gegenkopplung bestimmt.
+Die maximal mögliche Ausgangsspannung wird durch die Betriebsspannung \(U_B\) bedingt, die hier \(U_A=U_B=\pm \qty{15}{\volt}\) beträgt.
+
+\paragraph{Spannungsteiler}
+Zwei Eigenschaften der elektrischen Schaltung sind noch erwähnenswert: Der hohe Eingangswiderstand von \(R_e=\qty{3}{\kilo\ohm}\) sorgt für eine geringe Belastung des Eingangssignals. Der Operationsverstärker kann zusammen mit dem Ausgangswiderstand der Spannungsquelle als Spannungsteiler betrachtet werden. Das Ausgangssignal \(U_A\) ist dann unbelastet, wenn wie im Fall des Spannungsteilers \(R^\text{Op}_e\gg R_a^\text{Quelle}\) sehr groß. (Beim Spannungsteiler gilt \(U_e=U_\text{Quelle}\frac{R_e}{R_a+R_e}\xrightarrow{R_e\gg R_a}U_e=U_\text{Quelle}\)).
+Genau gleichermaßen kann man sich überlegen, warum der Ausgangswiderstand \(R_a=\qty{50}{\ohm}\ll R_L\)\autocite{Skript_2.2} klein gegenüber einem möglichen Lastwiderstand sein sollte. Dies sorgt dafür, dass der effektive Widerstand \(R^\text{Op}_a+R_L\approx R_L\) bei angeschlossener Last annähernd dem Lastwiderstand entspricht. Damit ist der Spannungsteiler am Ausgang: \(U_L=U_a\frac{R_L}{R^\text{Op}_a+R_L}\approx U_a\) unabhängig von der angeschlossenenen Last. 
+
+\subsubsection{Verstärkungsrechnungen}
+Der Verstärkungsfaktor \(V_0\) ist definiert als
+\begin{equation}
+    V_0=-\frac{U_e}{U_a}    
+\end{equation}
+Die Kirchhoffsche Maschenregel, angewandt auf die Schaltung in \cref{fig:schaltung.png}, mit der Notation des Gegenkopplungswiderstands \(R_g\), ergibt:
+\begin{gather}
+    \begin{split}
+        0&=I_1+I_2+I_e\quad\mytexteq{\(I_e\ll I_{1,2}\)}{}\quad I_1+I_2\\
+        &=\frac{U_1-U_e}{R_e}+\frac{U_a-U_e}{R_g}
+    \end{split}\\
+    \rightarrow \frac{U_1}{U_a}=-\left[\frac{1}{V_0}+\frac{R_g}{R_e}\left(1+\frac{1}{V_0}\right)\right]\label{eq:Abschätzungen}
+\end{gather}
+Bei Wechselspannungen ist \(V_0=V_0(f)\) mit \(f\) als Frequenz der Wechselspannung. 
+Bei genügend kleinen Frequenzen ist \(\frac{1}{V_0}\ll1\) und durch Wahl der Widerstände ist \(\frac{R_e}{R_g}\gg \frac{1}{V_0}\). Sodann erhält man 
+\begin{equation}
+    -\frac{U_a}{U_1}=\frac{R_e}{R_g}\defeq V^\prime
+    \label{eq:Betriebssverstärkung}
+\end{equation}
+\(V^\prime\) ist die Betriebssverstärkung. Diese Näherung, und damit Gültigkeit obiger Gleichung, funktioniert jedoch nur bis zu einer Grenzfrequenz, sobald \(\frac{1}{V_0}\xcancel{\ll}\frac{R_e}{R_g}\). Ab dieser Grenzfrequenz geht die Betriebsverstärkung \(V^\prime\) in die Leerlaufverstärkung \(V_0\) über, der Grund hierfür ist die Zeitverzögerung beim Invertierungsprozess des Signals - ab einer bestimmten Frequenz kann das nicht mehr schnell genug erfolgen. Die Frequenzabhängigkeit ist in \cref{fig:frequenzgang_skript.png} zu sehen. 
+\xfigure{htbp}{width=0.7\textwidth}{frequenzgang_skript.png}{Frequenzgang der Betriebsverstärkung eines beispielhaften Operationsverstärkers\autocite{Skript_2.2}}{Frequenzgang der Betriebsverstärkung \autocite{Skript_2.2}}
+
+Die Gegenkopplung bewirkt, dass zwar \(V^\prime\leq V_0\), dafür jedoch viel wichtiger ist, dass \(V^\prime=\text{konstant}\) für \(f<\qty{80}{\kilo\hertz}\). 
+
+\subsubsection{Filterschaltungen}
+Wird ein Kondensator parallel zum Rückkopplungswiderstand geschaltet (also ein Hochpassfilter für die Rückkopplungsfrequenzen eingebaut, Schalter S2 auf Stellung 4 in \cref{fig:spannungsverstärker.png}), werden hohe
+Frequenzen stärker gegengekoppelt, was die Verstärkung bei hohen Frequenzen verringert. Ein solcher Operationsverstärker wird als aktiver Tiefpass bezeichnet (aktiv, da Transistoren Teil der Schaltung sind).\\
+Der Operationsverstärker wird zum aktiven Hochpass, indem ein in Reihe geschalteter Kondensator (Schalter S1 auf Stellung 3 in \cref{fig:spannungsverstärker.png}) am Eingang hinzugefügt wird, der dafür sorgt, dass nur hohe Frequenzen an den Eingang des Verstärkers gelangen (da die Impededanz des Kondensators \(Z=\frac{1}{i\omega C}\) antiproportional zur Frequenz \(\omega\) ist). Die niedrige Kapazität des Eingangskondensators \(C_e=\qty{47}{\nano\farad}\) lässt wirklich nur sehr hohe Frequenzen durch.
+
+\emph{Anmerkung:} Im Skript ist für den aktiven Hochpass fälschlicherweise von einem parallel geschalteten Eingangskondensator die Rede, dieser ist jedoch in Reihe geschaltet, siehe auch den Schaltplan, \cref{fig:spannungsverstärker.png}, als Bestätigung.
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

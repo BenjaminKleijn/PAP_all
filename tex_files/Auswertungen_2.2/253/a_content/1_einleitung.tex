@@ -1,0 +1,93 @@
+\subsection{Motivation}
+Verständerlicherweise sind die in diesem Versuch untersuchten Strahlungsarten von außerordentlicher physikalischer Bedeutung, da Strahlungseffekte überall auftreten. Als Teil der Radioaktivitätsversuche, die Produktion von Strahlung, Aktivierung von Strahlungsquellen und Interaktion mit Materie behandeln, wird in diesem Versuch explizit die Absorption von Strahlung untersucht. Dies ist für viele Anwendungen von Bedeutung: Unerwünschte Hintergrundstrahlung stellt Fehlerquellen für Experimente und Gefährdung für empfindliche Geräte, sowie lebende Materie dar. Die Abschirmung von Strahlung ist also nicht nur für Strahlenschutz des Menschen vor gefährlichen radioaktiven Quellen, sondern auch für hochempfindliche Sensoren, und im Falle durch von Sonneneruption entstehenden Flares für jedwede elektrische Anwendung notwendig. Ein weiterer Grund ist, dass perspektivisch angedachte, lange, bemannte Raumfahrt-Missionen den Schutz von Astronaut:innen vor gefährlicher kosmischer Strahlung voraussetzen, auf diesen und den vorher genannten Gebieten ist noch einiges an Forschung und Entwicklung notwendig.
+
+\subsection{Ziele des Versuches}
+\begin{itemize}
+    \item Messung der Absorption von \(\alpha\) (\ce{^241Am}-Strahler), \(\beta\) (\ce{^90Sr}/\ce{^90Y}), \(\gamma\) (\ce{^60Co})-Strahlung
+    \item Berechnung der Maximalenergie der \(\alpha,\beta,\gamma\)-Teilchen
+    \item Berechnung der Aktivität von \ce{^60Co}, unter verschiedenen Korrekturen
+\end{itemize}
+
+\subsection{Geräte}
+Mithilfe des GMZ können die Zerfälle der radioaktiven Präparate gemessen und durch das Zählgerät ausgelesen werden. Zur Variation der Absorption stehen Blei- und Aluminiumplatten verschiedener Dicke zur Verfügung, die zwischen GMZ und Strahlungsquelle positioniert werden können. Die Vakuumpumpe dient der Einstellung des Drucks eines absorbierend wirkenden Luftzylinders bei Untersuchung der schwachen \(\alpha\)-Strahlung.
+\begin{enumerate}
+    \item Geiger-Müller Zählrohr (GMZ)
+    \item Zählgerät
+    \item Evakuierbarer Glaszylinder mit eingebautem Zählrohr und \(\alpha\) \ce{^241Am}-Präparat
+    \item \(\beta\) (\ce{^90Sr}/\ce{^90Y}) Präparat, \(\gamma\) (\ce{^60Co}) Präparat
+    \item diverse Präparatehalter und Kollimatoren
+    \item Aluminium- und Bleiabsorber
+    \item Vakuumpumpe 
+\end{enumerate}
+
+% Versuchsaufbau.png
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau.png}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.2}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.2}}
+\subsubsection{Strahlungsarten}
+Allgemein lässt sich zwischen drei Arten radioaktiver Strahlung unterscheiden: \(\alpha\)-,\(\beta\)- und \(\gamma\)-Strahlung. Diese werden durch ihre Zerfallsprodukte charakterisiert und unterscheiden sich in ihren Energien und der Wechselwirkung mit Materie. 
+
+Beim \(\alpha\)-Zerfall mit diskreten Energien wandelt sich ein Element \(X\) in ein Element \(Y\) um und emittiert dabei einen Heliumkern: 
+\begin{equation} \label{eq:alpha_decay}
+    \ce{^{A}_{N}X -> ^{A-4}_{N-2}Y + ^{4}_{2}He^{2+}}
+\end{equation}
+Dabei ist \(N\) die Anzahl der Neutronen des Kerns, \(P\) die Anzahl der Protonen und \(A=N+P\) die Massenzahl, also die Anzahl der Protonen und Neutronen des Atomkerns \(X\). Beim \(\beta\)-Zerfall gibt es zwei verschiedene Varianten: \(\beta-\) und \(\beta+\)-Zerfall, die den folgenden Reaktionen entsprechen:
+\begin{align}
+    \label{eq:beta_minus}
+    \ce{^{A}_{N}X_P} &\ce{-> ^{A}_{N-1}Y_{P+1} + e^- + \bar{\nu}_e} \\
+    \label{eq:beta_plus}
+    \ce{^{A}_{N}X} &\ce{-> ^{A}_{N+1}Y_{P-1} + e^+ + \nu_e}
+\end{align}
+Ein Neutron wird in ein Elektron, ein Proton und ein Antielektron-Neutrino  bzw. ein Proton in ein Neutron, ein Positron und ein Elektron-Neutrino umgewandelt.
+Das Energiespektrum ist durch das zweite Zerfallsteilchen, das (Anti-)Neutrino kontinuierlich, da sich die Energie auf Elektron bzw. Positron und (Anti-)Neutrino aufteilen kann.
+
+Sogenannte \(\gamma\)-Strahlung besteht schließlich aus hochenergetischen Photonen, ist also hochfrequente elektromagnetische Strahlung. Die Photonen werden als Energiequanten ausgesendet, wenn ein Tochterkern nach einem \(\alpha\)- oder \(\beta\)-Zerfall in einen energetisch niedrigeren Zustand oder den Grundzustand übergeht. Alpha- und Betastrahlung bestehen im Gegensatz zu Gammastrahlung aus geladenen Teilchen und wechselwirken daher deutlich stärker mit Materie als die ungeladenen Photonen bzw. Quanten der Gammastrahlung. Entsprechend haben letztere ein deutlich höheres Durchdringungsvermögen.
+
+\subsubsection{Radioaktiver Zerfall} 
+Unter Radioaktivität versteht man die Eigenschaft instabiler Atomkerne spontan unter Energieabgabe in einen energetisch günstigeren Zustand überzugehen, die freiwerdende Energie wird in Form der eben diskutierten Strahlung abgegeben. Die Aktivität radioktiver Präparate lässt sich mit einem exponentiellen Zerfallsgesetz beschreiben. Die Anzahl der zerfallenen Kerne \(n\) zu einem Zeitpunkt \(t\) ergibt sich aus der Anfangszahl \(n_0\) und der Zerfallskonstanten \(\lambda\) wie folgt: 
+\begin{equation}\label{eq:Zerfallsgesetz}
+    n=n_0\cdot \mathrm{e}^{-\lambda t}
+\end{equation}
+Aus der Zerfallskonstanten lässt sich die Halbwertszeit \(T_{\nicefrac{1}{2}}\) bestimmen:
+\begin{equation}\label{eq:Halbwertszeit}
+    T_{\nicefrac{1}{2}}=\frac{\ln(2)}{\lambda}
+\end{equation}
+
+\subsubsection{Absorption in Materie}
+Durch Stöße und Wechselwirkung mit den Elektronen der Atomhüllen von Materie werden die geladenen Teilchen der Alpha- und Betastrahlung gebremst. Der kontinuierliche Energieverlust skaliert mit \(\sim\frac{1}{v^2}\), sodass schnelle Teilchen weniger von Materie beeinflusst werden. Die abgegebene Energie wird durch Ionisierung des Materials umgesetzt. Ein weiteres Prinzip der Wechselwirkung mit Materie ist bei \(\alpha\) Teilchen die Reichweite, die proportional zur Energie der Teilchen ist, sodass durch Variation der Absorberdicke die Reichweite der Strahlung bestimmt werden kann. Nach einem kritischen Dickewert des Absorbers sinkt die davor nahezu konstante Zählrate der passierenden Teilchen schnell auf null ab, bestätigt und zu sehen in den ausgewerteten Daten der Alphastrahlung in \cref{fig:4_gammastrahlung.png}. 
+
+Elektronen der \(\beta\)-Strahlung sind sehr viel leichter und damit schneller als \(\alpha\)-Teilchen der gleichen Energie, die dadurch weit erhöhte Reichweite geht mit mehr Streuung und längerer Bahnlänge einher, wodurch die Absorptionskurve unscharf wird. 
+
+Für die Absorption der \(\gamma\)-Quanten gilt das Lambert-Beersche Gesetz, die Zahl \(n\) der passierenden Teilchen ist durch den Schwächungskoeffizienten \(\mu\) und die Absorberdicke \(x\) gegeben: 
+\begin{equation}\label{eq:lambertbeer}
+    n=n_0\cdot\mathrm{e}^{-\mu x}
+\end{equation}
+Schwächende Effekte wie Photoeffekt (Herausschlagen von Elektronen, charakteristisches Absorptionsspektrum) und Comptoneffekt (inelastische Streuung an Hüllenelektron) entstehen durch Wechselwirkung mit Elektronen der Atomhülle, während der Atomkern durch Paarbildung (\(\gamma\rightarrow e^+ + e^-\)) bei einer Photonenenergie von \(>\qty{1.022}{\mega\electronvolt}\) zur Schwächung beiträgt. 
+
+Der jeweilige Beitrag zur Schwächung/Dominanz der Effekte kann in \cref{fig:beiträgschwächung.png} abhängig der Energie des Photons eingesehen werden.
+\xfigure{htbp}{width=0.7\textwidth}{beiträgschwächung.png}{Beitrag der Schwächungseffekte zum Schwächungskoeffizienten}{Beitrag des Photoeffekt, Comptoneffekt und Paarbildung zum Schwächungskoeffizient für \(\gamma\)-Strahlung\autocite{Skript_2.2}}
+\FloatBarrier
+
+\subsubsection{Bestimmung der Aktivität}
+Die Aktivität, also die Anzahl der Zerfälle pro Sekunde in alle Raumrichtungen, kann durch Messen der Zerfälle \(n\) über einen Raumausschnitt - dem Zählrohrfenster (Kreisscheibe mit Radius \(r\)) - mit Raumwinkel \(\Omega=\frac{A}{d^2}=\frac{\pi r^2}{d^2}\) auf die gesamte Raumfläche (Kugeloberfläche) mit Radius \(d\), dem Abstand zwischen Zählrohr und Empfänger, hochgerechnet werden. Es gilt dann:
+\begin{equation}\label{eq:Aktivität}
+    A=\frac{4\pi n}{\epsilon\Omega}=\frac{4d^2}{\epsilon r^2}
+\end{equation} 
+Hierbei ist \(\epsilon\) die Ansprechwahrscheinlichkeit des Zählrohrs mit einem Wert von etwa 1 für \(\beta\)-Strahlung und einem Wert von \(\approx\qty{4}{\percent}\) für \(\gamma\)-Quanten bei Energien von \(\qty{100}{\kilo\electronvolt}\) bis einigen MeV.
+
+Da das Zählrohr entlang seiner gesamten Länge detektiert, und es dadurch einen möglichen Wertebereich von \(\Omega_{\mathrm{min}}<\Omega<\Omega_{\mathrm{max}}\) für \(d+l<d<d-l\) gibt, wird der Abstand als Mittelung auf \(d+\frac{l}{2}\) gesetzt. Damit ist:
+\begin{equation}\label{eq:Aktivitätkorr}
+    A_{\mathrm{korr}}=\frac{4n(d+\frac{l}{2})^2}{\epsilon r^2}
+\end{equation}
+
+
+% \begin{wrapfigure}{r}{0.35\textwidth}
+% \includegraphics[width=0.9\linewidth]{Hoffmanapperat.png} 
+% \caption{}
+% \label{fig:}
+% \end{wrapfigure}
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

@@ -1,0 +1,90 @@
+
+\subsection{spectrum}
+As one can see in \cref{fig:spectrumLiF}, the superposition of the continuous spectrum and characteristicical lines (as well as their multiplicity - \(\alpha\) and \(\beta\) peaks)  can be observed \emph{crystal} clear. 
+
+\subsection{critical wavelength and critical angle}
+\(\vartheta_{cr}=\qty{9.7(23)}{\degree}\), thats where the 2nd order spectrum should start, but \(\vartheta(K^1_\alpha)=\qty{10.16(25)}{\degree}\). This can't be right, so I guess the error lies in the linear fit of \cref{fig:extrapolationzoomed}. 
+
+\subsection[\texorpdfstring{Significance of \(h\) results}{Significance of h results}]{Significance of \boldmath\(h\) results}
+We are left with two different results for \(h\) according to the extrapolation of \(I(\vartheta)\) or \(I(U)\). Those methods are equivalent in the end\autocite{Skript_2.2}. Both values show good non-significant deviation. Surprisingly though, contrary to the description in the script, the \(U\) measurement shows a more inaccurate result. This can be traced back most likely to an inaccurate linear fit in \cref{fig:task4.png}. A steeper fit would have increased \(U_a\) and thus increased \(h\). 
+\begin{table}[htbp]
+\centering
+\caption{comparison of \(h_{\vartheta,U}\) and \(h_\text{lit}\)\autocite{plancksconstant}}
+\begin{tabularx}{0.91\textwidth}{Zxxxxx}
+    \toprule
+         \text{method} & h_\text{exp}[\num{e-34}\unit{\joule\s}] & h_\text{lit}[\num{e-34}\unit{\joule\s}] & \text{abs.Abw.}[\num{e-34}\unit{\joule\s}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \vartheta& \num{6.5(1.5)} & 6.62607015 & \num{0.1(1.5)} & \num{2(24)} & \num{0.09} \\
+        U& \num{6.3(0.6)} & 6.62607015 & \num{0.3(0.6)} & \num{5(10)} & \num{0.6} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_h_theta} 
+\end{table}
+
+\subsection[\texorpdfstring{\(K_{\alpha,\beta}\) lines with LiF}{K-alpha, K-beta lines with LiF}]{\boldmath\(K_{\alpha,\beta}\) lines calculation with LiF}
+The script provides values for \(K_{\alpha,\beta}\) of molybdenum, which can be used to check our experiment results, apparently they are perfect. But we need to talk about the gaussian fits: They rely on 4 parameters, but are only based on \(\sim8\) measured points. For a future experiment, one should decrease the goniometer's angle-step for this measurement and use a wider interval around the peak, so the gaussian base/underground can be fitted better. 
+\begin{table}[htbp]
+\centering
+\caption{comparison of \(K^\text{exp}(\ce{Mo})\) and \(K^\text{Lit}(\ce{Mo})\)\autocite{Skript_2.2}}
+\begin{tabularx}{0.9\textwidth}{Zxxxxx}
+    \toprule
+         \text{method} & K^\text{exp}_\alpha(\ce{Mo})[\unit{\pico\m}] & K^\text{lit}_\alpha(\ce{Mo})[\unit{\pico\m}] & \text{abs.Abw.}[\unit{\pico\m}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        K_\alpha & \num{71.1(1.4)} & 71.1 & 0 & 0 & \num{0} \\
+        K_\beta & \num{63.1(1.4)} & 63.1 & 0 & 0 & \num{0} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_Ktext} 
+\end{table}
+
+I fused the results for \(n=1,2\) to one mean value by using their respective errors and standard deviation
+\begin{align}
+    \bar{K}=\text{mean}(K^1,K^2)&&\Delta \bar{K}=\sqrt{\text{mean}(\Delta K^1, \Delta K^2)^2+\text{std}(K_1,K_2)^2}
+\end{align}
+
+\paragraph{FHWM and \(\Delta K\):} Of course one can argue, that \(\Delta K\) is too high, because instead of variance \(\sigma^2\) or standard deviation \(\sigma\), we used the FWHM in \cref{fig:Klines.png}. But in a previous experiment, the script\autocite{Skript_2.2} told us to use FWHM as the error of peaks. Nonetheless though, the values for \(K_{\alpha,\beta}\) are consistent through first and second order. 
+
+\subsection{starting voltage}
+I'm confused, why the graphic approach yiels different results for \(\Delta U_a\) compared to using:
+\begin{align}
+    U_a=\frac{-c}{m}&&\Delta U_a=U_a\sqrt{\frac{\Delta_{c}^{2}}{c^{2}} + \frac{\Delta_{m}^{2}}{m^{2}}}&&\tcbhighmath{\Delta U_a=\qty{22.3(1.3)}{\kilo\volt}}
+\end{align}
+Please let me now, which method we should use for a future analysis.
+
+\subsection{NaCl crystal examination}
+When calculating \(a_i=\frac{nK_{\alpha,\beta}}{\sin{\vartheta}}\), one could have used the mean values of the previously calculated \(K^n_{\alpha,\beta}\) (e.g. average the two values for \(K^{1,2}_\alpha\)). Instead, I paired each \(\vartheta\) with its corresponding \(K\)-line.
+
+One can compare the result with its literature value\autocite{sodiumchloride}, the deviation is minimal. 
+\begin{table}[htbp]
+\centering
+\caption{comparison of \(a_\text{exp}\) and \(a_\text{lit}\)\autocite{sodiumchloride}}
+\begin{tabularx}{0.9\textwidth}{ZZZZx}
+    \toprule
+        a_\text{exp}[\unit{\pico\m}]&a_\text{lit}[\unit{\pico\m}]&\text{abs.Abw.}[\unit{\pico\m}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{562(25)}&564.02&\num{2(25)}&\num{0(5)}&\num{0.09}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_a} 
+\end{table}
+
+But, as one can see in \cref{fig:KlinesNaCl.png}, the values for \(a\) differ dependent on \(n\): \(a_{n=2}>a_{n=1}\). This can't originate in the small angle approximation, because I only used it for the first task, probably it originates in a different refracting effect that changes with a higher inclination/angle of the crystal plate, but that's only a guess.
+
+\paragraph{gaussian fits:} Once again, but this time more extreme: The fits require 4 parameters, but the peaks itself consist of only 3! measured points, only the wide underground would superficially improve \(\chi^2\). Clearly, we need a better resolution (at least angle step \(=\ang{0.1}\) as in task 2). 
+
+\subsection{Avogadro constant}
+This deviation is also negligible. 
+\begin{table}[htbp]
+\centering
+\caption{comparison of \(N_A^\text{exp}\) and \(N_A^\text{lit}\)\autocite{avogadrosconstant}}
+\begin{tabularx}{0.9\textwidth}{ZZZZx}
+    \toprule
+        N_A^\text{exp}[\unit{\per\mole}]&N_A^\text{lit}[\unit{\per\mole}]&\text{abs.Abw.}[\unit{\per\mole}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{6.1(0.9)}&6.02214076&\num{0.1(0.9)}&\num{1(15)}&\num{0.09}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_N_A} 
+\end{table}
+
+I used wikipedia as a source for \(h\) and \(N_A\) because the values given in the script are not exact (the script itself references a source originating in 1999, which is outdated compared to the SI-system's reform in 2019).
+
+\subsection{conclusion}
+I'm a bit confused which method is best to determine the errors of those intersection points in the linear fits. 
+It was quite interesting to fit those gaussians even though it wasn't necessarily required, but I discovered some nice python things by doing it. The experiment itself was satisfying because most values were automatically determined and saved. Finally, it's pretty nice actually using crystals and bragg's law to our advantage.

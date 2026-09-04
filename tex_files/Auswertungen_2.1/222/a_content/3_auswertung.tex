@@ -1,0 +1,202 @@
+\tcbset{highlight math style={enhanced, colback={white},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+\clearpage
+
+\subsection{Kälteleistung}
+\xfigure{htbp}{width=\textwidth}{Nr.1temperaturverlauf.pdf}{Kältemaschine: Temperaturverlauf der Kompensationsmessung}{Kältemaschine: Temperaturverlauf der Kompensationsmessung}
+Die Kälteleistung \(P_K\) wurde durch eine Kompensationsmessung bestimmt: Die Leistung der Heizwendel wurde schrittweise soweit angehoben, bis sie der Kälteleistung entsprach Mit der Fehlerformel und den gemessenen Werten ist damit:  
+\begin{align}
+    \label{eq:heizleistung}
+    P_K=I_HU_H && \Delta P_K=P_K\sqrt{\left(\frac{\Delta U_H}{U_H}\right)^2+\left(\frac{\Delta I_H}{I_H}\right)^2}
+\end{align}
+\begin{rb}
+    P_K=\qty{30.6(1.6)}{\watt}
+\end{rb}
+Um nun die Energiebilanz \(Q_1=Q_2+W_M\) aufzustellen, wird erstmal \(Q_1\) nach \cref{eq:mit_ordentlich_kalorien} bestimmt, hier ist \(c_W=\qty{4180}{\joule\per\kg\per\kelvin}\), \(\rho_W=\qty{998}{\kg\per\m\cubed}\), \(\dot{V}\) der \hyperref[eq:arithmetisches_mittel]{arithmetische Mittelwert (\ref*{eq:arithmetisches_mittel})} mit Standardabweichung \(\sigma(\bar{\dot{V}})\), \(f\) der Mittelwert der notierten Drehfrequenzen mit Einzelmessungsfehler \(\Delta f=\qty{3}{\rpm}\) und Standardabweichung \(\sigma(\bar{f})\), sodass: 
+\begin{equation}
+\Delta f_\text{ges.}=\sqrt{(\Delta f)^2+(\sigma(\bar{f}))^2}
+\label{eq:freqzenzfehler}
+\end{equation}
+\(\Delta T=T_\text{zu}-T_\text{ab}=\qty{3.2(1.5)}{\kelvin}\) ist die Temperaturdifferenz des Kühlwasserzu- und -abflusses. Aus den Einzelfehlern \(\Delta T_i=0.002\cdot T_i\) wurde mittels trivialer Fehlerfortpflanzung \(\Delta T=\sqrt{(\Delta T_1)^2+(\Delta T_2)^2}\) der Gesamtfehler bestimmt. Der systematische Fehler des Thermometers von \(\qty{1}{\degreeCelsius}\) trägt durch die Differenzbildung nicht bei. 
+Damit ergibt sich:
+\begin{flalign}
+\label{eq:q1_err_func}
+    &&\Delta Q_1 = Q_1 \, \sqrt{\frac{\Delta {\dot{V}}^{2}}{{\dot{V}}^{2}} + \frac{\Delta f^{2}}{f^{2}} + \frac{\Delta T^{2}}{T^{2}}} && \tcbhighmath{Q_1=\qty{12.1(0.8)}{\J}}
+\end{flalign}
+Und für \(Q_2\) erhält man nach \(Q_2=\frac{P_K}{f}\):
+\begin{flalign}
+\label{eq:q2_err_func}
+    &&\Delta Q_2 = Q_2 \, \sqrt{\frac{\Delta {P_\text{K}}^{2}}{{P_\text{K}}^{2}} + \frac{\Delta f^{2}}{f^{2}}} &&\tcbhighmath{Q_2=\qty{5.9(0.4)}{\J}}
+\end{flalign}
+Zuletzt wird die mechanische Arbeit \(W_\text{M}\) aus der Motorleistung \(P_M=I_MU_M\) berechnet: 
+\begin{flalign}
+\label{eq:err_fun_wM}
+    &&\Delta W_\text{M} = W_\text{M} \sqrt{\frac{\Delta {I_M}^{2}}{{I_M}^{2}} + \frac{\Delta {U_M}^{2}}{{U_M}^{2}} + \frac{\Delta f^{2}}{f^{2}}} && \tcbhighmath{    W_M=\qty{17.3(1.3)}{\J}}
+\end{flalign}
+
+Die Energiebilanz lässt sich somit aufstellen, und die verlorene Energie abschätzen: 
+\begin{align}    
+\label{eq:func_und_err_func_e_bilanz_lol}
+    Q_V = W_\text{M} + Q_2 - Q_1 && \Delta Q_V = \sqrt{{\Delta W_\text{M}}^2 + {\Delta Q_2}^2 + {\Delta Q_1}^2} 
+\end{align}
+Aus den eben berechneten Werten ergibt sich ein Energieverlust von 
+\begin{rb}
+    Q_V=\qty{11.2(1.6)}{\J}
+\end{rb}
+Unter idealen Bedingungen würde dem Kühlwasser Wärmeenergie entsprechend der Summe aus von der Heizwendel entfernter Wärme und Arbeit des Motors zugeführt werden. In der Realität landet jedoch auch ein Teil in der Umgebung, weshalb der Verlustterm \(Q_V\) für Abwärme eingeführt wurde.
+
+Final kann der Wirkungsgrad nach \cref{nK} bestimmt werden.
+\begin{align}
+\label{eq:err_wiorkunszgfd}
+    \eta_K=\frac{Q_2}{W_M}&&\Delta \eta_\text{K} = \eta_\text{K} \, \sqrt{\left(\frac{\Delta Q_2}{Q_2}\right)^2 + \left(\frac{\Delta  W_\text{M}}{ W_\text{M}}\right)^2}
+\end{align}
+\begin{rb}
+    \eta_\text{K}=\qty{35(4)}{\percent}
+\end{rb}
+
+\newpage
+\subsection{Charakteristika der Kältemaschine/Wärmepumpe anhand von Wasser}
+\label{sec:A2}
+In diesem Abschnitt wird der Betrieb des Stirlingmotors als Kältemaschine/Wärmepumpe anhand der Kühlung/Erwärmung einer Reagenzglaswasserprobe untersucht. Der \enquote{Maschinenwechsel} stellt den Zeitpunkt des Wechsels der Umlaufrichtung des Elektromotors dar, was den Start des Wärmepumpenprozesses initialisiert. Es wurden zwei Temperaturverlaufe aufgezeichnet. 
+\xfigure{htbp}{width=\textwidth}{Nr.2wassertemp.png}{Kältemaschine und Wärmepumpe: Temperaturverlauf des Reagenzglaswassers}{Kältemaschine und Wärmepumpe: Temperaturverlauf des Reagenzglaswassers}
+
+\paragraph{Temperaturverlauf des Reagenzglaswassers:}
+Die Starttemperatur entspricht circa der Raumtemperatur \(T_0=\qty{23}{\degreeCelsius}\). 
+Im Betrieb als \textit{Kältemaschine} kühlt das Wasser im Reagenzglas ab. Das Kälteplateau bei \(T_*\approx\qty{0}{\degreeCelsius}\) zeigt den Zeitraum an, indem das flüssige Wasser zu Eis gefroren ist. Hier nimmt das System kontinuierlich Energie auf, um den Phasenübergang von Wasser zu Eis zu ermöglichen. In dieser Zeit wird (fast) das gesamte Wasser zu Eis. Der Grund für den kurzen Dip unter \(\qty{0}{\degreeCelsius}\) zeigt den Bereich, indem flüssiges Wasser mit \(T<\qty{0}{\degreeCelsius}\) (zumindest in der Nähe des Thermometerstabes) vorlag, dies wird als \href{https://en.wikipedia.org/wiki/Supercooling}{supercooled} Wasser bezeichnet, ein Zustand, dessen Kristallisation mangels Kristallationskeimen möglich ist, und erst bei Bereitstellung dieses Keims den Phasenwechsel zu Eis vollzieht. Jetzt ist zwar das Wasser am Thermometer zu Eis kristallisiert, der Rest jedoch nicht. Aus diesem Grund beträgt die Temperatur jetzt \(\qty{0}{\degreeCelsius}\) bis alles restliche Wasser gefroren ist. Dieser Bereich wird in \cref{fig:Nr.2wassertemp.png} als \enquote{Phasenübergang} bezeichnet. 
+
+Die Temperatur sinkt nun auf ein Niveau von \(T\approx\qty{-40}{\degreeCelsius}\). Diese Grenztemperatur wird erreicht, da die Kälteleistung nun an verschiedene Grenzen stößt: Je größer der Temperaturunterschied der Wasserprobe zur Umgebung ist, desto größer ist auch der Wärmestrom der Umgebung, der aufgrund der Bestrebung eines thermodynamischen Gleichgewichtszustandes zu jedem Teil des Prozesses fließt, der kälter als die Umgebung ist. Das heißt sowohl die Probe als auch das Arbeitsgas werden andauernd und immer \enquote{stärker} erwärmt.\\
+Außerdem sinkt die Leistungszahl der Kältemaschine, je kälter das Wasser wird, nach \(\eta=\frac{T_2}{T_1-T_2}\) mit sinkendem \(T_2\) des Wassers und \(T_1\) der konstanten Zulauftemperatur des Kühlwassers.    
+
+Nachdem sich das Kälteplateau kurze Zeit eingestellt hatte, wurde der Betriebsmodus zur \textit{Wärmepumpe} geändert. Nun arbeiten Motor als auch Umgebungswärme daran, das Eis zu erwärmen. Aus diesem Grund ist die Änderungsrate des Temperaturanstiegs größer, als die der Abkühlung zuvor. Sobald die Schmelztemperatur wieder erreicht wurde, bleibt die Temperatur eine Weile lang auf \(\qty{0}{\degreeCelsius}\) bis alles Eis geschmolzen ist, alle zugeführte Wärme wird also in den Phasenübergang gesteckt, und stellt die Schmelzenthalpie bereit. Der Grund, warum die Dauer der Bereitstellung der Schmelzenthalpie beim Phasenübergang von fest zu flüssig kürzer gedauert hat, als die der Kristallstionsenthalpie von flüssig zu fest, ist wiederum auf den contributing factor der Umgebungswärme zurückzuführen. 
+
+\xfigure{htbp}{width=\textwidth}{Nr.2.pdf}{Kältemaschine und Wärmepumpe: Temperaturverlauf des Kühlwassers}{Kältemaschine und Wärmepumpe: Temperaturverlauf des Kühlwassers}
+
+\paragraph{Temperaturverlauf des Kühlwassers:}
+Die Zulauftemperatur \(T_2\) des Kühlwassers bleibt konstant, da es vom Wassernetz des Labors bereitgestellt wird. 
+Die Temperatur des abfließenden Wassers \(T_1\) fängt zunächst an zu steigen, nachdem der Motor als Kältemaschine eingestellt wird. Dieses erreicht nach kurzer Zeit (nachdem die Machine eingelaufen ist) ein Plateau. Dieses liegt einige Grad Celsius über der Temperatur \(T_2\). 
+Der Stirlingmotor tranpsortiert mittels des Arbeitsgases Wärme vom oberen Teil des Kolbenaufbaus nach unten, wo das Kühlwasser diese Wärme aufnimmt und an ein Reservoir, die Ablaufleitung des Wassernetzes, abführt.  
+
+Als logische Konsequenz ist zu erwarten, dass wenn die Maschine als Wärmepumpe betrieben wird, sich der Effekt umkehrt und das Kühlwasser abgekült werden müsste, sodass also Wärme aus dem Kühlwasser an das Arbeitsgas abgegeben wird, und dann nach oben transportiert wird. Erklärt wird dies durch die Vermutung, dass alle Wärme, die das Arbeitsgas aufnehmen könnte, schon von der Umgebung bereitgestellt wird, das Kühlwasser also gar keine Wärme abgeben muss. 
+Jedoch entspricht dies nicht der Beobachtung. Nach dem Wechsel kühlt die Temperatur \(T_1\) kurz ab, erreicht aber circa die Temperatur des Einflusswassers \(T_2\). Über die gesamte Beobachtung hinweg ist \(T_1\) größer als \(T_2\). Dies bedeutet zwangsläufig, dass dem Kühlwasser weiterhin Wärme hinzugefügt werden muss. Diese kann nun nicht direkt aus der Wärmepumpe kommen.
+Eine Erklärung für das nicht erwartete Verhalten sind Reibungskräfte, denn auch diese können ein System erwärmen. Auch könnte die Raumtemperatur hier eine kleine Rolle gespielt haben, aber dürfte nicht so ausschlaggebend gewesen sein. Eine bessere Wärmeisolation wäre jedoch nötig, um diesen Faktor vollständig vernachläsigen zu können. 
+
+\subsubsection*{Bestimmung der zweiten Kälteleistung}
+Es wird erneut die Kälteleistung \(P_\text{2,K}\) berechnet. Dieses Mal wird \cref{kalteleistung_muhaha} herangezogen
+\begin{equation}
+\label{eq:another_err_func_loil_keine_lust_mehr_lowkey}
+    \Delta P_\text{2,K} = P_\text{2,K} \,  \sqrt{\frac{\Delta {\rho_\text{W}}^{2}}{{\rho_\text{W}}^{2}} + \frac{\Delta {t_0}^{2}}{{t_0}^{2}}} \, .
+\end{equation}
+Durch Einsetzen von \(t_0=\qty{9(10)}{\s}\), hier wurde der Fehler pimal Daumen abgeschätzt, dem angegebenen Literaturwert\autocite{Skript_2.1} der Schmelzenthalpie \(\lambda_W=\qty{335}{\J\per\g}\) und \(V_W=\qty{1.0(3)}{\milli\litre}\), Fehler wiederum pimal PROST abgeschätzt, ergibt sich für die erneut bestimmte Kälteleistung:
+\begin{rb}
+    P_\text{2,K}=\qty{3.5(1.2)}{\watt}  
+\end{rb}
+\marginpar{\includegraphics[width=\marginparwidth]{selimdrinking.png}}
+\begin{table}[htb]
+\centering
+\caption{Vergleich der Kälteleistungen}
+\begin{tabularx}{0.8    \textwidth}{ZZZZZ}
+    \toprule
+        P_{1,K}[\unit{\watt}]&P_{2,K}[\unit{\watt}]&\text{abs.Abw.}[\unit{\watt}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{30.6(1.6)}&\num{3.5(1.2)}&\num{27.1(2.0)}&\num{89(9)}&\num{14}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_P_K} 
+\end{table}
+Wie man sieht, unterscheiden sich die Ergebnisse um Welten. Meiner Meinung nach liegt das an der gesunkenen Effizienz des Stirling Motors. Zudem kann das Arbeitsgas in Teil 1 die Wärme der Heizwendel viel besser aufnehmen, da die Temperaturdifferenz zwischen dem zu kühlendem Objekt und der dem Arbeitsgas größer ist, sodass der Wärmefluss stärker ist. (Dies ist auch die Ursache für den Leistungsverlust).
+
+\subsection{Nutzung als Wärmekraftmaschine im Leerlauf}
+\label{sec:A3}
+Analog zu den vorherigen Rechnungnen lassen sich nun diverse Leistungen \(P\) und Energien \(Q\) bestimmen, zwischen denen folgender Zusammenhang besteht \(Q=\frac{P}{f}\), mit trivialem relativen Fehler. Die einzig neuen Größen sind \(W_{pV}\), welche im Messprotokoll als \(A\) notiert ist, und \(\eta_{th}=\frac{W_{pV}}{Q_{el}}\) auch mit trivialem relativen Fehler. \(A\) ist der Flächeninhalt eines Zyklus im \(pV\)-Diagramm (siehe \cref{fig:Nr.3LeerlaufBid.pdf}), welcher mittels einer Auswertungssoftware bestimmt wurde.  
+
+\begin{table}[htb]
+  \centering
+  \caption{Leistungen und Energien im Leerlauf}
+  \begin{tabularx}{\textwidth}{xxxp{0.5cm}Xc}
+    \toprule
+            \text{phys. Größe}  & \text{Einheit}    & {\text{Ergebnis}} & &Beschreibung              & Gleichung\\\midrule
+            f                   & [\unit{\per\s}]     & \num{4.5(0.3)}    & &Drehzahl                  & \ref{eq:freqzenzfehler}\\
+            P_\text{el}         & [\unit{\watt}]      & \num{192(8)}      & &elektrische Leistung      & \ref{eq:heizleistung}\\
+            Q_\text{el}         & [\unit{\J}]        & \num{43(4)}       & &el. Energie pro Zyklus    & \ref{eq:q2_err_func}\\
+            P_{ab}              & [\unit{\watt}]      & \num{93.8(1.3)}   && Kühlwasserwärmeleistung & \ref{eq:q2_err_func} \\
+            Q_{ab}              & [\unit{\J}]         & \num{20.9(1.5)}   & & abeführte Kühlwasserwärme & \ref{eq:mit_ordentlich_kalorien}, \ref{eq:q1_err_func}\\
+            P_{pV}              & [\unit{\watt}]      & \num{13.64(0.07)}& &thermische Prozessleistung& Abb. \ref{fig:Nr.3LeerlaufBid.pdf}\\
+            W_{pV}              & [\unit{\J}]         & \num{3.030(0.023)} & &Prozessarbeit             & Abb. \ref{fig:Nr.3LeerlaufBid.pdf}\\
+            \eta_{th}           &     [\unit{\percent}]               & \num{7.1(0.7)}
+  & &Wirkungsgrad              & \ref{eq:etath}\\
+    \bottomrule
+  \end{tabularx}
+\label{table:nr3_größen}
+\end{table}
+
+Die Energiebilanz des unbelasteten (\(W_D=0\)) Stirlingmotors lässt sich über
+\begin{align}
+\label{eq:aiudgfzsdfusdiuf}
+    Q_\text{V} = Q_\text{el} - Q_{ab}&&\Delta Q_\text{ver}=\sqrt{\Delta Q_{ab}^{2} + \Delta Q_{el}^{2}}
+\end{align}
+bestimmen, wobei \(Q_\text{V}\) alle Verluste zusammenfasst. Unter der Annahme, dass nach dem Skript (\cref{eq:WpV}) gefolgert im Leerlauf \(W_{pV}=Q_R\), wird nur die Abwärme abgezogen, alles andere steckt in \(Q_V=Q_v+Q_R\). 
+\begin{rb}
+    Q_\text{V}=\qty{23(5)}{\J}
+\end{rb}
+
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+Nach \cref{eq:WpV} gilt für die thermische Prozessarbeit \(W_{pV}\), dass im eingefahrenen Leerlauf-Zustand \(W_{pV}=Q_R\), \(W_D=0\). Damit ist der effektive Wirkungsgrad \(\tcbhighmath{\eta_\text{eff}=0}\). 
+\xfigure{htbp}{width=0.8\textwidth}{Nr.3LeerlaufBid.pdf}{\(pV\)-Diagramm des Leerlaufzyklus}{\(pV\)-Diagramm eines Zykluses, bei Betrieb des Motors im Leerlauf}
+\FloatBarrier
+
+\subsection{Nutzung als belastete Wärmekraftmaschine mit Brems-Zaum}
+\label{sec:A4}
+Für verschiedene Bremskräfte durch den Prony-Zaum wird die Performance des belasteten Heißluftmotors analysiert. Neben \(W_{pV}\) (aus den pV-Diagrammen), \(Q_{el}\) (gleicher Wert wie in Aufgabe 3), \(\eta_\text{eff}\) und \(\eta_{th}\) wird noch die Lastarbeit \(W_D\) bestimmt:
+\begin{align}
+\label{eq:sdfsdfzsdf}
+    W_\text{D} = 2 \pi lF && \Delta W_\text{D} = W_\text{D}\sqrt{\frac{\Delta l^{2}}{l^{2}} + \frac{\Delta F^{2}}{F^{2}}}
+\end{align} 
+Der Vollständigkeit halber, hier die einfache Fehlerformel: 
+\begin{align}
+\label{eq:err_func_eta_efffffff}
+    \eta_\text{eff} = \frac{W_\text{D}}{Q_\text{el}} && \Delta \eta_\text{eff} = \eta_\text{eff} \, \sqrt{\frac{\Delta {Q_\text{el}}^{2}}{{Q_\text{el}}^{2}} + \frac{\Delta {W_\text{D}}^{2}}{{W_\text{D}}^{2}}}  
+\end{align}
+
+\begin{table}[htbp]
+    \caption{Auswertung der Messdaten von Aufgabe 4: Belasteter Heißluftmotor.}
+    \label{tab:messdaten}
+    \centering
+    \begin{tabularx}{\textwidth}{ZZZZxxx}
+        \toprule
+        F[\unit{N}] & f [\unit{\per\s}] & W_\mathrm{pV} [\unit{\J}] & Q_\mathrm{el} [\unit{\J}] & W_\mathrm{D} \, [\unit{\J}] & \eta_\text{th} [\unit{\percent}] & \eta_\mathrm{eff} [\unit{\percent}] \\\midrule
+        \num{0.80(0.05)}&\num{3.65(0.06)}&\num{3.65(0.03)}&\num{52.3(2.4)}&\num{1.26(0.08)}&\num{7.0(0.4)}&\num{2.41(0.19)}\\
+        \num{0.60(0.05)}&\num{3.84(0.09)}&\num{3.495(0.020)}&\num{49.7(2.4)}&\num{0.94(0.08)}&\num{7.0(0.4)}&\num{1.89(0.19)}\\
+        \num{0.40(0.05)}&\num{4.13(0.06)}&\num{3.344(0.019)}&\num{46.2(2.1)}&\num{0.63(0.08)}&\num{7.2(0.4)}&\num{1.36(0.19)}\\
+        \num{0.20(0.05)}&\num{4.37(0.06)}&\num{3.21(0.04)}&\num{43.7(2.0)}&\num{0.31(0.08)}&\num{7.3(0.4)}&\num{0.71(0.19)}\\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+\FloatBarrier
+Trägt man die Wirkungsgrade über die Frequenz auf, so ergibt sich:
+\xfigure{htbp}{width=\textwidth}{Nr.neffnth.png}{Wirkungsgrade \(\eta(f)\)}{Thermischer und effektiver Wirkungsgrad über Frequenz \(f\)} 
+
+Beide Messreihen weisen einen Trend auf. Der thermische Wirkungsgrad nimmt bei zunehmender Frequenz zu, dies ist mathematisch damit zu begründen, dass die elektrische Energie nicht so schnell sinkt wie die thermische Prozessarbeit. Warum das der Fall ist, keine Ahnung. Auch wenn niedrigere Frequenzen für weniger Reibungsverluste sprechen würden, wird dieser Beitrag wsl. durch die niedrigere Lastarbeit kompensiert. Insgesamt bewegt sich der thermische Wirkungsgrad im Bereich des Leerlaufbetriebes von \(\eta_\text{th,L}=\qty{7.1(7)}{\percent}\), da niedrigere Lastarbeit natürlich dem Trend Richtung Leerlauf entspricht. \\
+Der effektive Wirkungsgrad hat einen negativen Trend, nimmt also bei zunehmender Frequenz ab. Niedrigere Last bedeutet höhere Frequenz, da der Motor durch die Last sozusagen \enquote{ausbremst} wird (Note: Die Last ist eine Bremslast hah). Eine höhere Frequenz wirkt sich jedoch auf die pro Zyklus zur Verfügung stehende el. Energie \(Q_{el}\) aus. Ein negativer Trend von \(\eta_\text{eff}=\frac{W_D}{Q_{el}}\) heißt somit, dass die eingestellte Lastarbeit schneller sinkt als die elektrische Energie. Insgesamt strebt auch dieser Wirkungsgrad gegen den Wert des Leerlaufbetriebes von \(\eta_\text{eff}=0\).
+
+Abschließend sei noch festgestellt, dass aufgrund höherer Reibungskräfte im Inneren des Kolbenapparats bei größeren Frequenzen der Unterschied zwischen thermischem und effektivem Wirkungsgrad immer mehr steigt.  
+
+Wären beide Wirkungsgrade gleich hoch, so würde der Motor reibungslos laufen.  
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

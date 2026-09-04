@@ -1,0 +1,34 @@
+Anmerkung: Die Ergebnisse wurden schon zu genüge in \secref{sec:Auswertung} behandelt und hervorgehoben.
+\subsection{Diskussion}
+\subsection*{Sonnenspektrum}
+Die größte Intensität liegt im sichtbaren Bereich, sinnvoll, wenn man aus evolutionärer Perspektive darauf blickt (höhö).\par
+Interessant ist, dass die die Alpha- und Beta-Linien der Balmerserie im Sonnenspektrum perfekt passen, während für die Gamma und
+Delta-Linien zwar in deren Umgebung Emissionsliniendips zu sehen sind, diese jedoch um ein paar Nanometer
+verschoben sind. Grund hier für ist eventuell die Wahrscheinlichkeit von \(\delta\) 
+und \(\gamma\) Übergängen geringer, sodass diese Linien im Spektrum allgemein nicht so stark ausgeprägt sind.\\
+Die Abweichungen zwischen gemessenen und theoretischen Werten der Fraunhoferlinien in \cref{table:Fraunhoferlinien} sind sehr gering, was natürlich rein rechnerisch an dem hoch geschätzten Fehler \(\Delta \lambda=\qty{1}{\nano\m}\) liegt. 
+Diesen hätte man auch niedriger wählen können, denn die Bestimmung der Peaks erfolgte mit Zoomen und genauem Aimen der Maus.  \\
+Eventuell liegt ein Ungenauigkeitsfaktor in der Auflösung des Gitterspektrometers. Einen systematischen Kalibrierungsfehler kann man ausschließen, da die gemessenen Peaks nicht systematisch in derselben Richtung verschoben sind. Meinem naiven Denken nach, hat Hintergrundrauschen keinen Effekt, der diese Wellenlängenabweichungen erklären könnte.
+
+\subsection*{verschiedene Lichtquellen}
+Eine der schönsten und befriedigsten Grafiken bisher: Die Lichtquellenspektren und Erwartungen erfüllt zu sehen, ist toll. Es sind eigentlich keine großen Überraschungen, bis auf die Linie der weißen LED, bei der ich erstmal nachlesen musste, ob es eine sinnvolle Erklärung gibt. Leider haben wir nicht aufgeschrieben, ob wir das Licht eher als kalt oder warm empfunden haben. Die mittlere Wellenlänge liegt nämlich überraschend weit im gelblichen Bereich, dafür dass das Spektrum wenig Rot-Intensität aufweist. 
+
+\subsection*{Natriumdampflampe}
+In \cref{table:Emissionslinienzugeordnet} ist zu erkennen, dass die Abweichungen der 1.Nebenserie ziemlich gering sind, während sie bei der 2.Nebenserie deutlich angestiegen sind. Ein Grund ist hierfür evtl. die geringere Intensität dieser Peaks, da es statistisch seltener zu diesen Übergangen kommt (2.Nebenserie ?). Bei der 2.Nebenserie wurden erstens nicht alle berechneten Emissionslinien wiedergefunden, sondern zeigen zweitens auch eine deutlich höhere, diesmal statistisch signifikante Abweichung. 
+
+\subsubsection*{Fitten}
+Wie man schön in \cref{sec:Fitten} sieht, ist der beim Fitten bestimmte Korrekturfaktor \(\Delta_d=\num{0.0031(23)}\) ziemlich klein, weswegen er bei der Berechnung in \secref{sec:BerechnungNS1}, \cref{eq:lambdam} anfangs ignoriert wurde.
+Ob dieser Wert wirklich vernachlässigbar klein ist, kann ich nicht beurteilen. Inwiefern der nicht perfekte Fit hier einen Effekt hat, weiß ich nicht.\par
+Die Vergleiche der Fitergebnisse in \cref{table:VergleichFit1} und \cref{table:VergleichFit2} zeigen, dass der erste Fit ziemlich gut ist. Der zweite jedoch ziemlich schlecht, auch wenn die Sigma-Abweichungen es anders erscheinen lassen (diese werden nur durch hohe Fehler nach unten gedrückt). Die prozentualen Abweichungen bei Fit 2, z.b. der Rydbergenergie liegt bei \(\qty{13.2}{\percent}\) und die des Korrekturfaktors \(\Delta_d\) bei \(\qty{16.7}{\percent}\). Man sieht also den fortgesetzten Trend, den ich oben schon beschrieben habe, dass die Zuordnung und Abweichung der Linien der 2. Nebenserie deutlich ungenauer als bei der 1. Nebenserie war. \\
+Durch die niedrige Anzahl \(N\) an Datenpunkten sind die Freiheitsgrade \(f\) ziemlich niedrig, was eine Interpretation der \(\chi\) Werte erschwert. 
+
+
+\subsection{Fazit}
+Der Versuch hat sehr schöne Prinzipien behandelt und schöne Ergebnisse (zumindest Diagramme) produziert. Die Spektren zu untersuchen und theoretisches Wissen bestätigt zu wissen, war ziemlich cool. Auch das Vibe-Coden der Peak-Analysis Funktion war eine ziemlich lehrreiche Erfahrung (hab davor noch nicht mit Python gearbeitet). Alle Kollegen haben mir erzählt, sie hätten einfach irgendwelche Fehler hingeschrieben, tja jetzt habe ich halt 5h an dieser Funktion gesessen, um dann in 5 min Wellenlängen und FHWM instant bestimmen zu können. Hätte ich mir die Zeit sparen können, in der ich die Peaks noch per Hand mit Schreiben des Arrays \verb|<peaks>| mit \verb|plt.vlines([<peaks>])| geplottet habe.
+
+\begin{figure}[ht]
+\centering
+\textbf{\textsf{\Large Me trying to find all emission lines}}\\\vspace{0.3cm}
+\includegraphics[width=0.5\textwidth]{sweatygamer.png}
+\caption{my aiming skills und gaming-mouse finally paying off\;\protect\autocite{sweatygamer}}
+\end{figure}

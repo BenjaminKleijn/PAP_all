@@ -1,0 +1,28 @@
+\subsection{Messverfahren}
+Der erste Versuchsaufbau in \cref{fig:rauschen} dient der Rauschmessung der Rauschquelle, die aus verschiedenen ohmschen Widerständen in einem abgeschirmten Gehäuse besteht. Diese werden direkt an den Eingang eines rauscharmen Verstärkers angeschlossen. Der Ausgang des Verstärkers ist mit einem Bandfilter verbunden, welches die gewünschte Messbandbreite definiert und Störsignale filtert. Das gefilterte Signal wird schließlich an ein hochempfindliches Effektivwert-Multimeter oder ein Oszilloskop geleitet, um die Rauschspannung zu messen. 
+Nach Starten des Analyseprogramms am PC werden damit 100 Einzelmessungen (Spannungswert des Voltmeters wird vom Programm erkannt) vorgenommen, deren Mittelwert und Standardabweichung automatisch berechnet und in einer \verb|.txt| Datei gespeichert. Selbiges Vorgehen erfolgt zur Messung des Eigenrauschens des Verstärkers mit dem Kurzschlussstecker.
+
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{versuch1}
+        \caption{Schaltung/Aufbau zur Rauschspannungsmessung}
+        \label{fig:rauschen}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{versuch2}
+        \caption{Schaltung/Aufbau zur Frequenzgangmessung}
+        \label{fig:frequenzgang}
+    \end{subfigure}}
+    \caption{Schema des Versuchsaufbaus \autocite{Skript_2.2}}
+    \label{fig:Versuchsaufbauagain}
+\end{figure}
+
+Zur Bestimmung des Frequenzgangs wird ein Funktionsgenerator verwendet, der ein Sinussignal ausgibt. Dieses Signal wird vor dem Verstärker durch ein Dämpfungsglied (Dämpfungsfaktor \(D = 10^{-3}\)) stark abgeschwächt, um eine Übersteuerung (Sättigung) des Verstärkers zu vermeiden. Das Ausgangssignal des Bandfilters wird hierbei mit einem Oszilloskop gemessen. Die gesamte Steuerung der Messgeräte sowie die Datenerfassung erfolgen über einen PC, der Aufbau ist in \cref{fig:frequenzgang} zu sehen. Die Daten werden vom Messprogramm automatisch als \verb|.csv| Datei gespeichert.
+\vfill
+\subsection{Messprotokoll}
+Es existiert kein Messprotokoll, die Daten wurden von einem auf dem PC laufenden Python-Programm namens \emph{waveforms} automatisch als \verb|.txt| bzw. \verb|.csv| Datei gespeichert. 
+% \includepdf[pages=-]{./images/243.pdf}

@@ -1,0 +1,121 @@
+\renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+
+\subsection{Induktionspannung abhängig von Drehfrequenz und Stromstärke}
+Die im Protokoll aufgetragenen Werte werden geplotted und ein linearer Fit durchgeführt. Ein Problem ist der Fehler der Stromstärke (der zwar beim linearen Fit als \(x\)-Fehler sowieso nicht berücksichtig wird), welcher im Protokoll als \(\qty{0.075}{\percent}+20\texttt{Digit}\) notiert wurde. Das \texttt{Digit} bezieht sich auf die Anzahl der Nachkommastellen der Messanzeige, sind dies 3 (\(I=\qty{0.001}{\ampere}\)), so ist \(\Delta I=0.00075I+\qty{0.02}{\ampere}\). Jedoch wurde die Nachkommastellenzahl nicht protokolliert, ich gehe jetzt von \(\unit{\milli\ampere}\) Genauigkeit aus.
+
+\xfigure{htbp}{width=\textwidth}{1.png}{Induktionsspannung als Funktion von \(f\) und \(I_H\)}{Induktionsspannung als Funktion von \(f\) und \(I_H\)}
+
+Die Helmhholtzspule wird mit Gleichstrom betrieben und die Fläche \(A\) wird durch Drehung der Flachspule geändert, damit liegt der Fall von \secref{sec:rotating} vor.  
+Aus \(m\defeq\frac{U_\text{ind}}{f}=\qty{0.2752(0.0024)}{\volt\per\hertz}\), der Steigung aus dem linken Diagramm kann mithilfe von \cref{eq:B} und \(A_0=\qty{41.71e-4}{\m\squared}\), \(n_F=4000\) der Betrag des externen Magnetfelds bestimmt werden. 
+\begin{align}
+    B=\frac{m}{A_0n_F2\pi}&&\Delta B=\frac{\Delta {m}}{A n_F 2 \pi}&&\tcbhighmath{B=\qty{3.714(0.023)}{\milli\tesla}}
+\end{align}
+Über \cref{eq:helmholtz_field} kann auch der theoretische Wert für \(B_H\) berechnet werden (mit \(n_H=124\) und \(I_H=\qty{4}{\ampere}\)):
+\begin{align}
+        B_H = \frac{8}{\sqrt{125}}\frac{\mu_0n_HI_H}{r}&&\Delta B_H=B_H\sqrt{\frac{\Delta{I_H}^{2}}{I_H^{2}}}&&\tcbhighmath{B_H=\qty{3.02(4)}{\milli\tesla}}
+\end{align}
+
+\subsection{Lufttransformator: Wechselstrom als periodischer Feldstrom}
+\paragraph{Winkelabhängigkeit:} \(U_\text{ind}(\alpha)\) bei einer Wechselstromfrequenz \(f=\qty{100}{\hertz}\) von \(U_H\) wird in \cref{fig:task2_angle.png} aufgetragen, um die Abhängigkeit der Induktionsspannung von der Ausrichtung der Sekundärspule zu untersuchen. Die Funktion \(f=|a \cos(\alpha)|+b\)  wurde angefittet, die Betragsstriche kommen daher, dass \(\sqrt{2}U_\text{ind, eff}=U_\text{ind, max}\) keine Information über die Polarität der Spannung beinhaltet.
+\xfigure{htbp}{width=0.65\textwidth}{task2_angle.png}{Induktionsspannung als Funktion des Winkels}{Induktionsspannung als Funktion des Winkels}
+\FloatBarrier
+
+\paragraph{Verhältnis von \(U_\text{ind}\) und \(U_H\):} 
+In diesem Abschnitt wird das Verhältnis der induzierten Spannung zur an der Helmholtzspule anliegenden Spannung gegen die Frequenz aufgetragen. Man sieht sehr gut den im Skript beschriebenen Effekt, dass sich der Aufbau wie ein Lufttransformator verhält, die Sekundärspannung also unabhängig von der Primärspannung ist. Für kleine Frequenzen gilt dies nicht mehr aufgrund des Ohmschen Widerstands der Primärspule bzw. der Impedanz \(Z_H=R+i\omega L\) der Primärspule: 
+\begin{align}
+    I_H(f)=\frac{U_H}{|Z_H|}=\frac{U_H}{\sqrt{R^2+(2 \pi f L)^2}}\begin{cases}
+    \approx\frac{U_H}{R}=\text{konstant} & f \text{ klein} \\
+    \approx\frac{U_H}{2\pi f} & f \text{ groß genug}
+\end{cases}&\\
+\text{da }B\sim I_H(f) \implies \frac{U_\text{ind}}{U_H}\sim\frac{fB(f)}{U_H}\begin{cases}
+    \sim f B_0 \to 0& f \text{ klein}\\
+    \sim f \frac{1}{f}=\text{konstant} & f\text{ groß genug}
+\end{cases}&
+\end{align}
+Genau dieses Verhalten sieht man in folgender Abbildung: für niedrige \(f\) ist \(\frac{U_\text{ind}}{U_H}\sim f\) linear in \(f\), für hohe Frequenzen ist das Verhältnis konstant. 
+
+\xfigure{htbp}{width=0.65\textwidth}{task2_ratio.png}{Verhältnis von \(U_\text{ind}\) und \(U_H\)}{Verhältnis von \(U_\text{ind}\) und \(U_H\)}
+
+\paragraph{Gesamtimpedanz als Funktion der Frequenz:} Nun wird gemäß \cref{eq:impedance_realpart} \(|Z_H|=\frac{U_H}{I_H}\) geplottet. Daran wurde die Funktion \(g(f;R,L)=\sqrt{R^2+(2\pi f L)^2}\) angefittet:
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{task2_R.png}
+        \caption{normale Achsenskala}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{task2_R_log.png}
+        \caption{Logarithmische x-Achse zur besseren Erkenntnis der tiefen Frequenzen}
+    \end{subfigure}}
+    \caption{Gesamtimpedanz der Helmholtzspule als Funktion der Frequenz}
+    \label{fig:verhältnis}
+\end{figure}
+\FloatBarrier
+Das sind die Ergebnisse des Fits, der Induktivitätswert ist in einer normalen/erwartbaren Größenordnung, für \(R\) und \(L\) ist jedoch kein Vergleichswert bekannt.
+\begin{rb}
+R_H=\qty{7.32(0.07)}{\ohm}\quad\quad L_H=\qty{19.54(0.11)}{\milli\henry}
+\end{rb}
+
+\subsection{Bestimmung des Erdmagnetfelds}
+Hierzu wurde eine Messung mit ausgeschalteter Helmholtzspule durchgeführt, um den Betrag des Erdmagnetfeldes \(B\) zu bestimmen. Dies erfolgt analog zum Vorgehen bei den Berechnungen zum Betrieb der Helmholtzspule mit Gleichstrom (\cref{eq:B}). Für die eingestellte Drehfrequenz des Motors wurde \(f_D=\qty{15.1(2)}{\hertz}\) eingestellt, die korrespondierende Induktionsspannung betrug \(U_\text{ind, eff} = \qty{58.5(30)}{\milli\volt}=\frac{U_\text{ind, max}}{\sqrt{2}}\). 
+\begin{align}
+    B &= \frac{U_\text{ind, max}}{A_0 n_F 2\pi f_D} &
+    \Delta B &= B\sqrt{\left(\frac{\Delta U_\text{ind, max}}{U_\text{ind, max}}\right)^2+\left(\frac{\Delta f_D}{f_D}\right)^2} &&\tcbhighmath{B=\qty{52(3)}{\micro\tesla}} \\
+    &&&& &\tcbhighmath{B_\parallel=\qty{53.4(0.4)}{\micro\tesla}}
+\end{align}
+
+Aus der Kompensationsmessung können die Horizontal- und Vertikalkomponenten des Erdmagnetfeldes bestimmt werden: Da das Magnetfeld der Helmholtzspule vertikal ausgerichtet ist, wird bei der eingestellten größtmöglichen Kompensation (Minimierung der Induktionsspannung durch Erhöhen des Helmholtzstroms) genau die vertikale Komponente des Erdmagnetfeldes ausgeglichen. Die verbleibende Induktionsspannung der rotierenden Spule ergibt dann die horizontale Komponente. Die Messwerte sind \(I_H=\qty{70.6(5)}{\milli\ampere}\) und \(U_\text{ind, SS}=\qty{59.2(5)}{\milli\volt}\), dieser Wert wurde aus \cref{fig:F0004TEK.png} abgelesen. 
+Mithilfe von der obigen Gleichung kann damit auch aus \(U_\text{ind, SS}\) nach Umwandlung in \(U_\text{ind, max}\) wie oben geschehen \(B_\parallel\) berechnen, der horizontale Anteile wurde eben nicht kompensiert und sorgt noch für diese weiterhin angezeige Induktionsspannung.
+
+Der vertikale Anteil wurde mit \(I_H\) kompensiert, damit lässt sich nun wieder \cref{eq:helmholtz_field} nutzen, um \(\tcbhighmath{B_\parallel=\qty{18.7(1.6)}{\micro\tesla}}\) zu berechnen. 
+
+Finaler Schritt ist dann die Berechnung des Inklinationswinkel nach \cref{eq:inclination}:
+\begin{align}
+    \alpha=\arctan\left(\frac{B_\perp}{B_\parallel}\right)&&\Delta \alpha=\sqrt{\left(\frac{B_\parallel\Delta B_\perp}{B_\parallel^2+B_\perp^2}\right)^2+\left(\frac{B_\perp\Delta B_\parallel}{B_\parallel^2+B_\perp^2}\right)^2}&&\tcbhighmath{\alpha=\qty{70.7(1.6)}{\degree}}
+\end{align}
+
+\xfigure{htbp}{width=0.7\textwidth}{F0004TEK.png}{Kompensationsmessung: Induktionsspannung}{Kompensationsmessung: minimale Induktionsspannung am Oszilloskop}
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}
+
+% \begin{figure}[htbp]
+%     {\captionsetup{list=false}
+%     \caption{Eingangsspannung in rot, Ausgangsspannung in blau}}
+%     \label{fig:diffop}
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_gaussian_DIFF.png}
+%         \caption{Differentation einer Gaußschen Spannung}
+%         \label{fig:gaußdiff}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}{0.48\textwidth}
+%         \centering
+%         \includegraphics[width=\linewidth]{A2_triangle_DIFF.png}
+%         \caption{Differentation einer Dreiecksspannung}
+%         \label{fig:trianglediff}
+%     \end{subfigure}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}

@@ -1,0 +1,33 @@
+
+\subsection{Plateauanstieg}
+Der Plateauanstiegs \(D\) für die Messzeiten \(t=\qtylist{60;180}{\s}\) zeigt bei längerer Messdauer geringeren Fehler, da dieser \(\propto\frac{1}{t}\). Durch kleineren Fehler steigt die Signifikanz von \(1.3\sigma\) bei \(\qty{60}{\s}\) auf \(2.3\sigma\) bei \(\qty{180}{\s}\). Der relative Anstieg \(D_\text{rel}\) ist bei beiden Messungen gleich hoch, dies entspricht der Erwartung, dass die Zählrohrcharakteristik unabhängig der Messzeit ist. 
+
+\subsection{Messdauer für 1\% Genauigkeit}
+Wie schon in der Auswertung beschrieben, der Fehler der 1\%-Zeit ist sehr hoch aufgrund niedriger Differenz zwischen \(n_{100}-n_0\). Diese Differenz kann zwar kompensiert werden, dafür bräuchte es aber deutlich längere Messdauern \(t\), mit denen \(n_{0/100}\) bestimmt wurden, um \(\Delta n\propto\frac{1}{t}\) klein zu bekommen, die hier vorliegenden 3min reichen nicht aus. Im Prinzip steckt in dieser Rechnung aber auch keine weitere Erkenntnis als \emph{für höhere Genaugikeiten, erhöhe die Messzeit} (gilt eben auch für \(\frac{\Delta D}{D}\propto\frac{1}{\sqrt{t}}\)).
+
+\subsection{Statistische Natur: Fits}
+\paragraph{2000 Messung:} Am Histogramm sieht man gut die Symetrie der Verteilung aufgrund des hohen Mittelwerts. Dadurch kann die Poissonverteilung sehr gut durch die Gaußverteilung genähert werden. Die Poissonverteilung zeigt weiterhin bessere Werte: \(p\) beträgt fast genau \(\qty{50}{\percent}\), das ist der bestmöglichste Wert für die Fitwahrscheinlichkeit. \(\chi^2_\text{red}\) ist bei beiden Fits fast genau 1, was der optimale Wert ist. 
+
+\paragraph{5000-Messung:} Wie man bei den Ergebnissen (\cref{fig:Histogramm0.1.png}, sowie der \cref{table:statistischeNatur}) sieht, unterscheiden sich die Gauss- und Poisson Fits bei der 5000-Messung. Wie im Skript\autocite{Skript_2.2} beschrieben, liegt das an der Symetrie einer Gaußverteilung, die natürlich massiv im Widerspruch zur bei den Daten vorliegende Asymetrie (zu sehen am Histogramm) aufgrund kleinen Mittelwerts (\(\mu<30\)) liegt. Aus diesem Grund sind die Fitparameter für die Gauss-Messung auch sehr schlecht (\(\chi^2_\text{red}=12\gg1\)). Selbst beim Poissonfit liegt der reduzierte \(\chi^2\) Wert bei 0.6, also auch nicht optimal, aber weitaus besser als beim Gauß.
+
+In beiden Messungen beträgt der Flächeninhalt nicht genau die Anzahl der Messungen, was daran liegt, dass die sehr selten aufgetretene Häufigkeiten/die Ränder der x-Achsen aus dem Fit herausgenommen wurden, aber natürlich auch im realen Experiment aufgetreten sind. Im Messprotokoll wurden die vom Messprogramm errechneten Werte für \(\mu\) und \(\sigma\) aufgeschrieben, welche vor Ort direkt beim Aufnehmen der Messungen angezeigt wurden. Diese Werte sind in derselben Größenordnungen, wie in der Auswertung mit \verb|curve_fit| ermittelten Werte. 
+\clearpage
+
+\subsection{Consistency Check}
+\xfigure{htbp}{width=0.8\textwidth}{Abweichungen_dumm.png}{useless Version: Abweichungen der Mess- und Fitwerte}{Abweichungen der Mess- und Fitwerte}
+\FloatBarrier
+Rein aus Interesse habe ich die Abweichungen der Messwerte von den entsprechenden Fitwerten berechnet (was im Prinzip die \(\chi^2\) Summe macht) und über das gemessene Intervall geplottet, das ist die Größe \(\Delta N=N_\text{exp}-G_{(n;\mu,\sigma)}\) analog die Poissonverteilung \(P(n;\mu)\) mit den jeweiligen Verteilungsmittelwerten \(\mu\) bzw. Standardabweichungen \(\sigma\). Die Größe \(N\) zählt die Häufigkeit der eingetretenen Ereignisse, dass in der Torzeit eine Anzahl \(n\) Teilchen zerfallen und detektiert worden sind. 
+
+\emph{Nevermind, das macht hier gar keinen Sinn} \\
+Wenn man nicht den Betrag (was eine evtl. \(\chi^1\) Summe wäre) analysiert, können sich negative und positive Differenzen aufheben bruh. 
+
+\emph{Warum habe ich damit jetzt meine Zeit gewastet uff.} Um wenigstens dann das gemachte ein wenig nutzen zu können, habe ich die einzelnen Elemente der \(\chi^2\) Summe geplottet, also 
+\begin{equation}
+f(n_i)\defeq\chi^2_i=\frac{N_{i,\text{exp}}-G_{\mu,\sigma}(n_i)}{\Delta N_{i,\text{exp}}} \quad\Rightarrow\quad \chi^2=\int f(n) \diff\mu
+\end{equation}
+Einzige schöne Beobachtung: Die \(\chi^2\) Summe entspricht also dem Integral über die im Diagramm gezeigte Kurve, nur mit dem Zählmaß \(\diff\mu\) auf den natürlichen Zahlen. Man sieht also in \cref{fig:Abweichungen.png}, dass die Fits für die 2000 Messung fast annähernd identisch sind (\(\chi^2_i\) Werte fast gleich) und beide Fits ziemlich gut sind, da das Integral sehr gering ist (zumindest im Gegensatz zum 5000er Gauss). Die Näherung \(P\approx G\) für große \(\mu\) wurde also bestätigt.     
+\xfigure{htbp}{width=0.8\textwidth}{Abweichungen.png}{\(\chi^2\) Summe grafisch dargestellt}{\(\chi^2\) Summe grafisch dargestellt}
+\FloatBarrier
+
+\subsection{Fazit}
+Radiaktivität ist sehr spannend. Die Gefahr nicht sehen zu können, lässt einen sehr schnell unvorsichtig werden. man muss sich gut konzentrieren, das habe ich auf jeden Fall gelernt.

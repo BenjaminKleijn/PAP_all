@@ -1,0 +1,153 @@
+\subsection{Motivation}
+Good old thermodynamics. Um wenigstens die Aspiration zu haben, zur Gruppe an Menschen zu gehören, die die Gesetze der Thermodynamik verinnerlicht haben, auf die Welt anwenden können, muss man entweder sehr schlau sein, oder einfach viel Blut (p), Schweiß (V) und Tränen (Diagramme) einsetzen.  
+
+\subsection{Ziele des Versuches}
+Dementsprechend dient der Versuch dazu, die thermodynamischen Prozesse (Zustandsänderungen) eines idealen Gases zu wiederholen, und ein paar davon im Labor zu untersuchen. Perspektivisch soll der \href{https://de.wikipedia.org/wiki/Isentropenexponent}{Adiabatenkoeffizient} \(\kappa\) von Sauerstoff und Argon bestimmt werden. Dies geschieht für Sauerstoff mithilfe von zwei verschiedenen Versuchsaufbauten, für Argon wird nur die Rüchardt-Methode genutzt.
+
+\subsection{Versuchausbau}
+\begin{wrapfigure}{r}{0.3\textwidth}
+\includegraphics[width=0.9\linewidth]{Versuchsaufbau2.png} 
+\captionsetup{format=plain}
+\caption[Aufbau nach Rüchardt \autocite{Skript_2.1}]{Aufbau nach Rüchardt \protect\autocite{Skript_2.1}}
+\end{wrapfigure}
+
+Die eine Methode erfolgt mithilfe eines oszillierender Masse im Aufbau nach Rüchardt:
+\begin{enumerate}
+\item Gasbehälter mit Rohransatz und Nadelventil
+\item Glasrohr mit zylindrischem Schwingkörper
+\item Gasflaschen (Argon, Luft)
+\item Stoppuhr
+\end{enumerate}
+
+Der zweite Aufbau ist nach der Methode von Clément-Desormes konstruiert.
+\begin{enumerate}[resume]
+    \item Gasbehälter mit Manometeraufsatz und Luftbalg
+\end{enumerate}
+
+% \begin{wrapfigure}{r}{0.15\textwidth}
+% \includegraphics[width=0.9\linewidth]{Versuchsaufbau1.png} 
+% \caption[Aufbau nach Clément-Desormes \autocite{Skript_2.1}]{Clément-Desormes Aufbau\autocite{Skript_2.1}}
+% \end{wrapfigure}
+\begin{figure}[htbp]
+    \begin{minipage}[c]{0.6\textwidth}
+        \centering
+        \includegraphics[height=5cm]{Versuchsaufbau1.png} 
+    \caption[Aufbau nach Clément-Desormes\autocite{Skript_2.1}]{Aufbau nach Clément-Desormes \protect\autocite{Skript_2.1}}
+    \end{minipage}
+\end{figure}
+
+\clearpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+\subsubsection{Thermodynamik idealer Gase}
+Die Zustandsgrößen eines idealen Gases sind durch die Zustandsgleichung
+\begin{equation}\label{ideal_gas}
+    pV = Nk_\mathrm{B} T
+\end{equation}
+verknüpft, wobei \(p\) der Druck, \(V\) das Volumen, \(T\) die Temperatur, \(N\) die Teilchenzahl und \(k_\mathrm{B}\) die Boltzmann-Konstante ist. Für quasistatische adiabatische Zustandsänderungen eines idealen Gases gilt die Poisson-Gleichung
+\begin{equation}\label{poisson}
+    p V^{\kappa} = \text{const.}
+\end{equation}
+Der dimensionslose Adiabatenkoeffizient \(\kappa\) ist definiert als Verhältnis der molaren Wärmekapazitäten bei konstantem Druck \(C_p\) und konstantem Volumen \(C_V\):
+\begin{equation}\label{k_def}
+    \kappa = \frac{c_p}{c_V} \, .
+\end{equation}
+Unter Verwendung des Gleichverteilungssatzes lässt sich \(c_V\) über die Anzahl der Freiheitsgrade \(f\) eines Gasmoleküls ausdrücken, sodass sich \(\kappa\) in Abhängigkeit von \(f\) schreiben lässt:
+    \begin{equation}\label{k_f}
+\kappa = \frac{f+2}{f} \, .
+\end{equation}
+Für einatomige Gase (z.B. Argon) mit \(f \approx 3\) ergibt sich \(\kappa = 5/3\), für zweiatomige Gase (z.B. Stickstoff, Sauerstoff als Hauptbestandteile der Luft) mit \(f \approx 5\) folgt \(\kappa = 7/5\). In realen Gasen können zusätzliche Rotations- und Schwingungsfreiheitsgrade angeregt sein, sodass die effektive Zahl der Freiheitsgrade größer wird und der experimentell bestimmte Adiabatenkoeffizient von diesen einfachen theoretischen Werten abweichen kann.
+
+\subsubsection{Clément und Desormes}
+\xfigure{htbp}{width=0.7\textwidth}{Clement.png}{PV-Diagramm nach Clément-Desormes}{Ablesen des Manometers bei der Messung nach Clément-Desormes, rechts dazugehöriges p-V-Diagramm}
+
+Die Methode nach Clément und Desormes beruht auf der Analyse eines Kreisprozesses in einem luftgefüllten Gasbehälter, dessen Druck über einen Luftbalg erhöht und über ein Manometer beobachtet wird. Zunächst wird durch Pumpen mit dem Luftbalg ein Überdruck erzeugt. Nach ausreichender Wartezeit stellt sich wieder Raumtemperatur ein, und das Gas befindet sich im 
+\textbf{Zustand 1:}
+\begin{equation}\label{CD_state1}
+    V_1,\quad p_1 = b + h_1,\quad T_1 \, 
+\end{equation}
+wobei \(b\) der äußere Luftdruck, \(h_1\) die am Manometer abgelesene Höhendifferenz und \(V_1\) das Volumen des Gases im Behälter sind.
+
+Anschließend wird der Gasauslass kurz geöffnet, sodass sich der Druck im Behälter schnell an den Außendruck \(b\) angleicht. Aufgrund der kurzen Dauer kann der Prozess als adiabatisch betrachtet werden. Es entweicht Gas, das Volumen des verbleibenden Gases vergrößert sich effektiv um \(\Delta V\), und die Temperatur sinkt auf \(T_2 = T_1 - \Delta T\). Der Zustand nach dem Druckausgleich ist
+
+\textbf{Zustand 2:}
+\begin{equation}\label{CD_state2}
+    V_2 = V_1 + \Delta V,\quad p_2 = b,\quad T_2 = T_1 - \Delta T \, .
+\end{equation}
+Nach erneutem Temperaturausgleich mit der Umgebung (isochore Erwärmung) erreicht das Gas wieder Raumtemperatur, der Druck steigt auf \(p_3 = b + h_3\), und das Volumen bleibt \(V_3 = V_2\):
+
+\textbf{Zustand 3:}
+\begin{equation}\label{CD_state3}
+    V_3 = V_2 = V_1 + \Delta V,\quad p_3 = b + h_3,\quad T_3 = T_1 \, .
+\end{equation}
+
+% \img[0.45]{CuD-pV}{pV-Diagramm des Kreisprozesses nach Clément und Desormes.}
+
+Die Zustände 1 und 2 sind durch die Poisson-Gleichung \cref{poisson} verknüpft:
+\begin{equation}\label{CD_poisson}
+    p_1 V_1^{\kappa} = (b+h_1)V_1^\kappa = b (V_1+\Delta V)^\kappa = p_2 V_2^{\kappa} \, .
+\end{equation}
+Unter der Näherung \(\Delta V \ll V_1\) lässt sich dies vereinfachen zu: 
+\begin{equation}
+    \frac{h_1}{b}=\kappa\frac{\Delta V}{V_1}
+    \label{poissonumgeformt}
+\end{equation} 
+
+Die Zustände 1 und 3 sind isotherm miteinander verknüpft (\(T_1 = T_3\)), sodass nach dem Boyle-Mariotte-Gesetz (\cref{ideal_gas} bei konstanter Temperatur) gilt:
+\begin{equation}\label{CD_boyle}
+    p_1 V_1 = (b + h_1) V_1 = (b + h_3) (V_1 + \Delta V) = p_3 V_3
+\end{equation}
+
+Unter Vernachlässigung des kleinen Terms \(h_3 \Delta V\) und mit \(\Delta V \ll V_1\) erhält man
+\begin{equation}\label{CD_dV}
+    \frac{\Delta V}{V_1} \approx \frac{h_1 - h_3}{b} \, .
+\end{equation}
+Dies eingesetzt in \cref{poissonumgeformt} erhält man die finale Formel:
+\begin{equation}\label{CD_k_final}
+    \kappa = \frac{h_1}{h_1 - h_3} \, .
+\end{equation}
+Damit lässt sich der Adiabatenkoeffizient von Luft allein aus den am Manometer abgelesenen Höhen \(h_1\) und \(h_3\) bestimmen.
+
+\subsubsection{Rüchardt}
+% \wrap[0.35]{L}{Ruechardt-Shematisch}{Schematischer Aufbau des Versuchs nach Rüchardt.}
+
+Die Methode nach Rüchardt bestimmt den Adiabatenkoeffizienten aus der Schwingung eines Körpers in einem vertikalen Glasrohr, das mit einem Gasbehälter verbunden ist. Der Schwingkörper besitzt nahezu den gleichen Durchmesser wie das Rohr und schwingt auf der Gassäule. Durch die Bewegung wird das Gas periodisch adiabatisch komprimiert und expandiert. Ein kontinuierlicher Gasstrom durch eine kleine Öffnung im Rohr kompensiert Reibungsverluste, ohne die grundlegende adiabatische Dynamik zu verändern.
+
+Im statischen Gleichgewicht wirkt auf den kreisförmigen (Radius \(r\)) Schwingkörper der Gasdruck \(p\) im Behälter, der sich aus dem äußeren Luftdruck \(p_0\) und dem „Schweredruck“ des Schwingkörpers ergibt:
+
+\begin{equation}\label{R_p}
+    p = p_0 + \frac{m g}{A} = p_0 + \frac{mg}{\pi r^2}\, ,
+\end{equation}
+
+wobei \(m\) die Masse des Schwingkörpers, \(g\) die Erdbeschleunigung und \(A = \pi r^2\) die Querschnittsfläche des Schwingkörpers bzw. des Glasrohrs mit Radius \(r\) ist.\\
+Wird der Schwingkörper um eine kleine Strecke \(x\) aus der Gleichgewichtslage ausgelenkt, so ändert sich der Druck im Gasbehälter um \(dp\), und nach dem zweiten Newtonschen Gesetz gilt
+\begin{equation}\label{R_newton}
+    m \ddot x = A \, dp \, .
+\end{equation}
+Für den adiabatischen Prozess im Gasbehälter gilt die Poisson-Gleichung (\ref{poisson}). Durch Differentiation erhält man
+\begin{equation}\label{R_dp}
+    dp = - \kappa \frac{p}{V} \, dV \, ,
+\end{equation}
+wobei \(V\) das Volumen des Gases im Behälter ist. Durch Einsetzen von \(dV = A \, x = \pi r^2 x\) in \cref{R_dp} erhält man:
+\begin{equation}\label{R_oscillator}
+    \ddot x + \kappa \frac{p \pi^2 r^4}{m V} x = 0 \, .
+\end{equation}
+Dies ist die Bewegungsgleichung eines harmonischen Oszillators. Diese Oszilation ist hat zur Folge, dass das Gas im Behälter komprimiert bzw. expandiert, bei auf- und ab-Bewegung des Zylinders. Die Kreisfrequenz bestimmt sich zu
+\begin{equation}\label{R_omega}
+    \omega^2 = \kappa \frac{p \pi^2 r^4}{m V} \, 
+\end{equation}
+Die Periodendauer und die Kreisfrequenz stehen im Zusamenhang \(T = 2\pi / \omega\), sodass sich der Adiabatenkoeffizient zu
+\begin{equation}\label{R_k_final}
+    \kappa = \frac{4 m V}{r^4 T^2 p}
+\end{equation}
+ergibt. Die Größen \(m\), \(V\) und \(r\) sind am Versuchsaufbau gegeben, der Druck \(p\) wird mit \cref{R_p} aus dem Atmosphärendruck und der Masse des Schwingkörpers bestimmt. Damit kann \(\kappa\) allein aus der gemessenen Periodendauer \(T\) berechnet werden.
+
+\subsection{Literaturwerte für Adiabatenkoeffizienten}
+Dem Praktikumsskript\autocite{Skript_2.1} sind die Literaturwerte zu entnehmen. Für die zwei Messmedien sind es:
+\begin{equation}\label{lit_luft}
+    \kappa_\text{Luft} = 1.401
+\end{equation}
+\begin{equation}\label{lit_ar}
+    \kappa_\text{Argon} = 1.648
+\end{equation}
+% Für die spätere Kritik an unseren Messergebnissen werden noch weitere Gase und deren Adiabatenkoeffizienten wichtig sein, daher wird hier die Tabelle aus dem Praktikumsskipt eingebunden:

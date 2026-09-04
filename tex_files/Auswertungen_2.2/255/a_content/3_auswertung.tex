@@ -1,0 +1,140 @@
+\tcbset{highlight math style={enhanced, colback={resultsbackground},colframe={resultscolor},left=0pt,right=0pt,top=0pt,bottom=0pt,extrude left by=0pt,extrude right by=0pt,extrude top by=1pt,extrude bottom by=1pt,boxsep=\fboxsep}}
+\clearpage
+\subsection{Plancks constant via critical wavelength}
+After extrapolating the linear trend of the first values of the bremsstrahlungs-spectrum, one can determine the critical angle by using the intersection of the linear fit with the spectrum's underground noise (\(I=100\) a.u.). Its error is derived by plotting all possible linear fits (dotted lines \(g_{m^\prime,c^\prime}(\vartheta)\) in \cref{fig:extrapolationzoomed}) with the parameters \(m^\prime,c^\prime\) varying according to their errors in the \verb|pcov|-matrix (\(m^\prime=m\pm\Delta m\)), and then one can choose the maximal possible derivation \(\max|\frac{100-c}{m}-\frac{100-c^\prime}{m^\prime}|\) as \(\Delta \vartheta\). This angle \(\vartheta=\qty{4.9(1.0)}{\degree}\) corresponds to the critical wavelength via \cref{eq:bragg}:
+\begin{align}
+    \lambda_{cr}\approx\frac{2d\vartheta}{n}&&\Delta \lambda_{cr}=2 \frac{\Delta_{\vartheta} d}{n}&&\tcbhighmath{\lambda_{cr}=\qty{35(8)}{\pico\m}}\label{eq:lambdacr}
+\end{align}
+We used the small angle approximation and \(d=\qty{201.4}{\pico\m}\)\autocite{Skript_2.2}. By using \cref{eq:grenzwelle}, \(U_a=\qty{35.00(5)}{\kilo\volt}\) and the natural constants speed of light \(c\) and elementary charge \(e\),  we can calculate a value for \(h\):
+\begin{align}
+    h=\frac{U_{a} e \lambda_{cr}}{c}&&\Delta h=h\sqrt{\frac{\Delta_{U_a}^{2}}{U_{a}^{2}} + \frac{\Delta_{\lambda_{cr}}^{2}}{\lambda_{cr}^{2}}}&&\tcbhighmath{h=\qty{6.5(15)e-34}{\joule\s}}\label{eq:h}
+\end{align}
+\paragraph{second order spectrum:} the second order spectrum (\(n=2\)) begins at:
+\begin{align}
+    \vartheta^\text{2nd}=\frac{n\lambda_{cr}}{2d}&&\Delta \vartheta^\text{2nd}=\frac{\Delta_{\lambda_{cr}} n}{2d}&&\tcbhighmath{\vartheta^\text{2nd}=\qty{9.7(2.3)}{\degree}}
+\end{align} 
+
+\begin{figure}[htbp]
+    {\captionsetup{list=false}
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{task1_LiFspectrum.png}
+        \caption{unzoomed plot}
+        \label{fig:fddfdf}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{task1_LiFspectrumzoomed.png}
+        \caption{extrapolation of the first linear trend}
+        \label{fig:extrapolationzoomed}
+    \end{subfigure}}
+    \caption{X-ray spectrum of \ce{Mo} with LiF-crystal}
+    \label{fig:spectrumLiF}
+\end{figure}
+\clearpage
+
+\subsection[\texorpdfstring{\(K_{\alpha,\beta}\) lines with LiF}{K-alpha, K-beta lines with LiF}]{\boldmath\(K_{\alpha,\beta}\) lines with LiF}
+\label{sec:lifk}
+Mean \(\mu\) and and the full half width FWHM of gaussians curves fitted on the primary and secondary spectral peaks in \cref{fig:Klines.png} are used for determining the angles/wavelengths \(K_\alpha,\,K_\beta\) and their respective errors. This is done by using the following gaussian function:
+\begin{align}
+    f(\vartheta)=\frac{A}{\sigma\sqrt{2\pi}}e^{-\frac{1}{2}(\frac{\vartheta-\mu}{\sigma})^2}+c
+\end{align}
+Where \(A\) is the area under the curve and \(c\) the level of the underground noise. One needs to provide starting values for \verb|curvefit|, this can be done by using the measured intensity and angle values.
+\begin{align}
+    c=\texttt{np.min(intensity)} && A = (\overbrace{\texttt{np.max(intensity)}}^{f(\mu)}-\texttt{np.min(intensity)})\sigma\sqrt{2\pi}
+\end{align}
+the last values are estimated: \(\sigma=\ang{0.1}\) and for \(\mu\), we look at the graphs and estimate by hand/eyes (one could have also used \(\min(\vartheta)+\frac{\max(\vartheta)-\min(\vartheta)}{2}\)). 
+
+A neat little thing done in \cref{fig:Klines.png} is to add a second x-axis for displaying the wavelength \(\lambda\): It corresponds to the angle \(\vartheta\) according to \cref{eq:bragg}:
+\begin{align}
+    \lambda=\frac{2d\sin(\vartheta)}{n}&&\text{FWHM}[\unit{\m}]=\Delta \lambda=\frac{2d\cos(\overbrace{\vartheta}^{\mu[\unit{\radian}]})\overbrace{\Delta \vartheta}^{\text{FWHM[\unit{\radian}]}}}{n} \label{eq:welppppppp}
+\end{align}
+The error formula is used to transform the FWHM measured in radians \([\unit{\radian}]\) to \([\unit{\m}]\), FWHM is set as the error of \(\mu=\lambda\), that's why FWHM\(=\Delta \lambda\). To calculate FWHM on the firsthand, we can use the condition \(\frac{1}{2}(f(\vartheta=\mu)-c)=f(\vartheta=\mu+\vartheta_\frac{1}{2})-c\) to get FWHM\(=2\vartheta_\frac{1}{2}=2\sigma\sqrt{2\ln(2)}\). \(\sigma\) and \(\mu\) are provided by the fit results/parameters of \verb|curve_fit|. 
+
+We arrive at the following values for the \(K^n_{\alpha,\beta}\)-lines:
+\begin{rbla}
+    K^{1}_\alpha=\qty{71.0(1.7)}{\pico\meter}&&K^{2}_\alpha=\qty{71.1(1.0)}{\pico\meter}&&S[\sigma]=\num{0.06}\\K^{1}_\beta=\qty{63.0(1.7)}{\pico\meter}&&K^{2}_\beta=\qty{63.2(1.0)}{\pico\meter}&&S[\sigma]=\num{0.11}
+\end{rbla}
+The errors represent the FWHM of each peak, Specifically \(\tcbhighmath{\text{FWHM}^1_\alpha=\qty{1.67(3)}{\pico\m}}\). We calculated this by using \cref{eq:welppppppp} with \(\vartheta=\mu\), \(\sigma[\unit{\degree}]\) and taking \(\Delta \sigma[\unit{\degree}]=\sqrt{\texttt{pcov[2][2]}}\) out of the \verb|curve_fit| covariance matrix. Firstly, we change \(\mu,\sigma\) to \([\unit{\radian}]\), then:
+\begin{align}
+    \text{FWHM}[\unit{\radian}]=2\sigma\sqrt{2\log(2)} && \Delta \text{FWHM}[\unit{\radian}]=2\Delta\sigma\sqrt{2\log(2)}\\
+    \text{FWHM}[\unit{\m}]=2d\cos(\mu) \text{FWHM}[\unit{\radian}]&&\Delta \text{FWHM}[\unit{\m}]=2d\cos(\mu)\Delta \text{FWHM}[\unit{\radian}]
+\end{align}
+
+\xfigure{htbp}{width=\textwidth}{Klines.png}{\(K_{\alpha,\beta}\) Gaussian fits for LiF}{\(K_{\alpha,\beta}\) Gaussian fits for LiF}
+
+Interestingly, one can arrive at FWHM \([\unit{\m}]\) in a different way:
+\begin{align}
+    \text{FWHM}[\unit{\m}]&=\mu+\overbrace{\frac{\text{FWHM}[\unit{\radian}]}{2}}^{\vartheta}-(\mu-\overbrace{\frac{\text{FWHM}[\unit{\radian}]}{2}}^{\vartheta})=\frac{2d}{n}\left[\sin(\mu+\vartheta)-\sin(\mu-\vartheta)\right]\\
+    &=\frac{2d}{n}2\cos(\mu)\sin(\vartheta)\quad\mytexteq{\(\vartheta\ll 1\)}{}{\approx}\quad\frac{2d}{n}\cos(\mu)\text{FWHM}[\unit{\radian}]\label{eq:welp2}
+\end{align} 
+I think, its a coincidence, that \cref{eq:welppppppp} is the same formula as the one above, \cref{eq:welp2} seems way more intuitive. In \cref{eq:welppppppp}, we assumed, that \(\Delta\lambda=\Delta\mu=\text{FWHM}\), and that is a gross assumption rooted in overestimating errors.
+\clearpage
+
+\subsection{Plancks constant via starting voltage}
+The angle \(\vartheta\) was set to \(\ang{7.5}\), now the intensity can be plotted against the operating voltage to extrapolate the minimal voltage \(U_a\) required to release electrons with \(\lambda(\vartheta)\). We determine: \(U_a=\qty{22.3(1.8)}{\kilo\volt}\) by using \(U_a=\frac{-c}{m}=\{U|f(U)=0\}\). \(\Delta U_a\) is determined by plotting all possible linear fits (dotted lines \(g_{m^\prime,c^\prime}(U)\) in \cref{fig:task3.png}) with the parameters \(m^\prime,c^\prime\) varying according to their errors in the \verb|pcov|-matrix, and then one can choose the maximal possible derivation \(\max|\frac{-c}{m}-\frac{-c^\prime}{m^\prime}|\) as \(\Delta U_a\). 
+
+Once again, we use \cref{eq:lambdacr} and \cref{eq:h}, we can calculate the values for \(\lambda\) and followingly \(h\):
+\begin{rb}
+    \lambda_{cr}=\qty{52.7(8)}{\pico\m}\quad\quad h=\qty{6.3(6)e-34}{\joule\s}
+\end{rb}
+\xfigure{htbp}{width=0.8\textwidth}{task3.png}{operating voltage}{operating voltage}
+\clearpage
+
+\subsection[\texorpdfstring{\(K_{\alpha,\beta}\) lines with NaCl}{K-alpha, K-beta lines with NaCl}]{\boldmath\(K_{\alpha,\beta}\) lines with NaCl}
+\xfigure{htbp}{width=0.8\textwidth}{task4.png}{X-ray spectrum of \ce{Mo} with NaCl-crystal}{X-ray spectrum of \ce{Mo} with LiF-crystal}
+We use \verb|scipy_signal| to find the peaks and give them as starter \(\mu\)-values to \verb|curve_fit| and fit gaussians again. 
+These angles \(\vartheta=\qtylist[separate-uncertainty=false]{6.5(3);7.3(4);12.92(15);14.6(3)}{\degree}\) can be combined with their corresponding wavelengths \(K^{1,2}_{\alpha,\beta}=\qtylist[separate-uncertainty=false]{71.0(17);71.1(10);63.0(.17);63.2(10)}{\pico\m}\) from \secref{sec:lifk} to calculate the lattice constant \(a=2d\) with NaCl via:
+\begin{align}
+    a=\frac{nK_{\alpha,\beta}}{\sin(\vartheta)}&&\Delta a=a\sqrt{\frac{\Delta_{K}^{2}}{K^{2}} + \frac{\Delta_{\theta}^{2}}{\tan^{2}{\left(\theta \right)}}}&&\tcbhighmath{a=\qty{562(25)}{\pico\m}}
+\end{align}
+The singular values can be seen in \cref{fig:Klines.png}, the last step was to calculate the mean, its error arises of the averaged singular errors \(\Delta a_i\) quadratically added with the standard deviation of all \(a_i\). 
+\newpage
+\xfigure{htbp}{width=\textwidth}{KlinesNaCl.png}{\(K_{\alpha,\beta}\) Gaussian fits for NaCl}{\(K_{\alpha,\beta}\) Gaussian fits for NaCl}
+\FloatBarrier
+
+\paragraph{Avogadro constant:} With given\autocite{Skript_2.2} values of \(M_\text{mol}=\qty{58.44}{\gram\per\mol}\) and \(\rho=\qty{2.164}{\g\per\cm\cubed}\), as well es the previously determined \(a\), \cref{eq:avogadro} can be used to calculate \(N_A\):
+\begin{align}
+    N_A=\frac{4M_\text{mol}}{\rho a^3}&&\Delta N_A=12\frac{M\Delta_a}{a^4\rho}&&\tcbhighmath{N_A=\qty{6.1(0.9)e23}{\per\mole}}
+\end{align}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{brass_Cu,Zn.pdf}
+%     \caption{brass}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=0.9\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{magnet_W,Fe,Ti,Br.pdf}
+%     \caption{magnet}
+% \end{figure}
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics[width=0.9\textwidth,trim={1cm 1.5cm 2cm 1cm}, clip]{unknown_alloy_Cu,Pb,Ge,As.pdf}
+%     \caption{unknown-alloy}
+% \end{figure}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

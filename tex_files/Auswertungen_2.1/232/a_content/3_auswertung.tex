@@ -1,0 +1,76 @@
+\clearpage
+Die Angabe von Messwerten mit mehreren Unsicherheiten erfolgt stets nach dem Muster \[x=(x\pm\Delta_\text{systematisch.}\pm\Delta_\text{statistisch})\]
+\subsection[Berechnung der Wellenlänge]{Bestimmung der Wellenlänge des Lasers}
+\label{sec:A1}
+In diesem Abschnitt wird die Wellenlänge des verwendeten Lasers bestimmt. Dazu werden die gemessenen Werte für die Anzahl der Interferenzmaxima \(m\), die Verschiebung des Spiegels von \(s_a\) nach \(s_e\) verwendet. Die Berechnung erfolgt nach \cref{eq:laserWellenlange}, wobei der Fehler folgend berechnet wird:
+\begin{equation}
+    \Delta \lambda_i = \lambda_i \sqrt{2}\frac{\Delta_{s_i}}{\left(s_{a} - s_{e}\right)}
+\end{equation}
+Aus den 5 berechneten Werten (\(\qtylist{527.3(2.4);530.9(2.4);531.7(2.4);531.5(2.4);533.4(2.5)}{\nano\m}\)) wird mithilfe des \href{eq:arithmetisches_mittel}{arithmetischen Mittelwerts \ref*{eq:arithmetisches_mittel}} und der \href{eq:standardabweichung}{Standardabweichung \ref*{eq:standardabweichung}} das finale Ergebnis bestimmt. 
+\begin{rb}
+    \bar{\lambda}=\qty{531.0(2.5)(0.4)}{\nano\m}
+\end{rb}
+Die Abweichung von der Herstellerangabe \(\lambda=\qty{532(1)}{\nano\m}\) beträgt \(\num{0.4}\sigma\).
+
+\subsection{Brechungsindex von Luft}
+Durch die Änderung des Küvettendruckes wird die optische Weglänge beeinflusst, bei steigendem Druck quellen so neue Interferenzmaximae heraus. Alle 5 Maxima wurde der Druckwert aufgschrieben. Im folgenden Graph wurde der Druck \(p(m)\) geplottet. Nach \cref{eq:brechungsindexnormalbedinungen} besteht zwischen diesen ein linearer Zusammenhang, sodass eine Gerade an die Messwerte gefittet werden konnte. Deren Steigung beträgt im Mittelwert \(\zeta=\num{-14.7(1.1)}\,\mathrm{\frac{Torr}{count}}\).
+\xfigure{htbp}{width=\textwidth}{Nr.2_müberp.png}{Plot und Fit von/an \(p(m)\) }{Steigungsbestimmung von \(\zeta=\frac{p}{m}\)}
+
+Jetzt kann somit unter Nutzen der Fehlerformel:
+\begin{equation}
+    \Delta n_0=n_0\sqrt{\left(\frac{\Delta  \lambda}{\lambda}\right)^2+\left(\frac{\Delta a}{a}\right)^2+\left(\frac{\Delta \zeta}{\zeta}\right)^2+\left(\frac{\Delta T}{T}\right)^2}
+\end{equation}
+der finale Wert bestimmt werden:
+\begin{rb}
+    n_0=\num{1.000300(0.000023)}
+\end{rb}
+Die Abweichung zum im Skript\autocite{Skript_2.1} angegebenen Literaturwert von \(n=\num{1.00028}\) beträgt \(\num{0.9}\sigma\). 
+
+
+\subsection{LED-Kohärenzlänge}
+Das Oszilloskop Bild (\cref{fig:ledinterferogramm}) zeigt das Interferenzmuster der LED. Die einhüllende Gaußfunktion zeigt, wann der Gangunterschied \(\Delta s>L_c\) mit der Kohärenzlänge \(L_c\), denn dann sinkt die Intensität der Interferenzerscheinungen gegen null. Denn sobald dieser Fall eintritt, sind die von der LED ausgesendeten Wellenpakete nicht mehr kohärent - stehen also nicht mehr in konstanter Phasenbeziehung. 
+
+Auf der x-Achse des Graphen sieht man also die Verfahrzeit des Motors \(t=\frac{\Delta x}{v}\), der den Spiegel mit konstanter Geschwindigkeit \(v=\qty{0.1}{\milli\m\per\s}\) bewegt hat. Die Halbwertsbreite FHWM dieser Gauß-Kurve ist ungefähr die Zeit, in der der Motor den Gangunterschied auf \(\Delta s=2\Delta x\approx L_c\) erhöht. Setzt man also für \(t\defeq\text{FHWM}\) und \(\Delta x\defeq\frac{\Delta s}{2}\) erhält man gesuchte Gleichung:
+\begin{align}
+    \label{eq:L_C}
+    L_c=2\cdot \text{FHWM}\cdot v&&\Delta L_c=2v\Delta \text{FHWM}
+\end{align}
+Zur Bestimmung der Kohärenzlänge der Leuchtdiode fitten wir also zunächst eine Gaußfunktion der Form
+\begin{equation}
+    f(t) = \frac{a}{\sigma \sqrt{2\pi}} \cdot \exp \left( -\frac{(t - \mu)^2}{2\sigma^2} \right)
+\end{equation}
+über die Maxima des gemessenen Signals.\\
+Mithilfe der FHWM Bedingung \(\frac{1}{2}f(t=\mu)=f(t=\mu+t_\frac{1}{2})\) kann man \(t_\frac{1}{2}=\sigma\sqrt{2\ln(2)}\) berechnen und dies in FHWM\(=2t_\frac{1}{2}\) einsetzen, final also:
+\begin{align}
+    \text{FHWM}=2\sigma\sqrt{2\ln(2)}&&\Delta \text{FHWM}=2\Delta \sigma\sqrt{2\ln(2)}
+\end{align}
+Mit \(\sigma=\qty{0.01371(0.00019)}{\s}\) erhält man \(\text{FHWM}=\qty{0.0322(0.0005)}{\s}\). Damit ist nach \cref{eq:L_C}:
+\begin{rb}
+    L_c=\qty{7.08(0.11)}{\micro\m}
+\end{rb}
+\xfigure{htbp}{height=0.7\textheight}{Nr.3_kohärenz.png}{Kohärenzlängenbestimmung durch Gaußkurve}{an das Bild der aufgenommene Oszilloskopdaten wurde eine Gaußkurve gefittet}
+
+
+
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabular*}{\textwidth}{L@{\extracolsep{\fill}}*{7}{x}L}
+%     \toprule
+            % \cmidrule[0.3pt]{2-8}
+%     \bottomrule
+%   \end{tabular*}
+% \label{table:}  
+% \end{table}
+
+% \begin{table}[htb]
+%   \centering
+%   \caption{}
+%   \begin{tabularx}{\textwidth}{ZZZZ}
+%     \toprule
+%             \cmidrule[0.3pt](l{1.0cm}r{1.5cm}){1-4}
+%     \bottomrule
+%   \end{tabularx}
+% \label{table:}  
+% \end{table}

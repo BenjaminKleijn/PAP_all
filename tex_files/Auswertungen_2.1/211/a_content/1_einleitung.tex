@@ -1,0 +1,107 @@
+\subsection{Motivation}
+Der Mensch kann sich den harmonischen Oszillator (Abk. HO) nicht genug anschauen: Während im PAP1 ausgiebig die Plagen und einhergehenden Geduldsproben des mathematischen Pendels ausgehalten wurden, erfolgt nun das LVLUP zu zwei gekoppelten Pendeln. Dies stellt nun ein leicht abstrakteres Modell dar, mit dem die in der Natur zahllos aufzufindenden Anwendungsbeispiele des HO eine bessere Einführung erhalten.  
+Dieser Versuch wiederholt zudem das Aufstellen einer gekoppelten Differentialgleichung zur Lösung des Systems, zusätzlich werden die in HÖMA3 erlernten Fouriertransformationen genutzt, um aus den Amplitudenmessungen die Eigenschwingungen zu bestimmen und explizit aus der Schwebungsschwingung die zugrundeliegenden Eigenschwingungen zu extrahieren.
+
+\xfigure{htbp}{width=\textwidth}{xp_edited.png}{}{LEVELUP LETS GO, ich mach seit Stunden nur Quatsch}
+
+\subsection{Ziele des Versuches}
+Es werden 
+\begin{itemize}
+    \item die symetrische, asymetrische und Schwebungsschwingung quantitativ analysiert
+    \item ein LC-Schwingkreis qualitativ betrachtet
+\end{itemize}
+
+\newpage
+\subsection{Geräte}
+\begin{enumerate}
+    \item Pendel 1 und 2
+    \item Messingring als Kopplungsfeder, einstellbar für unterschiedliche Kopplungsgrade
+    \item Hallsensor 1 und 2
+    \item Analog zu Digitalwandler als Ausleser der Hall-Daten 
+    \item PC zur Anzeige, Auswertung und Fast-Fouriertransformation (FFT) der Daten
+\end{enumerate}
+Durch den Hall-Sensor wird die Auslenkung jedes Pendels an der Pendelaufhängung(Pendelachse) gemessen. Dies ergibt das \(x(t)\) Bild (\(x\) Auslenkung, \(t\) Zeit), welches durch Fouriertransformation in ein \(X(f)\) Bild übertragen werden kann, um so die Schwingungsfrequenz(en) bestimmen zu können.
+
+\xfigure{ht}{width=0.9\textwidth}{Versuchsaufbau}{}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+Ein einzelnes Pendel wird in Kleinwinkelnäherung durch die folgende Differentialgleichung beschrieben
+\begin{equation}
+J\ddot{\varphi} = -D\varphi
+\end{equation}
+wobei \(J = mL^2\) das Trägheitsmoment eines Pendels mit Länge \(L\) und am Ende konzentrierter Pendelmasse \(m\) ist. \(D = mgL\) ist das Direktionsmoment, die weiteren Größen \(g\) und \(\varphi\) stehen wie zu erwarten für Gravitationskonstante und Auslenkungswinkel. Wenn nun zwei solcher Pendel gekoppelt werden, ändern sich die Gleichungen zu
+\begin{subequations}
+    \begin{align}
+J\ddot{\varphi}_1 &= -D\varphi_1 + D'(\varphi_2 - \varphi_1)\\
+J\ddot{\varphi}_2 &= -D\varphi_2 + D'(\varphi_1 - \varphi_2)
+    \end{align}
+\end{subequations}
+mit einem neuen Direktionsmoment \(D' = D_F l^2\) (\(D_F\) Federkonstante der Aufhängung, \(l\) Abstand Pendelachse-Federaufhängung), welches mit der Auslenkungsdifferenz der Pendel multipliziert wird. Um die Gleichungen zu entkoppeln, können nun neue Variablen \(u = \varphi_1 + \varphi_2\) und \(v = \varphi_1 - \varphi_2\) eingeführt werden, wodurch man
+\begin{subequations}
+    \begin{align}
+J\ddot{u} + Du &= 0\\
+J\ddot{v} + (D + 2D')v &= 0
+    \end{align}
+\end{subequations}
+erhält. Hierbei handelt es sich wieder um zwei harmonische Oszillatoren mit den bekannten Lösungen
+\begin{subequations}
+\begin{align}
+u(t) &= A_1 \cos(\omega_1 t) + B_1 \sin(\omega_1 t), 
+\quad \omega_1 = \sqrt{\frac{D}{J}}\label{eq:omega1}
+\\
+v(t) &= A_2 \cos(\omega_2 t) + B_2 \sin(\omega_2 t), 
+\quad \omega_2 = \sqrt{\frac{D + 2D'}{J}}\label{eq:omega2}
+\end{align}
+\end{subequations}
+allerdings in den neuen Koordinaten. Diese Ausdrücke können nun wieder in Abhängigkeit von \(\varphi_1 = \tfrac{1}{2}(u + v)\) und \(\varphi_2 = \tfrac{1}{2}(u - v)\) geschrieben werden (die Substitution wird umgekehrt). Die Zeitentwicklung der einzelnen Auslenkungen ist also eine Superposition aus den Lösungen beider harmonischen Oszillatoren. Die Winkel sind eine Funktion von \(\varphi_{1/2}(A_1,A_2,B_1,B_2,t)\):
+\begin{equation}
+    \varphi_{1/2}(t) = \frac{1}{2} (A_1 \cos \omega_1 t + B_1 \sin \omega_1 t \pm A_2 \cos \omega_2 t \pm B_2 \sin \omega_2 t)
+    \label{eq:allgemeinphi}
+\end{equation}
+
+und für bestimmte Anfangsbedingungen ergeben sich Schwingungen besonders einfacher Form:
+\newpage
+\paragraph{Symmetrische Schwingung:}Für die erste dieser besonderen Situationen werden beide Pendel anfänglich bis auf denselben Wert in dieselbe Richtung ausgelenkt und gleichzeitig losgelassen. Mathematisch entspricht das den Anfangsbedingungen \(\varphi_1(0) = \varphi_2(0) = \varphi_0\) und \(\dot{\varphi}_i(0) = 0\).
+In diesem Fall wird \(B_1\) Null und für den Koeffizienten \(A_1\) gilt \(A_1 = 2\varphi_0\), d.h. es gibt eine harmonische Schwingung \(\varphi_{1/2}(t)=\varphi_0\cos(\omega_1t)\) mit Frequenz \(\omega_1\). Obwohl zwei Oszillatoren aneinander gekoppelt sind, verhalten sie sich also wie im Fall eines Oszillators.
+\paragraph{Antisymmetrische Schwingung:}
+Das Gegenstück zur obigen Situation wird realisiert, indem man beide Pendel gleich weit, aber in entgegengesetzte Richtungen auslenkt. Aus den entsprechenden Anfangsbedingungen \(\varphi_1(0) = -\varphi_2(0) = \varphi_0\) und \(\dot{\varphi}_i(0) = 0\) folgt diesmal \(A_2 = 2\varphi_0\), und die Pendel schwingen beide harmonisch, jedoch entgegengesetzt (mit einer um \(180^\circ\) verschobenen Phase): \(\varphi_1(t)=-\varphi_2(t)=\varphi_0\cos(\omega_2t)\) Das gesamte System bewegt sich nun mit der kopplungsabhängig erhöhten Kreisfrequenz \(\omega_2\).
+\paragraph{Schwebungsschwingung:}
+Während die obigen beiden Situationen als Normalmoden bezeichnet werden, da das System dann insgesamt nur eine Frequenz hat, handelt es sich bei der Schwebungsschwingung um eine Überlagerung solcher Situationen. Sie wird erzeugt, indem man zu Beginn ein Pendel auslenkt, das andere aber beim Loslassen zunächst in der Ruhelage behält. Hier bedingen die Anfangsbedingungen \(\varphi_1(0) = 0\), \(\varphi_2(0) = \varphi_0\), \(\dot{\varphi}_i(0) = 0\) die Koeffizienten \(A_1 = -A_2 = \varphi_0\) und \(B_1=B_2=0\). Davon ausgehend kann man nach einigen Umformungen auf die folgenden Ausdrücke kommen:
+\begin{subequations}
+    \begin{align}
+\varphi_1(t) &= \varphi_0 \sin{\left(\frac{\omega_2 - \omega_1}{2} t\right)}
+\sin{\left(\frac{\omega_2 + \omega_1}{2} t\right)}=\varphi_0\sin{w_{II}}\sin{w_I}\label{eq:phi1}\\
+\varphi_2(t) &= \varphi_0 \cos{\left(\frac{\omega_2 - \omega_1}{2} t\right)}
+\cos{\left(\frac{\omega_2 + \omega_1}{2} t\right)}=\varphi_0\cos{w_{II}}\cos{w_I}\label{eq:phi2}
+    \end{align}
+\end{subequations}
+Es gibt also eine Kombination aus einer schnellen Schwingung mit Frequenz \(\omega_I = \frac{\omega_2 + \omega_1}{2}\) und einer langsamen äußeren Modulation der Amplituden mit der Schwebungsfrequenz \(\omega_{II} = \frac{\omega_2 - \omega_1}{2}\). Da die Schwebung für beide Pendel gegenphasig abläuft, entspricht das einem periodischen Energietransfer zwischen beiden Pendeln.
+
+\subsection*{Kopplungsgrad:}
+Die Stärke der Kopplung zwischen den Oszillatoren wird gerne im Vergleich zur Rückstellkraft angegeben. Diese Größe bezeichnet man als Kopplungsgrad \(\kappa\):
+\begin{equation}
+\kappa = \frac{D'}{D + D'}\quad\mytexteq{(\ref{eq:omega1})}{(\ref{eq:omega2})}\quad\frac{\omega_2^2 - \omega_1^2}{\omega_2^2 + \omega_1^2} = \frac{T_1^2 - T_2^2}{T_1^2 + T_2^2}
+\label{eq:kappa}
+\end{equation}
+mit \(T_i = \frac{2\pi}{\omega_i}\). Dieses Ergebnis lässt sich nun für schwache Kopplungen (\(D'<<D\)) auf den folgenden Ausdruck reduzieren:
+\begin{equation}
+\kappa = \frac{D'}{D} = \frac{\omega_2^2 - \omega_1^2}{2\omega_1^2} = \frac{D'}{D} = \frac{D_F\, l^2}{m g L}\label{eq:kappareal}
+\end{equation}
+Die eingangs genannten Definitionen von \(D\) bzw. \(D'\) wurden verwendet. Das Verhältnis zweier Kopplungsgrade bei Kopplungslängen \(l_a, l_b\) wird in dieser Näherung dann zu:
+\begin{equation}
+\frac{\kappa_a}{\kappa_b} \;\mytexteq{(\ref{eq:kappa})}{}\; \frac{l_a^2}{l_b^2}
+\label{eq:kappaab}
+\end{equation}
+% = \frac{\omega_{2,a}^2 - \omega_1^2}{\omega_{2,b}^2 - \omega_1^2}
+
+
+
+
+
+
+
+
+
+% \begin{subfigure}[position][height][inner pos]{width}
+% \end{subfigure}

@@ -1,0 +1,28 @@
+\subsection{Sinkgeschwindigkeiten}
+\paragraph{Zeitmessfehler}
+Den relativen Fehler der systematischen Zeitmessung kann man natürlich durch eine Verlängerung der Messzeit erreichen. Erhöht man die Zahl \(N\) der Messpunkte, so kann auch der Mittelwertsfehler (statistischer Fehler) genutzt werden, welcher durch höheres \(N\) nach unten gedrückt wird.
+\paragraph{linearer Fit}
+Nicht ganz klar war mir, anhand welcher korrigierten Werte der lineare Fit durchgeführt werden soll, denn in \cref{fig:Nr.1_Fit.png} sieht man, dass sowohl unkorr. als auch korr. Geschwindigkeiten keinen Unterschied in ihrem linearen Verhalten FÜR ALLE Radien zeigen. Es ist kein Sprung zu sehen, anhand dessen man argumentieren könnte, die höheren Radien für den Fit einer laminaren Strömung auszuschließen. 
+\paragraph{Geschwindigkeitsverhältnis und Reynoldszahl}
+In \cref{fig:Nr.1_Reynoldszahl.png} sieht man jetzt den eigentlich vorher schon erwarteten Trend/Effekt, dass die real gemessene Sinkgeschwindigkeit für höhere Radien aufgrund turbulenterem Strömungsverhalten kleiner ist, als die nach dem laminaren Modell erwartete Geschwindigkeit \(v_{lam}\). Dies sieht man daran, dass das Verhältnis \(\frac{v}{v_{lam}}\) mit größerem Radius sinkt.\\
+Der zu suchende Knick im Graphen war sogar aufzufinden, seine Fehlergrenzen sind aber nur rudimentär geeyeballed. Der Wert von \(Re^\mathrm{krit.}=\num{0.246(50)}\) liegt somit bei \(\nicefrac{1}{4}\) der im Skript\autocite{Skript_2.1} angegeben kritischen Reynoldszahl einer sinkenden Kugel.
+
+\subsection{Hagen-Poiseuille}
+\paragraph{Fehlerrechnung}
+Der Grund, warum der Fehler von \(\eta^\mathrm{Hag.Pois.}\) deutlich größer ist, als bei der Stokes-Methode, ist, dass ich diesen auf eine sehr fragwürdige Weise berechnet habe:
+\begin{equation}
+    \Delta \dot{V}=\sqrt{\sigma^2(\frac{V_i}{t_i})+mean^2\left(\frac{V_i}{t_i}\cdot\sqrt{\frac{\Delta_t^2}{t_i^2}+\frac{Delta_V^2}{V_i^2}}\right)}
+\end{equation}
+Wobei hier der Mittelwert der Einzelfehler (\(\Delta \frac{V_i}{t_i}\)) quadratisch mit der Standardabweichung addiert wurde. Ich weiß nicht, ob das das richtige Vorgehen ist (gerne rückmelden, wie ich hier in Zukunft vorgehen soll). Den Fehler der Sinkzeiten habe ich am Anfang auch so berechnet. Dies ergibt für \(\dot{V}\) einen sehr hohen relativen Fehler von: \(\frac{\Delta \dot{V}}{\dot{V}}=\qty{6}{\percent}\), der sich in den relativen Fehler \(\frac{\Delta \eta}{\eta}=\qty{6.5}{\percent}\) fortpflanzt.\\
+Nimmt man nur die Standardabweichung als Fehler, so ergibt sich ein relativer Fehler von \(\frac{\Delta \dot{V}}{\dot{V}}=\qty{0.27}{\percent}\). Wenn man den Fitfehler einer Gerade durch die Messwerte legt, so erhält man denselben kleinen relativen Fehler durch die Kovarianzmatrix. Übrigens waren nach dem Fit noch \(\qty{0.057}{\milli\litre}\) im Messbecher drinne, was mir sehr wenig vorkommt\dots\\
+Nutzt man nun diesen kleineren Volumenstromfehler, ergibt sich \(\eta^\mathrm{Hag.Pois.}=\qty{0.261(8)}{\pascal\s}\) und damit ein halb so kleiner relativer Fehler wie vorhin.
+\subsection{Vergleich der Versuchsteile}
+Die Abweichung der Messmethoden (siehe Ergebnis \ref{table:SIGGGGMAS}) zur Viskositätsbestimmung beläuft sich auf \(0.4\sigma\), ein sehr guter Wert. Nach Anpassen der Fehlerrechnung des Volumenstroms, indem nun der Fitfehler der Ausgleichsgeraden genutzt wurde, ergibt sich ein deutlich kleinerer Fehler: 
+\begin{rb}
+    \eta^\mathrm{Hag.-Pois.}=\qty{0.261(8)}{\pascal\s}\qquad S=0.8\sigma
+\end{rb}
+Dadurch steigt die Sigma-Abweichung leicht, ist aber immer noch sehr gering.\\
+Der Fehler nach Stokes ist überraschend klein, was wahrscheinlich am sehr geringen Fitfehler der dortigen linearen Gerade liegt. \par
+Allgemein hätte ich erwartet, dass die Methode der Kapillarströmung genauer ist, weil hier keine menschliche Intervention geleistet werden muss (nur Ablesen der Volumenmarke). Ungenauigkeiten sind hier jedoch das Ablesen der Höhen, infolge dessen wird sowohl der Druck nicht exakt sein, als auch die Zeitmessung nicht immer genau zum Überschreiten der \(\qty{5}{\milli\litre}\)-Marken erfolgt sein. Zudem haben wir vergessen, die Anfangshöhe zu messen, und diese dann nach Zurückschütten der aufgefangenen Strömungsflüssigkeit notiert. Und davor wurde auch mit dem Angelstab und Kugelbehälter ein kleiner Kugelregen erzeugt. Dies verfälscht natürlich die Höhenmessung.
+\subsection{Fazit}
+Eigentlich ein ganz netter Versuch. Aus irgendeinem Grund dauern Auswertungen bei mir aber immer ewig. Dennoch, war schön mal bisschen Fluiddynamik zu sehen. Jetzt hab ich richtig Lust, am Wasserhahn laminarflow einzustellen. Außerdem lieben wir Steve Mould: \href{https://youtu.be/DvtbQs7hWXw?si=EIpQsjLarLjOJoeB&t=209}{ The bizarre ripples that form in a stream of water}. Der Stokes-Meme ist mir übrigens vor dem Einschlafen (kreativste Phase des Gehirns) selber eingefallen, aber natürlich kamen andere Menschen auf dieser Welt auch schon auf diese Idee.

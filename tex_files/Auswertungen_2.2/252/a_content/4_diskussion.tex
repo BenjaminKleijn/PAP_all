@@ -1,0 +1,105 @@
+% \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\subsection{Zerfallskonstanten der Silberisotope}
+Die ersten zwei Messpunkte in \cref{fig:silberlog.png} wurden nicht zur Fitbildung einbezogen. Eine Ursache für diese Ausreißer kann ich mir nicht vorstellen, ein rein statistischer Zufall wirkt unwahrscheinlich aufgrund des doppelten Auftretens.\\
+Außerdem wurden die Werte \(A_i\) nicht extra in diesem Dokument angezeigt, da sie für die Auswertung irreleveant sind. 
+\xfigure{htbp}{width=0.8\textwidth}{matthew.png}{\emph{Meme:} Subtle Foreshadowing \autocite{Matthew}}{Zu früh gefreut \autocite{Matthew}}
+
+\paragraph{Fitfehler:} Bevor man die Anpassung der Fehler mithilfe der \(\Delta n_0\) Fits vornimmt, kommt man auf \(\tilde{\lambda}_{110}=\qty{0.030(0.008)}{\per\s}\) und \(\tilde{\lambda}_{108}=\qty{0.0048(0.0023)}{\per\s}\). Im Vergleich mit den Ergebnissen für die endgültigen \(\lambda\) ist damit der hauptsächliche Teil des Fehlers vom ursprünglichen Fitfehler bestimmt, der bei \ce{^108Ag} bei fast \(\frac{\Delta \lambda_{n_0}}{\lambda_{n_0}}=\qty{50}{\percent}\) liegt. Diese Zahlen werden auch durch die in \cref{fig:silberlog.png} zu sehenden Fitkurven bei verschiedenen Untergrundwerten unterstützt: Es ist ohne Zoomen im Ausgabefenster kein Unterschied zwischen dem Verlauf der Kurven erkennbar, weder bei der Silber- noch bei der Indiumauswertung.  
+Die Dominanz des ursprünglichen Fehlers \(\Delta \lambda_{n_0}\) liegt eventuell daran, dass wie in \cref{fig:silber_indium.png} zu sehen, sehr viele Messwerte vorliegen, die einfach nur noch den Untergrund messen, und Anfangswerte mit hohen Zerfallszahlen fehlen, mithilfe derer die Kurvencharakteristik und damit die Zerfallskonstante besser zu bestimmen wäre. Der klare Schluss hieraus ist, sehr viel mehr Wert auf zügiges Arbeiten zu legen: Hauptsächlich durch zügige Entnahme, Transport und Einspannung der aktivierten Probe kann Zeit gespart werden, ein kleiner Teil kann auch durch präventives Starten der Messung beigetragen werden, indem diese gestartet wird, bevor das Präparat eingelegt wird. Die nicht relevanten Werte können dann in der Auswertung problemlos aus dem Array entfernt werden.\\
+Ich kann mich leider nicht mehr daran erinnern, ob hier irgendwie außerordentlich langsam gearbeitet wurde und damit explizit menschliche Versagen Fehlerursache ist (ist es eigentlich sowieso immer).
+
+\paragraph{Fitgüte:} Die Ungenauigkeit der Silber-Fitergebnisse liegt zu einem Teil auch an der hohen Zahl von Fitparametern, die Kopplung zweier Exponentialfunktion ist wsl. äußerst anfällig für kleine Schwankungen. 
+
+Es wirkt zwar durch reine visuelle Betrachtung des Fits nicht, als ob die Abweichung vom Messwertetrend stark ist, die \(\chi^2_\text{red}\) Summe liegt jedoch bei \(\num{0.6}\), also weit weg vom optimalen Wert 1. Zwar ist der Fehlerbereich für \(\lambda\) sehr hoch, aber dies wirkt sich nicht auf die \(\chi^2\)-Summe aus, denn diese berücksichtigt nur die Abweichung zwischen Fitfunktion und echten Messwerten. Damit ist die obige Vermutung umso wahrscheinlicher, dass aufgrund fehlender charakteristischer Anfangswerte effektiv nur wenig Werte zum Berechnen des Fits zur Verfügung stehen und der Fit dadurch wohl weder in seinen Fitparametern noch den Fehlergrenzen optimal ist. 
+
+\subsection{Halbwertszeiten der Silberisotope}
+\begin{table}[htbp]
+\centering
+\caption{\ce{^108Ag} und \ce{^110Ag}: Vergleich von \(T_{\nicefrac{1}{2},\text{exp}}\) und \(T_{\nicefrac{1}{2},\text{Lit}}\)}
+\begin{tabularx}{\textwidth}{cZZZZx}
+    \toprule
+        Messreihe & T_{\nicefrac{1}{2},\text{exp}}[\unit{\s}] & T_{\nicefrac{1}{2},\text{Lit}}[\unit{\s}] & \text{abs.Abw.}[\unit{\s}] & \text{proz.Abw.}[\unit{\percent}] & S[\sigma] \\\midrule
+        \ce{^108Ag}& \num{140(80)} & 144.6 & \num{0(80)} & \num{0(60)} & \num{0.06} \\
+        \ce{^110Ag}& \num{23(7)} & 24.6 & \num{2(7)} & \num{10(40)} & \num{0.23} \\
+\bottomrule
+\end{tabularx}
+\label{table:Vergleich_T} 
+\end{table}
+Die hohen Fehler der Halbwertszeit sorgen dafür, dass die Sigma-Abweichung nicht mehr sehr aussagekräftig ist, deswegen wäre als weitere Metrik die absolute Abweichung interessant, die nicht angezeigt wird, da sie aufgrund des hohen Fehlers auf 0 abgerundet wurde. Berechnet man die unsignifikantisierte abs. Abweichung, so hält sich diese bei beiden Isotopen in Grenzen und ist nicht außergewöhnlich hoch.
+
+\subsection[\texorpdfstring{Halbwertszeit des Indiumisotops \ce{^116In}}{Halbwertszeit des Indiumisotops}]{Halbwertszeit des Indiumisotops \ce{^116In}}
+
+Man sieht in der logarithmisch aufgetragenen \cref{fig:indiumlog.png} die exponentielle Natur des einzelnen Zerfalls: Da keine Überlagerung von zwei verschiedenen Zerfallsreihen vorliegt, sondern nur der Zerfall von \ce{^116In}, ist der Verlauf von \(Z(t)\) im logarithmischen Bild annähernd linear.
+
+\begin{table}[htbp]
+\centering
+\caption{\ce{^116In}: Vergleich von \(T_{\nicefrac{1}{2},\text{exp}}\) und \(T_{\nicefrac{1}{2},\text{Lit}}\)}
+\begin{tabularx}{\textwidth}{ZZZZx}
+    \toprule
+        T_{\nicefrac{1}{2},\text{exp}}[\unit{\s}]&T_{\nicefrac{1}{2},\text{Lit}}[\unit{\s}]&\text{abs.Abw.}[\unit{\s}]&\text{proz.Abw.}[\unit{\percent}]&S[\sigma]\\\midrule
+        \num{3180(180)}&3248.4&\num{70(180)}&\num{2(6)}&\num{0.4}\\
+    \bottomrule
+\end{tabularx}
+\label{table:Vergleich_T_I} 
+\end{table}
+Die Abweichung ist nicht statistisch signifikant, die Messung ist angesichts des deutlich geringeren relativen Fehlers \(\frac{\Delta T_{\nicefrac{1}{2}}}{T_{\nicefrac{1}{2}}}\) der Halbwertszeiten um einiges genauer als die Silbermessung, die Gründe werden in folgendem Abschnitt erörtert.
+
+\subsection{Vergleich der Silber- und Indiummessung}
+\paragraph{Torzeitabhängigkeit des relativen Fehlers:} In Versuch 251 - \enquote{Statistik des radioktiven Zerfalls} wurde explizit berechnet, wie durch Erhöhung der Messdauer der relative Fehler \(\frac{\Delta n}{n}\) sinkt:
+\begin{equation}
+    \frac{\Delta n}{n}=\frac{\sqrt{N}/T}{N/T}=\frac{1}{\sqrt{N}}=\frac{1}{\sqrt{n\cdot T}}=\mathrm{constant}\cdot\frac{1}{\sqrt{T}}=\mathrm{Mean}\left(\frac{1}{\sqrt{n_i}}\right)\cdot\frac{1}{\sqrt{T}}
+\end{equation}
+Er skaliert also mit \(\sim\frac{1}{\sqrt{T}}\) und die Torzeit liegt bei der Indiummessung mit \(T=\qty{120}{\s}\gg\qty{10}{\s}\) weitaus höher als bei der Silbermessung. Insgesamt beträgt der relative Fehler für Silber \(\qty{18}{\percent}\) und für Indium \(\qty{5}{\percent}\), ist also für Silber deutlich höher, da hier wegen kleiner Torzeit deutlich kleinere Zerfallszahlen gemessen wurden. Jedoch ist diese Messung leider alternativlos, denn man muss die Torzeit natürlich abhängig der Halbwertszeit des Isotops wählen: Die ist bei \ce{^110Ag} mit \(T_{\nicefrac{1}{2}}=\qty{24.6}{\s}\) so gering, dass sich bei längerer Torzeit die Zählrate pro Torzeitintervall merkbar ändern würde, denn \(n=n_0\exp\left(-\frac{\ln(2)}{T_{\nicefrac{1}{2}}} t\right)\). 
+
+\paragraph{Reduktion des rel. Fehlers von Silber:} Es gibt jedoch einen Weg, wie der relative Fehler von Silber verringert werden kann: Indem \(m\) Messreihen aufgenommen und addiert werden, denn: 
+\begin{align}
+    n=&\frac{1}{m\cdot T}\sum_i^m N_i\quad\mytexteq{\(N_i\approx N_j\)}{im Mittel}\quad \frac{m N_i}{mT}=\frac{N_i}{T}\\
+    \Delta n&=\frac{\sqrt{\sum_i^m N_i}}{mT}\quad\mytexteq{\(N_i\approx N_j\)}{im Mittel}\quad \frac{\sqrt{mN_i}}{mT}=\frac{1}{\sqrt{m}}\frac{\sqrt{N_i}}{T}\\
+    \implies \frac{\Delta n}{n}&=\frac{1}{\sqrt{m}}\frac{1}{\sqrt{N_i}}=\frac{1}{\sqrt{m}}\frac{1}{\sqrt{n}}\frac{1}{\sqrt{T}}
+\end{align}
+D.h. wenn anstatt 4 Messreihen 16 gemacht werden, das Verhältnis der relativen Fehler von Silber und Indium beträgt ungefähr \(\frac{1}{4}=\frac{1}{\sqrt{16}}\), dann sind die relativen Fehler von Silber und Indium auf demselben Niveau.
+
+\paragraph{Untergrundvergleich:} Der relative Fehler der Messpunkte, die für den Fit genutzt wurden, ist also wie diskutiert für Silber deutlich höher und hebt so die Fehlergrenzen der Ergebnisse der Fitparameter an. Zudem spielt natürlich die schiere Fitparameteranzahl (4 vs. 2) wieder eine Rolle sowie vor allem die zur Verfügung stehenden Messwerte: Wie oben beschrieben, wurde bei Silber viel Untergrund gemessen, was aus der berechneten Halbwertszeit direkt hervorgeht: \(T^{\text{110,108}}_{\nicefrac{1}{2}}=\qtylist{23.7;140}{\s}\ll t=\qty{400}{\s}\) ist also deutlich kleiner als die insgesamte Messdauer, die Aktivität sinkt sehr schnell. Bei \ce{^116In} hingegen ist \(T^{\text{In}}_{\nicefrac{1}{2}}=\qty{3450(190)}{\s}> t=\qty{3000}{\s}\) sogar größer als die gesamte Messdauer. Damit ist die Anzahl der \emph{effektiv} zur Verfügung stehenden Messwerte - die nicht schon auf Untergrundniveau liegen - zur Fitbildung bei Indium deutlich höher. 
+
+Zur besseren Erkenntnis wurden hier, bei nicht-logarithmischer Skalenteilung, die Untergrundniveaus eingezeichnet.
+
+\xfigure{htbp}{width=\textwidth}{silber_indium.png}{Silber- und Indium Aktivität mit eingezeichnetem Untergrund}{Silber- und Indium Aktivität mit eingezeichnetem Untergrund}
+
+Man sieht durch die gleiche y-Achsen-Skalierung auch gut den direkten Vergleich, welche Auswirkung die Halbwertszeiten haben (schnelles Absinken bei Silber, \dots).
+
+\subsection{Startaktivitäten}
+Eine gute Beobachtung kann noch aus diesen Diagrammen gewonnen werden: Die Aktivität beider radioaktiven Quellen sollte zu Beginn in derselben Größenordnung sein (beide Fits beginnen bei demselben Wert \emph{Junge ich kann nicht mehr, jetzt vergleiche ich halt doch die Startaktivitäten/Fitparameter}):
+\begin{rbla}
+    A_{110}=\qty{4.6(0.9)}{\becquerel} &&  A_{108}= \qty{0.7(0.4)}{\becquerel}&&  A_{116}=\qty{4.6(0.9)}{\becquerel}
+\end{rbla}
+Die Startaktivität \(A_{108}\ll A_{110}\) ist völlig valid, auf meinen ersten müden Blick war ich verwirrt, da die asymptotischen  Sättigungskurven in \cref{fig:Silber_plt.png} dem müden Beobachter richtigerweise zeigen, dass \st{\(A_{108}(t^\prime\to\infty)=A_{110}(t^\prime\to\infty)=A_\infty\)}, hier ist \(t^\prime\) jedoch die Aktivierungszeit. Beim betrachteten Fit hingegen handelt es sich aber nicht mehr um zeitabhängige Aktivitäten während der Aktivierungsphase, sondern um die Konstanten \(A_{0_{110}},A_{0_{108}}\) die nur noch den reinen Zerfall beschreiben und in meiner Auswertung aus Platz- und Schreibarbeitgründen stets nur als \(A_{110},A_{108}\) abgekürzt wurden. Die Konsistenz des Fits kann jedoch überprüft werden mit:\autocite{Aktivität}
+\begin{align}
+    A(t)=\lambda N_0\;\mathrm{e}^{-\lambda t}=\overbrace{\frac{\ln 2}{T_{\nicefrac{1}{2}}}N_0}^{A_0}\;\mathrm{e}^{-\lambda t}
+\end{align}
+\st{\(N_0\) sollte nach der Aktivierungsdauer von 7 min annähernd gleich sein, \(A_\infty\) ist auch gleich}, was bei \(t=0\) bedeutet:
+\begin{align}
+    V_F\defeq\frac{A_{0_{110}}}{A_{0_{108}}}=\frac{A_{110}}{A_{108}}\quad\xcancel{\mytexteq{\(t^\prime\to\infty\)}{}\quad\frac{T_{108}}{T_{110}}\defeq V_T}&&\tcbhighmath{V_F=\num{6.6(4.0)}\quad V_T=5.9}
+\end{align}
+Hier wurden die Fitergebnisse mit dem Größenverhältnis der Literaturwerte für \(T_{\nicefrac{1}{2}}\) verglichen. \st{leichte Differenz macht auch Sinn, da \(^{110}\mathrm{Ag}\) bei der genutzten Aktivierungszeit schneller in Sättigung geht, also \(N_{0_{110}}\) ein wenig größer als \(N_{0_{108}}\) ist, dadurch steigt das Verhältnis der Startaktivitäten.} \emph{Bemerkung:} Ich habe hier absichtlich nicht exakt auf die signifikante Stelle gerundet, da dann stark nach oben zu \(\num{7(4)}\) gerundet worden wäre.
+
+\subsection{\textcolor{blueurllink}{\emph{Update:}} Sättigungsaktivität}
+Der vorherige Abschnitt hat sich nach Überprüfung durch eine kalifornische Serverfarm als falsch herausgestellt. Das Skript, speziell \cref{fig:Silber_plt.png} suggeriert allen Beobachtern - nicht nur müden, dass \(A^{108}_\infty=A^{110}_\infty\). Dies stimmt nicht, sondern es gilt, dass die Sättigungsaktivität abhängig des Neutronenflusses \(\Phi\), des Wirkungsquerschnitts \(\sigma\) des zu aktivierenden Isotops und der Anzahl an stabilen Isotopkernen \(N_{\mathrm{st}}\) ist:\autocite{Neutronenaktivierung}
+\begin{align}
+    A_\infty=N_{\mathrm{st}}\;\sigma\;\Phi \implies\frac{A_{0_{110}}}{A_{0_{108}}}=\frac{A^{110}_\infty(1-\mathrm{e}^{-\lambda_{110} t^\prime})}{A^{108}_\infty(1-\mathrm{e}^{-\lambda_{110} t^\prime})}=\frac{\sigma_{109}\;N^{109}_{\mathrm{st}}}{\sigma_{107}\;N^{107}_{\mathrm{st}}}\frac{1-\exp\left(-\frac{\ln 2}{T_{110}} t^\prime\right)}{1-\exp\left(-\frac{\ln 2}{T_{108}} t^\prime\right)}
+\end{align}
+Nach der IAEA Database\autocite{live_nuclide_chart} beträgt \(\sigma_{107}=\qty{34.8}{\barn}\) und \(\sigma_{109}=\qty{93.4}{\barn}\) sowie nach Wikipedia\autocite{Silber} \(N^{107}_{\mathrm{st}}=\qty{51.893}{\percent}\) und \(N^{109}_{\mathrm{st}}=\qty{48.161}{\percent}\). Damit berechnet man: \(\tcbhighmath{V_A=2.97}\). Oben wurde eben die falsche Annahme gemacht, dass \(N^{110}_0=N^{108}_0\). 
+
+Interessant ist jetzt die hohe absolute Abweichung zum Verhältniswert der Fits von \(V_F=\num{6.6(4.0)}\), der glücklicherweise einen hohen Fehler hat. Die kalifornische Serverfarm schlägt als Grund noch die unterschiedliche Ansprechwahrscheinlichkeit des GMZ für die Zerfallselektronen vor, da die Detektion von der Energie der Teilchen abhängig sei, beim Betazerfall von \ce{^110Ag} und \ce{^108Ag} werden unterschiedliche Energien frei. Dabei wird in Versuch 253: \enquote{Absorption von \(\alpha,\beta,\gamma\)-Strahlung} von einer Ansprechwahrscheinlichkeit von 1 für \(\beta\)-Strahlung gesprochen. Zusätzlich ist \(A_{108}=\num{0.7(4)}\) sehr klein mit hohem Fehler, wodurch das Verhältnis \(V_F\sim\frac{1}{A_{108}}\) bei kleinen Veränderungen stark schwankt. 
+
+\paragraph{Vergleich \(\boldsymbol{A_{110}}\) mit \(\boldsymbol{A_{116}}\):}
+Dass diese den denselben Wert haben, ist angesichts derselben Neutronenquelle, die zur Aktivierung verwendet wurde, völlig sinnvoll. (Unter der Voraussetzung, dass jedes Neutron der Neutronenquelle bei Silber als auch bei Indium mit derselben Wahrscheinlichkeit einen Atomkern aktiviert, der Wirkungsquerschnitt also derselbe ist. Das habe ich nicht nachgeschaut, irgendwann reichts auch mal). Nur sind bei Silber schon während des Transports des aktivierten Präparats einige Kerne zerfallen, weswegen die real aufgenommenen Werte, die blauen Messpunkte, bei Silber niedriger als bei Indium sind. 
+
+\subsection{aufmodulierte Störung} 
+Bei beiden Messungen ist eine wiederholt auftretende Störung in den Diagrammen \cref{fig:indiumlog.png,fig:silberlog.png} sichtbar: Die Messwerte scheinen in Form von \enquote{Wellenstufen} aufzutreten, vorstellbar wie eine aufmodulierte Sinuskurve, deren Trägerfrequenz die Exponentialfunktion ist. Diese Formen treten periodisch auf, deswegen ist ein statistischer Zufall meiner Einschätzung nach unwahrscheinlich, vielleicht interpretiere ich in die Messpunktverteilung aber auch zu viel hinein. Meine einzige Vermutung einer Ursache macht jedoch keinen Sinn, denn das Netzbrummen des Stromnnetzes existiert auf einer viel kleineren Zeitskala als die über mehrere Minuten aufgenommenen Messwerte. Wäre aber interessant zu wissen, ob das auch in anderen Auswertungen zu beobachten ist\dots
+
+\subsection{Fazit}
+Zwar sind die Fits und damit die Fehlergrenzen der berechneten Halbwertszeiten relativ hoch, die absolute Abweichung zu den Literaturwerten ist jedoch stets gering. Das Experiment wird als Erfolg gewertet. War auch ein sehr entspannter Versuch, der durch schnelleres Arbeiten bei der Silbermessung wsl. noch zu deutlich besseren Ergebnissen führen wird. Zudem könnte man zur Verringerung des relativen Fehlers von Silber mehr als nur 4 Messreihen aufnehmen und für eine kleine Verbesserung länger aktivieren. 
+
+Die Auswertung war doch ganz amüsant (bis auf die Zeit, die es gekostet hat, die addierten Messreihen bei Silber wieder zu entfernen, sich über das Zustandekommen des relativen Fehlers abhängig von Torzeit und Anzahl der Messreihen klarzuwerden, noch Gedanken über die Startaktivität zu machen), vor allem sind mir endlich mal wieder Memes eingefallen, auch wenn sie sie nicht immer nahtlos in den Kontext des Versuches eingefügt haben. Und ich verstehe jetzt, warum in diesem Versuch keine Frage zu \(A_0\) gestellt wurde.
+
+\xfigure{htbp}{width=0.7\textwidth}{Im-tired-boss-meme-4.jpg}{\emph{Meme:} I'm tired, boss\autocite{im_tired_boss}}{Tage an denen ich PAP Versuche schreibe, starten morgens und enden erst in den frühen Morgenstunden und brauchen einen weiteren Zyklus\autocite{im_tired_boss}}

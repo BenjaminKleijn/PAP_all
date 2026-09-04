@@ -1,0 +1,81 @@
+\subsection{Motivation}
+Betrachtet man die Fragen, die zur Einleitung und Vorbereitung des Versuches gestellt werden, so wird klar, welch große Bedeutung dieser Versuch und die zugrundeliegenden physikalischen Konzepte haben, z.B.: Optik der Atmosphäre (Streuung, Absorption, Reflektion), Lichtspektrum der Sonne und anderer Lichtquellen. Hinter diesen Überbegriffen steckt eine große Bandbreite von Vorlesungen: Zur Untersuchung der Sonne als Lichtquelle nutzt man das Modell des Schwarzen Strahlers aus der Thermodynamik, optische Phänomene wie Streuung werden in der Experimentalphysik behandelt, Absorption elektro-magnetischer Strahlung durch (Gas-) Atome wird nun mit neu erlerntem Wissen aus der Quantenmechanik (Ex3) vertieft zum Verständnis des Versuches genutzt. Des weiteren setzt der Versuch Impulse, sich mit sehr spannenden Fragen zu beschäftigen: Wie funktionieren LED-Lichter? Warum flackert eine alte \href{https://de.wikipedia.org/wiki/Leuchtstofflampe}{Leuchstoffröhre} beim Einschalten? Warum ist der Himmel tagsüber und während der \href{https://de.wikipedia.org/wiki/Blaue_Stunde}{blauen Stunde} blau?
+\vspace{1cm}
+\xfigure{htbp}{width=0.9\textwidth}{KIPhenge.png}{}{blaue Stunde im KIP. Wenigstens einmal in der Woche gute Aussicht beim Auswertung schreiben gehabt. Zwar ist die Häuserschlucht da, aber nicht perfekt mit der Sonne aligned, also kein Manhattanhenge für uns.}
+\newpage
+
+\subsection{Ziele des Versuches}
+Mithilfe eines Gitterspektrometers wird Sonnenlicht zur Aufzeichnung des Sonnenspektrums untersucht, sodass folgend die Bestimmung dessen Fraunhoferlinien und des absorbierenden Effektes einer Glasscheibe vorgenommen werden kann. Des weiteren wird das Spektrum von künstlichen Lichtquellen, also unterschiedlichen Erzeugungsarten aufgenommen, speziell das Licht der Natriumdampflampe wird dann genauer analysiert, um die theoretisch nach Regeln der Atomphysik erwarteten Wellenlängen mit den gemessenen zu vergleichen. 
+
+\subsection{Geräte}
+\begin{enumerate}
+    \item Gitterspektrometer Ocean Optics USB4000 mit Glasfaser
+    \item PC mit Auswertungsprogramm OceanView
+    \item Natriumdampflampe mit Vorschaltgerät
+\end{enumerate}
+\begin{itemize}
+    \item \textit{nicht auf dem Bild:} verschiedene Lichtquellen (farbige LEDs, LASER, Energiesparlampe, Glühbirne)
+\end{itemize}
+
+\xfigure{htb}{width=0.9\textwidth}{Versuchsaufbau.png}{}{Versuchsaufbau/Geräte \protect\autocite{Skript_2.1}}
+\newpage
+
+\subsection[Theoretische und technische Grundlagen]{Theoretische und technische Grundlagen \protect\autocite{Skript_2.1}}
+Grundsätzlich kann man die Emission von elektromagnetischer Strahlung in zwei verschiedene Klassen teilen: Temperaturstrahler senden Licht eines kontinuierlichen Wellenlängenspektrums aus, diskrete Lichtquellen (Nichttemperaturstrahler) hingegen emittieren nur bestimmte Wellenlängen. 
+
+\subsubsection{Temperaturstrahler}
+Nach den Modellen der Thermodynamik emittiert jeder Körper mit Temperatur \(T>\qty{0}{\kelvin}\) elektromagnetische Strahlung. Beim Modell des schwarzen Strahlers, welcher alle eintreffende Strahlung absorbiert und gleichzeitig das maximal mögliche Emissionsvermögen \(\epsilon=1\) besitzt, lässt sich das Plancksche Strahlungsgesetz aufstellen, welches die Strahlungsleistung \(M_\lambda\) des Flächenelements \(\diff A\) innerhalb des Wellenlängenbereichs \(\lambda+\diff \lambda\) bei Körpertemperatur \(T\) angibt: 
+\begin{equation}
+    M_\lambda(\lambda,T) \diff A \diff \lambda= \frac{2\pi hc^2}{\lambda^5\exp(\frac{hc}{\lambda k T })-1}\diff A \diff \lambda
+    \label{eq:PlanckschesGesetz}
+\end{equation}
+
+Der Stern Sonne lässt sich als schwarzer Strahler annähern: Mit der Temperatur \(T=\qty{5777}{\kelvin}\) ergibt sich die Strahlungsleistung \(M_\lambda\) wie in \cref{fig:Sonne_Strahlungsintensitaet.png}.
+
+\xfigure{htbp}{height=8cm}{Sonne_Strahlungsintensitaet.png}{}{Intensität der Sonnenstrahlung mit und ohne Erdatmosphäre sowie erwartbare Verteilung nach dem Planckschen Strahlungsgesetz, \cref{eq:PlanckschesGesetz} \protect\autocite{Sonnenstrahlung}}
+
+Die Suche nach dem eindeutig bestimmbaren Maximum von \(M_\lambda\) kann durch ein numerisches Verfahren gelöst werden, welches auf das Wiensche Verschiebungsgesetz führt: 
+\begin{equation}
+    \lambda_{\text{max}} T = \frac{\qty{2897.8}{\micro\m\,\kelvin}}{T}
+    \label{eq:WienschesGesetz}
+\end{equation}
+Dies bedeutet, dass ein Körper mit einer höheren Temperatur mehr Energie in Form von Strahlung abgibt und diese Strahlung eine kürzere Wellenlänge (bei Größenordnung von sichtbarem Licht: Blauverschiebung des Maximums) hat. Dieses temperaturabhängige Spektrum und sein durchs Wiensche Verschiebungsgesetz bestimmtes Maximum sorgen für die Kennzeichnung einer Lichtquelle nach ihrer Farbtemperatur: Bei niedrigen Temperaturen dominieren die Rotanteile des sichtbaren Lichts im Spektrum gegenüben den anderen Lichtfarben im sichtbaren Bereich, für höhere Temperaturen dominieren die Blauanteile. \par
+In \cref{fig:Sonne_Strahlungsintensitaet.png} sind noch andere Dinge erkennbar: Sowohl bei der extraterrestrischen, als auch der terrestrischen Strahlung sind an manchen Wellenlängen Absorptionslinien zu sehen. Stoffe/Atome in der Sonnen- bzw. Erdatmosphäre absorbieren bestimmte Wellenlängen, und emittieren die Energie der absorbierten Atome dann spontan in eine zufällige Richtung. \par
+Für die Beobachtung des Sonnenlichts am Erdboden spielt noch ein weitere Effekt eine große Rolle: Die Rayleigh-Streuung. Durch die wellenlängen-abhängige Streuung von Sonnenlicht an Atomen der Atmosphäre wird blaues Licht in alle möglichen Richtungen gestreut, die Summe allen Streulichts dominiert dadurch die Farbe des Himmels - blau. In der Morgen- und Abenddämmerung wird durch einen längeren Atmosphärenweg ein Großteil des blauen Lichts seitlich herausgestreut und trifft dadurch nicht das Auge des Betrachters - der Himmel erscheint rötlich. 
+% \todo{Bild des Schiffes einfügen}
+
+
+\subsubsection{Nichttemperaturstrahler}
+Das Licht von Nichttemperaturstrahlern
+baut entweder auf dem Übergang eines Elektrons zwischen zwei Atomzuständen in Gasen oder Festkörpern, der bei Relaxation (Elektron fällt auf einen niedrigen Zustand zurück) die Differenzenergie der Zustände als Photon aussendet oder auf Rekombination von Elektron-Loch Paaren in Halbleitern.\\
+Die Energieniveaus eines Atoms sind diskret, somit ist auch die pro Photon emittierte Energie (\(E_{ph}=\frac{hc}{\lambda}\)) diskret, dies ist auch beim \href{https://de.wikipedia.org/wiki/Leuchtdiode#Funktionsprinzip}{pn-Übergang} in Halbleitern der Fall, hier geht ein Elektron von der n-dotierten in die p-dotierte Schicht über, wenn eine Spannung an der Diode angelegt wurde. Im Banddiagramm entspricht das dem Übergang vom Leitungsband in das Valenzband des Halbleiters. Deren energetischer Abstand, der Bandgap, entscheidet die Energie des ausgesendeten Photons. 
+
+\subsubsection{Natriumdampflampe}
+Im Periodensystem lässt sich ablesen, dass Natrium die Ordnungszahl \(z=\num{11}\) hat und ein einzelnes Außenelektron in der \(n = \num{3}\) - Hauptschale besitzt. In  Abhängigkeit seines Drehimpulses kann dieses Elektron nun
+verschiedene Energiezustände annehmen, welche neben der Hauptquantenzahl \(n\) durch den quantisierten Drehimpuls und der zugehörigen Quantenzahl \(l\) bestimmt werden, es wurde also die 1-Entartung aufgehoben - die Auswahlregel für Übergänge in wasserstoffähnlichen Atomen \(\Delta n=1\) gilt nicht mehr. Die Energie des Elektrons berechnet sich bei vorliegendem Potential zu:
+\begin{equation}
+    E_{n,l}=\qty{-13.6}{\electronvolt}\frac{1}{(n-\Delta_{n,l})^2}
+    \label{eq:Energieniveaus}
+\end{equation}
+Es sind nun eine Vielzahl an Übergängen möglich: Anhand des \href{https://de.wikipedia.org/wiki/Termsymbol}{Termsymbols} der Atomphysik und den Eigenschaften des untersuchten Natriums können diese beschrieben werden.
+\[
+\text{\Large \(n^{2S+1}L_J\)} \quad \left\{ \; \begin{aligned}
+    & \text{Hauptquantenzahl, für Natrium: }n=3,4,5,6,\dots\\
+    & \text{Bahndrehimpuls }L=0,1,2,3,\dots, n \equiv S,P,D,F,\dots \\
+    & \text{Spin \(S\): } S_{\text{Elektron}}=\frac{1}{2} \\
+    & \text{Gesamtdrehimpuls }J=|L-S|, |L-S|+1, \dots, L+S
+\end{aligned} \right.
+\]
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \captionsetup{format=plain}
+    \includegraphics[width=0.9\linewidth]{Natriumspektrum.png} 
+    \caption[format=plain]{Energieschema und Photonübergänge im Natriumatom (Grotriandiagramm) \protect\autocite{Skript_2.1}}
+\label{fig:Natriumspektrum.png}
+\end{wrapfigure}
+\definecolor{yellowdublett}{RGB}{255,225,0}
+Das Elektron des Natriumatoms wird also durch die Gasentladungslampe angeregt, dies erfolgt mithilfe eines elektrischen Feldes welches Elektronen beschleunigt, die ihre Energie dann per Stoßionisation an die Natriumatome weitergeben.\\
+Der bedeutendste Übergang der Relaxation des Elektrons in einer Natriumdampflampe ist das gelbe Dublett vom Zustand: 
+\[3^2P_{\frac{1}{2}/\frac{3}{2}}\xrightarrow{\color{yellowdublett}{\color{black}\qty{589.593}{\nano\meter}/\qty{588.996}{\nano\meter}}}3^2S_\frac{1}{2}\]
+In Diagramm \ref{fig:Natriumspektrum.png} sind neben der Hauptserie (\(n^2P_{\frac{1}{2}/\frac{3}{2}}\rightarrow3^2S_\frac{1}{2}\)), die 1. (\(n^2D_{\frac{1}{2}/\frac{3}{2}}\rightarrow 3^2P\)) und 2. Nebenserie (\(n^2S_\frac{1}{2}\rightarrow3^2P\)) eingezeichnet. 
+\clearpage
